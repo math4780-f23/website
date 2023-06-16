@@ -1,10 +1,7 @@
 ---
-title: "STA 210: Regression Analysis"
+title: "MATH 4780: Regression Analysis"
 ---
 
-Learn approaches for analyzing multivariate data sets, emphasizing analysis of variance, linear regression, and logistic regression.
-Learn techniques for checking the appropriateness of proposed models, such as residual analyses and case influence diagnostics, and techniques for selecting models.
-Gain experience dealing with the challenges that arise in practice through assignments that utilize real-world data.
-This class emphasizes data analysis over mathematical theory.
+Starting from simple linear regression, this course provides a brief, yet complete foundation for the understanding of basic regression theory and applications that is a core of supervised learning in statistical machine learning. Topics include multiple linear regression, diagnostic analysis, collinearity, nonparametric regression, variable selection, generalized linear models and other selected topics. This course focus on data analysis rather than mathematical derivation. For advanced regression topics, consider MSSC 6250 Statistical Machine Learning.
 
 ![](images/background-bikeshare.png){fig-alt="A series of six, generic data visualizations: a scatterplot, a density plot, a contour plot, a line plot, a box plot, and another scatterplot." width="700"}
