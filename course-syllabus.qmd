@@ -8,7 +8,7 @@ title: "Syllabus"
 
 |           | Day       | Time              | Location                       |
 |-----------|-----------|-------------------|--------------------------------|
-| Lectures  | Tue & Thu | 5:00 pm - 6:15 pm | Cudahy Hall 120                |
+| Lectures  | Tu & Th   | 5:00 - 6:15 PM    | Cudahy Hall 120                |
 | Lab       | None      | None              | None                           |
 
 
@@ -16,7 +16,7 @@ title: "Syllabus"
 
 - My in-person office hours are TuTh 3:20 - 4:50 PM, in Cudahy Hall room 353.
 
-- We can schedule an online meeting via Microsoft Teams if you need/prefer.
+- You are welcome to schedule an online meeting via Microsoft Teams if you need/prefer.
 
 ## Learning objectives
 
