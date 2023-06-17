@@ -501,7 +501,7 @@
     "href": "weeks/week-1.html#participate",
     "title": "Week 1",
     "section": "Participate",
-    "text": "Participate\n🖥️ Lab 0 -Meet+ greet\n🖥️ Lecture 1 - Welcome to STA 210"
+    "text": "Participate\n🖥️ Lab 0 -Meet+ greet\n🖥️ Lecture 1 - Welcome to MATH 4780"
   },
   {
     "objectID": "weeks/week-1.html#practice",
@@ -1782,7 +1782,7 @@
     "href": "index.html",
     "title": "MATH 4780 - Regression Analysis",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nAE\nLab\nHW\nExam\nProject\n\n\n\n\n1\nWed, Jan 5\nLab 0 - Meet + greet\n\n🖥️\n\n💻\n\n\n\n\n\n\nThu, Jan 6\nWelcome to STA 210!\n📖\n🖥️\n📋\n\n\n\n\n\n\n2\nMon, Jan 10\nLab 1 - Meet the toolkit\n\n🖥️\n\n💻\n\n\n\n\n\n\nTue, Jan 11\nSimple linear regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Jan 13\nSLR: Model fitting in R with tidymodels\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Jan 14\nReleased: HW 5\n\n\n\n\n✍️\n\n\n\n\n\n\nDue: Lab 1\n\n\n\n💻 🗝️\n\n\n\n\n\n3\nMon, Jan 17\nMartin Luther King, Jr. Day\n\n\n\n\n\n\n\n\n\n\nTue, Jan 18\nSLR: Prediction + model evaluation\n📖\n🖥️\n📋\n\n\n\n\n\n\n\nThu, Jan 20\nSLR: Simulation-based inference\n\n🖥️\n\n\n\n\n\n\n\n\nFri, Jan 21\nReleased: HW 1\n\n\n\n\n✍️\n\n\n\n\n4\nMon, Jan 24\nLab 2 - College scorecard\n\n🖥️\n\n💻\n\n\n\n\n\n\nTue, Jan 25\nSLR: Mathematical models for inference\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Jan 27\nSLR: Model diagnostics\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Jan 28\nDue: HW 1 + Lab 2\n\n\n\n💻 🗝️\n✍️ 🗝️\n\n\n\n\n5\nMon, Jan 31\nLab 3 - Coffee ratings\n\n🖥️\n\n💻\n\n\n\n\n\n\nTue, Feb 1\nMultiple linear regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Feb 3\nExam 1 review\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Feb 4\nReleased: Exam 1\n\n\n\n\n\n✅\n\n\n\n\n\nDue: Lab 3\n\n\n\n💻 🗝️\n\n\n\n\n\n6\nMon, Feb 7\nNo lab: Work on Exam 1\n\n\n\n\n\n\n\n\n\n\n\nDue: Exam 1\n\n\n\n\n\n✅\n\n\n\n\nTue, Feb 8\nMLR: Types of predictors\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Feb 10\nMLR: Model comparison\n\n🖥️\n\n\n\n\n\n\n\n\nFri, Feb 11\nReleased: HW 2\n\n\n\n\n✍️\n\n\n\n\n7\nMon, Feb 14\nLab: Project topic ideas\n\n\n\n\n\n\n📂\n\n\n\nTue, Feb 15\nMLR: Feature engineering\n📖\n🖥️\n📋\n\n\n\n\n\n\n\nThu, Feb 17\nMLR: Feature engineering\n\n🖥️\n\n\n\n\n\n\n\n\nFri, Feb 18\nDue: HW 2 + Project topic ideas\n\n\n\n\n✍️ 🗝️\n\n📂\n\n\n8\nMon, Feb 21\nLab 4: The Office\n\n\n\n💻\n\n\n\n\n\n\nTue, Feb 22\nMLR: Cross validation\n📖\n🖥️\n📋\n\n\n\n\n\n\n\nThu, Feb 24\nExam 2 review\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Feb 25\nReleased: Exam 2\n\n\n\n\n\n✅\n\n\n\n\n\nDue: Lab 4\n\n\n\n💻 🗝️\n\n\n\n\n\n9\nMon, Feb 28\nNo lab: Work on Exam 2\n\n\n\n\n\n\n\n\n\n\n\nDue: Exam 2\n\n\n\n\n\n✅\n\n\n\n\nTue, Mar 1\nMLR: Inference\n📖\n🖥️\n📋\n\n\n\n\n\n\n\nThu, Mar 3\nMLR: Inference conditions + multicollinearity\n\n🖥️\n\n\n\n\n\n\n\n\nMon, Mar 7\nSpring break\n\n\n\n\n\n\n\n\n\n\nTue, Mar 8\nSpring break\n\n\n\n\n\n\n\n\n\n\nThu, Mar 10\nSpring break\n\n\n\n\n\n\n\n\n\n10\nMon, Mar 14\nLab: Work on project proposals\n\n\n\n\n\n\n📂\n\n\n\nTue, Mar 15\nLogistic regression (LR)\n📖\n🖥️\n📋\n\n\n\n\n\n\n\nThu, Mar 17\nProbabilities, odds, and odds ratios\n\n🖥️\n\n\n\n\n\n\n\n\nFri, Mar 18\nDue: Project proposals\n\n\n\n\n\n\n📂\n\n\n\n\nReleased: HW 3\n\n\n\n\n✍️\n\n\n\n\n11\nMon, Mar 21\nLab 5: General Social Survey\n\n\n\n💻\n\n\n\n\n\n\nTue, Mar 22\nLR: Prediction / classification\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Mar 24\nLR: Model comparison\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Mar 25\nDue: HW 3 + Lab 5\n\n\n\n💻 🗝️\n✍️ 🗝️\n\n\n\n\n12\nMon, Mar 28\nLab: Work on project drafts\n\n\n\n\n\n\n📂\n\n\n\nTue, Mar 29\nLR: Inference + conditions\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Mar 31\nMultinomial Logistic Regression (MultiLR)\n\n🖥️\n\n\n\n\n\n\n\n\nFri, Apr 1\nReleased: HW 4\n\n\n\n\n✍️\n\n\n\n\n13\nMon, Apr 4\nLab 6: Why Many Americans Don’t Vote\n\n\n\n💻\n\n\n\n\n\n\nTue, Apr 5\nMultiLR: Prediction + inferential models\n📖\n🖥️\n\n\n\n\n\n\n\n\nThu, Apr 7\nMultiLR: Predictive models\n\n🖥️\n📋\n\n\n\n\n\n\n\nFri, Apr 8\nDue: Lab 6\n\n\n\n💻 🗝️\n\n\n\n\n\n\nSun, Apr 10\nDue: Project drafts\n\n\n\n\n\n\n📂\n\n\n14\nMon, Apr 11\nLab: Project peer review of drafts\n\n\n\n\n\n\n📂\n\n\n\nTue, Apr 12\nMultiLR: Predictive models (cont.)\n📖\n🖥️\n\n\n\n\n\n\n\n\n\nDue: HW 4\n\n\n\n\n✍️ 🗝️\n\n\n\n\n\nThu, Apr 14\nExam 3 review\n\n🖥️\n📋\n\n\n\n\n\n\n\n\nDue: Peer review\n\n\n\n\n\n\n📂\n\n\n\nFri, Apr 15\nReleased: Exam 3\n\n\n\n\n\n✅\n\n\n\n15\nMon, Apr 18\nNo lab: Work on Exam 3\n\n\n\n\n\n\n\n\n\n\n\nDue: Exam 3\n\n\n\n\n\n✅\n\n\n\n\nTue, Apr 19\nWrap-up\n📖\n🖥️\n📋\n\n\n\n\n\n\n\n\nDue: HW 5\n\n\n\n\n✍️\n\n\n\n\n16\nMon, Apr 25\nDue: Project write-up\n\n\n\n\n\n\n📂\n\n\n\nThu, Apr 28\nDue: Video presentation + repo\n\n\n\n\n\n\n📂\n\n\n\nSat, Apr 30\nDue: Video comments\n\n\n\n\n\n\n📂"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLab\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n📖\n🖥️\n\n\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n🖥️\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n\n\n\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n📖\n🖥️\n\n\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n6\nTue, Oct 3\nDiagnostics: Residuals\n\n\n\n\n\n\n\n\nThu, Oct 5\nDiagnostics: Unusual Data\n\n\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Symmetry and Normality\n\n\n\n\n📂\n\n\n\nThu, Oct 12\nDiagnostics: Constant Variance\n📖\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nDiagnostics: Linearity\n\n\n💻\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Lack of Fit\n📖\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nPolynomial Regression\n\n\n\n\n\n\n\n\nThu, Oct 26\nNonparametric Regression\n📖\n🖥️\n\n\n\n\n\n10\nTue, Oct 31\nCategorical Variables\n\n\n\n\n📂\n\n\n\nThu, Nov 2\nCategorical Variables\n📖\n🖥️\n\n\n\n\n\n11\nTue, Nov 7\nCollinearity\n\n\n💻\n\n\n\n\n\nThu, Nov 9\nCollinearity\n📖\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nVariable Selection\n\n\n\n\n📂\n\n\n\nThu, Nov 16\nVariable Selection\n📖\n🖥️\n\n\n\n\n\n13\nTue, Nov 21\n\n\n\n💻\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n📖\n🖥️\n\n\n\n\n\n14\nTue, Nov 28\nGeneralized Linear Model\n\n\n\n\n📂\n\n\n\nThu, Nov 30\nLogistic Regression\n📖\n🖥️\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n\n\n\n\n\n\n\n\nThu, Dec 7\n\n\n\n\n\n\n\n\n16\n\nDue: Project write-up\n\n\n\n\n📂\n\n\n\n\nDue: Video presentation + repo\n\n\n\n\n📂"
   },
   {
     "objectID": "course-team.html",
@@ -4872,6 +4872,132 @@
     "text": "Recap\n\nIntroduce multinomial logistic regression\nInterpret model coefficients\nInference for a coefficient \\(\\beta_{jk}\\)\n\n\n\n\nsta210-s22.github.io/website"
   },
   {
+    "objectID": "slides/01-syllabus.html#my-journey",
+    "href": "slides/01-syllabus.html#my-journey",
+    "title": "Welcome Aboard! 🙌",
+    "section": "My Journey",
+    "text": "My Journey\n\nAssistant Professor (2020/08 - )\n\n\n\n\n\n\n\n\n\n\nPostdoctoral Fellow\n\n\n\n\n\n\n\n\n\n\nPhD in Statistics\n\n\n\n\n\n\n\n\n\n\nMA in Economics/PhD program in Statistics\n\n\n\n\n\n\n\n\n\nAfter college, working and doing military service for several years, I came to the US for my PhD degree. Originally I would like to study economics, but then I switched my major to statistics.\n\nI got my master degree in economics from Indiana University Bloomington, then I transferred to UC Santa Cruz to finish my PhD studies.\nThen I spent two years doing my postdoctoral research at Rice University in Houston, Texas.\nFinally, in fall 2020, I came to Marquette as an assistant professor.\nMidwest/Indiana-West/California-South/Texas-Midwest/Wisconsin\nBeen to any one of these universities/cities?\nThe most beautiful campus.\nWho are international students? I can totally understand how hard studying and living in another country. Feel free to share your stories or difficulties, and I am more than happy to help you if you have any questions.\nPoor listening and speaking skills. I was shy.\nOK so, this is my background. How about you introducing yourself as well. You can share anything, your major, hobbies, your favorite food, what do you want to do after graduation, anything,\nI have the class list. I’d like to learn your face and remember your name. You know, you all wear a mask. It’s hard to recognize you and connect your name and your face.\nWhen I call your name, you can say something about yourself. No need to be long, couple of seconds are good."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#my-research",
+    "href": "slides/01-syllabus.html#my-research",
+    "title": "Welcome Aboard! 🙌",
+    "section": "My Research",
+    "text": "My Research\n\nBayesian spatio-temporal modeling and machine learning algorithms in neuroimaging\nBayesian Deep Learning for image classification\nEfficient MCMC for big \\(n\\) big \\(p\\) streaming data\nGame-based learning for STEM and data science education\n\n\n\n\nfMRI\n\n\n\n\n\n\n\n\n\nEEG"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#how-to-reach-me",
+    "href": "slides/01-syllabus.html#how-to-reach-me",
+    "title": "Welcome Aboard! 🙌",
+    "section": "How to Reach Me",
+    "text": "How to Reach Me\n\nOffice hours TuTh 3:20 - 4:50 PM in Cudahy Hall 353.\n📧 cheng-han.yu@marquette.edu\n\nAnswer your question within 24 hours.\nExpect a reply on Monday if shoot me a message on weekends.\nStart your subject line with [math4780] or [mssc5780] followed by a clear description of your question.\n\n\n\n\n\nI will NOT reply your e-mail if … Check the email policy in the syllabus!"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#textbook-lra",
+    "href": "slides/01-syllabus.html#textbook-lra",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Textbook (LRA)",
+    "text": "Textbook (LRA)\n\n\n\n\nIntroduction to Linear Regression Analysis, 6th edition, by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. \n\nLearn Chapter 1 ~ 10, 13.\nCareful about typos.\n\nIn the Preface, > The book … for a course taken by seniors and 1st-year graduate students….\n\nSome knowledge of matrix algebra is also necessary.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCourse materials are grabbed from several books and resources.\nOur course website would be helpful."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#optional-reference-cmr",
+    "href": "slides/01-syllabus.html#optional-reference-cmr",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Optional Reference (CMR)",
+    "text": "Optional Reference (CMR)\n\n\n\n\nClassical and Modern Regression with Applications, by Raymond Myers. Publisher: Duxbury Press.\nOne of the textbooks when I was a master student at Indiana University Bloomington.\nOutdated (published in 1990) and no code involved but explains concepts well.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI also provide some other reference books. They are all optional, but some course materials may borrow from these books.\nIt’s a pretty old book which was published in 1990. So it’s a little bit outdated. But it explains basic ideas and concepts pretty well. I enjoyed reading it."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#optional-reference-car",
+    "href": "slides/01-syllabus.html#optional-reference-car",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Optional Reference (CAR)",
+    "text": "Optional Reference (CAR)\n\n\n\n\nAn R Companion to Applied Regression, by John Fox and Sanford Weisberg. Publisher: SAGE.\nR scripts and data are available on the book Website\n\nDoing regression much easier by the car and effects R packages.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf you wanna learn how to use R to do regression, this book could be helpful.\nThe authors create 2 R packages car and effects that make doing regression so much easier.\nLater you’ll see we can just use some simple function calls to generate some important and useful graphics for regression analysis.\n\nJohn Fox received a BA from the City College of New York and a PhD from the University of Michigan, both in Sociology. Sanford Weisberg is Professor Emeritus of statistics at the University of Minnesota. He has also served as the director of the University′s Statistical Consulting Service, and has worked with hundreds of social scientists and others on the statistical aspects of their research. He earned a BA in statistics from the University of California, Berkeley, and a Ph.D., also in statistics, from Harvard University"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#prerequisites",
+    "href": "slides/01-syllabus.html#prerequisites",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nOn bulletin: MATH 2780 (Baby Regression), MATH 4720 (Intro Stats) or equivalent.\n\n\nHelpful if you\n\ncode (any language) 💻\n\n\n\n\nlearned basic linear algebra (MATH 3100) 🔢\n\n\n\n\ntook probability (MATH 4700) and statistical inference (MATH 4710) 🎲\n\n\nOn the Marquette bulletin, the prerequisite is either MATH 2780 or MATH 4720 or equivalent.\nBut this course requires more than basic statistics experience.\nNowadays, nobody is doing regression by hand, and we will write some code to do regression. So it would be helpful if you code any language before."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#course-website",
+    "href": "slides/01-syllabus.html#course-website",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Course Website",
+    "text": "Course Website\n\n()\n\nAll course information and materials"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#course-website---d2l",
+    "href": "slides/01-syllabus.html#course-website---d2l",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Course Website - D2L",
+    "text": "Course Website - D2L\n\n(D2L)\n\nHomework submission\nGradebook"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#grading-policy",
+    "href": "slides/01-syllabus.html#grading-policy",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Grading Policy ✨",
+    "text": "Grading Policy ✨\n\nFor MATH 4780 (MSSC 5780) students, the grade is earned out of 1000 (1200) total points distributed as follows:\n\nHomework 1 to 6: 600 pts (100 pts each)\nFinal project: 400 pts\nMSSC 5780 problems: 200 pts\n\n\n❌ No extra credit projects/homework/exam to compensate for a poor grade.\nIndividual grade will NOT be curved.\nWant to obtain a good grade? Study hard. No pain, no gain! ✍ ✍\n\n\nEveryone has the same opportunity to do well in this class.\n4780 students are encouraged to do MSSC problems: Up to 100 pts extra credit.\nI am not a harsh grader, but this is not an easy A course as well."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#grade-percentage-conversion",
+    "href": "slides/01-syllabus.html#grade-percentage-conversion",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Grade-Percentage Conversion",
+    "text": "Grade-Percentage Conversion\n\n\n\\([x, y)\\) means greater than or equal to \\(x\\) and less than \\(y\\). For example, 94.0 is in [94, 100] and the grade is A and 93.8 is in [90, 94) and the grade is A-.\n\n\n\n\n\n\n Grade \n    Percentage \n  \n\n\n A \n    [94, 100] \n  \n\n A- \n    [90, 94) \n  \n\n B+ \n    [87, 90) \n  \n\n B \n    [84, 87) \n  \n\n B- \n    [80, 84) \n  \n\n C+ \n    [77, 80) \n  \n\n C \n    [74, 77) \n  \n\n C- \n    [70, 74) \n  \n\n D+ \n    [65, 70) \n  \n\n D \n    [60, 65) \n  \n\n F \n    [0, 60)"
+  },
+  {
+    "objectID": "slides/01-syllabus.html#homework-600-pts",
+    "href": "slides/01-syllabus.html#homework-600-pts",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Homework (600 pts)",
+    "text": "Homework (600 pts)\n\nD2L > Assessments > Dropbox and upload your homework in PDF format.\nYou must submit YOUR OWN work. 🙏\n❌ No make-up homework.\nDue Friday 11:59 PM (09/09, 09/23, 10/07, 10/28, 11/11, 12/02. Hard deadline and no late submission).\n❌ Handwriting is NOT allowed for data analysis."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#mssc-5780-questions-200-pts",
+    "href": "slides/01-syllabus.html#mssc-5780-questions-200-pts",
+    "title": "Welcome Aboard! 🙌",
+    "section": "MSSC 5780 Questions (200 pts)",
+    "text": "MSSC 5780 Questions (200 pts)\n\nSome extra homework questions are for MSSC 5780 students.\n👍 MATH 4780 students are encouraged to do the MSSC problems to earn up to 50 pts extra points."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#project-400-pts",
+    "href": "slides/01-syllabus.html#project-400-pts",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Project (400 pts)",
+    "text": "Project (400 pts)\n\nYou will be doing a team project.\nYour project is about analyzing real-world data using regression methods.\nWritten report or oral presentation or both??\nMore information will be released later."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#what-computing-language-we-use-i-teach",
+    "href": "slides/01-syllabus.html#what-computing-language-we-use-i-teach",
+    "title": "Welcome Aboard! 🙌",
+    "section": "What Computing Language We Use (I Teach)?",
+    "text": "What Computing Language We Use (I Teach)?\n\n🖖 The best language for statistical computing!\n\n\nR Website\nR is the best language for statistical computing.\nIts code for doing regression analysis is pretty clean and concise.\nYou won’t regret learning R."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#which-programming-language",
+    "href": "slides/01-syllabus.html#which-programming-language",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Which Programming Language?",
+    "text": "Which Programming Language?\n\n✅ May use any other language (Python, MATLAB, etc) to do your work.\n❌ I would NOT debug your code or comment on your technical issues of those languages.\nIf time permitted, I’ll translate R to Python."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#academic-integrity",
+    "href": "slides/01-syllabus.html#academic-integrity",
+    "title": "Welcome Aboard! 🙌",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nThis course expects all students to follow University and College statements on academic integrity.\n\n\nHonor Pledge and Honor Code: I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor, and responsibility, by which I earn the respect of others. I support the development of good character, and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code.\n❌ You know what I am talking about. Yes, DO NOT CHEAT."
+  },
+  {
+    "objectID": "slides/01-syllabus.html#you-may-find-something-good",
+    "href": "slides/01-syllabus.html#you-may-find-something-good",
+    "title": "Welcome Aboard! 🙌",
+    "section": "You May Find Something Good!",
+    "text": "You May Find Something Good!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmath4780-f23.github.io/website"
+  },
+  {
     "objectID": "slides/lec-22.html#topics",
     "href": "slides/lec-22.html#topics",
     "title": "LR: Inference + conditions",
@@ -7221,14 +7347,14 @@
     "href": "course-syllabus.html#time-and-location",
     "title": "Syllabus",
     "section": "Time and location",
-    "text": "Time and location\n\n\n\n\n\n\n\n\n\n\nDay\nTime\nLocation\n\n\n\n\nLectures\nTue & Thu\n5:00 pm - 6:15 pm\nCudahy Hall 120\n\n\nLab\nNone\nNone\nNone"
+    "text": "Time and location\n\n\n\n\n\n\n\n\n\n\nDay\nTime\nLocation\n\n\n\n\nLectures\nTu & Th\n5:00 - 6:15 PM\nCudahy Hall 120\n\n\nLab\nNone\nNone\nNone"
   },
   {
     "objectID": "course-syllabus.html#office-hours",
     "href": "course-syllabus.html#office-hours",
     "title": "Syllabus",
     "section": "Office Hours",
-    "text": "Office Hours\n\nMy in-person office hours are TuTh 3:20 - 4:50 PM, in Cudahy Hall room 353.\nWe can schedule an online meeting via Microsoft Teams if you need/prefer."
+    "text": "Office Hours\n\nMy in-person office hours are TuTh 3:20 - 4:50 PM, in Cudahy Hall room 353.\nYou are welcome to schedule an online meeting via Microsoft Teams if you need/prefer."
   },
   {
     "objectID": "course-syllabus.html#learning-objectives",
