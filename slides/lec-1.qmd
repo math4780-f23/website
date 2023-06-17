@@ -1,272 +1,582 @@
 ---
-title: "Welcome to STA 210!"
-subtitle: "STA 210 - Spring 2022"
-author: "Dr. Mine Çetinkaya-Rundel"
-footer:  "[sta210-s22.github.io/website](https://sta210-s22.github.io/website/)"
-logo: "images/logo.png"
+title: "Welcome Aboard! `r emo::ji('raised_hands')`"
+subtitle: "MATH/COSC 3570 Introduction to Data Science"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
-  revealjs: 
-    theme: slides.scss
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
     multiplex: true
-    transition: fade
-    slide-number: true
-editor: visual
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
 execute:
-  freeze: auto
+  freeze: true
+  echo: true
 ---
 
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
 ```{r}
+#| label: setup
 #| include: false
+#| eval: true
 library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "images/lec-1",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+# Taipei, Taiwan {background-image="images/01-syllabus/taiwan.jpeg" background-size="cover" background-position="50% 50%" background-color="#447099"}
+
+::: {.absolute bottom="50" right="10"}
+![](images/01-syllabus/taiwan.svg){width="500" fig-alt="Taiwan location"}
+:::
+
+
+::: notes
+
+- Hello everyone, how are you? I hope you have a great winter break. Welcome to 3570 Introduction to Data Science course. I am your instructor Cheng-Han Yu.  
+
+- First thing first. Get to know each other. Let me first introduce my self. I was born and grew up in Taipei, Taiwan, my home country, which is a island right next to China. Taipei is a big city in terms of population. It is about the same population size as Chicago. This building is called Taipei 101, which is the tallest building in Taiwan.
+:::
+
+## My Journey {background-image="images/01-syllabus/sample_gate.png" background-size="cover" background-position="50% 50%" background-opacity="0.3"}
+
+-   Assistant Professor (2020/08 - )
+
+```{r}
+#| out.width: 20%
+#| fig.align: center
+knitr::include_graphics("./images/01-syllabus/mu.svg")
 ```
 
-# Welcome
+-   Postdoctoral Fellow
 
-## Meet the professor
+```{r}
+#| out.width: 20%
+#| fig.align: center
+knitr::include_graphics("./images/01-syllabus/rice.png")
+```
 
-::: columns
+-   PhD in Statistics
+
+```{r}
+#| out.width: 20%
+#| fig.align: center
+knitr::include_graphics("./images/01-syllabus/ucsc.png")
+```
+
+-   MA in Economics/PhD program in Statistics
+
+```{r}
+#| out.width: 20%
+#| fig.align: center
+knitr::include_graphics("./images/01-syllabus/iub.png")
+```
+
+
+
+::: notes
+After college, working and doing military service for several years, I came to the US for my PhD degree. Originally I would like to study economics, but then I switched my major to statistics. 
+
+- I got my master degree in economics from Indiana University Bloomington, then I transferred to UC Santa Cruz to finish my PhD studies. 
+- Then I spent two years doing my postdoctoral research at Rice University in Houston, Texas.
+- Finally, in fall 2020, I came to Marquette as an assistant professor.
+- Midwest/Indiana-West/California-South/Texas-Midwest/Wisconsin
+- Been to any one of these universities/cities? 
+- The most beautiful campus.
+- Who are international students? I can totally understand how hard studying and living in another country. Feel free to share your stories or difficulties, and I am more than happy to help you if you have any questions.
+- Poor listening and speaking skills. I was shy. 
+- OK so, this is my background. How about you introducing yourself as well. You can share anything, your major, hobbies, your favorite food, what do you want to do after graduation, anything, 
+- I have the class list. I'd like to learn your face and remember your name. You know, you all wear a mask. It's hard to recognize you and connect your name and your face. 
+- When I call your name, you can say something about yourself. No need to be long, couple of seconds are good.
+:::
+
+## How to Reach Me
+
+- Office hours **TuTh 4:45 - 5:45 PM** and **W 1 - 2 PM** in **Cudahy Hall 353**.
+- `r emo::ji('e-mail')`  <cheng-han.yu@marquette.edu> 
+  + Answer your question within 24 hours. 
+  + Expect a reply on **Monday** if shoot me a message **on weekends**.
+  + Start your subject line with **[math3570]** or **[cosc3570]** followed by a **clear description of your question**. 
+  
+
+```{r}
+#| out-width: "45%"
+knitr::include_graphics("./images/01-syllabus/3570_email.png")
+```
+  + I will **NOT** reply your e-mail if ... **Check the email policy in the [syllabus](../syllabus/syllabus-3570-s23.pdf)**!
+
+
+## When You Have Two Dr. Yu in One Semester `r emo::ji('joy')`
+
+```{r}
+#| out-width: "100%"
+knitr::include_graphics("./images/01-syllabus/email_example_student.png")
+```
+
+```{r}
+#| out-width: "100%"
+knitr::include_graphics("./images/01-syllabus/email_example.png")
+```
+
+
+:::
+- This is a real case happened last semester. A student of my class sent her homework of another class linear systems to me because the instructor of that course also has last name Yu, and she messed up. So if you remember to add course number in the subject line, it will greatly reduce the possibility of sending a wrong message. And it will save your time and my time, and so we all can work more efficiently. Right?
+:::
+
+
+## What is This Course?
+- **Every** *aspect of doing a practical data science project, from importing data to deploying what we learn from data*.
+ 
+ 
+. . .
+
+`r emo::ji("question")` **What are prerequisites?**  
+`r emo::ji("point_right")` COSC 1010 (Intro Programming) and MATH 4720 (Intro Stats) or MATH 2780 (Intro Regression)
+
+<br>
+
+. . .
+
+`r emo::ji("question")` **Is this like another intro stats course?**  
+`r emo::ji("point_right")` No. Statistics and data science are closely related.  
+
+. . .
+
+Nowadays  
+`r emo::ji("point_right")` Data science is a *broader* subject than statistics.  
+
+. . .
+
+`r emo::ji("point_right")` Statistics focuses more on *analyzing and learning from data*, a part of the entire workflow of data science.
+
+
+<br>
+
+. . .
+
+
+`r emo::ji("question")` **Is this like another intro CS or programming course?**  
+`r emo::ji("point_right")` Absolutely not. We learn how to **code for doing data science**, not for understanding computer systems and structures.
+
+::: notes
+- Of course we will not cover every detail form A to Z of DS in one semester becuase DS is such a huge subject, just like computer science. It's impossible to learn CS in one semester by just taking intro to CS, right? So we'll just learn the basic and essential concepts and tools used is DS.
+:::
+
+## What is NOT Covered in This Course
+
+- **Advanced data analytics and computing**
+  <!-- + MATH 4720 Statistical Methods -->
+  <!-- + MATH 4740 Biostatistical Methods -->
+  + MATH 4750 Statistical Computing
+  + MATH 4760 Time Series Analysis
+  + MATH 4780 Regression Analysis
+  + COSC 4600 Fundamentals of Artificial Intelligence
+  + COSC 4610 Data Mining
+  + COEN 4860 Introduction to Neural Networks
+
+. . .
+
+- **Big data**: We start with small, in-memory data sets. You don't know how to tackle big data unless you have experience with small data.
+
+. . .
+
+- **Database**: You'll learn SQL in 
+  + COSC 4800 Principles of Database Systems
+  + INSY 4052 Database Management Systems.
+
+
+::: notes
+- We won't talk about topics like cloud computing, parallel computing, distributed computing.
+- **Big data techniques**: As a beginner, we focus on small, in-memory datasets. You can't tackle big data unless you have experience with small data.
+:::
+
+
+## What Computing Languages?
+
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+~ 70%
+
+```{r}
+#| out-width: "50%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/Rlogo.png")
+```
+
+
+::::
+
+:::: {.column width="50%"}
+
+~ 30%
+
+```{r}
+#| out-width: "40%"
+#| fig-align: "center"
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg")
+```
+
+::::
+
+:::::
+
+- You've learned Python in COSC 1010.
+- Being R-Python bilingual becomes essential!
+
+. . .
+
+`r emo::ji("point_right")` Wouldn't it be great to add both languages to your resume! `r emo::ji('sunglasses')`
+<!-- - [Why R](https://github.com/matloff/R-vs.-Python-for-Data-Science) -->
+
+. . .
+
+`r emo::ji("x")` If you do **NOT** want to learn **R**, do **NOT** take this course! (3570 is offered **every** semester)
+
+`r emo::ji("x")` Drop deadline: **01/25/2023 11:59 PM**.
+
+
+## {visibility="hidden"}
+
+```{r}
+#| out-width: "75%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/survey.png")
+```
+
+
+
+## Course Materials
+<!-- No one single main textbook. -->
+
+<!-- - All recommended books are **free on line**! `r emo::ji("sunglasses")` -->
+<!-- - The main course materials are from: -->
+
+- Course materials are grabbed from several books and resources. 
+
+- Our course website and slides would be helpful.
+
+:::: {.columns}
+
 ::: {.column width="50%"}
-![Dr. Mine Çetinkaya-Rundel (she/her)](images/lec-1/mine.png){fig-alt="Headshot of Dr. Mine Çetinkaya-Rundel" fig-align="center" width="200"}
+
+[*R for Data Science 2nd edition*](https://r4ds.hadley.nz/)
+
+```{r}
+#| out-width: "40%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/r4ds_book.png")
+```
 :::
 
 ::: {.column width="50%"}
--   Professor of the Practice & Director of Undergraduate Studies, Department of Statistical Science
--   Affiliated Faculty, Computational Media, Arts & Cultures
--   Find out more at [mine-cr.com](https://mine-cr.com)
+
+[*Data Science - A First Introduction*](https://datasciencebook.ca/)
+
+```{r}
+#| out-width: "40%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/ds-a-first-intro-cover.jpg")
+```
 :::
-:::
+::::
 
-## Meet the TAs
 
--   Martha Aboagye (she/her, UG)
--   Rich Fremgen (he/him, MS)
--   Emily Gentles (she/her, MS)
--   Sara Mehta (she/her, UG)
--   Rick Presman (he/him, PhD)
--   Shari Tian (she/her, UG)
--   Aaditya Warrier (he/him, UG)
+## Learning Management System ([D2L](https://d2l.mu.edu/d2l/home/504370))
 
-## Check out Conversations
+<!-- ![](./figures/d2l.png){height=300px, width=750px} -->
 
--   Go to [Conversations 💬](https://sakai.duke.edu/portal/site/779c3ebe-3b88-4bcc-bd01-1813e8396a23/tool/13b6446a-a6c6-4222-8cfb-c36d1f70802b)
--   Answer the discussion question: How are you doing?
+<!-- - Any new announcement will be posted in **News** in **Course Home**. -->
+<!-- - **Content -> Start Here: Course Information** includes the syllabus and technology information. -->
+<!-- - Week modules (**Content -> Week 1 to Week 15**) include course materials and homework. -->
+<!-- - Go to <https://www.marquette.edu/remote-learning/d2l.php> to learn more about D2L. -->
+```{r}
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/d2l.png")
+```
+- Any new announcement will be posted in **News** in **Course Home**.
+- **Content > Start Here: Course Information** include syllabus and other information.
+- Week modules (**Content > Week 1 to Week 15**) includes course materials.
+- We'll use **Posit Cloud (RStudio)** and **GitHub** to manage homework and projects. 
+- Go to  <https://www.marquette.edu/remote-learning/d2l.php> to learn more about D2L.
 
-# Regression analysis
 
-## What is regression analysis
+## Grading Policy &#x2728;
 
-::: {style="font-size: 0.8em;"}
-> "In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when **the focus is on the relationship between a dependent variable and one or more independent variables (or predictors)**. More specifically, regression analysis helps one understand how the typical value of the dependent variable (or 'criterion variable') changes when any one of the independent variables is varied, while the other independent variables are held fixed."
-:::
+- **40%** In-class lab exercises
+- **30%** Homework
+- **30%** Final project competition
+<!-- Depending on the progress of the course,  -->
+<!-- - There may be a midterm project proposal presentation, if time permitted.  -->
+- `r emo::ji("x")` You have to participate (in-person) in the final presentation in order to pass the course.
+- `r emo::ji("x")` You will **NOT** be allowed to do any extra credit projects/homework/exam to compensate for a poor grade. 
+<!-- - I may use class participation to make grade adjustments at the end of the semester. -->
 
-Source: [Wikipedia](https://en.wikipedia.org/wiki/Regression_analysis)
+## Grade-Percentage Conversion
+- $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.0 is in [94, 100] and the grade is A and 93.8 is in [90, 94) and the grade is A-.
 
-## Course FAQ
+```{r}
+letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
+                       "D+", "D", "F")
+percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[84, 87)", "[80, 84)",
+                "[77, 80)", "[74, 77)", "[70, 74)", 
+                "[65, 70)", "[60, 65)", "[0, 60)")
+grade_dist <- data.frame(Grade = letter, Percentage = percentage)
+library(kableExtra)
+knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kable_styling(position = "center", font_size = 22)
+```
 
-::: incremental
--   **What background is assumed for the course?** Introductory statistics or probability course.
--   **Will we be doing computing?** Yes. We will use R.
--   **Will we learn the mathematical theory of regression?** Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. The 1-credit course [STA 211: Mathematics of Regression](https://stat.duke.edu/courses/mathematics-regression) you can take simultaneously / after dives into more of the mathematics.
-:::
 
-## Course learning objectives
+## Lab Exercises (40%)
 
--   Analyze real-world data to answer questions about multivariable relationships.
--   Fit and evaluate linear and logistic regression models.
--   Assess whether a proposed model is appropriate and describe its limitations.
--   Use [Quarto](https://quarto.org/) to write reproducible reports and GitHub for version control and collaboration.
--   Communicate results from statistical analyses to a general audience.
+- The in-class lab exercises are graded as **complete/incomplete** and used as evidence of attendance and participation.
 
-## Examples of regression in practice
+- You are allowed to have **one** incomplete lab exercises without any penalty.
 
-::: incremental
--   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
--   [How FiveThirtyEight's 2020 Presidential Forecast Works --- And What's Different Because Of COVID-19](https://fivethirtyeight.com/features/how-fivethirtyeights-2020-presidential-forecast-works-and-whats-different-because-of-covid-19/)
--   [Effect of Forensic Evidence on Criminal Justice Case Processing](https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020)
--   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/)
-:::
+- Beyond that, **2%** grade percentage will be taken off for each missing/incomplete exercise.
 
-# Course overview
+- You will create a R project saving all of your lab exercises. (We'll go through know-how together)
 
-## Homepage
+- `r emo::ji("x")` **No make-up lab exercises** for any reason.
 
-[sta210-s22.github.io/website](https://sta210-s22.github.io/website/)
+## Homework (30%)
+- The homework assignments are individual. Submit your own work. 
 
--   All course materials
--   Links to Sakai, GitHub, RStudio containers, etc.
--   Let's take a tour!
+- `r emo::ji("x")` **You may not directly share or discuss answers/code with anyone other than the instructor**. But you are welcome to discuss the problems in general and ask for advice.
 
-## Course toolkit
+- Homework will be assigned through **GitHub**: 
+  + clone/pull the homework repo into Posit Cloud
+  + work on the Quarto file in the repo (We'll go through know-how together)
+  
+- You will have **at least one week** to complete your assignment.
 
-All linked from the course website:
+- `r emo::ji("x")` **No make-up homework** for any reason unless you got [COVID](https://www.marquette.edu/central/registrar/faculty-staff/guidance-on-fall-2021-class-attendance-withdrawal-grading.php) or [excused absence](https://bulletin.marquette.edu/undergrad/academicregulations/#attendance). `r emo::ji("pray")` (More details in the syllabus)
 
--   GitHub organization: [github.com/sta210-s22](https://github.com/sta210-s22)
--   RStudio containers: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
--   Discussion forum: [Conversations](https://sakai.duke.edu/portal/site/779c3ebe-3b88-4bcc-bd01-1813e8396a23/tool/13b6446a-a6c6-4222-8cfb-c36d1f70802b)
--   Assignment submission and feedback: [Gradescope](https://sakai.duke.edu/portal/site/779c3ebe-3b88-4bcc-bd01-1813e8396a23/page/aec742dc-2972-4f02-a35b-1dd3315af889)
 
-::: callout-important
-Reserve an RStudio Container (titled STA 210) before lab on Monday!
-:::
+## Project (30%)
 
-## Activities: Prepare, Participate, Practice, Perform {.smaller}
+<!-- - You will be responsible for the completion of an open ended final project for this course. The goal is to tackle an interesting problem using the tools and techniques covered in this class. Additional details on the project will be provided as the course progresses. You must complete the final project and be in class to present it in order to pass this course. -->
+- You will be doing a final team project.
 
--   **Prepare:** Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)
--   **Participate:** Attend and actively participate in lectures and labs, office hours, team meetings
--   **Practice:** Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
--   **Perform:** Put together what you've learned to analyze real-world data
-    -   Lab assignments x 7 (first individual, later team-based)
-    -   Homework assignments x 5 (individual)
-    -   Three take-home exams
-    -   Term project presented during the final exam period
+- Your project can be:
 
-## Cadence
+    1.  **Data analysis** using statistical models or machine learning algorithms 
 
-::: incremental
--   **Labs:** Start and make large progress on Monday in lab section, finish up by Friday 5pm of that week
--   **HWs:** Posted Friday morning, due following Friday 5pm
--   **Exams:** Exam review Thursday in class, exam posted Friday morning, no lab on Monday of following week, due Monday 11:59pm
--   **Project:** Deadlines throughout the semester, with some lab and lecture time dedicated to working on them, and most work done in teams outside of class
-:::
+    2.  Introduce a **R or Python package** not learned in class, including **live demo**
 
-## Teams
+    3.  Introduce a **data science tool (visualization, computing, etc)** not learned in class, including **live demo**
+    
+    4.  **Web development**: Website or dashboard for data science, including **live demo**
 
--   Team assignments
-    -   Assigned by me
-    -   Application exercises, labs, and project
-    -   Peer evaluation during teamwork and after completion
--   Expectations and roles
-    -   Everyone is expected to contribute equal *effort*
-    -   Everyone is expected to understand *all* code turned in
-    -   Individual contribution evaluated by peer evaluation, commits, etc.
 
-## Grading {.smaller}
+- The final project presentation is on **Monday, 5/8 10:30 AM - 12:30 PM**
 
-| Category              | Percentage   |
-|-----------------------|--------------|
-| Application exercises | 3%           |
-| Homework              | 35% (7% x 5) |
-| Project               | 15%          |
-| Lab                   | 14% (2% x 7) |
-| Exam 01               | 10%          |
-| Exam 02               | 10%          |
-| Exam 03               | 10%          |
-| Teamwork              | 3%           |
+- More information will be released later.
 
-See [course syllabus](https://sta210-s22.github.io/website/course-syllabus.html) for how the final letter grade will be determined.
 
-## Support
 
--   Attend office hours
--   Ask and answer questions on the discussion forum
--   Reserve email for questions on personal matters and/or grades
--   Read the [course support](https://sta210-s22.github.io/website/course-support.html) page
+## Sharing/Reusing Code Policy
+- Unless explicitly stated otherwise, you may make use of any online resources, but you must **explicitly cite** where you obtained any code you directly use or use as inspiration in your solutions.
+- `r emo::ji("x")` Any recycled code that is discovered and is not explicitly cited will be treated as **plagiarism**, regardless of source. `r emo::ji("scream")`
 
-## Announcements
 
--   Posted on Sakai (Announcements tool) and sent via email, be sure to check both regularly
--   I'll assume that you've read an announcement by the next "business" day
--   I'll (try my best to) send a weekly update announcement each Friday, outlining the plan for the following week and reminding you what you need to do to prepare, practice, and perform
-
-## Diversity + inclusion {.smaller}
-
-It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.
-
-::: incremental
--   If you have a name that differs from those that appear in your official Duke records, please let me know!
--   Please let me know your preferred pronouns. You'll also be able to note this in the Getting to know you survey.
--   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. I want to be a resource for you. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.
--   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it.
+::: notes
+- You can use any code shared online or in books. But please give the authors full credits. Cite their work and let me know whose code you are using to do your homework and project. 
+- I encourage you to write your own code. This way you learn the most.
 :::
 
-## Accessibility
 
--   The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) is available to ensure that students are able to engage with their courses and related assignments.
+## Academic Integrity
 
--   I am committed to making all course materials accessible and I'm always learning how to do this better.
-    If any course component is not accessible to you in any way, please don't hesitate to let me know.
+This course expects all students to follow University and College statements on [academic integrity](https://bulletin.marquette.edu/undergrad/academicregulations/).
 
-# Course policies
+- **Honor Pledge and Honor Code**: *I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor, and responsibility, by which I earn the respect of others. I support the development of good character, and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code*.
+- `r emo::ji("x")` You know what I am talking about. Yes, **DO NOT CHEAT**. 
 
-## COVID policies
 
--   Wear a mask at all times!
+## [COVID-19](https://www.marquette.edu/coronavirus/) {visibility="hidden"}
 
--   Read and follow university guidance
+_It is **your** responsibility as a Marquette University student to protect the health and safety of our community in this course. The University has mandated vaccination for all students for the academic year 2021-2022. COVID Cheq will still be used, but those fully vaccinated that provide documentation will no longer receive the daily symptom screening survey. Instead, they will receive a daily email providing a green check. You may be required to show your automated green check to show clearance for entry into campus buildings. If you are experiencing symptoms related to COVID-19, you must follow the link in the automated email to report symptoms. _
 
-## Late work, waivers, regrades policy
+- Visit [What to do if you are exposed to COVID-19 or test positive](https://www.marquette.edu/coronavirus/what-to-do-if-you-are-exposed-or-test-positive.php) website for university guidelines on the best course of action. 
 
--   We have policies!
--   Read about them on the [course syllabus](https://sta210-s22.github.io/website/course-syllabus.html) and refer back to them when you need it
+- Visit guidance on Spring 2022 [Class attendance, withdrawal, and grading](https://www.marquette.edu/central/registrar/faculty-staff/guidance-on-fall-2021-class-attendance-withdrawal-grading.php)
+  + Students are responsible for contacting instructors **prior** to the missed class session to indicate absence and the need to make up classwork/assignments.  
+  + Students requesting make up classwork/assignments are required to provide the **COVID Cheq "stop sign"** to confirm inability to attend class.
+  
 
-## Collaboration policy
+## Q & A
+`r emo::ji("question")` **Will this course require any Textbook(s) or other materials to be purchased?**  
+`r emo::ji("point_right")` No. All resources are free on line!
 
--   Only work that is clearly assigned as team work should be completed collaboratively.
 
--   Homeworks must be completed individually.
-    You may **not** directly share answers / code with others, however you are welcome to discuss the problems in general and ask for advice.
+<br>
 
--   Exams must be completed individually.
-    You may **not** discuss any aspect of the exam with peers.
-    If you have questions, post as private questions on the course forum, only the teaching team will see and answer.
+. . .
 
-## Sharing / reusing code policy
+`r emo::ji("question")` **Is it teaching the basics of data science?**  
+`r emo::ji("point_right")` Yes, I think so.
 
--   We are aware that a huge volume of code is available on the web, and many tasks may have solutions posted
+<br>
 
--   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly cite where you obtained any code you directly use or use as inspiration in your solution(s).
+. . .
 
--   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source
+`r emo::ji("question")` **What do you think will be the most interesting part of the course?**  
+`r emo::ji("point_right")` I love data visualization and web development.
 
-## Academic integrity
+<br>
 
-> To uphold the Duke Community Standard:
->
-> -   I will not lie, cheat, or steal in my academic endeavors;
->
-> -   I will conduct myself honorably in all my endeavors; and
->
-> -   I will act if the Standard is compromised.
+. . .
 
-## Most importantly!
+`r emo::ji("question")` **If this course is a joint label between COSC and MATH, is there a difference between any particular class section or other that we may have registered for?**  
+`r emo::ji("point_right")` No difference. MATH 3570 and COSC 3570 are exactly the same course.
 
-Ask if you're not sure if something violates a policy!
 
-# Making STA 210 a success
+<br>
 
-## Five tips for success
+. . .
 
-1.  Complete all the preparation work before class.
-2.  Ask questions.
-3.  Do the readings.
-4.  Do the homework and lab.
-5.  Don't procrastinate and don't let a week pass by with lingering questions.
+`r emo::ji("question")` **What kind of time estimate do you believe most students should spend on reading + assignments for the course?**  
+`r emo::ji("point_right")` Everyone is different. The more the better.
 
-## Learning during a pandemic
 
-I want to make sure that you learn everything you were hoping to learn from this class.
-If this requires flexibility, please don't hesitate to ask.
 
-::: incremental
--   You never owe me personal information about your health (mental or physical) but you're always welcome to talk to me. If I can't help, I likely know someone who can.
--   I want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded during this crisis.
+## Q & A
+`r emo::ji("question")` **How accessible are you outside of class AND office hours?**  
+`r emo::ji("point_right")` We can schedule a Teams/in-person meeting if you need.
+
+
+<br>
+
+. . .
+
+`r emo::ji("question")` **Will this class help me better understand how to code proficiently?**  
+`r emo::ji("point_right")` As you learn to speak a foreign language, you need to code a lot, frequently and constantly in order to be proficient in any programming language. No shortcut.
+
+<br>
+
+. . .
+
+`r emo::ji("question")` **Do you know of any internships or research positions offered through Marquette University that incorporate the skills learned in this Data Science course?**  
+`r emo::ji("point_right")` Quite many. Northwestern Mutual, Direct Supply, for example. I'll share intern info with you if I get any.
+
+. . .
+
+<br>
+
+
+`r emo::ji("question")` **Your question.**  
+
+# `r emo::ji("handshake")` Please read the syllabus!!! Because ... {background-color="#447099"}
+
+
+
+## You May Find Something Good!
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r, echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("./images/01-syllabus/read_syllabus_1.png")
+```
 :::
 
-## This week's tasks
 
--   Get a GitHub account if you don't have one (some advice for choosing a username [here](https://happygitwithr.com/github-acct.html#username-advice "Happy Git with R"))
--   Complete the Getting to know you survey if you haven't yet done so!
--   Read the syllabus
--   Watch out for next week's announcement email, in your inbox sometime tomorrow
-
-## Midori says...
-
-[![](images/lec-1/midori.jpeg){fig-alt="Picture of my cat, Midori, with a speech bubble that says \"Read the syllabus and make Mine happy!\"" fig-align="center" width="700"}](https://sta210-s22.github.io/website/course-syllabus.html)
-
-# Application exercise
-
-::: appex
-Or more like demo for today...
-
-📋 [github.com/sta210-s22/ae-0-movies](https://github.com/sta210-s22/ae-0-movies)
+::: {.column width="50%"}
+```{r, echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("./images/01-syllabus/read_syllabus.png")
+```
 :::
+::::
+
+
