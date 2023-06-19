@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.335">
 <meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
-<title>MATH 4780 - Fall 2023 - Welcome Aboard! r emo::ji('raised_hands')</title>
+<title>MATH 4780 - Fall 2023 - Probability and Statistics r emo::ji('game_die')</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,6 +28,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -318,8 +382,7 @@
       margin-right: 0; 
     }
   </style>
-<script src="../site_libs/kePrint/kePrint.js"></script><link href="../site_libs/lightable/lightable.css" rel="stylesheet">
-<meta property="og:title" content="MATH 4780 - Fall 2023 - Welcome Aboard! r emo::ji('raised_hands')">
+<meta property="og:title" content="MATH 4780 - Fall 2023 - Probability and Statistics r emo::ji('game_die')">
 <meta property="og:description" content="MATH 4780 / MSSC 5780 Regression Analysis">
 <meta property="og:site-name" content="MATH 4780 - Fall 2023">
 </head>
@@ -327,7 +390,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Welcome Aboard! 🙌</h1>
+<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Probability and Statistics 🎲</h1>
   <p class="subtitle">MATH 4780 / MSSC 5780 Regression Analysis</p>
 
 <div class="quarto-title-authors">
@@ -338,242 +401,21 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </div>
 </div>
 
-</section><section><section id="taipei-taiwan" class="title-slide slide level1 center" data-background-image="images/01-syllabus/taiwan.jpeg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>Taipei, Taiwan</h1>
-<div class="absolute" style="bottom: 50px; right: 10px; ">
-<p><img data-src="images/01-syllabus/taiwan.svg" alt="Taiwan location" width="500"></p>
-</div>
-<aside class="notes"><ul>
-<li><p>Hello everyone, how are you? I hope you have a great winter break. Welcome to 3570 Introduction to Data Science course. I am your instructor Cheng-Han Yu.</p></li>
-<li><p>First thing first. Get to know each other. Let me first introduce my self. I was born and grew up in Taipei, Taiwan, my home country, which is a island right next to China. Taipei is a big city in terms of population. It is about the same population size as Chicago. This building is called Taipei 101, which is the tallest building in Taiwan.</p></li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="my-journey" class="slide level2" data-background-image="images/01-syllabus/sample_gate.png" data-background-size="cover" data-background-position="50% 50%" data-background-opacity="0.3"><h2>My Journey</h2>
-<ul>
-<li>Assistant Professor (2020/08 - )</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/mu.svg" style="width:20.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Postdoctoral Fellow</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/rice.png" style="width:20.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>PhD in Statistics</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/ucsc.png" style="width:20.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>MA in Economics/PhD program in Statistics</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/iub.png" style="width:20.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<aside class="notes"><p>After college, working and doing military service for several years, I came to the US for my PhD degree. Originally I would like to study economics, but then I switched my major to statistics.</p>
-<ul>
-<li>I got my master degree in economics from Indiana University Bloomington, then I transferred to UC Santa Cruz to finish my PhD studies.</li>
-<li>Then I spent two years doing my postdoctoral research at Rice University in Houston, Texas.</li>
-<li>Finally, in fall 2020, I came to Marquette as an assistant professor.</li>
-<li>Midwest/Indiana-West/California-South/Texas-Midwest/Wisconsin</li>
-<li>Been to any one of these universities/cities?</li>
-<li>The most beautiful campus.</li>
-<li>Who are international students? I can totally understand how hard studying and living in another country. Feel free to share your stories or difficulties, and I am more than happy to help you if you have any questions.</li>
-<li>Poor listening and speaking skills. I was shy.</li>
-<li>OK so, this is my background. How about you introducing yourself as well. You can share anything, your major, hobbies, your favorite food, what do you want to do after graduation, anything,</li>
-<li>I have the class list. I’d like to learn your face and remember your name. You know, you all wear a mask. It’s hard to recognize you and connect your name and your face.</li>
-<li>When I call your name, you can say something about yourself. No need to be long, couple of seconds are good.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="my-research" class="slide level2"><h2>My Research</h2>
-<ul>
-<li>Bayesian spatio-temporal modeling and machine learning algorithms in neuroimaging</li>
-<li>Bayesian Deep Learning for image classification</li>
-<li>Efficient MCMC for big <span class="math inline">\(n\)</span> big <span class="math inline">\(p\)</span> streaming data</li>
-<li>Game-based learning for STEM and data science education</li>
-</ul>
-<p><br></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>fMRI</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/activate.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<p><strong>EEG</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/eeg.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="how-to-reach-me" class="slide level2"><h2>How to Reach Me</h2>
-<ul>
-<li>Office hours <strong>TuTh 3:20 - 4:50 PM</strong> in <strong>Cudahy Hall 353</strong>.</li>
-<li>📧 <a href="mailto:cheng-han.yu@marquette.edu" class="email">cheng-han.yu@marquette.edu</a>
-<ul>
-<li>Answer your question within 24 hours.</li>
-<li>Expect a reply on <strong>Monday</strong> if shoot me a message <strong>on weekends</strong>.</li>
-<li>Start your subject line with <strong>[math4780]</strong> or <strong>[mssc5780]</strong> followed by a <strong>clear description of your question</strong>.</li>
-</ul>
-</li>
-</ul>
+</section><section><section id="random-variables" class="title-slide slide level1 center"><h1>Random Variables</h1>
 
-<img data-src="./images/01-syllabus/email.png" style="width:45.0%" class="r-stretch quarto-figure-center"><ul>
-<li>I will <strong>NOT</strong> reply your e-mail if … <strong>Check the email policy in the <a href="https://math4780-f23.github.io/website/course-syllabus.html">syllabus</a></strong>!</li>
-</ul></section><section id="textbook-lra" class="slide level2"><h2>Textbook (LRA)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+</section><section id="discrete-random-variables" class="slide level2"><h2>Discrete Random Variables</h2>
 <ul>
+<li><p>A <strong>discrete</strong> variable <span class="math inline">\(Y\)</span> has <em>countable</em> possible values, e.g.&nbsp;<span class="math inline">\(\mathcal{Y} = \{0, 1, 2\}\)</span></p></li>
 <li>
-<a href="https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727"><em>Introduction to Linear Regression Analysis, 6th edition</em></a>, by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. <!-- - The 5th edition is sufficient. -->
+<p><strong>Probability (mass) function</strong> (pf or pmf) <span class="math display">\[P(Y = y) = p(y), \,\, y \in \mathcal{Y}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(0 \le p(y) \le 1\)</span> for all <span class="math inline">\(y \in \mathcal{Y}\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{y \in \mathcal{Y}}p(y) = 1\)</span></p></li>
+<li><p><span class="math inline">\(P(a &lt; Y &lt; b) = \sum_{y: a&lt;y&lt;b}p(y)\)</span></p></li>
+</ul>
 </li>
-<li>Learn Chapter 1 ~ 10, 13.</li>
-<li>Careful about typos.</li>
 </ul>
-<p>In the Preface, &gt; <em>The book … for a course taken by seniors and 1st-year graduate students….</em></p>
-<blockquote>
-<p><em>Some knowledge of matrix algebra is also necessary.</em></p>
-</blockquote>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/reg_book.png" style="width:40.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li><p>Course materials are grabbed from several books and resources.</p></li>
-<li><p>Our <a href="https://math4780-f23.github.io/website">course website</a> would be helpful.</p></li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="optional-reference-cmr" class="slide level2"><h2>Optional Reference (CMR)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>
-<a href="https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&amp;pd_rd_i=0534380166&amp;pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&amp;pd_rd_w=tDw1K&amp;pd_rd_wg=OIjNY&amp;pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&amp;pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&amp;psc=1&amp;refRID=PY1Q3JBBS4PS1M7D7DZF"><em>Classical and Modern Regression with Applications</em></a>, by Raymond Myers. Publisher: Duxbury Press.</li>
-<li>One of the textbooks when I was a master student at Indiana University Bloomington.</li>
-<li>Outdated (published in 1990) and no code involved but explains concepts well.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/myers_book.png" style="width:40.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>I also provide some other reference books. They are all optional, but some course materials may borrow from these books.</li>
-<li>It’s a pretty old book which was published in 1990. So it’s a little bit outdated. But it explains basic ideas and concepts pretty well. I enjoyed reading it.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="optional-reference-car" class="slide level2"><h2>Optional Reference (CAR)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>
-<a href="https://us.sagepub.com/en-us/nam/an-r-companion-to-applied-regression/book246125"><em>An R Companion to Applied Regression</em></a>, by John Fox and Sanford Weisberg. Publisher: SAGE.</li>
-<li>R scripts and data are available on the <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">book Website</a>
-</li>
-<li>Doing regression much easier by the <strong>car</strong> and <strong>effects</strong> R packages.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/car_pkg.png" style="width:40.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/car.png" style="width:40.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>If you wanna learn how to use R to do regression, this book could be helpful.</li>
-<li>The authors create 2 R packages car and effects that make doing regression so much easier.</li>
-<li>Later you’ll see we can just use some simple function calls to generate some important and useful graphics for regression analysis.</li>
-</ul>
-<p>John Fox received a BA from the City College of New York and a PhD from the University of Michigan, both in Sociology. Sanford Weisberg is Professor Emeritus of statistics at the University of Minnesota. He has also served as the director of the University′s Statistical Consulting Service, and has worked with hundreds of social scientists and others on the statistical aspects of their research. He earned a BA in statistics from the University of California, Berkeley, and a Ph.D., also in statistics, from Harvard University</p>
+<!-- - **Cumulative distribution function** (cdf) $$F(y) := P(Y \le y) = \sum_{z \le y}p(z)$$ --><aside class="notes"><p>give an example.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -584,29 +426,232 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="prerequisites" class="slide level2"><h2>Prerequisites</h2>
+      }</style></aside><div class="question">
+<p>Give me an example of a discrete variable/distribution!</p>
+</div>
+</section><section id="binomial-probability-function" class="slide level2"><h2>Binomial Probability Function</h2>
+<p><span class="math inline">\(P(Y = y; m, \pi) = \frac{m!}{y!(m-y)!}\pi^y(1-\pi)^{m-y}, \quad y = 0, 1, 2, \dots, m\)</span></p>
+
+<img data-src="./images/03-prob-stat/binomial_plot-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="continuous-random-variables" class="slide level2"><h2>Continuous Random Variables</h2>
 <ul>
-<li>On bulletin: MATH 2780 (Baby Regression), MATH 4720 (Intro Stats) or equivalent.</li>
+<li><p>A <strong>continuous</strong> variable <span class="math inline">\(Y\)</span> has <em>infinite</em> possible values, e.g.&nbsp;<span class="math inline">\(\mathcal{Y} = [0, \infty)\)</span></p></li>
+<li>
+<p><strong>Probability density function</strong> (pdf) <span class="math display">\[f(y), \,\, y \in \mathcal{Y}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(f(y) \ge 0\)</span> for all <span class="math inline">\(y \in \mathcal{Y}\)</span></p></li>
+<li><p><span class="math inline">\(\int_{\mathcal{Y}}f(y) \, dy= 1\)</span></p></li>
+<li><p><span class="math inline">\(P(a &lt; Y &lt; b) = \int_{a}^bf(y)\,dy\)</span></p></li>
+</ul>
+</li>
+</ul>
+<!-- - **Cumulative distribution function** (cdf) $$F(y) := P(Y \le y) = \int_{y}^{\infty}f(t)\,dt$$ --><div class="fragment">
+<div class="question">
+<p>Give me an example of continuous variable/distribution!</p>
+</div>
+</div>
+</section><section id="normal-gaussian-density-curve" class="slide level2"><h2>Normal (Gaussian) Density Curve</h2>
+<p>For continuous variables, <strong><span class="math inline">\(P(a &lt; Y &lt; b)\)</span> is the area under the density curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</strong></p>
+
+<img data-src="./images/03-prob-stat/norm_den-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section><section id="expected-value-and-variance" class="slide level2"><h2>Expected Value and Variance</h2>
+<p>For a random variable <span class="math inline">\(Y\)</span>,</p>
+<ul>
+<li><p>The <strong>expected value</strong> or <strong>mean</strong>: <span class="math inline">\(E(Y)\)</span> or <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>The <strong>variance</strong>: <span class="math inline">\(\mathrm{Var}(Y)\)</span> or <span class="math inline">\(\sigma^2\)</span>.</p></li>
 </ul>
 <div class="fragment">
-<p>Helpful if you</p>
 <ul>
-<li>code (any language) 💻</li>
+<li><p>The mean measures the center of the distribution, or the balancing point of a seesaw.</p></li>
+<li><p>The variance measures the mean squared distance from the mean, or dispersion of a distribution.</p></li>
 </ul>
+<!-- - The mean of a discrete random variable is the weighted average of possible values weighted by their corresponding probability. --><!-- - The variance of a discrete random variable is the weighted sum of squared deviation from the mean weighted by probability values. -->
 </div>
 <div class="fragment">
-<ul>
-<li>learned basic linear algebra (MATH 3100) 🔢</li>
-</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><em>Discrete</em> <span class="math inline">\(Y\)</span>:</p>
+<div class="midi">
+<p><span class="math display">\[E(Y) := \sum_{y \in \mathcal{Y}}yP(Y = y)\]</span> <span class="math display">\[\begin{align} \mathrm{Var}(Y) &amp;:= E\left[(Y - E(Y))^2 \right] \\&amp;= \sum_{y \in \mathcal{Y}}(y - \mu)^2P(Y = y)\end{align}\]</span></p>
 </div>
-<div class="fragment">
+</div><div class="column" style="width:50%;">
+<p><em>Continuous</em> <span class="math inline">\(Y\)</span>:</p>
+<div class="midi">
+<p><span class="math display">\[E(Y) := \int_{-\infty}^{\infty}yf(y)\, dy\]</span> <span class="math display">\[\begin{align} \mathrm{Var}(Y) &amp;:= E\left[(Y - E(Y))^2 \right] \\&amp;= \int_{-\infty}^{\infty}(y - \mu)^2f(y)\, dy \end{align}\]</span></p>
+</div>
+</div>
+</div>
+<aside class="notes"><ul>
+<li><p>The mean of a discrete random variable is the weighted average of possible values weighted by their corresponding probability.</p></li>
+<li><p>The variance of a discrete random variable is the weighted sum of squared deviation from the mean weighted by probability values.</p></li>
+<li><p>give an normal example</p></li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="alert">
+<p>This is <strong>NOT</strong> the sample mean <span class="math inline">\(\overline{y}\)</span> or sample variance <span class="math inline">\(s^2\)</span>.</p>
+</div>
+<aside class="notes"><p>If <span class="math inline">\(Y \sim binomial(n, \pi)\)</span>, what are the mean and variance?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="r-lab-dpqr-functions" class="slide level2"><h2>
+<span class="pink">R Lab</span> dpqr Functions</h2>
+<p>For some distribution (<code>dist</code>),</p>
 <ul>
-<li>took probability (MATH 4700) and statistical inference (MATH 4710) 🎲</li>
+<li>
+<strong>d</strong><code>dist(x, ...)</code>: density value <span class="math inline">\(f(x)\)</span> or probability value <span class="math inline">\(P(X = x)\)</span>.</li>
+<li>
+<strong>p</strong><code>dist(q, ...)</code>: cdf <span class="math inline">\(F(q) = P(X \le q)\)</span>.</li>
+<li>
+<strong>q</strong><code>dist(p, ...)</code>: quantile of probability <span class="math inline">\(p\)</span>.</li>
+<li>
+<strong>r</strong><code>dist(n, ...)</code>: generate <span class="math inline">\(n\)</span> random numbers.</li>
 </ul>
 <aside class="notes"><ul>
-<li>On the Marquette bulletin, the prerequisite is either MATH 2780 or MATH 4720 or equivalent.</li>
-<li>But this course requires more than basic statistics experience.</li>
-<li>Nowadays, nobody is doing regression by hand, and we will write some code to do regression. So it would be helpful if you code any language before.</li>
+<li>In practice, we are not gonna calculate those properties by hand. Instead, we use computing software.</li>
+<li>In R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## 10 binomial variable values with m = 5</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2 1 2 3 1 3 2 2 1 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## P(X = 3) of binom(5, 0.4)</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.23</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">## P(X &lt;= 2) of binom(5, 0.4)</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.683</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="r-lab-dpqr-functions-1" class="slide level2"><h2>
+<span class="pink">R Lab</span> dpqr Functions</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="do">## the default mean = 0 and sd = 1 (standard normal)</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.154  0.842  1.520  0.733  2.304</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span class="math inline">\(100\)</span> random draws from <span class="math inline">\(N(0, 1)\)</span>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/03-prob-stat/nor-den-draw-1.png" style="width:72.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section><section id="r-lab-dpqr-functions-2" class="slide level2"><h2>
+<span class="pink">R Lab</span> dpqr Functions</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># P(0.5 &lt; Z &lt; 1) where Z ~ N(0, 1)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.15</code></pre>
+</div>
+</div>
+
+<img data-src="./images/03-prob-stat/nor-den-ab-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"></section><section id="r-lab-dpqr-functions-3" class="slide level2"><h2>
+<span class="pink">R Lab</span> dpqr Functions</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>p <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="do">## mean</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>(mu <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> m, <span class="at">prob =</span> p)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>m <span class="sc">*</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="do">## var</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>(sig2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">-</span> mu) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> m, <span class="at">prob =</span> p)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>m <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.2</code></pre>
+</div>
+</div>
+</section><section id="section-1" class="slide level2"><h2></h2>
+<div class="tiny">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/03-prob-stat/dist-fcn-r.png" style="width:75.0%"></p>
+<p></p><figcaption>https://statisticsglobe.com/probability-distributions-in-r</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section><section><section id="distributions" class="title-slide slide level1 center"><h1>Distributions</h1>
+
+</section><section id="some-of-normals-is-normal" class="slide level2"><h2>Some of Normals is Normal</h2>
+<ul>
+<li>If <span class="math inline">\(Y \sim N(\mu, \sigma^2)\)</span>, <span class="math inline">\(Z = \frac{Y - \mu}{\sigma} \sim N(0, 1)\)</span>.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(X \sim N(\mu_X, \sigma_X^2)\)</span> and <span class="math inline">\(Y \sim N(\mu_Y, \sigma_Y^2)\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent. Then for <span class="math inline">\(a, b \in \mathbf{R}\)</span>, <span class="math display">\[aX + bY \sim N\left(a\mu_X+b\mu_Y, a^2\sigma_X^2 + b^2\sigma_Y^2\right)\]</span>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What is the distribution of <span class="math inline">\(a_1Y_1 + a_2Y_2 + \cdots + a_nY_n\)</span> if <span class="math inline">\(Y_i \sim N(\mu_i, \sigma^2_i)\)</span> and <span class="math inline">\(Y_i\)</span>s are independent?</p>
+</div>
+<aside class="notes"><ul>
+<li><p>If <span class="math inline">\(Z \sim N(0, 1)\)</span>, then <span class="math display">\[Z^2 \sim \chi^2_1\]</span></p></li>
+<li><p>If <span class="math inline">\(Z_i \stackrel{iid}{\sim} N(0, 1), i = 1, 2, \dots, k\)</span>, then <span class="math display">\[\sum_{i=1}^k Z_i^2 \sim \chi^2_k\]</span></p></li>
+<li><p><span class="math inline">\(iid\)</span> means <span style="color:blue"> * <strong>i</strong>ndependent <strong>i</strong>dentically <strong>d</strong>istributed*</span>.</p></li>
+<li><p>Let <span class="math inline">\(Y_i \stackrel{indep}{\sim} N(\mu_i, \sigma_i^2), i = 1, 2, \dots, n\)</span>. Then the random variable <span class="math inline">\(U = \sum_{i=1}^n a_iY_i\)</span> has the distribution</p></li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -619,42 +664,44 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside>
 </div>
-</section><section id="course-website" class="slide level2"><h2>Course Website</h2>
+</section><section id="normal-chi-square-student-t-and-f" class="slide level2"><h2>Normal, Chi-Square, Student-t and F</h2>
 <ul>
-<li>(<a href="https://math4780-f23.github.io/website/"></a>)
+<li><p>If <span class="math inline">\(Z \sim N(0, 1)\)</span>, <span class="math inline">\(V \sim \chi^2_v\)</span> and <span class="math inline">\(Z\)</span> and <span class="math inline">\(V\)</span> are independent, then <span class="math display">\[\frac{Z}{\sqrt{V/v}} \sim t_{v}\]</span></p></li>
+<li><p>If <span class="math inline">\(V \sim \chi^2_v\)</span>, <span class="math inline">\(W \sim \chi^2_w\)</span> and <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span> are independent, then <span class="math display">\[\frac{V/v}{W/w} \sim F_{v, w}\]</span></p></li>
+</ul></section><section id="statistics-comes-in" class="slide level2"><h2>Statistics Comes In</h2>
+<p>Suppose each data point <span class="math inline">\(Y_i\)</span> of the sample <span class="math inline">\((Y_1, Y_2, \dots, Y_n)\)</span> is a random variable from an identical population distribution <span class="math inline">\(N(\mu, \sigma^2)\)</span>: <span class="math display">\[Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n\]</span></p>
+
+<img data-src="./images/03-prob-stat/unnamed-chunk-12-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="statistics-comes-in-sampling-distribution" class="slide level2"><h2>Statistics Comes In: Sampling Distribution</h2>
+<p>If <span class="math inline">\(Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n\)</span>,</p>
 <ul>
-<li>All course information and materials</li>
+<li><p><span class="math inline">\(\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)\)</span></p></li>
+<li><p><span class="math inline">\(Z = \frac{\overline{Y} - \mu}{\sigma/\sqrt{n}} \sim N(0, 1)\)</span></p></li>
 </ul>
-</li>
+<div class="fragment">
+<ul>
+<li><p>Let the sample variance of <span class="math inline">\(Y\)</span> be <span class="math inline">\(S^2 = \frac{\sum_{i=1}^n(Y_i - \overline{Y})^2}{n-1}\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{\overline{Y} - \mu}{S/\sqrt{n}} \sim t_{n-1}\)</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Inference</strong>: <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are unknown, and <span class="math inline">\(\overline{y}\)</span> and <span class="math inline">\(s^2\)</span> are point estimates for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>, respectively.</li>
+</ul>
+</div>
+</section><section id="why-use-normal-central-limit-theorem-clt" class="slide level2"><h2>Why Use Normal? <span style="color: red"><strong>Central Limit Theorem (CLT)</strong></span>
+</h2>
+<ul>
+<li><p><span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are i.i.d. variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>.</p></li>
+<li><p>As <span class="math inline">\(n\)</span> increases, the sampling distribution of <span class="math inline">\(\overline{X}_n = \frac{\sum_{i=1}^nX_i}{n}\)</span> looks <strong>more and more like <span class="math inline">\(N(\mu, \frac{\sigma^2}{n})\)</span>, regardless of the distribution from which we are sampling <span class="math inline">\(X_i\)</span>!</strong></p></li>
 </ul>
 
-<img data-src="./images/01-syllabus/logo.png" style="width:50.0%" class="r-stretch quarto-figure-center"></section><section id="course-website---d2l" class="slide level2"><h2>Course Website - D2L</h2>
-<ul>
-<li>(<a href="https://d2l.mu.edu/d2l/home/525088">D2L</a>)
-<ul>
-<li>Homework submission</li>
-<li>Gradebook</li>
-</ul>
+<img data-src="images/03-prob-stat/clt.png" style="width:89.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<li>Alright. We know why we want large sample. You will find that we use normal distribution quite often. It is not because it is called normal or more normal than other distributions. There is a reason why we use it.</li>
+<li>The reason is Central Limit Theorem.</li>
+<li>The CLT says that Suppose is <span class="math inline">\(\overline{X}_n\)</span> is from a random sample of size <span class="math inline">\(n\)</span> and from a population distribution having mean <span class="math inline">\(\mu\)</span> and finite standard deviation <span class="math inline">\(\sigma\)</span>. As <span class="math inline">\(n\)</span> increases, the sampling distribution of <span class="math inline">\(\overline{X}_n\)</span> looks <strong>more and more like <span class="math inline">\(N(\mu, \sigma^2/n)\)</span>, regardless of the distribution from which we are sampling!</strong>
 </li>
-</ul>
-
-<img data-src="./images/01-syllabus/d2l_4780.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section><section id="grading-policy" class="slide level2"><h2>Grading Policy ✨</h2>
-<ul>
-<li>For MATH 4780 (MSSC 5780) students, the grade is earned out of <strong>1000 (1200) total points</strong> distributed as follows:
-<ul>
-<li><strong>Homework 1 to 6: 600 pts (100 pts each)</strong></li>
-<li><strong>Final project: 400 pts</strong></li>
-<li><strong>MSSC 5780 problems: 200 pts</strong></li>
-</ul>
-</li>
-<li>❌ No extra credit projects/homework/exam to compensate for a poor grade.</li>
-<li>Individual grade will <strong>NOT</strong> be curved.</li>
-<li>Want to obtain a good grade? Study hard. No pain, no gain! ✍ ✍</li>
-</ul>
-<aside class="notes"><ul>
-<li>Everyone has the same opportunity to do well in this class.</li>
-<li>4780 students are encouraged to do MSSC problems: Up to <strong>100 pts</strong> extra credit.</li>
-<li>I am not a harsh grader, but this is not an easy A course as well.</li>
+<li>Look at this figure. Your population distribution can be of any shape. As long as the distribution has mean and variance, its sampling distribution of sample mean will always look like a normal distribution as long as n is large.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -665,167 +712,111 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="grade-percentage-conversion" class="slide level2"><h2>Grade-Percentage Conversion</h2>
+      }</style></aside></section><section id="section-2" class="slide level2"><h2></h2>
+
+<img data-src="images/03-prob-stat/sampling_dist.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Nature Methods 10, 809–810 (2013)</p></section><section id="alpha100-confidence-interval-for-mu" class="slide level2"><h2>
+<span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\mu\)</span>
+</h2>
 <ul>
-<li>
-<span class="math inline">\([x, y)\)</span> means greater than or equal to <span class="math inline">\(x\)</span> and less than <span class="math inline">\(y\)</span>. For example, 94.0 is in [94, 100] and the grade is A and 93.8 is in [90, 94) and the grade is A-.</li>
+<li><span class="math inline">\(T = \frac{\overline{Y} - \mu}{S/\sqrt{n}} \sim t_{n-1}\)</span></li>
 </ul>
+<p><span class="math display">\[\small \begin{align} &amp; \quad \quad P(-t_{\alpha/2, n-1} &lt; T  &lt; t_{\alpha/2, n-1}) = 1 - \alpha \\ &amp; \iff P(-t_{\alpha/2, n-1} &lt; \frac{\overline{Y} - \mu}{S/\sqrt{n}} &lt; t_{\alpha/2, n-1}) = 1 - \alpha \\ &amp; \iff P(\mu-t_{\alpha/2, n-1}S/\sqrt{n} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}S/\sqrt{n}) = 1 - \alpha \end{align}\]</span></p>
+
+<img data-src="./images/03-prob-stat/unnamed-chunk-15-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="alpha100-confidence-interval-for-mu-probability" class="slide level2"><h2>
+<span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\mu\)</span>: Probability</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[\small P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\]</span></p>
+<div class="question">
+<p>Is the interval <span class="math inline">\(\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}, \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right)\)</span> our confidence interval?</p>
+</div>
+</div><div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-
-<table class="table" style="font-size: 22px; margin-left: auto; margin-right: auto;">
-<thead><tr>
-<th style="text-align:left;"> Grade </th>
-   <th style="text-align:left;"> Percentage </th>
-  </tr></thead>
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/03-prob-stat/ci_95-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>No! We don’t know <span class="math inline">\(\mu\)</span>, the quantity we’d like to estimate!</strong> But we almost there!</p>
+</div>
+</section><section id="alpha100-confidence-interval-for-mu-formula" class="slide level2"><h2>
+<span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\mu\)</span>: Formula</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[\small \begin{align}
+&amp;P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\\
+&amp;P\left( \boxed{\overline{Y}- t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \mu &lt; \overline{Y} + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}} \right) = 1-\alpha
+\end{align}\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/03-prob-stat/ci_95-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><span style="color:blue"> With sample data of size <span class="math inline">\(n\)</span>, <span class="math inline">\(\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)\)</span> is our <span class="math inline">\((1-\alpha)100\%\)</span> CI for <span class="math inline">\(\mu\)</span>. </span></li>
+</ul></section><section id="hypothesis-testing" class="slide level2"><h2>Hypothesis Testing</h2>
+<ul>
+<li><span style="color:blue"> <span class="math inline">\(H_0: \mu = \mu_0 \text{   vs.   } H_1: \mu &gt; \mu_0\)</span>, or <span class="math inline">\(\mu &lt; \mu_0\)</span>, or <span class="math inline">\(\mu \ne \mu_0\)</span> </span></li>
+<li>The significant level <span class="math inline">\(\alpha = P(\text{Reject } H_0 \mid H_0 \text{ is true}) = P(\text{Type I error})\)</span>
+</li>
+<li>The test statistic is <span class="math inline">\(t_{test} = \frac{\overline{y} - \color{blue}{\mu_0}}{s/\sqrt{n}}\)</span>, a value from <span class="math inline">\(T \sim t_{n-1}\)</span>.</li>
+<li>When calculating a test statistic, we assume <span class="math inline">\(H_0\)</span> is <strong>true</strong>.</li>
+</ul>
+<div class="fragment">
+<p><strong>Reject <span class="math inline">\(H_0\)</span> if</strong></p>
+<table>
+<colgroup>
+<col style="width: 41%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 16%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Method &nbsp; &nbsp;</th>
+<th style="text-align: center;">
+<strong>Right</strong>-tailed <span class="math inline">\((H_1: \mu &gt; \mu_0)\)</span>
+</th>
+<th style="text-align: center;">
+<strong>Left</strong>-tailed <span class="math inline">\((H_1: \mu &lt; \mu_0)\)</span>
+</th>
+<th style="text-align: center;">
+<strong>Two-tailed</strong> <span class="math inline">\((H_1: \mu \ne \mu_0)\)</span>
+</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> [94, 100] </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> A- </td>
-   <td style="text-align:left;"> [90, 94) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> B+ </td>
-   <td style="text-align:left;"> [87, 90) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> [84, 87) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> B- </td>
-   <td style="text-align:left;"> [80, 84) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> C+ </td>
-   <td style="text-align:left;"> [77, 80) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> [74, 77) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> C- </td>
-   <td style="text-align:left;"> [70, 74) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> D+ </td>
-   <td style="text-align:left;"> [65, 70) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> D </td>
-   <td style="text-align:left;"> [60, 65) </td>
-  </tr>
-<tr>
-<td style="text-align:left;"> F </td>
-   <td style="text-align:left;"> [0, 60) </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: center;">Critical value</td>
+<td style="text-align: center;"><span class="math inline">\(t_{test} &gt; t_{\alpha, n-1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(t_{test} &lt; -t_{\alpha, n-1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mid t_{test}\mid \, &gt; t_{\alpha/2, n-1}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<span class="math inline">\(p\)</span>-value</td>
+<td style="text-align: center;"><span class="math inline">\(\small P(T &gt; t_{test} \mid H_0) &lt; \alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\small P(T &lt; t_{test} \mid H_0) &lt; \alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\small 2P(T &gt; \,\mid t_{test}\mid) \mid H_0) &lt; \alpha\)</span></td>
+</tr>
 </tbody>
 </table>
 </div>
-</div>
-</section><section id="homework-600-pts" class="slide level2"><h2>Homework (600 pts)</h2>
-<ul>
-<li><p><strong>D2L &gt; Assessments &gt; Dropbox</strong> and upload your homework in <strong>PDF</strong> format.</p></li>
-<li><p>You must submit YOUR OWN work. 🙏</p></li>
-<li><p>❌ <strong>No make-up homework</strong>.</p></li>
-<li><p>Due <strong>Friday 11:59 PM</strong> (<strong>09/09, 09/23, 10/07, 10/28, 11/11, 12/02. Hard deadline and no late submission</strong>).</p></li>
-<li><p>❌ <strong>Handwriting is NOT allowed</strong> for data analysis.</p></li>
-</ul></section><section id="mssc-5780-questions-200-pts" class="slide level2"><h2>MSSC 5780 Questions (200 pts)</h2>
-<ul>
-<li>Some extra homework questions are for MSSC 5780 students.</li>
-<li>👍 MATH 4780 students are encouraged to do the MSSC problems to earn up to <strong>50 pts</strong> extra points.</li>
-</ul></section><section id="project-400-pts" class="slide level2"><h2>Project (400 pts)</h2>
-<ul>
-<li><p>You will be doing a team project.</p></li>
-<li><p>Your project is about analyzing real-world data using regression methods.</p></li>
-<li><p>Written report or oral presentation or both??</p></li>
-<li><p>More information will be released later.</p></li>
-</ul></section><section id="what-computing-language-we-use-i-teach" class="slide level2"><h2>What Computing Language We Use (I Teach)?</h2>
-<ul>
-<li>🖖 The best language for statistical computing!</li>
-</ul>
-
-<img data-src="./images/01-syllabus/Rlogo.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.r-project.org/">R Website</a></p><aside class="notes"><ul>
-<li>R is the best language for statistical computing.</li>
-<li>Its code for doing regression analysis is pretty clean and concise.</li>
-<li>You won’t regret learning R.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="which-programming-language" class="slide level2"><h2>Which Programming Language?</h2>
-<ul>
-<li><p>✅ May use <em>any other</em> language (Python, MATLAB, etc) to do your work.</p></li>
-<li><p>❌ I would NOT debug your code or comment on your technical issues of those languages.</p></li>
-<li><p>If time permitted, I’ll translate R to Python.</p></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:33%;">
+</section><section id="both-methods-lead-to-the-same-conclusion" class="slide level2"><h2>Both Methods Lead to the Same Conclusion</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" style="width:100.0%"></p>
+<figure><p><img data-src="./images/03-prob-stat/pvalue_criticalvalue-1.png" style="width:85.0%"></p>
 </figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Julia_Programming_Language_Logo.svg" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="academic-integrity" class="slide level2"><h2>Academic Integrity</h2>
-<p>This course expects all students to follow University and College statements on <a href="https://bulletin.marquette.edu/undergrad/academicregulations/">academic integrity</a>.</p>
-<ul>
-<li>
-<strong>Honor Pledge and Honor Code</strong>: <em>I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor, and responsibility, by which I earn the respect of others. I support the development of good character, and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code</em>.</li>
-<li>❌ You know what I am talking about. Yes, <strong>DO NOT CHEAT</strong>.</li>
-</ul></section></section><section><section id="please-read-the-syllabus-because" class="title-slide slide level1 center" data-background-color="#447099"><h1>🤝 Please read the syllabus!!! Because …</h1>
-
-</section><section id="you-may-find-something-good" class="slide level2"><h2>You May Find Something Good!</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/read_syllabus_1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/01-syllabus/read_syllabus.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -851,7 +842,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"5bcb2fe2a71042ec","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"754863e8312c2d8f","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner

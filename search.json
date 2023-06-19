@@ -175,13 +175,6 @@
     "text": "Resources for additional practice (optional)\n\nChapter 2: Get Started Data Visualization by Kieran Healy\nChapter 3: Data visualization in R for Data Science by Hadley Wickham\nRStudio Cloud Primers\n\nVisualization Basics: https://rstudio.cloud/learn/primers/1.1\nWork with Data: https://rstudio.cloud/learn/primers/2\nVisualize Data: https://rstudio.cloud/learn/primers/3"
   },
   {
-    "objectID": "labs/lab-0.html",
-    "href": "labs/lab-0.html",
-    "title": "Lab 0 - Meet + greet",
-    "section": "",
-    "text": "Today’s lab is short and sweet! We just need you to fill out the “Getting to know you” survey. Please go here to take it. You will need to log on to Sakai to access to survey.\nYour answers can be brief. Some of your answers will be used to guide what application examples might be of interest to a majority of students in the course and some of your answers will be used to help guide team formation. We expect this will take you ~10 minutes."
-  },
-  {
     "objectID": "labs/lab-4.html",
     "href": "labs/lab-4.html",
     "title": "Lab 4 - The Office",
@@ -487,35 +480,21 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Important\n\n\n\nClasses are virtual this week. Find Zoom links here."
-  },
-  {
-    "objectID": "weeks/week-1.html#prepare",
-    "href": "weeks/week-1.html#prepare",
-    "title": "Week 1",
-    "section": "Prepare",
-    "text": "Prepare\n📖 Read the syllabus\n📖 Read the support resources"
+    "text": "📖 Read the syllabus\n📖 Get your computing environment ready"
   },
   {
     "objectID": "weeks/week-1.html#participate",
     "href": "weeks/week-1.html#participate",
     "title": "Week 1",
     "section": "Participate",
-    "text": "Participate\n🖥️ Lab 0 -Meet+ greet\n🖥️ Lecture 1 - Welcome to MATH 4780"
+    "text": "Participate\n🖥️ Lecture 1 - Welcome to MATH 4780\n🖥️ Lecture 1 - Overview of Regression\n🖥️ Lecture 2 - Probability and Statistics"
   },
   {
     "objectID": "weeks/week-1.html#practice",
     "href": "weeks/week-1.html#practice",
     "title": "Week 1",
     "section": "Practice",
-    "text": "Practice\n📋 AE 0 - Movies"
-  },
-  {
-    "objectID": "weeks/week-1.html#perform",
-    "href": "weeks/week-1.html#perform",
-    "title": "Week 1",
-    "section": "Perform",
-    "text": "Perform\n⌨️ Lab 0 - Meet + greet\n\n\nBack to course schedule ⏎"
+    "text": "Practice\n📋 AE 0 - Movies\n\n\nBack to course schedule ⏎"
   },
   {
     "objectID": "weeks/week-3.html",
@@ -1740,28 +1719,7 @@
     "href": "project-tips-resources.html",
     "title": "Project tips + resources",
     "section": "",
-    "text": "R Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\n\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies"
-  },
-  {
-    "objectID": "project-tips-resources.html#tips",
-    "href": "project-tips-resources.html#tips",
-    "title": "Project tips + resources",
-    "section": "Tips",
-    "text": "Tips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works."
-  },
-  {
-    "objectID": "project-tips-resources.html#formatting-communication-tips",
-    "href": "project-tips-resources.html#formatting-communication-tips",
-    "title": "Project tips + resources",
-    "section": "Formatting + communication tips",
-    "text": "Formatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\n\nHeaders\n\nUse headers to clearly label each section.\nInspect the document outline to review your headers and sub-headers.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\nResize plots and figures, so you have more space for the narrative.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(y = manufacturer)) +\n  geom_bar()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg %>%\n  count(manufacturer) %>%\n  mutate(manufacturer = str_to_title(manufacturer)) %>%\n  ggplot(aes(y = fct_reorder(manufacturer,n), x = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_minimal() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel <- lm(mpg ~ hp, data = mtcars)\ntidy(model) %>%\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document."
-  },
-  {
-    "objectID": "project-tips-resources.html#additional-resources",
-    "href": "project-tips-resources.html#additional-resources",
-    "title": "Project tips + resources",
-    "section": "Additional resources",
-    "text": "Additional resources\n\nR for Data Science\nQuarto Documentation\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+    "text": "To be announced."
   },
   {
     "objectID": "computing-access.html",
@@ -1782,7 +1740,7 @@
     "href": "index.html",
     "title": "MATH 4780 - Regression Analysis",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLab\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n📖\n🖥️\n\n\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n🖥️\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n\n\n\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n📖\n🖥️\n\n\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n6\nTue, Oct 3\nDiagnostics: Residuals\n\n\n\n\n\n\n\n\nThu, Oct 5\nDiagnostics: Unusual Data\n\n\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Symmetry and Normality\n\n\n\n\n📂\n\n\n\nThu, Oct 12\nDiagnostics: Constant Variance\n📖\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nDiagnostics: Linearity\n\n\n💻\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Lack of Fit\n📖\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nPolynomial Regression\n\n\n\n\n\n\n\n\nThu, Oct 26\nNonparametric Regression\n📖\n🖥️\n\n\n\n\n\n10\nTue, Oct 31\nCategorical Variables\n\n\n\n\n📂\n\n\n\nThu, Nov 2\nCategorical Variables\n📖\n🖥️\n\n\n\n\n\n11\nTue, Nov 7\nCollinearity\n\n\n💻\n\n\n\n\n\nThu, Nov 9\nCollinearity\n📖\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nVariable Selection\n\n\n\n\n📂\n\n\n\nThu, Nov 16\nVariable Selection\n📖\n🖥️\n\n\n\n\n\n13\nTue, Nov 21\n\n\n\n💻\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n📖\n🖥️\n\n\n\n\n\n14\nTue, Nov 28\nGeneralized Linear Model\n\n\n\n\n📂\n\n\n\nThu, Nov 30\nLogistic Regression\n📖\n🖥️\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n\n\n\n\n\n\n\n\nThu, Dec 7\n\n\n\n\n\n\n\n\n16\n\nDue: Project write-up\n\n\n\n\n📂\n\n\n\n\nDue: Video presentation + repo\n\n\n\n\n📂"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLab\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n\n\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n🖥️\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n\n\n\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n📖\n🖥️\n\n\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n\n🖥️\n💻\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n📖\n🖥️\n\n\n\n\n\n6\nTue, Oct 3\nDiagnostics: Residuals\n\n\n\n\n\n\n\n\nThu, Oct 5\nDiagnostics: Unusual Data\n\n\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Symmetry and Normality\n\n\n\n\n📂\n\n\n\nThu, Oct 12\nDiagnostics: Constant Variance\n📖\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nDiagnostics: Linearity\n\n\n💻\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Lack of Fit\n📖\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nPolynomial Regression\n\n\n\n\n\n\n\n\nThu, Oct 26\nNonparametric Regression\n📖\n🖥️\n\n\n\n\n\n10\nTue, Oct 31\nCategorical Variables\n\n\n\n\n📂\n\n\n\nThu, Nov 2\nCategorical Variables\n📖\n🖥️\n\n\n\n\n\n11\nTue, Nov 7\nCollinearity\n\n\n💻\n\n\n\n\n\nThu, Nov 9\nCollinearity\n📖\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nVariable Selection\n\n\n\n\n📂\n\n\n\nThu, Nov 16\nVariable Selection\n📖\n🖥️\n\n\n\n\n\n13\nTue, Nov 21\n\n\n\n💻\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n📖\n🖥️\n\n\n\n\n\n14\nTue, Nov 28\nGeneralized Linear Model\n\n\n\n\n📂\n\n\n\nThu, Nov 30\nLogistic Regression\n📖\n🖥️\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n\n\n\n\n\n\n\n\nThu, Dec 7\n\n\n\n\n\n\n\n\n16\n\nDue: Project write-up\n\n\n\n\n📂\n\n\n\n\nDue: Video presentation + repo\n\n\n\n\n📂"
   },
   {
     "objectID": "course-team.html",
@@ -1797,6 +1755,153 @@
     "title": "Teaching team",
     "section": "Teaching assistants",
     "text": "Teaching assistants\n\n\n\n\nName\nOffice hours\nLocation\n\n\n\n\n\nMartha Aboagye\nThursday 7 - 9 pm\nZoom\n\n\n\nRichard Fremgen\nLead TA for Section 3 (5:15 pm)\nTues 7 - 9 pm\nZoom\n\n\n\nEmily Gentles\nLead TA for Section 1 (1:45pm)\nWednesday 1 - 3 pm\nOld Chem 203B (On Zoom until January 18)\n\n\n\nSara Mehta\nMon 2 - 4 pm\nZoom\n\n\n\nRick Presman\nHead TA\nLead TA for Section 2 (3:30pm)\nThursday 3:30 - 4:30 pm\nFri 9 - 10 am\nZoom\n\n\n\nShari Tian\nTue 8 - 10 am\nZoom\n\n\n\nAaditya Warrier\nMon 12pm - 1pm\nFri 1:30 - 2:30 pm\nZoom"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#discrete-random-variables",
+    "href": "slides/03-prob-stat.html#discrete-random-variables",
+    "title": "Probability and Statistics 🎲",
+    "section": "Discrete Random Variables",
+    "text": "Discrete Random Variables\n\nA discrete variable \\(Y\\) has countable possible values, e.g. \\(\\mathcal{Y} = \\{0, 1, 2\\}\\)\n\nProbability (mass) function (pf or pmf) \\[P(Y = y) = p(y), \\,\\, y \\in \\mathcal{Y}\\]\n\n\\(0 \\le p(y) \\le 1\\) for all \\(y \\in \\mathcal{Y}\\)\n\\(\\sum_{y \\in \\mathcal{Y}}p(y) = 1\\)\n\\(P(a < Y < b) = \\sum_{y: a<y<b}p(y)\\)\n\n\n\ngive an example.\n\nGive me an example of a discrete variable/distribution!"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#binomial-probability-function",
+    "href": "slides/03-prob-stat.html#binomial-probability-function",
+    "title": "Probability and Statistics 🎲",
+    "section": "Binomial Probability Function",
+    "text": "Binomial Probability Function\n\\(P(Y = y; m, \\pi) = \\frac{m!}{y!(m-y)!}\\pi^y(1-\\pi)^{m-y}, \\quad y = 0, 1, 2, \\dots, m\\)"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#continuous-random-variables",
+    "href": "slides/03-prob-stat.html#continuous-random-variables",
+    "title": "Probability and Statistics 🎲",
+    "section": "Continuous Random Variables",
+    "text": "Continuous Random Variables\n\nA continuous variable \\(Y\\) has infinite possible values, e.g. \\(\\mathcal{Y} = [0, \\infty)\\)\n\nProbability density function (pdf) \\[f(y), \\,\\, y \\in \\mathcal{Y}\\]\n\n\\(f(y) \\ge 0\\) for all \\(y \\in \\mathcal{Y}\\)\n\\(\\int_{\\mathcal{Y}}f(y) \\, dy= 1\\)\n\\(P(a < Y < b) = \\int_{a}^bf(y)\\,dy\\)\n\n\n\n\n\nGive me an example of continuous variable/distribution!"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#normal-gaussian-density-curve",
+    "href": "slides/03-prob-stat.html#normal-gaussian-density-curve",
+    "title": "Probability and Statistics 🎲",
+    "section": "Normal (Gaussian) Density Curve",
+    "text": "Normal (Gaussian) Density Curve\nFor continuous variables, \\(P(a < Y < b)\\) is the area under the density curve between \\(a\\) and \\(b\\)."
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#expected-value-and-variance",
+    "href": "slides/03-prob-stat.html#expected-value-and-variance",
+    "title": "Probability and Statistics 🎲",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\nFor a random variable \\(Y\\),\n\nThe expected value or mean: \\(E(Y)\\) or \\(\\mu\\).\nThe variance: \\(\\mathrm{Var}(Y)\\) or \\(\\sigma^2\\).\n\n\n\nThe mean measures the center of the distribution, or the balancing point of a seesaw.\nThe variance measures the mean squared distance from the mean, or dispersion of a distribution.\n\n\n\n\n\n\nDiscrete \\(Y\\):\n\n\\[E(Y) := \\sum_{y \\in \\mathcal{Y}}yP(Y = y)\\] \\[\\begin{align} \\mathrm{Var}(Y) &:= E\\left[(Y - E(Y))^2 \\right] \\\\&= \\sum_{y \\in \\mathcal{Y}}(y - \\mu)^2P(Y = y)\\end{align}\\]\n\n\nContinuous \\(Y\\):\n\n\\[E(Y) := \\int_{-\\infty}^{\\infty}yf(y)\\, dy\\] \\[\\begin{align} \\mathrm{Var}(Y) &:= E\\left[(Y - E(Y))^2 \\right] \\\\&= \\int_{-\\infty}^{\\infty}(y - \\mu)^2f(y)\\, dy \\end{align}\\]\n\n\n\n\nThe mean of a discrete random variable is the weighted average of possible values weighted by their corresponding probability.\nThe variance of a discrete random variable is the weighted sum of squared deviation from the mean weighted by probability values.\ngive an normal example\n\nThis is NOT the sample mean \\(\\overline{y}\\) or sample variance \\(s^2\\).\n\nIf \\(Y \\sim binomial(n, \\pi)\\), what are the mean and variance?"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions",
+    "href": "slides/03-prob-stat.html#r-lab-dpqr-functions",
+    "title": "Probability and Statistics 🎲",
+    "section": "\nR Lab dpqr Functions",
+    "text": "R Lab dpqr Functions\nFor some distribution (dist),\n\n\nddist(x, ...): density value \\(f(x)\\) or probability value \\(P(X = x)\\).\n\npdist(q, ...): cdf \\(F(q) = P(X \\le q)\\).\n\nqdist(p, ...): quantile of probability \\(p\\).\n\nrdist(n, ...): generate \\(n\\) random numbers.\n\n\nIn practice, we are not gonna calculate those properties by hand. Instead, we use computing software.\nIn R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.\n\n\n\n\n## 10 binomial variable values with m = 5\nrbinom(n = 10, size = 5, prob = 0.4)\n\n [1] 2 1 2 3 1 3 2 2 1 2\n\n## P(X = 3) of binom(5, 0.4)\ndbinom(x = 3, size = 5, prob = 0.4)\n\n[1] 0.23\n\n\n\n\n## P(X <= 2) of binom(5, 0.4)\npbinom(q = 2, size = 5, prob = 0.4)\n\n[1] 0.683"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
+    "href": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
+    "title": "Probability and Statistics 🎲",
+    "section": "\nR Lab dpqr Functions",
+    "text": "R Lab dpqr Functions\n\n## the default mean = 0 and sd = 1 (standard normal)\nrnorm(5)\n\n[1] -0.154  0.842  1.520  0.733  2.304\n\n\n\n\n\n\\(100\\) random draws from \\(N(0, 1)\\)"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-2",
+    "href": "slides/03-prob-stat.html#r-lab-dpqr-functions-2",
+    "title": "Probability and Statistics 🎲",
+    "section": "\nR Lab dpqr Functions",
+    "text": "R Lab dpqr Functions\n\n# P(0.5 < Z < 1) where Z ~ N(0, 1)\npnorm(1) - pnorm(0.5)\n\n[1] 0.15"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-3",
+    "href": "slides/03-prob-stat.html#r-lab-dpqr-functions-3",
+    "title": "Probability and Statistics 🎲",
+    "section": "\nR Lab dpqr Functions",
+    "text": "R Lab dpqr Functions\n\nm <- 5\np <- 0.4\n## mean\n(mu <- sum(0:5 * dbinom(0:5, size = m, prob = p)))\n\n[1] 2\n\nm * p\n\n[1] 2\n\n## var\n(sig2 <- sum((0:5 - mu) ^ 2 * dbinom(0:5, size = m, prob = p)))\n\n[1] 1.2\n\nm * p * (1 - p)\n\n[1] 1.2"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#section-1",
+    "href": "slides/03-prob-stat.html#section-1",
+    "title": "Probability and Statistics 🎲",
+    "section": "",
+    "text": "https://statisticsglobe.com/probability-distributions-in-r"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#some-of-normals-is-normal",
+    "href": "slides/03-prob-stat.html#some-of-normals-is-normal",
+    "title": "Probability and Statistics 🎲",
+    "section": "Some of Normals is Normal",
+    "text": "Some of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n\n\nIf \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) and \\(X\\) and \\(Y\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[aX + bY \\sim N\\left(a\\mu_X+b\\mu_Y, a^2\\sigma_X^2 + b^2\\sigma_Y^2\\right)\\]\n\n\n\n\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#normal-chi-square-student-t-and-f",
+    "href": "slides/03-prob-stat.html#normal-chi-square-student-t-and-f",
+    "title": "Probability and Statistics 🎲",
+    "section": "Normal, Chi-Square, Student-t and F",
+    "text": "Normal, Chi-Square, Student-t and F\n\nIf \\(Z \\sim N(0, 1)\\), \\(V \\sim \\chi^2_v\\) and \\(Z\\) and \\(V\\) are independent, then \\[\\frac{Z}{\\sqrt{V/v}} \\sim t_{v}\\]\nIf \\(V \\sim \\chi^2_v\\), \\(W \\sim \\chi^2_w\\) and \\(V\\) and \\(W\\) are independent, then \\[\\frac{V/v}{W/w} \\sim F_{v, w}\\]"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#statistics-comes-in",
+    "href": "slides/03-prob-stat.html#statistics-comes-in",
+    "title": "Probability and Statistics 🎲",
+    "section": "Statistics Comes In",
+    "text": "Statistics Comes In\nSuppose each data point \\(Y_i\\) of the sample \\((Y_1, Y_2, \\dots, Y_n)\\) is a random variable from an identical population distribution \\(N(\\mu, \\sigma^2)\\): \\[Y_i \\stackrel{iid}{\\sim} N(\\mu, \\sigma^2), \\quad i = 1, 2, \\dots, n\\]"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#statistics-comes-in-sampling-distribution",
+    "href": "slides/03-prob-stat.html#statistics-comes-in-sampling-distribution",
+    "title": "Probability and Statistics 🎲",
+    "section": "Statistics Comes In: Sampling Distribution",
+    "text": "Statistics Comes In: Sampling Distribution\nIf \\(Y_i \\stackrel{iid}{\\sim} N(\\mu, \\sigma^2), \\quad i = 1, 2, \\dots, n\\),\n\n\\(\\overline{Y} \\sim N\\left(\\mu,\\frac{\\sigma^2}{n} \\right)\\)\n\\(Z = \\frac{\\overline{Y} - \\mu}{\\sigma/\\sqrt{n}} \\sim N(0, 1)\\)\n\n\n\nLet the sample variance of \\(Y\\) be \\(S^2 = \\frac{\\sum_{i=1}^n(Y_i - \\overline{Y})^2}{n-1}\\).\n\\(\\frac{\\overline{Y} - \\mu}{S/\\sqrt{n}} \\sim t_{n-1}\\)\n\n\n\n\n\nInference: \\(\\mu\\) and \\(\\sigma^2\\) are unknown, and \\(\\overline{y}\\) and \\(s^2\\) are point estimates for \\(\\mu\\) and \\(\\sigma^2\\), respectively."
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#why-use-normal-central-limit-theorem-clt",
+    "href": "slides/03-prob-stat.html#why-use-normal-central-limit-theorem-clt",
+    "title": "Probability and Statistics 🎲",
+    "section": "Why Use Normal? Central Limit Theorem (CLT)\n",
+    "text": "Why Use Normal? Central Limit Theorem (CLT)\n\n\n\\(X_1, X_2, \\dots, X_n\\) are i.i.d. variables with mean \\(\\mu\\) and variance \\(\\sigma^2 < \\infty\\).\nAs \\(n\\) increases, the sampling distribution of \\(\\overline{X}_n = \\frac{\\sum_{i=1}^nX_i}{n}\\) looks more and more like \\(N(\\mu, \\frac{\\sigma^2}{n})\\), regardless of the distribution from which we are sampling \\(X_i\\)!\n\n\n\nAlright. We know why we want large sample. You will find that we use normal distribution quite often. It is not because it is called normal or more normal than other distributions. There is a reason why we use it.\nThe reason is Central Limit Theorem.\nThe CLT says that Suppose is \\(\\overline{X}_n\\) is from a random sample of size \\(n\\) and from a population distribution having mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). As \\(n\\) increases, the sampling distribution of \\(\\overline{X}_n\\) looks more and more like \\(N(\\mu, \\sigma^2/n)\\), regardless of the distribution from which we are sampling!\n\nLook at this figure. Your population distribution can be of any shape. As long as the distribution has mean and variance, its sampling distribution of sample mean will always look like a normal distribution as long as n is large."
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#section-2",
+    "href": "slides/03-prob-stat.html#section-2",
+    "title": "Probability and Statistics 🎲",
+    "section": "",
+    "text": "Nature Methods 10, 809–810 (2013)"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu",
+    "href": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu",
+    "title": "Probability and Statistics 🎲",
+    "section": "\n\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\)\n",
+    "text": "\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\)\n\n\n\\(T = \\frac{\\overline{Y} - \\mu}{S/\\sqrt{n}} \\sim t_{n-1}\\)\n\n\\[\\small \\begin{align} & \\quad \\quad P(-t_{\\alpha/2, n-1} < T  < t_{\\alpha/2, n-1}) = 1 - \\alpha \\\\ & \\iff P(-t_{\\alpha/2, n-1} < \\frac{\\overline{Y} - \\mu}{S/\\sqrt{n}} < t_{\\alpha/2, n-1}) = 1 - \\alpha \\\\ & \\iff P(\\mu-t_{\\alpha/2, n-1}S/\\sqrt{n} < \\overline{Y} < \\mu + t_{\\alpha/2, n-1}S/\\sqrt{n}) = 1 - \\alpha \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu-probability",
+    "href": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu-probability",
+    "title": "Probability and Statistics 🎲",
+    "section": "\n\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\): Probability",
+    "text": "\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\): Probability\n\n\n\\[\\small P\\left(\\mu-t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} < \\overline{Y} < \\mu + t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} \\right) = 1-\\alpha\\]\n\nIs the interval \\(\\left(\\mu-t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}}, \\mu + t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} \\right)\\) our confidence interval?\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo! We don’t know \\(\\mu\\), the quantity we’d like to estimate! But we almost there!"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu-formula",
+    "href": "slides/03-prob-stat.html#alpha100-confidence-interval-for-mu-formula",
+    "title": "Probability and Statistics 🎲",
+    "section": "\n\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\): Formula",
+    "text": "\\((1-\\alpha)100\\%\\) Confidence Interval for \\(\\mu\\): Formula\n\n\n\\[\\small \\begin{align}\n&P\\left(\\mu-t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} < \\overline{Y} < \\mu + t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} \\right) = 1-\\alpha\\\\\n&P\\left( \\boxed{\\overline{Y}- t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}} < \\mu < \\overline{Y} + t_{\\alpha/2, n-1}\\frac{S}{\\sqrt{n}}} \\right) = 1-\\alpha\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n With sample data of size \\(n\\), \\(\\left( \\overline{y}- t_{\\alpha/2, n-1}\\frac{s}{\\sqrt{n}}, \\overline{y} + t_{\\alpha/2, n-1}\\frac{s}{\\sqrt{n}} \\right)\\) is our \\((1-\\alpha)100\\%\\) CI for \\(\\mu\\)."
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#hypothesis-testing",
+    "href": "slides/03-prob-stat.html#hypothesis-testing",
+    "title": "Probability and Statistics 🎲",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n \\(H_0: \\mu = \\mu_0 \\text{   vs.   } H_1: \\mu > \\mu_0\\), or \\(\\mu < \\mu_0\\), or \\(\\mu \\ne \\mu_0\\) \nThe significant level \\(\\alpha = P(\\text{Reject } H_0 \\mid H_0 \\text{ is true}) = P(\\text{Type I error})\\)\n\nThe test statistic is \\(t_{test} = \\frac{\\overline{y} - \\color{blue}{\\mu_0}}{s/\\sqrt{n}}\\), a value from \\(T \\sim t_{n-1}\\).\nWhen calculating a test statistic, we assume \\(H_0\\) is true.\n\n\nReject \\(H_0\\) if\n\n\n\n\n\n\n\n\nMethod    \n\nRight-tailed \\((H_1: \\mu > \\mu_0)\\)\n\n\nLeft-tailed \\((H_1: \\mu < \\mu_0)\\)\n\n\nTwo-tailed \\((H_1: \\mu \\ne \\mu_0)\\)\n\n\n\n\nCritical value\n\\(t_{test} > t_{\\alpha, n-1}\\)\n\\(t_{test} < -t_{\\alpha, n-1}\\)\n\\(\\mid t_{test}\\mid \\, > t_{\\alpha/2, n-1}\\)\n\n\n\n\\(p\\)-value\n\\(\\small P(T > t_{test} \\mid H_0) < \\alpha\\)\n\\(\\small P(T < t_{test} \\mid H_0) < \\alpha\\)\n\\(\\small 2P(T > \\,\\mid t_{test}\\mid) \\mid H_0) < \\alpha\\)"
+  },
+  {
+    "objectID": "slides/03-prob-stat.html#both-methods-lead-to-the-same-conclusion",
+    "href": "slides/03-prob-stat.html#both-methods-lead-to-the-same-conclusion",
+    "title": "Probability and Statistics 🎲",
+    "section": "Both Methods Lead to the Same Conclusion",
+    "text": "Both Methods Lead to the Same Conclusion\n\n\n\n\n\n\n\n\n\n\n\nmath4780-f23.github.io/website"
   },
   {
     "objectID": "slides/lec-15.html#announcements",
@@ -6986,6 +7091,111 @@
     "text": "Recap\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative outcome variable.\nUsed the least squares method to estimate the slope and intercept.å\nWe interpreted the slope and intercept.\n\n\nSlope: For every one unit increase in \\(x\\), we expect y to be higher/lower by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units.\n\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it.\n\n\n\n\n\nsta210-s22.github.io/website"
   },
   {
+    "objectID": "slides/02-overview.html#relationship-as-functions",
+    "href": "slides/02-overview.html#relationship-as-functions",
+    "title": "Overview of Regression 📖",
+    "section": "Relationship as Functions",
+    "text": "Relationship as Functions\n\nRepresent relationships between variables using functions \\(y = f(x)\\).\n\nPlug in the inputs and receive the output.\n\n\\(y = f(x) = 3x + 7\\) is a function with input \\(x\\) and output \\(y\\).\nIf \\(x = 5\\), \\(y = 3 \\times 5 + 7 = 22\\).\n\n\n\n\n\nIn mathematics, how do we describe a Relationship Between Variables? We use a function. Right.\nThe function \\(y = f(x)\\) gives us the relationship between an output \\(Y\\) and one or more inputs \\(x\\).\n\nYou plug in the values of inputs and receive back the output value.\nFor example, the formula \\(y = f(x) = 3x + 7\\) is a function with input \\(x\\) and output \\(y\\). If \\(x = 5\\), \\(y = 3 \\times 5 + 7 = 22\\).\n\n\nBecause this is a linear function, we know that x and y are linearly related.\nWith a value of \\(x\\), I can give you 100% correct value of \\(y\\), which is right on this straight line. right. In other words, their relationship is 100% deterministic."
+  },
+  {
+    "objectID": "slides/02-overview.html#different-relationships",
+    "href": "slides/02-overview.html#different-relationships",
+    "title": "Overview of Regression 📖",
+    "section": "Different Relationships",
+    "text": "Different Relationships\n\n\n\nCan you come up with any real-world examples describing relationships between variables deterministically?\n\n\nThe relationship between x and y can be more than linear.\nThe relationship can be also quadratic, cubic or any other possible relationship."
+  },
+  {
+    "objectID": "slides/02-overview.html#different-relationships-1",
+    "href": "slides/02-overview.html#different-relationships-1",
+    "title": "Overview of Regression 📖",
+    "section": "Different Relationships",
+    "text": "Different Relationships\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere I give your two examples. The first example is the conversion of F and C degrees. Their relationship is linear and F = 32 + 1.8 C.\nSo you give me a C degree, I can tell you its corresponding F degree fro sure. Right.\nThe second example comes from physics. the displacement of an object is a quadratic function of time.\nSo here s(t) = v0 * t + 0.5 * a * t^2. v0 is the initial velocity, and a is acceleration, and t is time.\nAgain the relationship between displacement and time is 100% deterministic.\nA value of time corresponds to an unique value of displacement given v0 and a."
+  },
+  {
+    "objectID": "slides/02-overview.html#relationship-between-variables-is-not-perfect",
+    "href": "slides/02-overview.html#relationship-between-variables-is-not-perfect",
+    "title": "Overview of Regression 📖",
+    "section": "Relationship between Variables is Not Perfect",
+    "text": "Relationship between Variables is Not Perfect\n\n\n\nCan you provide some real examples that the variables are related each other, but not perfectly related?\n\n\nBut unfortunately, in reality, most relationships between variables we are interested are not Perfect.\nIn fact, there is almost no perfect relationship between two variables because everything in the world is connected each other. And so any two variables are affected by any other variables.\nFor example, the displacement of an object is also affected by airflow and humidity, which is not considered in the formula.\nEven we the two variables are perfectly related, there are always some measurement errors or noises when we are recording and collecting their data. right. For example, there may be some measurement errors when we measure the displacement of an object for any given time, right? So their quadratic relationship is there, but the data we collect are not exactly on the quadratic curve.\nSo that’s why the Relationship between variables always involves some uncertainty."
+  },
+  {
+    "objectID": "slides/02-overview.html#relationship-between-variables-is-not-perfect-1",
+    "href": "slides/02-overview.html#relationship-between-variables-is-not-perfect-1",
+    "title": "Overview of Regression 📖",
+    "section": "Relationship between Variables is Not Perfect",
+    "text": "Relationship between Variables is Not Perfect\n\n\n💵 In general, one with more years of education earns more.\n💵 Any two with the same years of education may have different annual income.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere I give you a simple example: the relationship between income and years of education.\n💵 In general, one with more years of education earns more.\n💵 Any two with the same years of education may have different annual income.\nBecause your income level depends on so many other factors, not just years of education.\nSo when you plot the scatter plot of the two variables, you will find that there is some trend, but the data are sort of scattered or jittered or variated around some function that describes the relationship between income the years of education.\n\nRed dots are observed values or the years of education and income pairs."
+  },
+  {
+    "objectID": "slides/02-overview.html#variation-around-the-functionmodel",
+    "href": "slides/02-overview.html#variation-around-the-functionmodel",
+    "title": "Overview of Regression 📖",
+    "section": "Variation around the Function/Model",
+    "text": "Variation around the Function/Model\n\n\nWhat are the unexplained variation coming from?\n\n\n\n\n\n\nOther factors accounting for parts of variability of income.\n\nAdding more explanatory variables to a model can reduce the variation size around the model.\n\n\nPure measurement error.\nJust that randomness plays a big role. 🤔\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat other factors (variables) may affect a person’s income?\n\n\n\nyour income = f(years of education, major, GPA, college, parent's income, ...)\n\nAnd the data Variation around the Function, or in general the regression model is just as important as the model, if not more!\n\nBasically, what statistics does is explain variation in the context of what remains unexplained.\nThe scatter plot suggests that there might be other factors that account for large parts of variability.\nIf that is the case, adding more explanatory variables ( \\(X\\)s ) to a model can sometimes usefully reduce the size of the scatter around the model.\nPerhaps just that randomness plays a big role."
+  },
+  {
+    "objectID": "slides/02-overview.html#regression-model",
+    "href": "slides/02-overview.html#regression-model",
+    "title": "Overview of Regression 📖",
+    "section": "Regression Model",
+    "text": "Regression Model\n\n\n\\(Y\\): response, outcome, label, dependent variable, e.g., income\n\n\n\\(X\\): predictor, covariate, feature, regressor, explanatory/ independent variable, e.g., years of education, which is known and fixed.\nExplain the relationship between \\(X\\) and \\(Y\\) and make predictions through a model \\[Y = f(X) + \\epsilon\\]\n\n\n\\(\\epsilon\\): irreducible random error\n\nindependent of \\(X\\)\n\n\nmean zero with some variance.\n\n\n\n\\(f(\\cdot)\\): fixed but unknown function describing the relationship between \\(X\\) and the mean of \\(Y\\). \n\n\n\n\nIn Intro Stats, what is the form of \\(f\\) and what assumptions you made on the random error \\(\\epsilon\\) ?\n\n\n\n\n\n\\(f(X) = \\beta_0 + \\beta_1X\\) with unknown parameters \\(\\beta_0\\) and \\(\\beta_1\\).\n\n\\(\\epsilon \\sim N(0, \\sigma^2)\\).\n\n\nOK. Now after collecting the data of the variables we are interested, we know their relationship, most of the time, is not perfect, and stochastic in some way and in some sense.\nAnd how do we model such stochastic relationship? Well the answer is a regression model.\nSuppose we are interested in the relationship between two variables, call \\(X\\) and \\(Y\\). In particular, we like to know how changes of \\(X\\) affect value of \\(Y\\), or we want to use \\(X\\) to predict \\(Y\\).\nIn this sense, \\(Y\\) is called response, outcome, label, dependent variable, e.g., income\n\n\n\\(X\\) is called predictor, covariate, feature, regressor, explanatory or independent variable, e.g., years of education, which is known and fixed.\nExplain the relationship between \\(X\\) and \\(Y\\) and make predictions through a model \\(Y = f(X) + \\epsilon\\). This is a very general regression model we can built to learn the relationship b/w x and y.\n\n\\(f(\\cdot)\\) is fixed but unknown and describes the true relationship between \\(X\\) and \\(Y\\). \n\n\n\\(\\epsilon\\) is a irreducible random error which is assumed to be independent of \\(X\\) and has mean zero with some variance.\n\n\\(\\epsilon\\) is used to represent those measurement errors or the variation that cannot be explained or captured by the predictor X.\nIntro Stats:\n\n\n\\(f(X) = \\beta_0 + \\beta_1X\\) with unknown parameters \\(\\beta_0\\) and \\(\\beta_1\\).\n\n\\(\\epsilon \\sim N(0, \\sigma^2)\\).\n\n\n\n\\(X\\) and \\(Y\\) are assumed to be linearly related, which may not be correct.\nNext week, we will learn simple linear regression from the scratch and in much more detail. Here I just give you an overview."
+  },
+  {
+    "objectID": "slides/02-overview.html#true-unknown-function-f-of-the-model-y-fx-epsilon",
+    "href": "slides/02-overview.html#true-unknown-function-f-of-the-model-y-fx-epsilon",
+    "title": "Overview of Regression 📖",
+    "section": "True Unknown Function \\(f\\) of the Model \\(Y = f(X) + \\epsilon\\)\n",
+    "text": "True Unknown Function \\(f\\) of the Model \\(Y = f(X) + \\epsilon\\)\n\n\n\n\nBlue curve: true underlying relationship between (the mean) income and years of education.\n\nBlack lines: error associated with each observation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s go back to the income-education example. Red dots are observed values or the years of education and income pairs. Suppose we like to use a regression model \\(y = f(x) + \\epsilon\\) to describe the relationship between income and education.\nAnd the *Blue** curve on the right shows the true underlying relationship between income and years of education, which is the function \\(f\\) in our regression model.\nAnd each Black vertical line indicates an error associated with each observation.\nSo again, each red dot or observation is the value of the function \\(f(x)\\) plus some random error with its magnitude shown in a black vertical line.\nAgain, in regression, we assume years of education is fixed. It is income level that varies around the function \\(f\\).\n\n\nBig problem: \\(f(x)\\) is unknown and needs to be estimated.\n\n\nAnd a big problem is, in reality, we don’t know this true function \\(f\\). And we need to estimate it.\nestimating this unknown \\(f\\) is a main job of regression analysis. We are trying to uncover the underlying true process or function \\(f\\), given the data that are noisy or with some unknown random errors."
+  },
+  {
+    "objectID": "slides/02-overview.html#why-estimate-f-prediction-for-y",
+    "href": "slides/02-overview.html#why-estimate-f-prediction-for-y",
+    "title": "Overview of Regression 📖",
+    "section": "Why Estimate \\(f\\)? Prediction for \\(Y\\)\n",
+    "text": "Why Estimate \\(f\\)? Prediction for \\(Y\\)\n\n\n\nPrediction: Inputs \\(X\\) are available, but the output \\(Y\\) cannot be easily obtained. We predict \\(Y\\) using \\[ \\hat{Y} = \\hat{f}(X), \\] where \\(\\hat{f}\\) is our estimate of \\(f\\), and \\(\\hat{Y}\\) represents the resulting prediction for \\(Y\\).\n\n\nNow we know our goal is to estimate the unknown regression function \\(f\\). But why do we need that? Any benefits we can have after estimating \\(f\\)?\nWell, the two main benefits of doing regression are\n\nfirst, we are able to predict y given a value of x\nthe second benefit is, we learn how x affects y, which may be our research interest.\n\n\nLet’s discuss prediction first.\nRegression can be a great tool for prediction, especially when inputs \\(X\\) are available, but the output \\(Y\\) cannot be easily obtained.\nFor example, we usually know people’s years of education, but we rarely know their income level, right? because income is a private and personal information.\nAfter we estimate \\(f\\), we can use the estimate of \\(f\\) to predict \\(y\\),\nSo we predict \\(Y\\) using the relationship between X and Y that we learn from our data that\n\n\nIn Intro Stats, what is our estimated regression function \\(\\hat{f}\\)?\n\n\n\n\n\n\\(\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1X\\).\n\n\n\n\n\n\\(\\hat{f}\\) is often treated as a black box.\n\n\n\n\n\n\n\n\n\n\nWhen the goal is prediction, \\(\\hat{f}\\) is often treated as a black box. Basically we don’t care much about how \\(f\\) looks like, or whether the shape \\(f\\) is meaningful. All we want is that predicted values are as close as the true response values."
+  },
+  {
+    "objectID": "slides/02-overview.html#why-estimate-f-inference-for-f",
+    "href": "slides/02-overview.html#why-estimate-f-inference-for-f",
+    "title": "Overview of Regression 📖",
+    "section": "Why Estimate \\(f\\)? Inference for \\(f\\)\n",
+    "text": "Why Estimate \\(f\\)? Inference for \\(f\\)\n\n\n\nInference: Understand how \\(Y\\) is affected by \\(X\\).\n\n\\(\\hat{f}\\) cannot be treated as a black box. We want to know the exact form of \\(f\\).\n\n\nWe are interested in\n\n\n Which covariates are associated with the response? \n👉 Do age, education level, gender, etc affect salary?\n\n\n\n\n\n What is the relationship between the response and each covariate? \n👉 How much salary increases/decreases as age increases one unit?\n\n\n\n\n\n Can the relationship be adequately summarized using any equation? \n👉 The relationship between salary and age is linear, quadratic or more complicated?\n\n\nAnother benefit of estimating y is that we can do inference for the regression function \\(f\\).\nWe estimate \\(f\\) so that we understand how \\(Y\\) is affected as \\(X\\) changes.\nWhen the goal is inference, \\(\\hat{f}\\) cannot be treated as a black box.\nWe want to know its exact form of \\(f\\).\nWhen doing inference, we are interested in:\n\n\nWhich covariates are associated with the response? e.g. Do age, education level, gender, etc affect salary?\n\n\nWhat is the relationship between the response and each covariate? e.g. How much salary increases/decreases as age increases one unit?\n\n\nCan the relationship between \\(Y\\) and each covariate be adequately summarized using a linear equation, or is the relationship more complicated? e.g. The relationship between salary and age is linear, quadratic or more complicated?\n\n\n\n\nAll those questions may be your research questions, and these can be answered by regression analysis."
+  },
+  {
+    "objectID": "slides/02-overview.html#how-to-estimate-f",
+    "href": "slides/02-overview.html#how-to-estimate-f",
+    "title": "Overview of Regression 📖",
+    "section": "How to Estimate \\(f\\)?",
+    "text": "How to Estimate \\(f\\)?\n\nObservations \\(\\{(x_1, y_1), (x_2, y_2), \\dots, (x_n,y_n)\\}\\): training data to train or teach our model to learn \\(f\\).\nUse test data to test or evaluate how well the model makes inference or prediction.\n\n\n\nModels are characterized as either parametric or nonparametric.\n\n\nWe learn why we estimate \\(f\\). But How do we Estimate \\(f\\)?\nWell, that’s is why we have this course. we will learn how to estimate f starting next week.\nThe basic idea is that We have observed values \\(\\{(x_1, y_1), (x_2, y_2), \\dots, (x_n,y_n)\\}\\) called training data in machine learning that is used to train or teach our model to learn \\(f\\).\n\n\n\n\n\nParametric methods involve a two-step model-based approach:\n\n1️⃣ Make an assumption about the functional form, or shape of \\(f\\), e.g. linear regression \\[ f(X) = \\beta_0 + \\beta_1X_1 \\]\n\n2️⃣ Use the training data to fit or train the model, e.g., estimate the parameters \\(\\beta_0, \\beta_1\\) using (ordinary) least squares.\n\n\n\n\nGenerally, regression models can be characterized as either parametric or non-parametric.\nAnd parametric methods involve a two-step model-based approach:\n\n[1] First we make an assumption about the functional form, or shape of \\(f\\). For example, we can assume the function form or the relationship between y and predictors is linear, so the function \\(f(X)\\) is a linear function $f(X) = _0 + _1X_1 + _2X_2 + , _pX_p $.\n[2] And then we use the training data to fit or train the model. For example, estimate the parameters \\(\\beta_0, \\beta_1, \\beta_2 \\dots, \\beta_p\\) using (ordinary) least squares.\n\n\n\nNonparametric methods, on the other hand, do not make assumptions about the functional form of \\(f\\).\nThey basically seek an estimate of \\(f\\) that gets as close to the data points as possible without being too rough or wiggly. So the idea is, we try to make the function looks like data scatter pattern, and the function is a smoothed version of the data.\n\n\n\n\n\nNonparametric methods do not make assumptions about the shape of \\(f\\).\n\nSeek an estimate of \\(f\\) that gets close to the data points without being too rough or wiggly."
+  },
+  {
+    "objectID": "slides/02-overview.html#parametric-vs.-nonparametric-models",
+    "href": "slides/02-overview.html#parametric-vs.-nonparametric-models",
+    "title": "Overview of Regression 📖",
+    "section": "Parametric vs. Nonparametric Models",
+    "text": "Parametric vs. Nonparametric Models\n\n\nParametric (Linear regression) \n\n\n\n\n\n\n\n\n\nNonparametric (LOESS) \n\n\n\n\n\n\n\n\n\n\n\nSo here see the difference between parametric and nonparameteric models.\nFor the parameteric model, we actually use linear regression, assuming the relationship between Income and Years of Education is linear.\nFor the nonparameteric model, we learning the regression function \\(f\\) from the data without putting strict constraints on the shape of \\(f\\).\nRemember that the fitted function here is an estimated one, not the true one.\nWhich one is better than the other? We’ll learn how to compare different models later."
+  },
+  {
+    "objectID": "slides/02-overview.html#parametric-vs.-nonparametric-models-1",
+    "href": "slides/02-overview.html#parametric-vs.-nonparametric-models-1",
+    "title": "Overview of Regression 📖",
+    "section": "Parametric vs. Nonparametric Models",
+    "text": "Parametric vs. Nonparametric Models\n\n\nParametric: Assumptions on \\(f\\) with unknown parameters.\n\nNonparametric: No assumptions on \\(f\\) (may have no closed form).\n\n\n\nIn sum, regression can be either parametric or non-parametric.\n\nParametric models put some assumptions on \\(f\\) with unknown parameters.\n\nNonParametric models have no assumptions on the shape of \\(f\\)."
+  },
+  {
+    "objectID": "slides/02-overview.html#linear-vs.-nonlinear-models",
+    "href": "slides/02-overview.html#linear-vs.-nonlinear-models",
+    "title": "Overview of Regression 📖",
+    "section": "Linear vs. Nonlinear Models",
+    "text": "Linear vs. Nonlinear Models\n\n\nLinear Regression: \\(Y\\) is linear in unknown parameters, NOT predictors.\n\n\\(Y = \\beta_0 + \\beta_1X + \\epsilon\\)\n\\(Y = \\beta_0 + \\beta_1X + \\beta_2X^2 + \\epsilon\\)\n\\(Y = \\beta_0 + \\beta_1X + \\beta_2X^2 + \\beta_3\\sqrt{X} + \\epsilon\\)\n\n\n\n\nIn fact, Parametric models can be either a linear model or a nonlinear model\nWhen we say linear regression, it means \\(Y\\) is linear in unknown parameters, NOT predictors.\nNote that for all three cases here, y is linear in \\(\\beta\\), and so they all belong to linear regression.\nA nonlinear relationship between \\(X\\) and \\(Y\\) can be modeled as a linear regression.\n\n\nA nonlinear relationship between \\(X\\) and \\(Y\\) can be modeled using a linear regression.\n\n\n\n\n\nNonlinear Regression: \\(Y\\) is NOT linear in unknown parameters.\n\n\\(Y = \\frac{\\beta_0}{1 + e ^{-\\beta_1X}} + \\epsilon\\)\n\\(Y = \\beta_0e ^{-\\beta_1X}\\cdot\\epsilon\\)\n\n\n\n\nWhen we say Nonlinear Regression, it means that \\(Y\\) is NOT linear in unknown parameters.\n\n\n\n👉 Some nonlinear models can be transformed to an equivalent linear model.\n\nActually Some nonlinear models can be transformed to an equivalent linear model.\nSo we know linear models can describe nonlinear relationships between variables, and some nonlinear models can be transformed into linear models, and linear regression is much easier to deal with.\nThat’s why linear regression or linear model in general plays an important role in statistical modeling.\nWe love to start with a linear model when doing data analysis.\nIf we can get our job done using a simple model, why use a complex one.\n\n\n\n\nWhich nonlinear model above can be transformed into a linear model?"
+  },
+  {
+    "objectID": "slides/02-overview.html#linear-vs.-nonlinear-models-1",
+    "href": "slides/02-overview.html#linear-vs.-nonlinear-models-1",
+    "title": "Overview of Regression 📖",
+    "section": "Linear vs. Nonlinear Models",
+    "text": "Linear vs. Nonlinear Models\n\n\n\n\n\n\n\n\n\nOK. So Regression can be divided into Linear and Nonlinear Regression.\n\n\n\nmath4780-f23.github.io/website"
+  },
+  {
     "objectID": "supplemental/mlr-matrix.html",
     "href": "supplemental/mlr-matrix.html",
     "title": "Matrix Notation for Multiple Linear Regression",
@@ -7256,84 +7466,7 @@
     "href": "project-description.html",
     "title": "Project description",
     "section": "",
-    "text": "Topic ideas due Fri, Feb 18\nProposal due Fri, Mar 18\nDraft report due Fri, Apr 8\nPeer review due Fri, Apr 15\nFinal report due Mon, Apr 25\nVideo presentation + slides and final GitHub repo due Thu, Apr 28\nPresentation comments due Sat, Apr 30"
-  },
-  {
-    "objectID": "project-description.html#introduction",
-    "href": "project-description.html#introduction",
-    "title": "Project description",
-    "section": "Introduction",
-    "text": "Introduction\nTL;DR: Pick a data set and do a regression analysis. That is your final project.\nThe goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web.\nChoose the data based on your group’s interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and all components of the project must be reproducible (with the exception of the presentation).\n\nLogistics\nYou will work on the project with your lab groups.\nThe four primary deliverables for the final project are\n\nA written, reproducible report detailing your analysis\nA GitHub repository corresponding to your report\nSlides + a video presentation\nFormal peer review on another team’s project"
-  },
-  {
-    "objectID": "project-description.html#topic-ideas",
-    "href": "project-description.html#topic-ideas",
-    "title": "Project description",
-    "section": "Topic ideas",
-    "text": "Topic ideas\nIdentify 2-3 data sets you’re interested in potentially using for the final project. If you’re unsure where to find data, you can use the list of potential data sources in the Tips + Resources section as a starting point. It may also help to think of topics you’re interested in investigating and find data sets on those topics.\nThe purpose of submitting project ideas is to give you time to find data for the project and to make sure you have a data set that can help you be successful in the project. Therefore, you must use one of the data sets submitted as a topic idea, unless otherwise notified by the teaching team.\nThe data sets should meet the following criteria:\n\nAt least 500 observations\nAt least 10 columns\nAt least 6 of the columns must be useful and unique predictor variables.\n\nIdentifier variables such as “name”, “social security number”, etc. are not useful predictor variables.\nIf you have multiple columns with the same information (e.g. “state abbreviation” and “state name”), then they are not unique predictors.\n\nAt least one variable that can be identified as a reasonable response variable.\n\nThe response variable can be quantitative or categorical.\n\nA mix of quantitative and categorical variables that can be used as predictors.\nObservations should reasonably meet the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.\nYou may not use data that has previously been used in any course materials, or any derivation of data that has been used in course materials.\n\nPlease ask a member of the teaching team if you’re unsure whether your data set meets the criteria.\nFor each data set, include the following:\n\nIntroduction and data\n\nState the source of the data set.\nDescribe when and how it was originally collected (by the original data curator, not necessarily how you found the data)\nDescribe the observations and the general characteristics being measured in the data\n\n\n\nResearch question\n\nDescribe a research question you’re interested in answering using this data.\n\n\n\nGlimpse of data\n\nUse the glimpse function to provide an overview of each data set\n\nSubmit the PDF of the topic ideas to Gradescope. Mark all pages associated with each data set."
-  },
-  {
-    "objectID": "project-description.html#project-proposal",
-    "href": "project-description.html#project-proposal",
-    "title": "Project description",
-    "section": "Project proposal",
-    "text": "Project proposal\nThe purpose of the project proposal is to help you think about your analysis strategy early.\nInclude the following in the proposal:\n\nSection 1 - Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating\nthe motivation for your research question (citing any relevant literature)\nthe general research question you wish to explore\nyour hypotheses regarding the research question of interest.\n\n\n\nSection 2 - Data description\nIn this section, you will describe the data set you wish to explore. This includes\n\ndescription of the observations in the data set,\ndescription of how the data was originally collected (not how you found the data but how the original curator of the data collected it).\n\n\n\nSection 3 - Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes:\n\nDescription of the response variable.\nVisualization and summary statistics for the response variable.\nList of variables that will be considered as predictors\nRegression model technique (multiple linear regression and logistic regression)\n\n\n\nData dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of your project repo, in the data folder. Link to this file from your proposal writeup.\n\n\nSubmission\nPush all of your final changes to the GitHub repo, and submit the PDF of your proposal to Gradescope.\n\n\nProposal grading\n\n\n\nTotal\n10 pts\n\n\n\n\nIntroduction\n3 pts\n\n\nData description\n2 pts\n\n\nAnalysis plan\n4 pts\n\n\nData dictionary\n1 pts\n\n\n\nEach component will be graded as follows:\n\nMeets expectations (full credit): All required elements are completed and are accurate. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting.\nClose to expectations (half credit): There are some elements missing and/or inaccurate. There are some issues with formatting.\nDoes not meet expectations (no credit): Major elements missing. Work is not neatly formatted and would not be presentable in a professional setting."
-  },
-  {
-    "objectID": "project-description.html#draft-report",
-    "href": "project-description.html#draft-report",
-    "title": "Project description",
-    "section": "Draft report",
-    "text": "Draft report\nThe purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.\nWrite the draft in the written-report.qmd file in your project repo. You do not need to submit the draft on Gradescope.\nBelow is a brief description of the sections to focus on in the draft:\n\nIntroduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\n\nMethodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.\n\n\nResults\nIn this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.\nThis section also includes initial interpretations and conclusions drawn from the model."
-  },
-  {
-    "objectID": "project-description.html#peer-review",
-    "href": "project-description.html#peer-review",
-    "title": "Project description",
-    "section": "Peer review",
-    "text": "Peer review\nCritically reviewing others’ work is a crucial part of the scientific process, and STA 210 is no exception. Each lab team will be assigned two other teams’s projects to review. Each team should push their draft to their GitHub repo by the due date. One lab in the following week will be dedicated to the peer review, and all reviews will be due by the end of that lab session.\nDuring the peer review process, you will be provided read-only access to your partner teams’ GitHub repos. Provide your review in the form of GitHub issues to your partner team’s GitHub repo using the issue template provided. The peer review will be graded on the extent to which it comprehensively and constructively addresses the components of the partner team’s report: the research context and motivation, exploratory data analysis, modeling, interpretations, and conclusions.\n\nPairings\n\nSection 1 - M 1:45PM - 3:00PM\n\n\n\nTeam being reviewed\nReviewer 1\nReviewer 2\n\n\n\n\nchaa_chaa_chaa\nyay_stats\nstat_over_flow\n\n\ndekk\nchaa_chaa_chaa\nyay_stats\n\n\neight\ndekk\nchaa_chaa_chaa\n\n\nhousecats\neight\ndekk\n\n\nkrafthouse\nhousecats\neight\n\n\nrrawr\nkrafthouse\nhousecats\n\n\nstat_over_flow\nrrawr\nkrafthouse\n\n\nyay_stats\nstat_over_flow\nrrawr\n\n\n\n\n\nSection 2 - M 3:30PM - 4:45PM\n\n\n\nTeam being reviewed\nReviewer 1\nReviewer 2\n\n\n\n\na_plus_plus_plus\nwe_r\ntina\n\n\npredictors\na_plus_plus_plus\nwe_r\n\n\nsixers\npredictors\na_plus_plus_plus\n\n\nsoy_nuggets\nsixers\npredictors\n\n\ntina\nsoy_nuggets\nsixers\n\n\nwe_r\ntina\nsoy_nuggets\n\n\n\n\n\nSection 3 - M 5:15PM - 6:30PM\n\n\n\n\n\n\n\n\nTeam being reviewed\nReviewer 1\nReviewer 2\n\n\n\n\ndown_to_earth_goats\nthe_three_musketeers\nteam_five\n\n\nginger_and_stats\ndown_to_earth_goats\nthe_three_musketeers\n\n\npineapple_wedge_and_diced_papaya\nginger_and_stats\ndown_to_earth_goats\n\n\nstatchelorettes\npineapple_wedge_and_diced_papaya\nginger_and_stats\n\n\nstatisix\nstatchelorettes\npineapple_wedge_and_diced_papaya\n\n\nstats_squad\nstatisix\nstatchelorettes\n\n\nteam_five\nstats_squad\nstatisix\n\n\nthe_three_musketeers\nteam_five\nstats_squad\n\n\n\n\n\n\nProcess and questions\nSpend ~30 mins to review each team’s project.\n\nFind your team name on the Reviewer 1 and Reviewer 2 columns.\nFor each of the columns, find the name of the team to review in the Team being reviewed column. You should already have access to this team’s repo.\nOpen the repo of the team you’re reviewing, read their project draft, and browser around the rest of their repo.\nThen, go to the Issues tab in that repo, click on New issue, and click on Get started for the Peer review issue. Fill out this issue, answering the following questions:\n\nPeer review by: [NAME OF TEAM DOING THE REVIEW]\nNames of team members that participated in this review: [FULL NAMES OF TEAM MEMBERS DOING THE REVIEW]\nDescribe the goal of the project.\nDescribe the data used or collected, if any. If the proposal does not include the use of a specific dataset, comment on whether the project would be strengthened by the inclusion of a dataset.\nDescribe the approaches, tools, and methods that will be used.\nIs there anything that is unclear from the proposal?\nProvide constructive feedback on how the team might be able to improve their project. Make sure your feedback includes at least one comment on the statistical modeling aspect of the project, but do feel free to comment on aspects beyond the modeling.\nWhat aspect of this project are you most interested in and would like to see highlighted in the presentation.\nProvide constructive feedback on any issues with file and/or code organization.\n(Optional) Any further comments or feedback?"
-  },
-  {
-    "objectID": "project-description.html#written-report",
-    "href": "project-description.html#written-report",
-    "title": "Project description",
-    "section": "Written report",
-    "text": "Written report\nYour written report must be completed in the written-report.qmd file and must be reproducible. All team members should contribute to the GitHub repository, with regular meaningful commits.\nBefore you finalize your write up, make sure the printing of code chunks is off with the option echo = FALSE.\nYou will submit the PDF of your final report on Gradescope.\nThe PDF you submit must match the files in your GitHub repository exactly. The mandatory components of the report are below. You are free to add additional sections as necessary. The report, including visualizations, should be no more than 10 pages long. is no minimum page requirement; however, you should comprehensively address all of the analysis and report.\nBe selective in what you include in your final write-up. The goal is to write a cohesive narrative that demonstrates a thorough and comprehensive analysis rather than explain every step of the analysis.\nYou are welcome to include an appendix with additional work at the end of the written report document; however, grading will largely be based on the content in the main body of the report. You should assume the reader will not see the material in the appendix unless prompted to view it in the main body of the report. The appendix should be neatly formatted and easy for the reader to navigate. It is not included in the 10-page limit.\nThe written report is worth 40 points, broken down as follows\n\n\n\nTotal\n40 pts\n\n\n\n\nIntroduction/data\n6 pts\n\n\nMethodology\n10 pts\n\n\nResults\n14 pts\n\n\nDiscussion + conclusion\n6 pts\n\n\nOrganization + formatting\n4 pts\n\n\n\nClick here for a PDF of the written report rubric.\n\nIntroduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\nGrading criteria\nThe research question and motivation are clearly stated in the introduction, including citations for the data source and any external research. The data are clearly described, including a description about how the data were originally collected and a concise definition of the variables relevant to understanding the report. The data cleaning process is clearly described, including any decisions made in the process (e.g., creating new variables, removing observations, etc.) The explanatory data analysis helps the reader better understand the observations in the data along with interesting and relevant relationships between the variables. It incorporates appropriate visualizations and summary statistics.\n\n\n\nMethodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, interactions considered, variable transformations (if needed), assessment of conditions and diagnostics, and any other relevant considerations that were part of the model fitting process.\n\nGrading criteria\nThe analysis steps are appropriate for the data and research question. The group used a thorough and careful approach to select the final model; the approach is clearly described in the report. The model selection process took into account potential interaction effects and addressed any violations in model conditions. The model conditions and diagnostics are thoroughly and accurately assessed for their model. If violations of model conditions are still present, there was a reasonable attempt to address the violations based on the course content.\n\n\n\nResults\nThis is where you will output the final model with any relevant model fit statistics.\nDescribe the key results from the model. The goal is not to interpret every single variable in the model but rather to show that you are proficient in using the model output to address the research questions, using the interpretations to support your conclusions. Focus on the variables that help you answer the research question and that provide relevant context for the reader.\n\nGrading criteria\nThe model fit is clearly assessed, and interesting findings from the model are clearly described. Interpretations of model coefficients are used to support the key findings and conclusions, rather than merely listing the interpretation of every model coefficient. If the primary modeling objective is prediction, the model’s predictive power is thoroughly assessed.\n\n\n\nDiscussion + Conclusion\nIn this section you’ll include a summary of what you have learned about your research question along with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis and provide suggestions on ways the analysis could be improved. Any potential issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Lastly, this section will include ideas for future work.\n\nGrading criteria\nOverall conclusions from analysis are clearly described, and the model results are put into the larger context of the subject matter and original research question. There is thoughtful consideration of potential limitations of the data and/or analysis, and ideas for future work are clearly described.\n\n\n\nOrganization + formatting\nThis is an assessment of the overall presentation and formatting of the written report.\n\nGrading criteria\nThe report neatly written and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All citations and links are properly formatted. If there is an appendix, it is reasonably organized and easy for the reader to find relevant information. All code, warnings, and messages are suppressed. The main body of the written report (not including the appendix) is no longer than 10 pages."
-  },
-  {
-    "objectID": "project-description.html#video-presentation-slides",
-    "href": "project-description.html#video-presentation-slides",
-    "title": "Project description",
-    "section": "Video presentation + slides",
-    "text": "Video presentation + slides\n\nSlides\nIn addition to the written report, your team will also create presentation slides and record a video presentation that summarize and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.\nFor submission, convert these slides to a .pdf document, and submit the PDF of the slides on Gradescope.\nThe slide deck should have no more than 6 content slides + 1 title slide. Here is a suggested outline as you think through the slides; you do not have to use this exact format for the 6 slides.\n\nTitle Slide\nSlide 1: Introduce the topic and motivation\nSlide 2: Introduce the data\nSlide 3: Highlights from EDA\nSlide 4: Final model\nSlide 5: Interesting findings from the model\nSlide 6: Conclusions + future work\n\n\n\nVideo presentation\nFor the video presentation, you can speak over your slide deck, similar to the lecture content videos. The video presentation must be no longer than 8 minutes. It is fine if the video is shorter than 8 minutes, but it cannot exceed 8 minutes. You may use can use any platform that works best for your group to record your presentation. Below are a few resources on recording videos:\n\nRecording presentations in Zoom\nApple Quicktime for screen recording\nWindows 10 built-in screen recording functionality\nKap for screen recording\n\nOnce your video is ready, upload the video to Warpwire, then embed the video in an new discussion post on Conversations.\n\nTo upload your video to Warpwire:\n\nClick the Warpwire tab in the course Sakai site.\nClick the “+” and select “Upload files”.\nLocate the video on your computer and click to upload.\nOnce you’ve uploaded the video to Warpwire, click to share the video and copy the video’s URL. You will need this when you post the video in the discussion forum.\n\n\n\nTo post the video to the discussion forum\n\nClick the Presentations tab in the course Sakai site.\nClick the Presentations topic.\nClick “Start a new conversation”.\nMake the title “Your Team Name: Project Title”. For example, “Teaching Team: Our Awesome Presentation”.\nClick the Warpwire icon (between the table and shopping cart icons).\nSelect your video, then click “Insert 1 item.” This will embed your video in the conversation.\nUnder the video, paste the URL to your video.\nYou’re done!"
-  },
-  {
-    "objectID": "project-description.html#presentation-comments",
-    "href": "project-description.html#presentation-comments",
-    "title": "Project description",
-    "section": "Presentation comments",
-    "text": "Presentation comments\nEach student will be assigned 2 presentations to watch. Your viewing assignments will be posted later in the semester.\nWatch the group’s video, then click “Reply” to post a question for the group. You may not post a question that’s already been asked on the discussion thread. Additionally, the question should be (i) substantive (i.e. it shouldn’t be “Why did you use a bar plot instead of a pie chart”?), (ii) demonstrate your understanding of the content from the course, and (iii) relevant to that group’s specific presentation, i.e demonstrating that you’ve watched the presentation.\nThis portion of the project will be assessed individually.\n\nPairings\nFind your team name in the first column, watch videos from teams in the second column and leave comments.\n\n\n\n\n\n\n\n\nReviewer\nFirst video to review\nSecond video to review\n\n\n\n\nGinger and Stats\nEight\nWe R\n\n\nKrafthouse\nGinger and Stats\nEight\n\n\nSoy Nuggets\nKrafthouse\nGinger and Stats\n\n\nDown To Earth Goats\nSoy Nuggets\nKrafthouse\n\n\nA+++\nDown To Earth Goats\nSoy Nuggets\n\n\nTeam Five\nA+++\nDown To Earth Goats\n\n\nRrawr\nTeam Five\nA+++\n\n\nHousecats\nRrawr\nTeam Five\n\n\nDekk\nHousecats\nRrawr\n\n\nStat OverFlow\nDekk\nHousecats\n\n\nThe Three Musketeers\nStat OverFlow\nDekk\n\n\nPredictors\nThe Three Musketeers\nStat OverFlow\n\n\nStats Squad\nPredictors\nThe Three Musketeers\n\n\nStatisix\nStats Squad\nPredictors\n\n\nSixers\nStatisix\nStats Squad\n\n\nYay Stats\nSixers\nStatisix\n\n\nTINA\nYay Stats\nSixers\n\n\nStatchelorettes\nTINA\nYay Stats\n\n\nPineapple Wedge and Diced Papaya\nStatchelorettes\nTINA\n\n\nChaa Chaa Chaa\nPineapple Wedge and Diced Papaya\nStatchelorettes\n\n\nWe R\nChaa Chaa Chaa\nPineapple Wedge and Diced Papaya\n\n\nEight\nWe R\nChaa Chaa Chaa"
-  },
-  {
-    "objectID": "project-description.html#reproducibility-organization",
-    "href": "project-description.html#reproducibility-organization",
-    "title": "Project description",
-    "section": "Reproducibility + organization",
-    "text": "Reproducibility + organization\nAll written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.\nThe GitHub repo should have the following structure:\n\nREADME: Short project description and data dictionary\nwritten-report.qmd & written-report.pdf: Final written report\n/data: Folder that contains the data set for the final project.\n/previous-work: Folder that contains the topic-ideas and project-proposal files.\n/presentation: Folder with the presentation slides.\n\nIf your presentation slides are online, you can put a link to the slides in a README.md file in the presentation folder.\n\n\nPoints for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable."
-  },
-  {
-    "objectID": "project-description.html#peer-teamwork-evaluation",
-    "href": "project-description.html#peer-teamwork-evaluation",
-    "title": "Project description",
-    "section": "Peer teamwork evaluation",
-    "text": "Peer teamwork evaluation\nYou will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. Filling out the survey is a prerequisite for getting credit on the team member evaluation. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly.\nIf you have concerns with the teamwork and/or contribution from any team members, please email me by the project video deadline. You only need to email me if you have concerns. Otherwise, I will assume everyone on the team equally contributed and will receive full credit for the teamwork portion of the grade."
-  },
-  {
-    "objectID": "project-description.html#overall-grading",
-    "href": "project-description.html#overall-grading",
-    "title": "Project description",
-    "section": "Overall grading",
-    "text": "Overall grading\nThe grade breakdown is as follows:\n\n\n\nTotal\n100 pts\n\n\n\n\nTopic ideas\n5 pts\n\n\nProject proposal\n10 pts\n\n\nPeer review\n10 pts\n\n\nWritten report\n40 pts\n\n\nSlides + video presentation\n20 pts\n\n\nReproducibility + organization\n5 pts\n\n\nVideo comments\n5 pts\n\n\nPeer teamwork evaluation\n5 pts\n\n\n\nNote: No late project reports or videos are accepted.\n\nGrading summary\nGrading of the project will take into account the following:\n\nContent - What is the quality of research and/or policy question and relevancy of data to those questions?\nCorrectness - Are statistical procedures carried out and explained correctly?\nWriting and Presentation - What is the quality of the statistical presentation, writing, and explanations?\nCreativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?\n\nA general breakdown of scoring is as follows:\n\n90%-100%: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.\n80%-89%: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.\n70%-79%: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.\n60%-69%: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.\nBelow 60%: Student is not making a sufficient effort.\n\n\n\nLate work policy\nThere is no late work accepted on this project. Be sure to turn in your work early to avoid any technological mishaps."
+    "text": "To be announced."
   },
   {
     "objectID": "course-syllabus.html",
