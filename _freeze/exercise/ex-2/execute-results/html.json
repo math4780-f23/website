@@ -1,0 +1,20 @@
+{
+  "hash": "f539733936d0842546bb879d951baf13",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 2\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n\n\n::: {.cell}\n\n:::\n\n\n## Simple Linear Regression\n\n<!-- IMS 24.2 -->\n\n### Basic Understanding\n\n1. The scatterplot and least squares summary below show the relationship between weight measured in kilograms and height measured in centimeters of 507 physically active individuals. (Heinz et al., 2003)\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](ex-2_files/figure-html/unnamed-chunk-2-1.png){width=70%}\n:::\n\n::: {.cell-output-display}\n`````{=html}\n<table class=\"table table-striped table-condensed\" style=\"width: auto !important; margin-left: auto; margin-right: auto;\">\n <thead>\n  <tr>\n   <th style=\"text-align:left;\"> term </th>\n   <th style=\"text-align:right;\"> estimate </th>\n   <th style=\"text-align:right;\"> std.error </th>\n   <th style=\"text-align:right;\"> statistic </th>\n   <th style=\"text-align:right;\"> p.value </th>\n  </tr>\n </thead>\n<tbody>\n  <tr>\n   <td style=\"text-align:left;width: 10em; font-family: monospace;\"> (Intercept) </td>\n   <td style=\"text-align:right;width: 5em; \"> -105.01 </td>\n   <td style=\"text-align:right;width: 5em; \"> 7.54 </td>\n   <td style=\"text-align:right;width: 5em; \"> -13.93 </td>\n   <td style=\"text-align:right;width: 5em; \"> &lt;0.0001 </td>\n  </tr>\n  <tr>\n   <td style=\"text-align:left;width: 10em; font-family: monospace;\"> hgt </td>\n   <td style=\"text-align:right;width: 5em; \"> 1.02 </td>\n   <td style=\"text-align:right;width: 5em; \"> 0.04 </td>\n   <td style=\"text-align:right;width: 5em; \"> 23.13 </td>\n   <td style=\"text-align:right;width: 5em; \"> &lt;0.0001 </td>\n  </tr>\n</tbody>\n</table>\n\n`````\n:::\n:::\n\n\n\n  a.  Describe the relationship between height and weight.\n  \n  b.  Write the equation of the regression line. Interpret the slope and intercept in context.\n  \n  c.  Do the data provide convincing evidence that the true slope parameter is different than 0? State the null and   alternative hypotheses, report the p-value, and state your conclusion.\n  \n  d.  The correlation coefficient for height and weight is 0.72. Calculate $R^2$ and interpret it.\n\n\n### Simulation\n\n2. Generate a simulated data of size $n = 100$ from the regression \n\n$$y_i = 10 + 5x_i + \\epsilon_i, ~~ \\epsilon_i \\stackrel{iid}{\\sim} N(0, 2).$$\n\nFit a simple linear regression model to the data, then check whether the true slope is captured by the 90% confidence interval for the slope.\n",
+    "supporting": [
+      "ex-2_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"../site_libs/kePrint-0.0.1/kePrint.js\"></script>\n<link href=\"../site_libs/lightable-0.0.1/lightable.css\" rel=\"stylesheet\" />\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

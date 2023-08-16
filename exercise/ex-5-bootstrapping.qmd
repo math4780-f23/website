@@ -1,0 +1,24 @@
+---
+title: "Exercise 5: Bootstrapping"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Bootstrapping Standard Deviation
+
+<!-- ISL 5.9 -->
+
+
+1. Based on the `Boston` data set, provide an estimate for the population
+mean of `medv`. Call the estimate $\hat{\mu}$.
+
+2. Provide an estimate of the standard error of $\hat{\mu}$. Interpret this
+result. *Hint: We can compute the standard error of the sample mean by dividing the sample standard deviation by the square root of the number of observations.*
+
+3. Estimate the standard error of $\hat{\mu}$ using the bootstrap. *Hint: We can use [boot::boot()](https://rdrr.io/cran/boot/man/boot.html) function.*

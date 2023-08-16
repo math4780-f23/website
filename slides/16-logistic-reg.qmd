@@ -1,0 +1,1177 @@
+---
+title: "Logistic Regression `r emo::ji('computer')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bLambda{\boldsymbol \Lambda}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+library(car)
+library(olsrr)
+library(leaps)
+library(MASS)
+library(kableExtra)
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "./images/16-logistic-reg",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+
+
+# Classification
+
+
+
+
+## Regression vs. Classification
+- Linear regression assumes that the response $Y$ is *numerical*.
+- In many situations, $Y$ is **categorical**.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Normal vs. COVID vs. Smoking**
+```{r}
+knitr::include_graphics("images/16-logistic-reg/covid_lung.jpeg")
+```
+:::
+
+
+
+::: {.column width="50%"}
+**fake news vs. true news**
+```{r}
+#| out-width: 100%
+knitr::include_graphics("images/16-logistic-reg/fake_news.jpeg")
+```
+:::
+::::
+
+- A process of predicting categorical response is known as **classification**.   
+
+
+## Regression Function $f(x)$ vs. Classifier $C(x)$
+
+```{r}
+knitr::include_graphics("images/16-logistic-reg/regression.png")
+```
+
+. . .
+
+
+```{r}
+#| fig-cap: "Source: https://daviddalpiaz.github.io/r4sl/classification-overview.html"
+knitr::include_graphics("images/16-logistic-reg/classification.png")
+```
+
+## Classifiers
+- Often, we first predict the *probability* of each of the categories of $Y$, as a basis for making the classification (*soft* classifier).
+- We discuss the classifiers 
+  + **logistic**
+  + *probit*
+  + *complementary log-log*
+- Other classifiers include (MSSC 6250)
+  + K-nearest neighbors
+  + trees/random forests/boosting
+  + support vector machines
+  + convolutional neural networks, etc.
+
+
+## Classification Example
+
+- Predict whether people will default on their credit card payment $(Y)$ `yes` or `no`, based on monthly credit card balance $(X)$.
+- We use the (training) sample data $\{(x_1, y_1), \dots, (x_n, y_n)\}$ to build a classifier.
+
+:::: {.columns}
+
+::: {.column width="62%"}
+```{r}
+Default_tbl <- as_tibble(Default)
+Default_tbl %>% 
+    ggplot(aes(default, balance, fill = default)) +
+    geom_boxplot(color="black") + 
+    theme_minimal() +
+    theme(legend.position="bottom",
+          axis.text=element_text(size=20),
+          axis.title.x=element_text(size=20),
+          axis.title.y=element_text(size=20),
+          legend.text = element_text(size=20),
+          legend.title = element_text(size=20),
+          plot.title = element_text(size=22)) +
+    labs(title = "Default vs. Balance")
+```
+:::
+
+::: {.column width="38%"}
+```{r}
+knitr::include_graphics("images/16-logistic-reg/credit_card.jpeg")
+```
+:::
+::::
+
+## Why Not Linear Regression?
+
+$$Y =\begin{cases}
+    0  & \quad \text{if not default}\\
+    1  & \quad \text{if default}
+     \end{cases}$$
+
+- $Y = \beta_0 + \beta_1X + \epsilon$, $\, X =$ credit card balance 
+
+::: question
+What is the problem of this dummy variable approach?
+:::
+<!-- - Linear regression assumes that the response is -->
+<!--   + Normally distributed -->
+<!--   + Constant variance -->
+<!--   + Independent -->
+
+::: notes
+- $Y$ is categorical but coded as dummy variable or indicator variable
+- Fit linear regression and treat it as a numerical variable.
+:::
+
+## Why Not Linear Regression?
+- **Some estimates are outside $[0, 1]$.**
+
+```{r}
+#| label: lm-defualt
+#| out-width: 70%
+Default_tbl %>% 
+    ggplot(aes(x = balance, y = as.numeric(default)-1), colour=default) +
+    geom_point(aes(colour=default), alpha = 0.1) + 
+    geom_smooth(method = lm, se = FALSE) +
+    theme_minimal() +
+    theme(legend.position = "none",
+          axis.text=element_text(size=20),
+          axis.title.x=element_text(size=20),
+          axis.title.y=element_text(size=20),
+          legend.text = element_text(size=20),
+          legend.title = element_text(size=20),
+          plot.title = element_text(size=22)) +
+    ylab("default") +
+    labs(title = "Simple Linear Regression: Default vs. Balance")
+```
+
+
+
+
+::: notes
+- **The dummy variable approach $(Y = 0, 1)$ cannot be easily extended to $Y$ with more than two categories.**
+:::
+
+
+
+## Why Not Linear Regression?
+- First predict the **probability** of each category of $Y$.
+- Predict probability of `default` using a <span style="color:blue">**S-shaped** curve</span>.
+
+```{r}
+#| label: glm-default
+#| out-width: 65%
+Default_tbl %>% 
+    ggplot(aes(x = balance, y = as.numeric(default)-1), colour=default) +
+    geom_point(aes(colour=default), alpha = 0.1) + 
+    geom_smooth(method = "glm", method.args = list(family="binomial"), se = FALSE) +
+    theme_minimal() +
+    theme(legend.position = "none",
+          axis.text=element_text(size=20),
+          axis.title.x=element_text(size=20),
+          axis.title.y=element_text(size=20),
+          legend.text = element_text(size=20),
+          legend.title = element_text(size=20),
+          plot.title = element_text(size=22)) +
+    ylab("Probability of Default") +
+    labs(title = "Simple Logistic Regression: Default vs. Balance")
+```
+
+
+
+::: notes
+Often, we first predict the probability of each of the categories of $Y$, as a basis for making the classification.
+- The predicted probability should be like a S-shaped curve that first is in [0, 1] interval.
+- Second, the predicted probability of being defualted is increasing in the credit card balance.
+```{r echo=FALSE, out.width="57%"}
+# knitr::include_graphics("img/default_prob.png")
+```
+:::
+
+
+# Logistic Regression
+<h2> Binary Response </h2>
+<h2> Binomial/Proportion Response </h2>
+<h2> Multinomial Response (MSSC 6250) </h2>
+
+
+::: notes
+- When we have several replicates of reposnse, meaning that we have several binary 0-1 outcomes of $y$ at any given level of $x$, we consider Binomial and Proportion Responses, that is the number of successes, or the proportion or the number of successes divided by the total number of trials or replicates.
+:::
+
+
+## Framing the Problem: Binary Responses
+
+- Treat each outcome (default $(y = 1)$ and not default $(y = 0)$) as success and failure arising from separate **Bernoulli** trials.
+
+::: question
+What is a Bernoulli trial?
+:::
+
+. . .
+
+- A Bernoulli trial is a special case of a binomial trial when the number of trials is $m = 1$:
+  - $Bernoulli(\pi) = binomial(m = 1,\pi)$
+  - **exactly two** possible outcomes, "success" and "failure"
+  - the probability of success $\pi$ is **constant**
+
+
+. . .
+
+::: question
+In the credit card example, 
+
+- do we have exactly two outcomes? 
+- do we have constant probability? $P(y_1 = 1) = P(y_2 = 1) = \cdots = P(y_n = 1) = \pi?$
+:::
+
+
+
+::: notes
+- The idea is that we can treat $Y$ as a categorical variable and each of its outcome is success or failure arising from separate Bernoulli trials
+- And what is a Bernoulli trial? We talked about this when we talked about Binomial distribution, right?
+- A Bernoulli trial is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted
+:::
+
+
+## Binary Responses with Nonconstant Probability
+:::: {.columns}
+
+::: {.column width="50%"}
+- Two outcomes: default $(y = 1)$ and not default $(y = 0)$
+- The probability of success $\pi$ *changes with* the value of predictor $X$!
+- With a different value of $x_i$, each Bernoulli trial outcome $y_i$ has a *different* probability of success $\pi_i$:
+
+:::
+
+
+::: {.column width="50%"}
+```{r, ref.label="glm-default"}
+
+```
+:::
+
+::::
+
+$y_i \mid x_i \stackrel{indep}{\sim} Bernoulli(\pi(x_i)) = binomial(m=1,\pi = \pi(x_i))$
+
+
+::: notes
+- Here, Each Bernoulli trial, with different value of $x_i$, the trial outcome $y_i$ can have a separate probability of success $ y_i \mid x_i; p_i ∼ Bern(p_i) $.
+- Actually this probability $\pi_i$ is affected by the predictor $x_i$. A different value of $x$ will give you a different value of $\pi$.
+- Like linear regression, different value of $x$ give us different mean of $Y$
+:::
+
+
+. . .
+
+
+- $X =$ `balance`. $x_1 = 2000$ has a larger $\pi_1 = \pi(2000)$ than $\pi_2 = \pi(500)$ with $x_2 = 500$ because credit cards with a higher balance tend to be default.
+
+
+## Bernoulli Variables {visibility="hidden"}
+
+- $Y_i \sim Bern(\pi_i)$
+- $P(Y_i = 1) = \pi_i$
+- $P(Y_i = 0) = 1 - \pi_i$
+- $E[Y_i] = 1(\pi_i) + 0(1-\pi_i) = \pi_i$
+- $\var(Y_i) = E[(Y_i - E(Y_i))^2] = (1 - \pi_i)^2\pi_i + (0 - \pi_i)^2(1 - \pi_i) = \pi_i(1-\pi_i)$
+- Still, the linear regression model $y_i = \beta_0 + \beta_1x_{i1}+ \cdots + \beta_kx_{ik} + \epsilon_i$ **does not** make sense.
+
+.alert[
+- $\epsilon_i$ only take two values, so they are not Gaussian
+- The variance of $Y_i$ is a function of the mean $\pi_i$ (not constant)
+- $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_1+ \cdots + \hat{\beta}_kx_k$ could fall outside the $(0, 1)$ range.
+]
+
+$E(y_i) = {\bf x}_i'\bbeta = \pi_i$, and so 
+
+
+
+## Logistic Regression
+
+- **Logistic regression** models a **binary** response $(Y)$ using predictors $X_1, \dots, X_k$.
+  + $k = 1$: simple logistic regression
+  + $k > 1$: multiple logistic regression
+
+::: notes
+- Logistic regression models a **binary** categorical outcome $(Y)$ using numerical and categorical predictors $X_1, \dots, X_k$.
+:::
+
+. . .
+
+::: center
+Instead of predicting $y_i$ directly, we use the predictors to model its *probability* of success, $\pi_i$.
+:::
+
+
+::: center
+But how?
+:::
+
+
+::: notes
+- But remember, we are not predicting $Y$ directly. Instead, our goal is to use predictors $X_1, \dots, X_k$ to estimate the probability of success $\pi$ of the Bernoulli variable $Y$. And if $\pi > threshold$, say 0.5, $\hat{Y} = 1$, if $\pi < threshold$, $\hat{Y} = 0$.
+:::
+
+. . .
+
+<!-- - Cannot just use a linear model for $\pi_i \in (0, 1)$, but can *transform* the model to have the appropriate range. -->
+<!-- - This is a very general way of addressing many problems in regression and the resulting models are called **generalized linear models (GLMs)** -->
+<!-- - **Logistic regression** is one example. -->
+<!-- - **Goal**: Use predictors $X_1, \dots, X_k$ to estimate the probability of success $\pi$ of the Bernoulli variable $Y$. -->
+
+- **Transform $\pi \in (0, 1)$ into another variable $\eta \in (-\infty, \infty)$. Then construct a linear predictor on $\eta$:  $\eta_i = \beta_0 + \beta_1x_i$**
+<!-- - To finish specifying the logistic regression model, we need to define a link function that connects $\eta_i$ to $p_i$: -->
+
+::: notes
+- And the idea is that we transform $p \in (0, 1)$ into another variable $\eta \in (-\infty, \infty)$. So that we can reasonably fit a linear regression on $\eta$.
+<!-- - To finish specifying the logistic regression model, we need to define a link function that connects $\eta_i$ to $p_i$: -->\
+:::
+
+
+. . .
+
+- **Logit function:** For $0 < \pi < 1$
+
+$$\eta = logit(\pi) = \ln\left(\frac{\pi}{1-\pi}\right)$$
+
+::: notes
+- And the function that transforms $p$ into $\eta$ is the so called logit function defined as
+- $\eta = logit(p) = \ln\left(\frac{p}{1-p}\right)$
+<!-- - And this is why the model is called logit model, or logistic regression. -->
+- You see when $p$ is approaching 0, p/1-p is also approaching 0, and so log of it is approaching -$\infty$.
+- When p is close to 1, p/1-p is close to $\infty$, so is log because log is an increasing function.
+:::
+
+
+
+## Logit function $\eta = logit(\pi) = \ln\left(\frac{\pi}{1-\pi}\right)$
+
+```{r}
+#| out-width: 75%
+d <- tibble(p = seq(0.0001, 0.9999, length.out = 2000)) %>%
+    mutate(logit_p = log(p/(1-p)))
+
+ggplot(d, aes(x = p, y = logit_p)) + 
+    geom_line() + 
+    xlim(0,1) + 
+    xlab(expression(pi)) + 
+    ylab(expression(paste("logit(", pi, ")"))) +
+    labs(title = expression(paste("logit(", pi, ") vs. ", pi))) +
+    theme_bw() +
+    theme(axis.text=element_text(size=20),
+          axis.title.x=element_text(size=20),
+          axis.title.y=element_text(size=20),
+          legend.text = element_text(size=20),
+          legend.title = element_text(size=20),
+          plot.title = element_text(size=22))
+    
+```
+
+
+
+::: notes
+- Here visualizes the logit function.
+- It's an one-to-one increasing function of $\pi$ and so the inference on $\eta$ can be transformed back to the inference of $\pi$ with no problems.
+:::
+
+
+## Logistic Function
+
+- The *logit* function $\eta = logit(\pi) = \ln\left(\frac{\pi}{1-\pi}\right)$ takes a value $\pi \in (0, 1)$ and maps it to a value $\eta \in (-\infty, \infty)$.
+- **Logistic function**:
+$$\pi = logistic(\eta) = \frac{\exp(\eta)}{1+\exp(\eta)} = \frac{1}{1+\exp(-\eta)} \in (0, 1)$$
+- The *logistic* function takes a value $\eta \in (-\infty, \infty)$ and maps it to a value $\pi \in (0, 1)$.
+
+. . .
+
+- So once $\eta$ is estimated by the linear regression, we use the logistic function to transform $\eta$ back to the probability.
+
+::: notes
+- The logit function $\eta = logit(\pi) = \ln\left(\frac{\pi}{1-\pi}\right)$ takes a value $\pi \in (0, 1)$ and maps it to a value $\eta \in (-\infty, \infty)$.
+- **Inverse logit (logistic) function**:
+$$\pi = logistic(\eta) = \frac{\exp(\eta)}{1+\exp(\eta)} = \frac{1}{1+\exp(-\eta)} \in (0, 1)$$
+- The inverse logit function takes a value $\eta$ between $-\infty$ and $\infty$ and maps it to a value $\pi$ between 0 and 1.
+:::
+
+
+## Logistic Function $\pi = logistic(\eta) = \frac{\exp(\eta)}{1+\exp(\eta)}$
+```{r}
+#| out-width: 75%
+d <- tibble(eta = seq(-5, 5, length.out = 2000)) %>%
+    mutate(logistic = (1/(1+exp(-eta))))
+
+ggplot(d, aes(x = eta, y = logistic)) + 
+    geom_line() + 
+    xlim(-5,5) + 
+    xlab(expression(eta)) + 
+    ylab(expression(paste("logistic(", eta, ")"))) +
+    labs(title = expression(paste("logistic(", eta, ") vs. ", eta))) +
+    theme_bw()+
+    theme(axis.text=element_text(size=20),
+          axis.title.x=element_text(size=20),
+          axis.title.y=element_text(size=20),
+          legend.text = element_text(size=20),
+          legend.title = element_text(size=20),
+          plot.title = element_text(size=22))
+```
+
+
+::: notes
+- We are almost there. The value of logistic function is what we need for predicting the probability that $Y = 1$. 
+- Given any value of $\eta$, there is a corresponding estimated probability. 
+- So if we can use our predictors to get eta first, then we can use the eta to predict the probability of $Y$ being equal to when the predictors are at the level for getting $\eta$. 
+:::
+
+## Simple Logistic Regression Model
+
+For $i = 1, \dots, n$ and with one predictor $X$:
+  $$(Y_i \mid X = x_i) \stackrel{indep}{\sim} Bernoulli(\pi(x_i))$$
+  $$\text{logit}(\pi_i) = \ln \left( \frac{\pi(x_i)}{1 - \pi(x_i)} \right) = \eta_i = \beta_0+\beta_1 x_{i}$$
+<!-- - The $\text{logit}(\pi_i)$ is a **link function** that *links* the linear predictor and the mean of $Y_i$. -->
+
+
+::: notes
+- with sample size $n$ and with $k$ predictors, we have the logistic regression model like this
+- First, we have a probability distribution **Bernoulli** describing how the outcome or response data are generated. 
+  - $Y_i \mid {\bf x}_i; \pi_i \sim \text{Bern}(p_i)$, ${\bf x}_i = (x_{1,i}, \cdots, x_{k,i})$, $i = 1, \dots, n$
+- Then we have a link function, logit function, that relates the linear regression to the parameter of the outcome distribution, which is the parameter $p$, the probability of success in the Bernoulli distribution.
+  - $\text{logit}(\pi_i) = \eta_i = \beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i}$
+
+:::
+
+
+. . .
+
+<!-- $$\small \pi_i = \frac{\exp(\eta_i)}{1 + \exp(\eta_i)} = \frac{\exp(\beta_0+\beta_1 x_{i})}{1+\exp(\beta_0+\beta_1 x_{i})}$$ -->
+
+Once we get the estimates $\hat{\beta}_0$ and $\hat{\beta}_1$,
+$$\small \hat{\pi}_i = \frac{\exp(\hat{\beta}_0+\hat{\beta}_1 x_{i} )}{1+\exp(\hat{\beta}_0+\hat{\beta}_1 x_{i})} = \frac{1}{1+\exp(-\hat{\beta}_0-\hat{\beta}_1 x_{i}))}$$
+
+
+::: notes
+.alert[
+In general, if $E(Y_i) = \mu_i$, $g(\mu_i) = \eta_i = {\bf x}_i'\bbeta$, $\mu_i= g^{-1}(\eta_i) = g^{-1}({\bf x}_i'\bbeta)$. Here $\mu_i = \pi_i$, $g(\cdot) = \text{logit}(\cdot)$.
+]
+-  From which we get the probability of success derived by the logistic function
+$$E(y_i) = \pi_i = \frac{\exp(\beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i})}{1+\exp(\beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i})}$$
+or the predicted probability is the one that replaces $\beta$ with estimates $b$.
+$$\hat{\pi}_i = \frac{\exp(\hat{\beta}_0+\hat{\beta}_1 x_{1,i} + \cdots + \hat{\beta}_k x_{k,i})}{1+\exp(\hat{\beta}_0+\hat{\beta}_1 x_{1,i} + \cdots + \hat{\beta}_k x_{k,i})}$$
+:::
+
+
+## [R Lab]{.pink} Credit Card Default
+:::: {.columns}
+::: midi
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+library(ISLR)
+data("Default")  ## load the dataset
+head(Default, 10)
+str(Default)
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+table(Default$default)
+table(Default$student)
+summary(Default$balance)
+summary(Default$income)
+```
+:::
+:::
+::::
+
+
+
+## [R Lab]{.pink} Simple Logistic Regression
+```{r}
+#| echo: true
+library(tidyverse)
+Default |>  
+    group_by(default) |>
+    summarise(avg_balance = mean(balance))
+```
+
+. . .
+
+```{r}
+#| echo: true
+logit_fit <- glm(default ~ balance, data = Default, family = binomial)
+summ_logit_fit <- summary(logit_fit)
+summ_logit_fit$coefficients
+```
+
+- $\hat{\eta} = \text{logit}(\hat{\pi}) = \ln \left( \frac{\hat{\pi}}{1 - \hat{\pi}}\right) = -10.651 + 0.0055 \times \text{balance}$
+
+
+## $\eta$ vs. $x$
+- $\hat{\eta} = \text{logit}(\hat{\pi}) = \ln \left( \frac{\hat{\pi}}{1 - \hat{\pi}}\right) = -10.651 + 0.0055 \times \text{balance}$
+
+```{r}
+eta_hat <- predict(logit_fit, type = "link")  ## default gives us b0 + b1*x
+par(mar = c(4, 4, 0, 0))
+plot(sort(Default$balance), sort(eta_hat), type = "l", col = 4, lwd = 4,
+     xlab = "balance", ylab = expression(eta), cex.lab = 1.5)
+```
+
+
+## Interpretation of Coefficients
+The ratio $\frac{\pi}{1-\pi} \in (0, \infty)$ is called the **odds** of some event.
+
+
+- Example: If 1 in 5 people will default, the odds is 1/4 since $\pi = 0.2$ implies an odds of $0.2/(1−0.2) = 1/4$.
+
+
+
+$$\ln \left( \frac{\pi(x)}{1 - \pi(x)} \right)= \beta_0 + \beta_1x$$
+- Increasing $x$ by one unit changes the **log-odds** by $\beta_1$, or it multiplies the odds by $e^{\beta_1}$.
+
+
+
+::: alert
+- $\beta_1$ does *not* correspond to the change in $\pi(x)$ associated with a one-unit
+increase in $x$.
+- $\beta_1$ is the change in **log odds** associated with one-unit increase in $x$.
+:::
+
+
+## [R Lab]{.pink} Interpretation of Coefficients
+```{r}
+summ_logit_fit$coefficients
+```
+
+- $\hat{\eta} = \text{logit}(\hat{\pi}) = \ln \left( \frac{\hat{\pi}}{1 - \hat{\pi}}\right) = -10.651 + 0.0055 \times \text{balance}$
+
+. . .
+
+- $\hat{\eta}(x) = \hat{\beta}_0 + \hat{\beta}_1x$
+- $\hat{\eta}(x+1) = \hat{\beta}_0 + \hat{\beta}_1(x+1)$
+- $\hat{\eta}(x+1) - \hat{\eta}(x) = \hat{\beta}_1 = \ln(\text{odds}_{x+1}) - \ln(\text{odds}_{x})$
+- One-unit increase in `balance` increases the *log odds* of `default` by 0.0055 units.
+
+. . .
+
+- The **odds ratio**, $\widehat{OR} = \frac{\text{odds}_{x+1}}{\text{odds}_{x}} = e^{\hat{\beta}_1} = e^{0.0055} = 1.005515$.
+
+- The odds of `default` increases by 0.55% with additional one unit of credit card `balance`.
+
+
+
+
+## Probability Curve
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- The relationship between $\pi(x)$ and $x$ is not linear!
+$$\pi(x) = \frac{\exp(\beta_0+\beta_1 x)}{1+\exp(\beta_0+\beta_1 x)}$$
+- The amount that $\pi(x)$ changes due to a one-unit change in $x$ depends on the current value of $x$.
+- Regardless of the value of $x$, if $\beta_1 > 0$, increasing $x$ will be increasing $\pi(x)$.
+:::
+
+::: {.column width="50%"}
+
+```{r, ref.label="glm-default"}
+#| out-width: 100%
+```
+
+:::
+::::
+
+
+
+::: notes
+```{r echo=FALSE, out.width="100%", cache=TRUE}
+d <- tibble(eta = seq(-5, 5, length.out = 2000)) %>%
+    mutate(logistic = (1/(1+exp(-eta))))
+
+ggplot(d, aes(x = eta, y = logistic)) + 
+    geom_line() + 
+    xlim(-5,5) + 
+    xlab("x") + 
+    ylab(expression(pi)) +
+    labs(title = expression(paste(pi, " vs. x"))) +
+    theme_bw()
+```
+:::
+
+
+## Pr(default) When Balance is 2000
+
+$$\log\left(\frac{\hat{\pi}}{1-\hat{\pi}}\right) = -10.651+0.0055\times 2000$$
+<!-- $$\frac{\hat{\pi}}{1-\hat{\pi}} = \exp(0.3487) = 1.417 \rightarrow \hat{\pi} = 1.417 \times (1 - \hat{\pi})$$ -->
+<!-- $$\hat{\pi} = 1.417 - 1.417\hat{\pi} \rightarrow 2.417\hat{\pi} = 1.417$$ -->
+<!-- $$\hat{\pi} = 1.417 / 2.417 = 0.586$$ -->
+
+$$ \hat{\pi} = \frac{1}{1+\exp(-(-10.651+0.0055 \times 2000)} = 0.586$$
+
+. . .
+
+```{r}
+#| echo: true
+pi_hat <- predict(logit_fit, type = "response")
+eta_hat <- predict(logit_fit, type = "link")  ## default gives us b0 + b1*x
+predict(logit_fit, newdata = data.frame(balance = 2000), type = "response")
+```
+
+## Probability Curve
+
+::: question
+What is the probability of default when the balance is 500? What about balance 2500?
+:::
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{r}
+#| label: default-predict-viz
+#| out-width: 100%
+#| fig-asp: 0.7
+balance_0 <- Default$balance[Default$default == "No"]
+balance_1 <- Default$balance[Default$default == "Yes"]
+newdata <- data.frame(balance = sort(Default$balance))
+pi_hat <- predict(logit_fit, newdata = newdata, type = "response")
+
+par(mar = c(3, 4, 0, 0), mgp = c(2, 1, 0), las = 1)
+plot(sort(Default$balance), pi_hat, col = 4, xlab = "balance", cex.axis = 1.5,
+     ylab = "Probability of default", type = "l", lwd = 5, cex.lab = 1.5, cex = 2)
+points(balance_0, rep(0, length(balance_0)), pch = 3, cex = 0.3,
+       col = alpha("black", alpha = 0.5))
+points(balance_1, rep(1, length(balance_1)), pch = 3, cex = 0.3,
+       col = alpha("red", alpha = 0.5))
+abline(h = 0.5, lwd = 0.5, lty = 2)
+
+pi_new <- predict(logit_fit, newdata = data.frame(balance = c(500, 2000, 2500)), 
+                  type = "response")
+points(c(500, 2000, 2500), pi_new, pch = c(15, 16, 17), cex = 4,
+       col = c("#ffb3a3", "#d1bc26", "#18ad90"))
+```
+:::
+
+::: {.column width="35%"}
+- [`r paste0(500, " balance: Pr(default) = ", round(pi_new[1], 2))`]{.pink}
+- [`r paste0(2000, " balance, Pr(default) = ", round(pi_new[2], 2))`]{.yellow}
+- [`r paste0(2500, " balance, Pr(default) = ", round(pi_new[3], 2))`]{.green}
+:::
+::::
+
+
+## Multiple Logistic Regression Model
+
+For $i = 1, \dots, n$ and with $k$ predictors:
+  $$Y_i \mid \pi_i({\bf x}_i) \stackrel{indep}{\sim} \text{Bernoulli}(\pi_i), \quad {\bf x}_i' = (x_{i1}, \dots, x_{ik})$$
+  $$\text{logit}(\pi_i) = \ln \left( \frac{\pi_i}{1 - \pi_i} \right) = \eta_i = \beta_0+\beta_1 x_{i1} + \cdots + \beta_k x_{ik} = {\bf x}_i'\bbeta$$
+
+- The $\text{logit}(\pi_i)$ is a **link function** that *links* the linear predictor and the mean of $Y_i$.
+
+
+::: notes
+- with sample size $n$ and with $k$ predictors, we have the logistic regression model like this
+- First, we have a probability distribution **Bernoulli** describing how the outcome or response data are generated. 
+  - $Y_i \mid {\bf x}_i; \pi_i \sim \text{Bern}(p_i)$, ${\bf x}_i = (x_{1,i}, \cdots, x_{k,i})$, $i = 1, \dots, n$
+- Then we have a link function, logit function, that relates the linear regression to the parameter of the outcome distribution, which is the parameter $p$, the probability of success in the Bernoulli distribution.
+- $\text{logit}(\pi_i) = \eta_i = \beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i}$
+  
+:::
+
+
+. . .
+
+$$\small E(Y_i) = \pi_i = \frac{\exp(\eta_i)}{1 + \exp(\eta_i)} = \frac{\exp(\beta_0+\beta_1 x_{i1} + \cdots + \beta_k x_{ik})}{1+\exp(\beta_0+\beta_1 x_{i1} + \cdots + \beta_k x_{ik})} = \frac{\exp( {\bf x}_i'\bbeta)}{1 + \exp({\bf x}_i'\bbeta )}$$
+$$\small \hat{\pi}_i = \frac{\exp(\hat{\beta}_0+\hat{\beta}_1 x_{i1} + \cdots + \hat{\beta}_k x_{ik})}{1+\exp(\hat{\beta}_0+\hat{\beta}_1 x_{i1} + \cdots + \hat{\beta}_k x_{ik})}$$
+
+
+
+::: notes
+-  From which we get the probability of success derived by the logistic function
+$$E(y_i) = \pi_i = \frac{\exp(\beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i})}{1+\exp(\beta_0+\beta_1 x_{1,i} + \cdots + \beta_k x_{k,i})}$$
+or the predicted probability is the one that replaces $\beta$ with estimates $b$.
+$$\hat{\pi}_i = \frac{\exp(\hat{\beta}_0+\hat{\beta}_1 x_{1,i} + \cdots + \hat{\beta}_k x_{k,i})}{1+\exp(\hat{\beta}_0+\hat{\beta}_1 x_{1,i} + \cdots + \hat{\beta}_k x_{k,i})}$$
+
+In general, if $E(Y_i) = \mu_i$, $g(\mu_i) = \eta_i = {\bf x}_i'\bbeta$, $\mu_i= g^{-1}(\eta_i) = g^{-1}({\bf x}_i'\bbeta)$. Here $\mu_i = \pi_i$, $g(\cdot) = \text{logit}(\cdot)$.
+
+:::
+
+
+## [R Lab]{.pink} Multiple Logistic Regression
+```{r}
+#| echo: true
+multi_logit_fit <- glm(default ~ balance + I(income/1000), data = Default, 
+                       family = binomial)
+summ_multi_logit_fit <- summary(multi_logit_fit)
+summ_multi_logit_fit$coefficients
+```
+
+- $\hat{\eta} = \text{logit}(\hat{\pi}) = \ln \left( \frac{\hat{\pi}}{1 - \hat{\pi}}\right) = -11.54 + 0.0056 \times \text{balance} + 0.021 \times \text{income}$
+
+- One with a credit card balance of $1,500 and an income of $40,000 has an estimated probability of default of $$\hat{\pi} = \frac{1}{1+ \exp(-(-11.54 + 0.0056(1500) + 0.021(40)))} = 0.091$$
+
+
+::: question
+Why we multiply the `income` coefficient by 40, rather than 40,000?
+:::
+
+
+
+## Multiple Binary Outcomes 
+- So far we consider only **one** binary outcome for each combination of predictors.
+
+- Often we have **repeated** observations or trials at each level of the regressors.
+
+- Originally, at $X = x_i$, we have one single observation $y_i = 0$ or $1$. 
+
+- Now, at $X = x_i$, we have $m_i$ trials and $y_i$ of them are ones (successes).
+
+- Let $y_{i,j}$ be an indicator (Bernoulli) variable taking value $0$ or $1$ for the $j$-th trial at $x_i$.
+
+- $y_i = y_{i,1} + y_{i,2} + \cdots + y_{i, m_i} = \sum_{j=1}^{m_i} y_{i,j}$.
+
+
+
+## Bernoulli to binomial
+
+- Example:
+  + 4 dosages of a combination of drugs, $(10, 15, 20, 25)$
+  + 10 patients for each dosage
+  + see how dosage level affects the number of cure of some disease among patients
+  
+
+
+- $i = 1, 2, 3, 4$, $x_1 = 10, \dots, x_4 = 25$, $n = 4$
+- $m_i = 10$ for each $i$
+- $y_i = y_{i, 1} + \cdots + y_{i, 10}$ is the number of patients whose disease is cured at $i$-th dosage, where $y_{i, j} = 1$ if $j$-th patient is cured, $0$ otherwise.
+
+
+
+
+::: question
+What is our response and any distribution can be used to model that?
+:::
+
+
+::: notes
+- So far we consider only **one** binary outcome for each combination of predictors, and the response is Bernoulli distributed. 
+- Often we have more than one or **repeated** observations or trials at each level of the $x$ variables.
+- Originally, at $X = x_i$, we have one single observation $y_i = 0$ or $1$. Now, at $X = x_i$, we have $m_i$ trials and $s_i$ of them are ones (successes).
+  + Regressors are dosages of a combination of drugs and a success represents a cure of a disease.
+
+:::
+
+## Binomial Responses
+
+- The responses $Y_i \sim binomial(m_i, \pi_i)$.
+
+- Assume $Y_1, Y_2, \dots, Y_n$ are independent. ( $m_i$ trials, $y_{i, 1}, \dots, y_{i, m_i}$, are independent too by the definition of a binomial experiment )
+
+
+<br>
+
+
+| Number of trials | Number of successes | Regressors |
+|:-------:|:-------:|:-------:|
+| $m_1$ | $y_1$ | $x_{11}, x_{12}, \dots, x_{1k}$
+| $m_2$ | $y_2$ | $x_{21}, x_{22}, \dots, x_{2k}$
+| $\vdots$ | $\vdots$| $\vdots$
+| $m_n$ | $y_n$ | $x_{n1}, x_{n2}, \dots, x_{nk}$
+
+
+::: notes
+- $Pr(Y_i = y_i) = {m_i \choose y_i} \pi_i^{y_i} (1-\pi_i)^{m_i - y_i}$
+- $E[Y_i] = m_i\pi_i$
+- $\var[Y_i] = m_i\pi_i(1-\pi_i)$
+:::
+
+
+## [R Lab]{.pink} Strength of Fastener (LRA 13.3)
+
+- The compressive strength of an alloy fastener used in aircraft construction is being studied.
+
+- Ten loads were selected over the range 2500 – 4300 psi and a number of fasteners were tested at those loads.
+
+- The numbers of fasteners failing at each load were recorded. 
+
+```{r}
+#| echo: true
+fastener <- read.csv("./data/data-prob-13-3.csv")
+colnames(fastener) <- c("load", "m", "y")
+fastener
+```
+
+
+## [R Lab]{.pink} Binomial Response Logistic Regression
+
+
+```{r}
+#| echo: true
+binom_fit <- glm(cbind(y, m - y) ~ load,  #<<
+                 data = fastener, family = binomial)
+binom_summ <- summary(binom_fit)
+binom_summ$coef
+```
+
+$$\hat{\pi} = \frac{e^{-5.34 + 0.0015x}}{1 + e^{-5.34 + 0.0015x}}$$
+
+::: notes
+The complete test data are shown below.
+:::
+
+# Evaluation Metrics
+
+::: notes
+- OK we learn the logistic regression model, we know how to do estimation using R, and now it's time to introduce some evaluation metrics or performance measures for classification problems.
+- Given a predicted probability, we may correctly classify the label, or mis-classify the label.
+- And here we are going to talk about two metrics sensitivity and specificity.
+- It's hard for me to remember which is which, so I always open their Wiki page when I am working on them.
+- All right let's see what they are.
+:::
+
+
+
+
+## Sensitivity and Specificity
+
+
+|                        | 0               | 1            |
+|------------------------|-------------------------------|-------------------------------|
+| **Labeled 0** |  **True Negative  (TN)** | **False Negative (FN)**|
+| **Labeled 1**  |  **False Positive (FP)**|  **True Positive  (TP)**           | 
+
+<br>
+
+- **Sensitivity (True Positive Rate)** $= P( \text{Labeled 1} \mid \text{1}) = \frac{TP}{TP+FN}$
+
+- **Specificity (True Negative Rate)** $= P( \text{Labeled 0} \mid \text{0}) = \frac{TN}{FP+TN}$ 
+
+- **Accuracy** $= \frac{TP + TN}{TP+FN+FP+TN}$
+<!-- - **F1 score** $= \frac{2TP}{2TP+FP+FN}$ -->
+- More on [Wiki page](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+
+## [R Lab]{.pink} Confusion Matrix
+
+```{r}
+#| echo: true
+pred_prob <- predict(logit_fit, type = "response")
+table(pred_prob > 0.5, Default$default)
+```
+
+- Packages:
+  + [caret](https://topepo.github.io/caret/) package (**C**lassification **A**nd **RE**gression **T**raining)
+  + [yardstick](https://yardstick.tidymodels.org/index.html) of [tidymodels](https://www.tidymodels.org/)
+
+```{r}
+#| echo: true
+#| eval: false
+caret::confusionMatrix()
+yardstick::conf_mat()
+```
+
+
+::: notes
+- [caret](https://topepo.github.io/caret/) package (**C**lassification **A**nd **RE**gression **T**raining) provides tools for predictive modeling.
+
+```{r, echo=TRUE, eval=FALSE}
+## Classification And REgression Training
+library(caret) 
+caret::confusionMatrix(data = a factor of predicted classes, 
+                       reference = a factor of classes to be used as the true results)
+```
+
+- [yardstick](https://yardstick.tidymodels.org/index.html) is a package of [tidymodels](https://www.tidymodels.org/) for estimating how well models are working.
+
+```{r, echo=TRUE, eval=FALSE}
+yardstick::conf_mat(data = a data frame, 
+                    truth = true class column that is a factor,
+                    estimate = predicted class column that is a factor)
+```
+
+
+```{r, eval=FALSE}
+default_true <- 
+  as.factor(ifelse(Default$default == "Yes", 1, 0))
+default_predict <- 
+  as.factor((pred_prob > 0.5)*1)
+df <- data.frame(truth = default_true, estimate = default_predict)
+yardstick::conf_mat(data = df, truth = truth, estimate = estimate)
+```
+:::
+
+
+## [R Lab]{.pink} Receiver Operating Characteristic (ROC) Curve
+
+- **Receiver operating characteristic (ROC) curve** plots True Positive Rate (Sensitivity) vs. False Positive Rate (1 - Specificity)
+- Packages: [ROCR](http://ipa-tys.github.io/ROCR/), [pROC](https://web.expasy.org/pROC/), [yardstick::roc_curve()](https://yardstick.tidymodels.org/reference/roc_curve.html)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| fig-show: hide
+#| label: roc
+#| echo: true
+library(ROCR)
+
+# create an object of class prediction 
+pred <- ROCR::prediction(
+    predictions = pred_prob, 
+    labels = Default$default)
+
+# calculates the ROC curve
+roc <- ROCR::performance(
+    prediction.obj = pred, 
+    measure = "tpr",
+    x.measure = "fpr")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| out-width: 100%
+#| echo: !expr c(-1)
+par(mar = c(4, 4, 0, 4), mgp = c(2.5, 1, 0), las = 1)
+plot(roc, colorize = TRUE)
+```
+:::
+::::
+
+::: notes
+https://rviews.rstudio.com/2019/03/01/some-r-packages-for-roc-curves/
+.footnote[
+.small[
+<sup>+</sup>Originally developed for operators of military radar receivers, hence the name.
+]
+]
+:::
+
+
+
+## [R Lab]{.pink} Area Under Curve (AUC)
+Find the area under the curve:
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: true
+## object of class 'performance'
+auc <- ROCR::performance(
+    prediction.obj = pred, 
+    measure = "auc")
+auc@y.values
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| eval: true
+
+par(mar = c(4, 4, 0, 4), mgp = c(2.5, 1, 0), las = 1)
+plot(roc, colorize = TRUE, cex.lab = 1.5)
+```
+:::
+::::
+
+
+
+## [R Lab]{.pink} ROC Curve Comparison
+::: question
+Which model performs better?
+:::
+
+::: alert
+Remember! Compare the candidates using the test data.
+:::
+
+```{r}
+#| out-width: 62%
+#| warning: false
+library(tidymodels)
+library(tidyverse)
+library(openintro)
+# ====
+spam_obs <- email$spam
+logis_mdl <- parsnip::logistic_reg() %>%
+    set_engine("glm") 
+spam_fit <- logis_mdl %>%
+    fit(spam ~ num_char, 
+        data = email, 
+        family = "binomial")
+prob <- predict(spam_fit$fit, type = "response")
+spam_df <- tibble(truth = spam_obs, 
+                  pp = 1 - prob)
+# ====
+spam_fit_all <- logistic_reg() %>%
+    set_engine("glm") %>%
+    fit(spam ~ ., data = email, 
+        family = "binomial")
+prob_all <- predict(spam_fit_all$fit, type = "response")
+spam_df_all <- tibble(truth = spam_obs, pp = 1 - prob_all)
+
+spam_df_2 <- bind_rows(spam_df, spam_df_all)
+spam_df_2 <- mutate(spam_df_2, model = c(rep("model-1", nrow(spam_df)), rep("model-2", nrow(spam_df))))
+spam_df_2 %>% group_by(model) %>% roc_curve(truth, pp) %>% autoplot() + 
+  theme(axis.text=element_text(size=14),
+        axis.title.x=element_text(size=14),
+        axis.title.y=element_text(size=14),
+        legend.text = element_text(size=14),
+        legend.title = element_text(size=14))
+```
+
+
+::: notes
+```{r, eval=FALSE}
+pred_prob_multi <- predict(multi_logit_fit, type = "response")
+pred_prob_probit <- predict(probit_fit, type = "response")
+pred_prob_cloglog <- predict(cloglog_fit, type = "response")
+pred_multi <- ROCR::prediction(
+    predictions = pred_prob_multi, 
+    labels = Default$default)
+pred_probit <- ROCR::prediction(
+    predictions = pred_prob_probit, 
+    labels = Default$default)
+pred_cloglog <- ROCR::prediction(
+    predictions = pred_prob_cloglog, 
+    labels = Default$default)
+roc_multi <- ROCR::performance(
+    prediction.obj = pred_multi, 
+    measure = "tpr",
+    x.measure = "fpr")
+roc_probit <- ROCR::performance(
+    prediction.obj = pred_probit, 
+    measure = "tpr",
+    x.measure = "fpr")
+roc_cloglog <- ROCR::performance(
+    prediction.obj = pred_cloglog, 
+    measure = "tpr",
+    x.measure = "fpr")
+par(las = 1)
+plot(roc, col = 2)
+plot(roc_probit, col = 1, add = TRUE)
+plot(roc_cloglog, col = 4, add = TRUE)
+plot(roc_multi, col = 3, lty = 2, add = TRUE)
+```
+:::
+

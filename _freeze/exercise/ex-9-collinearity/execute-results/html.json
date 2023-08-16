@@ -1,0 +1,14 @@
+{
+  "hash": "8cd07ede794c7e0838e9a4e77571bbb0",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 9: Collinearity\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n\n## Collinearity\n\n<!-- ISL 3.14 -->\n\n1. Perform the code\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(1)\nx1 <- runif(100)\nx2 <- 0.5 * x1 + rnorm (100) / 10\ny <- 2 + 2 * x1 + 0.3 * x2 + rnorm (100)\n```\n:::\n\n\n\n  Write out the form of the linear model. What are the regression coefficients?\n\n\n2. Create a scatterplot displaying the relationship between `x1` and `x2`.\n\n\n3. Fit a least squares regression to the data using `x1` and `x2`. How the LSEs relate to the true $\\beta_0$, $\\beta_1$ and $\\beta_2$? Can you reject $H0 : \\beta_1 = 0$? How about $H0 : \\beta_2 = 0$?\n\n\n4. Fit a least squares regression using only `x1`. Comment on your results. Can you reject $H0 : \\beta_1 = 0$?\n\n\n5. Fit a least squares regression using only `x2`. Comment on your results. Can you reject $H0 : \\beta_2 = 0$?\n\n\n6. Do the results obtained in (3)–(5) contradict each other? Explain your answer.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,19 @@
+---
+title: "Exercise 4: Diagnostics"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Diagnostics
+
+<!-- ISL 3.15 -->
+
+
+
+

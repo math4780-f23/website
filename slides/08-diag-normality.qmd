@@ -1,0 +1,621 @@
+---
+title: "Regression Diagnostics: Normality `r emo::ji('book')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(MASS)
+library(car)
+knitr::opts_chunk$set(
+    fig.asp = 0.6,
+    fig.align = "center",
+    out.width = "70%",
+    fig.retina = 10,
+    fig.path = "./images/08-diag-normality/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 2
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+par(cex = 4)
+```
+
+
+```{r}
+#| echo: false
+delivery <- read.csv(file = "./data/data-ex-3-1.csv",
+                     header = TRUE)
+delivery_data <- delivery[, -1]
+colnames(delivery_data) <- c("time", "cases", "distance")
+delivery_lm <- lm(time ~ cases + distance, data = delivery_data)
+summ_delivery <- summary(delivery_lm)
+```
+
+
+
+
+## Assumptions of Linear Regression
+$Y_i= \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \dots + \beta_kX_{ik} + \epsilon_i$
+
+:::: {.columns}
+::: {.column width="50%"}
+- $E(Y \mid X)$ and $X$ are linearly related.
+- $\small E(\epsilon_i) = 0$
+- $\small \var(\epsilon_i) = \sigma^2$
+- $\small \cov(\epsilon_i, \epsilon_j) = 0$ for all $i \ne j$.
+- $\small \epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$ (for statistical inference)
+:::
+
+
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+knitr::include_graphics("./images/08-diag-normality/regression_line_sig.png")
+```
+:::
+::::
+
+
+::: notes
+<!-- - How's your exam? -->
+<!-- - We finished the discussion of SLR and MLR. Remember that our regression models are based on some assumptions. In fact these assumptions are quite restricted. -->
+- So it's not that uncommon to see violation of assumptions.
+- Today, we are going to learn how to check whether those assumptions are valid or satisfied.
+- And probably the following two weeks, if the assumptions are not satisfied, how do we deal with it. OK.
+:::
+
+. . .
+
+::: alert
+- If the assumptions are violated, a different sample could lead to a different conclusion!
+- $R^2$ tells us how good the model is fitted to the data, but says nothing about the correctness of the model.
+- All the inferences are based on the assumption that the model is correct.
+:::
+
+
+
+# Model Adequacy Checking and Correction
+
+<h2> <span style="color:red"> Non-normality</span></h2>
+<h2> Non-constant Error Variance </h2>
+<h2> Non-linearity and Lack of Fit </h2>
+
+::: notes
+
+- This week we are going to learn some methods to correct model inadequacy.
+- We can either transform our data, our use a more general method, called Generalized Least Squares or Weighted Least Squares.
+- $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$: **mean 0**, **constant variance**, **normally distributed**, and **uncorrelated**.
+- $E(\epsilon_i) =0$ implies the function form of the model (**linearity**) is correct.
+
+:::
+
+## Non-normality
+- The central limit theorem assures the validity of inferences based on the least-squares (LS) coefficients in all but small samples.
+
+. . .
+
+Without normality, 
+
+- **Heavier tailed** errors:
+  + LS estimators do not have the **smallest** variance among unbiased estimators.
+  + give rise to **outliers**.
+
+::: notes
+Gauss-Markov does not require normality.
+:::
+
+. . .
+
+- **Skewed** errors:
+  + tend to generate outliers in the direction of the skew.
+  + the conditional mean of $y$ given $x$ is not a good measure of center of a highly skewed distribution.
+
+. . .
+
+- **Multimodal** errors:
+  + suggest the omission of one or more categorical regressors.
+  
+  
+::: notes
+- $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$: **mean 0**, **constant variance**, **normally distributed**, and **uncorrelated**.
+- The form of the model (**linearity**) and the specification of the predictors are correct. 
+- Check model adequacy by residual plots and lack-of-fit tests.
+- Methods for building models when some of the assumptions are violated.
+  + data transformation
+  + generalized least squares (GLS) and weighted least squares (WLS)
+  
+:::
+
+
+## Detecting Nonnormality
+<!-- - Under normality, the R-student residuals $t_i$s have mean *zero* and *equal* variances. -->
+
+- The R-student residuals $t_i \sim t_{n-p-1}$ if the model assumptions are correct.
+
+- Compare the distribution of the $t_i$s to $t_{n-p-1}$ in QQ plot.
+
+::: notes
+- One way to address the assumption of normality is to compare the distribution of the R-student residuals to $t_{n-p-1}$ in QQ plot.
+:::
+
+. . .
+
+
+```{r}
+#| fig-asp: 0.2
+#| out-width: 100%
+par(mfrow = c(1, 5))
+par(mar = c(2, 2, 1, 1), mgp = c(1, 0.5, 0))
+normal_sample <- rnorm(1000)
+right_skewed_sample <- rgamma(1000, 2, 1 / 2)
+left_skewed_sample <- rbeta(1000, 8, 2)
+heavy_tail_sample <- rt(1000, df = 2)
+light_tail_sample <- runif(1000)
+qqnorm(normal_sample, pch = 16, main = "Normal", cex.lab = 0.6, cex.axis = 0.6)
+qqline(normal_sample, col = 2, lwd = 2)
+qqnorm(right_skewed_sample, pch = 16, main = "Right-skewed", cex.lab = 0.6, cex.axis = 0.6)
+qqline(right_skewed_sample, col = 2, lwd = 2)
+qqnorm(left_skewed_sample, pch = 16, main = "Left-skewed", cex.lab = 0.6, cex.axis = 0.6)
+qqline(left_skewed_sample, col = 2, lwd = 2)
+qqnorm(heavy_tail_sample, pch = 16, main = "Heavy-tailed", cex.lab = 0.6, cex.axis = 0.6)
+qqline(heavy_tail_sample, col = 2, lwd = 2)
+qqnorm(light_tail_sample, pch = 16, main = "Light-tailed", cex.lab = 0.6, cex.axis = 0.6)
+qqline(light_tail_sample, col = 2, lwd = 2)
+```
+
+
+
+## QQ plot of R-Student Residuals Comparing $t_{n-p-1}$
+
+```{r}
+#| echo: !expr c(-1)
+#| results: hide
+#| out-width: 70%
+par(mar = c(3, 3, 0, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 1))
+car::qqPlot(delivery_lm, id = TRUE, col.lines = "blue", 
+            reps = 1000, ylab = "Ordered R-Student Residuals", pch = 16)
+```
+
+::: notes
+- The `car` package calls the R-student residuals *studentized* residuals.
+- if put lm object, `car::qqPlot` automatically create qqplot for R-student residual comparing with $t_{n-p-1}$ distribution.
+- No severe problem in delivery data
+- id = controls point identification; if FALSE, no points are identified; can be a list of named arguments to the showLabels function; TRUE is equivalent to list(method="y", n=2, cex=1, col=carPalette()[1], location="lr"), which identifies the 2 points with the 2 points with the most extreme verical values — studentized residuals for the "lm" method.
+:::
+
+## Density plot of R-Student Residuals
+
+```{r}
+#| echo: !expr c(-1)
+#| out-width: 67%
+par(mar = c(3, 3, 2, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 1))
+rstud <- rstudent(delivery_lm)
+hist(rstud, prob = TRUE, breaks = 10, xlab = "R-Student Residuals", main = "")
+lines(density(rstud, adjust = 2), col = 4, lwd = 2)
+```
+
+
+::: notes
+- The QQ plot draws attention to the tail behavior of the R-student residuals but is less effective in visualizing their distribution as a whole.
+- Check histogram or smooth density plot of the R-student residuals to get the general shape of the distribution.
+- May be better to add another categorical regressor
+- car::densityPlot(rstud, adjust = 2, xlab = "R-Student Residuals")
+:::
+
+
+## Correcting Nonnormality
+
+- A response that is close to normal usually makes the assumption of normal errors more tenable.
+
+- *Heavier tailed* errors:
+  + Use robust regression (Chap 15 in LRA)
+
+- *Skewed* errors:
+  + Transform response data for symmetry
+  
+- *Multimodal* errors:
+  + Add one or more relevant categorical variables.
+
+
+::: alert
+Want the error or the response conditional on $x$s to be like normal after correction.
+:::
+
+
+## Transformation for Symmetry
+
+**Power transformation: $y \rightarrow y^{\lambda}$**
+
+  + make the distribution of $y$ more normal, *at least more symmetric*.
+  + $y$ can take on *positive* values only.
+  + $y \rightarrow \ln(y)$ for $\lambda = 0.$
+
+. . .
+
+**Ladder of powers and roots (Tukey, 1977)**:
+
+- No transformation: $\lambda = 1$
+- **Descending**: *spreads out the __small__ values of $y$ relative to the large values*.
+    + $\lambda = 1/2$ (square root); $\lambda = 0$ (natural log); $\lambda = -1$ (inverse) 
+- **Ascending**: *spreads out the __large__ values relative to the small values*.
+    + $\lambda = 2$ (square); $\lambda = 3$ (cube) 
+
+::: notes
+if $\lambda$ is descending from $1$ to $-1$, the fransformation increasingly spreads out the small values of $y$ relative to the large values.
+:::
+
+
+. . .
+
+::: alert
+The order of $y$ is *reversed* if $\lambda < 0$ is used for power transformation.
+:::
+
+
+## Correcting Skewness by Power Transformation
+```{r}
+#| echo: false
+#| include: false
+## Descending the ladder of powers to correct a right skew
+y <- c(1, 10, 100, 1000) ## gap between 2 numbers: 9, 90, 900
+log10(y) ## gap between 2 numbers becomes all 1, meaning symmetry
+
+# Ascending the ladder of powers to correct a left skew
+z <- c(1, 1.414, 1.732, 2) ## gap between 2 numbers: .414, .318, .268
+z ^ 2 ## gap between 2 numbers becomes all 1, meaning symmetry
+```
+
+```{r}
+#| out-width: 78%
+#| fig-asp: 0.3
+par(mar = c(3, 3, 2, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 2))
+r_skewed <- rgamma(10000, 3, 1)
+hist(r_skewed, probability = TRUE, main = expression(paste("right-skewed ", y)),
+     ylab = "", xlab = "")
+# arrows(14, 0.05, 6, 0.05, lwd = 2, col = 2)
+hist(sqrt(r_skewed), probability = TRUE, xlab = "", ylab = "",
+     main = expression(paste(sqrt(y), " ", (lambda == 1/2))))
+# arrows(14, 0.01, 6, 0.01, lwd = 2, col = 2)
+```
+
+
+```{r}
+#| out-width: 78%
+#| fig-asp: 0.3
+par(mar = c(3, 3, 2, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 2))
+l_skewed <- rbeta(10000, 6, 3)
+hist(l_skewed, probability = TRUE, main = expression(paste("left-skewed ", y)),
+     ylab = "", xlab = "", col = 4)
+# arrows(14, 0.05, 6, 0.05, lwd = 2, col = 2)
+hist(l_skewed^2, probability = TRUE, xlab = "", ylab = "", col = 4,
+     main = expression(paste(y ^ 2, " ", (lambda == 2))))
+# arrows(14, 0.01, 6, 0.01, lwd = 2, col = 2)
+```
+
+
+
+## Box-Cox Transformation on $y$
+
+
+  
+:::: {.columns}
+
+::: {.column width="35%"}
+
+A modified power transformation by [Box and Cox (1964)](https://www.nuffield.ox.ac.uk/users/cox/cox72.pdf):
+
+$$y^{(\lambda)} = \begin{cases}
+    \frac{y^{\lambda}-1}{\lambda},       & \quad \lambda \ne 0\\
+    \ln y,  & \quad \lambda = 0
+  \end{cases}$$
+  
+::: alert
+
+- For all $\lambda$, $y^{(\lambda)} = 1$ at $y = 1$.
+- The order of the transformed data $y^{(\lambda)}$ is the same as that of $y$, even for $\lambda < 0.$
+
+:::
+:::
+  
+
+
+::: {.column width="65%"}
+
+```{r}
+#| out-width: 100%
+n <- 500
+x <- seq(0.1, 3, length = n)
+x1 <- bcPower(x, 1)
+x0.5 <- bcPower(x, 0.5)
+x0 <- bcPower(x, 0)
+xm0.5 <- bcPower(x, -0.5)
+xm1 <- bcPower(x, -1)
+x2 <- bcPower(x, 2)
+x3 <- bcPower(x, 3)
+xlim <- range(c(x1, x0.5, x0, xm0.5, xm1, x2, x3))
+par(mar = c(2, 3, 3, 2), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 1))
+plot(range(x) + c(-0.6, 0.5), c(-5, 10), type = "n", xlab = "", ylab = "", 
+     las = 1)
+usr <- par("usr")
+text(usr[2], usr[3] - 1, label = "y", xpd = TRUE)
+# text(usr[1] - 0.2, usr[4] + 0.75, label = expression(t[BC](x, lambda)), 
+#      xpd = TRUE)
+text(usr[1] - 0.2, usr[4] + 0.75, label = expression(y^(lambda)), 
+     xpd = TRUE)
+lines(x, x1, lwd = 2)
+text(x[n] + 0.0625, x1[n], labels = expression(lambda == 1), adj = c(0, 0.2), cex = 2)
+lines(x, x2, lwd = 2, col = 2)
+text(x[n] + 0.0625, x2[n], labels = expression(lambda == 2), adj = c(0, 0.2), 
+     col = 2, cex = 2)
+lines(x, x3, lwd = 2, col = 3)
+text(x[n] + 0.0625, x3[n], labels = expression(lambda == 3), adj = c(0, 0.2),
+     col = 3, cex = 2)
+lines(x, x0.5, lwd = 2, col = 4)
+text(x[1] - 0.025, x0.5[1], labels = expression(lambda == 0.5), adj = c(1, 0.3),
+     col = 4, cex = 2)
+lines(x, x0, lwd = 2, col = 5)
+text(x[1] - 0.025, x0[1], labels = expression(lambda == 0), adj = c(1, 0.3),
+     col = 5, cex = 2)
+lines(x, xm0.5, lwd = 2, col = 6)
+text(x[1] - 0.025, xm0.5[1], labels = expression(lambda == -0.5), 
+     adj = c(1, 0.3), col = 6, cex = 2)
+lines(x = c(1, 1), y = c(usr[3], 0), lty = 2)
+lines(x = c(usr[1], 1), y = c(0, 0), lty = 2)
+```
+
+:::
+::::
+
+
+::: notes
+- The derivative w.r.t. $y$ of $y^{(\lambda)}$ at $y = 1$ is 1 for any $\lambda$.
+:::
+
+
+## Box-Cox Transformation on $y$: Choose $\lambda$ Analytically
+
+- The model to be fit is 
+$$y_i^{(\lambda)} = \beta_0 + \beta_1x_{i1}+ \cdots + \beta_kx_{ik} + \epsilon_i^*$$
+- Choose $\lambda$ so that the transformed errors $\epsilon_i^*$ look as nearly normally distributed as possible.
+
+
+
+## [R Lab]{.pink} CIA World Factbook Data
+
+- CIA World Facebook for 134 nations downloaded at <https://github.com/thewiremonkey/factbook.csv>
+
+```{r}
+CIA <- read.table("./data/CIA.txt", header = TRUE)
+```
+
+:::: {.columns}
+
+::: {.column width="55%"}
+```{r}
+#| class-output: my_class600
+head(CIA, n = 12)
+```
+:::
+
+::: {.column width="45%"}
+- `gdp`: GDP per capita in thousands of U.S. dollars
+- `infant`: Infant mortality rate per 1000 live births
+- `gini`: Gini coefficient for the distribution of family income
+- `health`: Health expenditures as a percentage of GDP
+:::
+::::
+
+
+## [R Lab]{.pink} R-Student Residuals
+
+- See how `gdp`, `health` and `gini` affect `infant`.
+- R-Student residuals are right-skewed, suggesting transforming the response, infant mortality, down the ladder of powers.
+
+```{r}
+#| fig-asp: 0.5
+#| out-width: 56%
+#| echo: !expr c(-1)
+par(mar = c(3, 3, 2, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 2))
+ciafit <- lm(infant ~ gdp + health + gini, data = CIA)
+r_stud <- rstudent(ciafit)
+car::qqPlot(ciafit, id = FALSE)
+car::densityPlot(r_stud)
+```
+
+
+## [R Lab]{.pink} Box-Cox Transformation
+
+```{r}
+#| echo: !expr c(-1)
+#| label: boxcox
+#| code-fold: true
+#| out-width: 70%
+par(mar = c(3, 3, 0, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 1))
+mat <- matrix(r_stud)
+for (lam in c(0.5, 0, -0.5, -1)) {
+    refit <- update(
+        ciafit, car::bcPower(infant, lam) ~ .
+        )
+    mat <- cbind(rstudent(refit), mat)
+}
+colnames(mat) <- c(-1, -0.5, "log", 0.5, 1)
+boxplot(
+    mat, id = FALSE, 
+    xlab = expression("Powers," ~ lambda),
+    ylab = expression(
+        "R-Student Residuals for " 
+        ~ Infant ^ (lambda))
+    )
+```
+
+
+## [R Lab]{.pink} Choose $\lambda$ Analytically
+```{r}
+#| echo: true
+summary(car::powerTransform(ciafit, family = "bcPower"))
+```
+
+- $\hat{\lambda} = -0.22$, and the $95\%$ CI for $\lambda$ is $[-0.37, -0.07]$.
+- $\lambda = 1$ not in the interval, providing support for transforming response.
+- $\lambda = 0$ (log transformation) is slightly outside the interval.
+
+
+::: notes
+`car::powerTransform()` uses the maximum likelihood-like approach to select a $\lambda$ estimate, $\hat{\lambda}$.
+:::
+
+## Other Issues
+- Apply power transformations to data with zero or negative values by adding a positive constant to the data to make all values positive.
+  + $\log(y + 10)$ if all $y > -10$.
+  
+. . .
+
+- Power transformations are effective when the ratio of the largest to smallest values is sufficiently large.
+  + If $y_{max}/y_{min} \approx 1$, power transformations are nearly linear.
+  + Increase the ratio by adding a negative constant, $(y_{max} - c)/(y_{min}-c)$
+
+. . .
+
+- If acceptable, choose log transformation for simple interpretation.
+
+```{r}
+#| echo: true
+logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA)
+coef(logciafit)
+```
+
+- All else held constant, for one unit increase of `gdp`, the infant mortality rate is expected to be decreased, on average, by `r round(1 - exp(-0.044), 3) * 100`% because $\exp(-0.044) = 0.957$.
+
+
+::: notes
+Hawkins and Weisberg (2017)
+- Skewed conditional distribution of $y$ is not a good measure of center.
+  + Create a model for conditional *median* of the response. (Quantile regression)
+- OLS regression of the original variable  is used to to estimate the expected arithmetic mean and OLS regression of the log transformed outcome variable is to estimated the expected geometric mean of the original variable.
+
+:::
+
+
+<!-- ## Other Issues {visibility="hidden"} -->
+
+<!-- - If acceptable, choose log transformation for simple interpratation. -->
+
+<!-- ```{r} -->
+<!-- logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA) -->
+<!-- coef(logciafit) -->
+<!-- ``` -->
+
+<!-- - All else held constant, for one unit increase of `gdp`, the infant mortality rate is expected to be decreased, on average, by `r round(1 - exp(-0.044), 3) * 100`% because $\exp(-0.044) = 0.957$. -->
+
+<!-- ??? -->
+<!-- https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqhow-do-i-interpret-a-regression-model-when-some-variables-are-log-transformed/ -->
+<!-- https://data.library.virginia.edu/interpreting-log-transformations-in-a-linear-model/ -->
+<!-- chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://kenbenoit.net/assets/courses/ME104/logmodels2.pdf -->
+
+<!-- https://medium.com/@kyawsawhtoon/log-transformation-purpose-and-interpretation-9444b4b049c9 -->
+
+<!-- https://sites.google.com/site/curtiskephart/ta/econ113/interpreting-beta -->
+
+<!-- https://stats.stackexchange.com/questions/18480/interpretation-of-log-transformed-predictor-and-or-response -->
+
+<!-- https://zief0002.github.io/book-8252/nonlinearity-log-transforming-the-predictor.html -->
+

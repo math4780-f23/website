@@ -1,0 +1,549 @@
+---
+title: "Regression Diagnostics - Linearity `r emo::ji('right')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(MASS)
+library(car)
+knitr::opts_chunk$set(
+    fig.asp = 0.6,
+    fig.align = "center",
+    out.width = "70%",
+    fig.retina = 10,
+    fig.path = "./images/10-diag-linearity/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+par(cex = 4)
+```
+
+
+```{r}
+#| echo: false
+CIA <- read.table("./data/CIA.txt", header = TRUE)
+ciafit <- lm(infant ~ gdp + health + gini, data = CIA)
+r_stud <- rstudent(ciafit)
+logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA)
+```
+
+
+
+# Model Adequacy Checking and Correction
+
+<h2> Non-normality</h2>
+<h2> Non-constant Error Variance</h2>
+<h2> <span style="color:red"> Non-linearity and Lack of Fit</span> </h2>
+
+
+
+## Assumptions of Linear Regression
+$Y_i= \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \dots + \beta_kX_{ik} + \epsilon_i$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- $E(Y \mid X)$ and $X$ are linearly related.
+- $\small E(\epsilon_i) = 0$
+- $\small \var(\epsilon_i) = \sigma^2$
+- $\small \cov(\epsilon_i, \epsilon_j) = 0$ for all $i \ne j$.
+- $\small \epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$ (for statistical inference)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+knitr::include_graphics("./images/10-diag-linearity/regression_line_sig.png")
+```
+:::
+::::
+
+
+::: alert
+- Assuming $E(\epsilon) = 0$ implies that the regression surface captures the dependency of the conditional mean of $y$ on the $x$s.
+- Violating linearity implies that the model fails to represent the relationship between the mean response and the regressors. (Lack of fit)
+:::
+
+
+
+## Detecting Nonlinearity (CIA Example)
+- Scatterplot $y$ against each $x$ can be *misleading*! It shows the **marginal** relationship between $y$ and each $x$, without controlling the level of other regressors.
+
+```{r}
+#| out-width: 70%
+par(mar = c(0, 0, 0, 0))
+pairs(CIA[, -5], las = 1, pch = 20, col = 4)
+```
+
+
+## Detecting Nonlinearity: Residual Plots
+- Care about the **partial** relationship between $y$ and each $x$ with impact of other $x$s controlled.
+
+- Residual-based plots are more relevant in detecting the departure of linearity.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="30%"}
+- Residual plots cannot distinguish between monotone and non-monotone nonlinearity.
+- The distinction:
+  + Monotone: just transform $x$ to $x^2$
+  + Non-monotone: need quadratic form
+:::
+
+::: {.column width="70%"}
+```{r}
+#| out-width: 100%
+par(mfcol = c(2, 2), mar = c(2, 2, 1.5, 0), mgp = c(2, 1, 0))
+set.seed(2468) # for reproducibility
+x <- runif(200)
+e <- rnorm(200, 0, 0.05)
+y1 <- x^2 + e
+y2 <- (x - 0.5)^2 + e
+
+plot(x, y1, axes = FALSE, frame = TRUE, xlab = "", ylab = "", cex.main = 1.5,
+     main = expression(paste("Monotone ", 
+                             y == beta[0] + beta[1], x^2 + epsilon)), pch = 20, col = 4)
+mtext("x", 1, line = 1, at = 0.95)
+mtext("y", 2, line = 1, at = 0.95, las = 1)
+m1 <- lm(y1 ~ x)
+abline(m1, lwd = 2, col = 2)
+
+plot(fitted(m1), residuals(m1), axes = FALSE, frame = TRUE, xlab = "", ylab = "", main = "Residual: Monotone", pch = 20, col = 4, cex.main = 1.5)
+mtext(expression(hat(y)), 1, line = 1, at = 0.75)
+mtext("e", 2, line = 1, at = 0.21, las = 1)
+abline(0, 0, lwd = 2, col = 2)
+
+plot(x, y2, axes = FALSE, frame = TRUE, xlab = "", ylab = "", cex.main = 1.5,
+     main = expression(paste("Non-monotone ", 
+                             y == beta[0] + beta[1], x + beta[2], x^2 + epsilon)), pch = 20, col = 4)
+mtext("x", 1, line = 1, at = 0.96)
+mtext("y", 2, line = 1, at = 0.28, las = 1)
+m2 <- lm(y2 ~ x)
+abline(m2, lwd = 2, col = 2)
+
+plot(fitted(m2), residuals(m2), axes = FALSE, frame = TRUE, xlab = "", ylab = "", main = "Residual: Non-monotone", pch = 20, col = 4, cex.main = 1.5)
+mtext(expression(hat(y)), 1, line = 1, at = 0.079)
+mtext("e", 2, line = 1, at = 0.21, las = 1)
+abline(0, 0, lwd = 2, col = 2)
+```
+:::
+::::
+
+
+::: notes
+- The OLS ensures that the residuals and fitted values are uncorrelated.
+:::
+
+
+## Detecting Nonlinearity: Partial Residual Plots
+
+- **Partial residual plots** (Component-plus-Residual Plot) are for diagnosing nonlinearity.
+
+- The partial residuals for $x_j$: $$e_i^{(j)} = b_jx_{ij} + e_i$$ 
+  + $b_j$ is the coefficient of $x_j$ in the full multiple regression
+  + $e_i$s are the residuals from the full multiple regression
+ 
+- Partial residual plot $e_i^{(j)}$ vs. $x_{ij}$ for $x_j$
+
+::: notes
+- The nonlinear pattern can be highlighted or emphasized 
+- Added-variable plots, for detecting influential data, are partial plots, but they don't work well for detecting nonlinearity because they are biased towards linearity
+- Cook (1993): if the regressions of x_j on the other xs are approximately linear, then the regression function in the crPlot provides a visualization of transformation.
+- If the regressions among the predictors are strongly nonlinear and not well described by polynomials, then cvPlot may not be effective in recovering nonlinear partial relationships. => Use CERES plots (ceresPlots())
+- And cvPlots can appear nonlinear even when the true partial regression is linear => called leakage.
+
+:::
+
+
+## [R Lab]{.pink} Partial Residual Plots
+```{r}
+#| echo: !expr c(-1)
+#| fig-asp: 0.45
+#| out-width: 100%
+#| code-line-numbers: false
+par(mar = c(2, 4, 0, 0), mgp = c(2, 1, 0), las = 1)
+logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA)
+# Component-plus-Residual Plot 
+car::crPlots(logciafit, ylab = "partial residual", layout = c(1, 3), grid = FALSE, main = "") 
+```
+
+## Transformation for Linearity
+
+- **Monotone, simple**: Power transformation on $x$ and/or $y$
+- **Monotone, not simple**: Polynomial regression (next week) or regression splines (MSSC 6250)
+- **Non-Monotone, simple**: Quadratic regression $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \epsilon$
+
+```{r}
+#| fig-asp: 0.4
+#| out-width: 100%
+x <- seq(0, 1, length=200)
+Ey <- rev(1 - x ^ 2)
+y <- Ey + 0.1 * rnorm(200)
+par(mar = c(2, 2, 1, 0), mgp = c(2, 0.8, 0), las = 1, mfrow = c(1, 3))
+plot(x, y, axes = FALSE, frame = TRUE, main = "Monotone, simple", 
+     cex.main = 1.5, xlab = "", ylab = "", col = "darkgray", cex = 0.75)
+lines(x, Ey, lwd = 2)
+mtext("x", side = 1, adj = 1)
+mtext("y ", side = 2, at = max(y), las = 1)
+
+x <- seq(0.02, 0.99, length = 200)
+Ey <- log(x/(1 - x))
+y <- Ey + 0.5 * rnorm(200)
+plot (x, y, axes = FALSE, frame = TRUE, main = "Monotone, not simple", 
+      cex.main = 1.5, xlab = "", ylab = "", col = "darkgray", cex = 0.75)
+lines(x, Ey, lwd = 2)
+mtext("x", side = 1, adj = 1)
+mtext("y ", side = 2, at = max(y), las = 1)
+
+x <- seq(0.2, 1, length = 200)
+Ey <- (x - 0.5)^2
+y <- Ey + 0.04 * rnorm(200)
+plot(x, y, axes = FALSE, frame = TRUE, main = "Non-monotone, simple", 
+     cex.main = 1.5, xlab = "", ylab = "", col = "darkgray", cex = 0.75)
+lines(x, Ey, lwd = 2)
+mtext("x", side = 1, adj = 1)
+mtext("y ", side = 2, at = max(y), las = 1)
+```
+
+
+
+::: notes
+- not simple: direction of curvature changes
+- Transform an $x$ rather than $y$, unless we see a common pattern of nonlinearity in the partial relationships of $y$ to many $x$s.
+- Transforming $y$ changes the shape of its relationship to **all** of the $x$s, and also changes the shape of the residual distribution.
+:::
+
+
+## Bulging Rule for Simple Monotone Nonlinearity
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+| The bulge points  | Transform  | Ladder of powers/roots  |
+|:---------------:|:-------------:|:------:|
+| **left**        | $x$           | **down**, e.g., $\log(x)$ |
+| **right**       | $x$           |  **up** |
+| **down**        | $y$           |   **down** |
+| **up**          | $y$           |   **up** |
+
+
+
+<!-- - **left**: transform $x$ **down** the ladder of powers and roots, e.g. $\log(x)$. -->
+
+<!-- - **right**: transform $x$ **up** the ladder, e.g. $x^2$. -->
+
+<!-- - **down**: transform $y$ **down** the ladder. -->
+
+<!-- - **up**: transform $y$ **up** the ladder. -->
+
+::: alert
+- Prefer to transform an $x$ rather than $y$, unless we see a common pattern of nonlinearity in the partial relationships of $y$ to many $x$s.
+:::
+
+
+:::
+
+
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+library(plotrix)
+library(sfsmisc)
+library(MASS)
+par(mar = c(4, 4, 4, 4), mfrow = c(1, 1))
+MASS::eqscplot(c(-.9, .9), c(-.9, .9), axes = FALSE, ann = FALSE, type = "n")
+points(0, 0, cex = 2, pch = 16)
+
+sfsmisc::p.arrows(0, 0, 0.9, 0, fill = "black")
+p.arrows(0, 0, -0.9, 0, fill = "black")
+p.arrows(0, 0, 0, 0.9, fill = "black")
+p.arrows(0, 0, 0, -0.9, fill = "black")
+
+plotrix::draw.arc(0, 0, radius = 0.8, lwd = 2, deg1 = 10, deg2 = 80, n = 500)
+draw.arc(0, 0, radius = 0.8, lwd = 2, deg1 = 100, deg2 = 170, n = 500)
+draw.arc(0, 0, radius = 0.8, lwd = 2, deg1 = 190, deg2 = 260, n = 500)
+draw.arc(0, 0, radius = 0.8, lwd = 2, deg1 = 280, deg2 = 350, n = 500)
+
+text(0.925, 0.075, labels = "x up:", xpd = TRUE, adj = 0, cex = 1.5)
+text(0.925, -0.075, labels = expression(paste(x^2, ",", x^3, ",", ldots)), 
+     xpd = TRUE, adj = 0, cex = 1.5)
+text(-0.925, 0.075, labels = "x down:", xpd = TRUE, adj = 1, cex = 1.5)
+text(-0.925, -0.075, labels = expression(paste(sqrt(x), ",", log(x), ",", ldots)), 
+     xpd = TRUE, adj = 1, cex = 1.5)
+text(0, 0.945, labels = "y up:", xpd = TRUE, adj = 0.5, cex = 1.5)
+text(0, 1.125, labels = expression(paste(y^2, ",", y^3, ",", ldots)),
+     xpd = TRUE, adj = 0.5, cex = 1.5)
+text(0, -0.945, labels = "y down:", xpd = TRUE, adj = 0.5, cex = 1.5)
+text(0, -1.125, labels = expression(paste(sqrt(y), ",", log(y), ",", ldots)), 
+     xpd = TRUE, adj = 0.5, cex = 1.5)
+
+z <- sqrt(0.64/2)
+p.arrows(z, z, z + 0.15, z + 0.15, fill = "black")
+p.arrows(z, -z, z + 0.15, -z - 0.15, fill = "black")
+p.arrows(-z, z, -z - 0.15, z + 0.15, fill = "black")
+p.arrows(-z, -z, -z - 0.15, -z - 0.15, fill = "black")
+```
+:::
+::::
+
+
+
+
+::: notes
+Mosteller and Tukey's (1977)
+- Transform an $x$ rather than $y$, unless we see a common pattern of nonlinearity in the partial relationships of $y$ to many $x$s.
+- Transforming $y$ changes the shape of its relationship to **all** of the $x$s, and also changes the shape of the residual distribution.
+:::
+
+
+
+## Transformation on $x$s
+
+- `gdp` to `log(gdp)`
+- `health` to `health + health^2`
+
+```{r}
+#| fig-asp: 0.45
+#| out-width: 100%
+par(mar = c(2, 4, 0, 0), mgp = c(2, 1, 0), las = 1)
+car::crPlots(logciafit, ylab = "partial residual", layout = c(1, 3), grid = FALSE, main = "") 
+```
+
+
+## [R Lab]{.pink} Partial Residual Plots
+
+::: midi
+```{r}
+#| fig-asp: 0.45
+#| out-width: 100%
+#| code-line-numbers: false
+#| echo: true
+logciafit2 <- update(logciafit, . ~ log(gdp) + poly(health, degree = 2, raw = TRUE) + gini)
+car::crPlots(logciafit2, ylab = "partial residual", layout = c(1, 3), grid = FALSE, main = "") 
+```
+:::
+
+::: notes
+if true, use raw and not orthogonal polynomials.
+- If the partial relationship of `log(infant)` to health expenditure is quadratic, its partial residual plot should be linear.
+:::
+
+## [R Lab]{.pink} Improving Model Performance
+```{r}
+#| echo: true
+car::brief(logciafit, digits = 2)
+car::brief(logciafit2, digits = 2)
+```
+
+
+## [R Lab]{.pink} Plotting against Original Untransformed $x$
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+library(effects)
+par(mar = c(2, 2, 0, 0))
+plot(Effect("gdp", logciafit2, residuals = TRUE), 
+     lines = list(col = c("blue", "black"), lty = 2), 
+     axes = list(grid = TRUE), confint = FALSE, 
+     partial.residuals = list(plot = TRUE, smooth.col = "magenta", 
+                              lty = 1, 
+                              span = 3/4), 
+     xlab = "GDP per Capita", ylab = "Partial Residual", main = "", cex.lab = 2)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+par(mar = c(2, 2, 0, 0))
+plot(Effect("health", logciafit2, residuals = TRUE), 
+     lines = list(col = c("blue", "black"), lty = 2), 
+     axes = list(grid = TRUE), confint = FALSE, 
+     partial.residuals = list(plot = TRUE, smooth.col = "magenta", 
+                              lty = 1, 
+                              span = 3/4),
+     xlab = "Health Expenditures", ylab = "Partial Residual", main = "", cex.lab = 2)
+```
+:::
+::::
+
+
+::: notes
+- plot(Effect("gdp", logciafit2, residuals = TRUE))
+- $\epsilon^{(1)}_i = f_1(x_{i1}) + e_i$ either if the partial-regression function $f_1(x_1)$ is linear after all or if the other $x$s are each linearly related to $x_1$.
+
+- In practice, it's only strongly nonlinearly related $x$s that seriously threaten the validity of component-plus-residuals plots.
+
+- Correlation between x1 and x2 can induce spurious nonlinearity in the CR plot for x1.
+
+- trying to correct nonlinearity for one x at a time, but in my experience, it's rarely necessary to proceed sequentially.
+:::
+
+
+## Transforming $x$s Analytically: Box and Tidwell (1962)
+
+- Box and Tidwell (1962) proposed a procedure for estimating $\lambda_1, \lambda_2, \dots, \lambda_k$ in the model
+$$y = \beta_0 + \beta_1x_1^{\lambda_1} + \cdots + \beta_kx_k^{\lambda_k}+ \epsilon$$
+
+- All $x_j$s are positive.
+
+- $\beta_0, \beta_1, \dots,  \beta_k$ are estimated *after and conditional on* the transformations.
+
+- $x_j^{\lambda_j} = \log_e(x_j)$ if $\lambda_j = 0$.
+
+
+
+::: notes
+- If some of the xs (for instance, dummy regressors) aren't candidates for transformation, then these xs can simply enter the model linearly.
+- all positive xs
+:::
+
+
+## [R Lab]{.pink} Box and Tidwell (1962)
+
+Consider the model $$\log(Infant) = \beta_0 + \beta_1 GDP^{\lambda_1} + \beta_2Gini^{\lambda_2} + \beta_3 Health + \beta_4 Health ^ 2 + \epsilon$$
+
+```{r}
+#| echo: true
+#| output.lines: !expr c(1:5)
+car::boxTidwell(log(infant) ~ gdp + gini, 
+                other.x = ~poly(health, 2, raw = TRUE), data = CIA)
+```
+
+- The point estimate of $\lambda$ is $\hat{\lambda}_1 = 0.2$ and $\hat{\lambda}_2 = -0.5$
+
+- The test is for $H_0:$ No transformation is needed $(\lambda = 1)$.
+  + Strong evidence to transform $GDP$
+  + Little evidence of the need to transform the Gini coefficient
+  
+
+## Other Methods for Dealing with Nonlinearity
+
+- Lack-of-fit test (LRA Sec 4.5, CMR Sec. 3.6): Need repeated observations
+
+. . .
+
+- Transform a nonlinear function into a linear one (LRA Sec 5.3)
+
+::: question
+Can the nonlinear model $y = \beta_0e^{\beta_1x}\epsilon$ be transformed into a linear one (**intrinsically linear**)?
+:::
+
+. . .
+
+- Polynomial Regression, Regression Splines or other nonparametric regression (MSSC 6250)
+
+. . .
+
+- A (pure) nonlinear model may be needed if the model assumptions cannot be satisfied.
+
+
+

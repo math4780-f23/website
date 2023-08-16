@@ -1,0 +1,1109 @@
+---
+title: "Collinearity"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bLambda{\boldsymbol \Lambda}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+library(car)
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "./images/14-colliearity/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 2
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+
+
+# Collinearity
+<h2> Meaning </h2>
+<h2> Sources </h2>
+<h2> Effects </h2>
+<h2> Diagnostics </h2>
+<h2> Solutions </h2>
+
+## What is Collinearity
+
+- **Collinearity** refers to the situation in which **two or more predictors are closely related to one another**.
+- `limit` and `age` appear to have no obvious relationship, which is good!
+- `limit` and `rating` are highly correlated, and they are said to be *collinear*.
+
+
+
+```{r}
+#| out-width: 65%
+#| fig-asp: 0.5
+par(mfrow = c(1, 2), mar = c(3, 3.5, 0, 1), mgp = c(2, 1, 0))
+plot(Credit$Limit, Credit$Age, xlab = "Credit Limit (x1)", ylab = "Age (x2)",
+     pch = 16, col = 4, cex = 1, cex.axis = 0.8, cex.lab = 1.5)
+plot(Credit$Limit, Credit$Rating, xlab = "Credit Limit (x1)", 
+     ylab = "Credit Rating (x3)", pch = 16, col = 4, cex = 0.5,
+     cex.axis = 1, cex.lab = 1.5)
+```
+
+
+::: notes
+- Collinearity is a fundamental problem with the data rather than model specification.
+- There is usually no satisfactory solution for a true collinearity problem.
+- Collinearity means some regressors in your model are highly correlated.
+- We want to have regressors that are **NOT _moving with each other_**.
+- Ideally we desire to have **orthogonal** regressors.
+- The intuition is, we hope predictors can explain the variation of $y$, right? That's why we put these predictors in the model.
+- And ideally we hope each predictor can explain a part of variation of $y$ that can only be explained by that predictor and cannot be explained by any other predictors.
+- This kind of partition can be done if all the predictors are orthogonal.
+- If x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of $y$.
+- Think about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.
+- So we actually use two predictors to explain the same variation of $y$, which is redundant. 
+- The model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.
+- Later, we'll see why we don't want the predictors to be correlated. 
+- There are lots of bad effects on our regression model.
+:::
+
+
+## Sources of Collinearity
+Four primary sources
+
++ The data collection method employed
++ Constraints on the model or in the population
++ Model specification
++ A model with $p>n$
+
+
+::: notes
+- Let's see what causes Collinearity. Here are 4 sources of Collinearity.
++ The data collection method employed: the way we collect our data may cause the predictors to be moving together. We need to be more careful, and see if we can collect our data in another way, so that the correlation between predictors can be alleviated or weakened.
++ Constraints on the model or in the population: If two predictors are correlated in nature, then it is unavoidable to have Collinearity, and if we want to keep the two predictors in our model, we should consider other methods other than OLS.
++ Model specification: Polynomial regression.
++ A $p>n$ model
+:::
+
+## Data Collection
+
+- Collinearity occurs when only a subspace of the entire sample space has been explored.
+- May be able to reduce this collinearity through the sampling technique used. 
+- *There is no physical reason why you can't sample in that area*.
+
+```{r}
+#| out-width: 55%
+par(mfrow = c(1, 1))
+delivery <- read.csv(file = "./data/data-ex-3-1.csv", header = TRUE)
+delivery_data <- delivery[, -1]
+colnames(delivery_data) <- c("time", "cases", "distance")
+par(mar = c(3, 3.5, 0, 0), mgp = c(2, 0.5, 0), las = 1)
+plot(delivery_data$cases, delivery_data$distance, pch = 16, col = 4, 
+     xlab = "cases (x1)", ylab = "distance (x2)", cex = 2, cex.lab = 1.5)
+text(20, 200, "Get data here!", col = 2, cex = 2)
+text(10, 1200, "Get data here!", col = 2, cex = 2)
+```
+
+
+## Constraints
+- Physical constraints are present, and the collinearity will exist regardless of collection method.
+
+
+```{r}
+#| out-width: 65%
+set.seed(1234)
+size <- seq(1000, 5000, length = 100)
+income <- 10000 + 15 * jitter(size) + rnorm(100, sd = 14000)
+par(mar = c(4, 5, 0, 0), mgp = c(3, 0.5, 0), las = 1)
+plot(size, income, xlab = "House size (sqaure feet)", ylab = "Family income ($)",
+     pch = 16, col = 4, ylim = c(5000, 120000), cex = 2, cex.lab = 1.5)
+text(4000, 10000, "No data here!", col = 2, cex = 2)
+text(1500, 90000, "No data here!", col = 2, cex = 2)
+```
+
+
+## Model Specification
+- Polynomial terms can cause ill-conditioning in ${\bf X'X}$.
+- As the order of the model increases, ${\bf X'X}$ matrix inversion will become inaccurate, and error can be introduced into the parameter estimates.
+- If range on a regressor variable is small, adding an $x^2$ term can result in significant collinearity.
+
+
+::: notes
+$x$ and $x^2$ are highly (linearly correlated)
+- Polynomial terms can cause ill-conditioning (a sign of Collinearity) in the $({\bf X'X})$ matrix.
+- As the order of the model increases, $({\bf X'X})$ matrix inversion will become more inaccurate, and error can be introduced into the parameter estimates
+- If range on a regressor variable is small, adding $x^2$ term can result in significant Collinearity.
+:::
+
+
+## $p>n$ Model
+- More regressor variables than observations.
+- The best way to counter this is to remove/reconstruct regressor variables.
+  + Principal Component Regression
+  + Variable Selection (Next Topic)
+
+
+## Effect of Collinearity
+
+1. `r emo::ji('point_right')` **Large variances and covariances** for the LSE $b_j$s.
+
+
+<!-- $$({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$$  -->
+
+2. `r emo::ji('point_right')` Tends to produce LSE $b_j$ that are **too large in absolute value**. Therefore, the vector ${\bf b}$, on average, is much longer than the vector $\bbeta$.
+
+::: alert
+- Large variances and large magnitude of coefficients lead to **instable** and **wrong signed** coefficients.
+- Poor coefficients do not necessarily imply bad fit or poor prediction. 
+- The predictions should be confined to the $x$ space where the collinearity holds approximately.
+- Collinearity causes very poor *extrapolated* prediction.
+:::
+
+
+
+
+::: notes
+- The squared distance from ${\bf b}$ to $\bsbeta$ is $D^2 = \sum_{j=1}^k(b_j - \beta_j)^2$.
+- The *expected* squared distance is $$E(D^2) = E\left(\sum_{j=1}^k(b_j - \beta_j)^2 \right) = \sum_{j=1}^kE\left[(b_j - \beta_j)^2\right] = \sum_{j=1}^k\var(b_j) = \sigma^2 \mathrm{tr}\left[({\bf X'X})^{-1}\right]$$
+- Strong Collinearity between $x$'s results in 
+- the trace of a matrix (Tr) is the sum of the diagonal elements.
+:::
+
+
+
+## Perfectly Correlated Regressors
+
+- Suppose the true population regression equation is $y = 3 + 4x$.
+
+- Suppose we try estimating that equation using perfected correlated variables $x$ and $z = x/10$.
+
+$$
+\begin{aligned}\hat{y}&= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2z\\
+&= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2\frac{x}{10}\\
+&= \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x
+\end{aligned}
+$$
+<!-- $$\hat{y} = \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x$$ -->
+
+. . .
+
+-   We can set $\hat{\beta}_1$ and $\hat{\beta}_2$ to any two numbers such that $\hat{\beta}_1 + \frac{\hat{\beta}_2}{10} = 4$.
+
+-   We are unable to choose the "best" combination of $\hat{\beta}_1$ and $\hat{\beta}_2$.
+
+
+::: notes
+- Collinearity is a fundamental problem with the data rather than model specification.
+- There is usually no satisfactory solution for a true collinearity problem.
+- Collinearity means some regressors in your model are highly correlated.
+- We want to have regressors that are **NOT _moving with each other_**.
+- Ideally we desire to have **orthogonal** regressors.
+- The intuition is, we hope predictors can explain the variation of $y$, right? That's why we put these predictors in the model.
+- And ideally we hope each predictor can explain a part of variation of $y$ that can only be explained by that predictor and cannot be explained by any other predictors.
+- This kind of partition can be done if all the predictors are orthogonal.
+- If x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of $y$.
+- Think about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.
+- So we actually use two predictors to explain the same variation of $y$, which is redundant. 
+- The model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.
+- Later, we'll see why we don't want the predictors to be correlated. 
+- There are lots of bad effects on our regression model.
+:::
+
+
+## Collinearity Diagnostics
+
+Ideal characteristics of a collinearity diagnostic: 
+
++ Correctly indicate if collinearity is present
++ How severe the problem is
++ Provide insight as to which regressors are causing the problem
+
+
+## Examination of the Correlation Matrix of $x$s
+
+
+- After *unit length scaling*, ${\bf X'X} = \left[r_{ij}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^1] For example,
+$${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$
+
+
+- $r_{ij}$ is the **pairwise** correlation between $x_i$ and $x_j$.
+- Large $|r_{ij}|$ is an indication of collinearity.
+- When **more than two** regressors are involved in collinearity, there may be instances when *collinearity is present, but the pairwise correlations are not large.*
+- Inspecting $r_{ij}$ is not sufficient for detecting more complex collinearity.
+
+
+
+[^1]: The term *correlation* is a bit of misnomer. The regressors are not random variables. The correlation coefficient $r_{ij}$ does measure linear dependency between *$x_i$ and $x_j$ in the data*.
+
+
+
+
+::: notes
+After unit length scaling, ${\bf X'X}$ is the correlation matrix of regressors.
+- If we scale and center the regressors, we have the correlation matrix. $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$
+- The off diagonal elements of the centered and scaled  ${\bf X'X}$ matrix are the **pairwise** correlations between $x_i$ and $x_j$, denoted as $r_{ij}$. For example, $r_{12} = 0.992$.
+- If $|r_{ij}| \approx 1$, there is an indication of Collinearity. But, the opposite does not always hold.
+- When there are *more than two regressors*, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4)
+- Inspection of the $r_{ij}$ is not sufficient for detecting anything more complex than *pairwise* Collinearity.
+:::
+
+
+## Variance Inflation Factors
+<!-- - $\small ({\bf X}_1'{\bf X}_1)^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ $\quad \small ({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$ -->
+- The diagonals of ${\bf \Sigma}^{-1} = {\bf C}$ in correlation form are called **variance inflation factors**
+$$\text{VIF}_j = {\bf C}_{jj}$$ 
+
+- Example:
+$${\bf \Sigma} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}; \quad {\bf \Sigma}^{-1} = \begin{bmatrix} 62.8 & -62.2 \\ -62.2 & 62.8 \end{bmatrix}$$ and $\text{VIF}_1 = 62.8$.
+
+::: alert
+- The collinearity produces an inflation in the variances of the estimated coefficients, an increase in *60-fold* over the *ideal case* when the two regressors are orthogonal.
+- VIFs $> 10$ are considered significant.
+:::
+
+
+## Variance Inflation Factors
+
+$$\text{VIF}_j = \frac{1}{1 - R^2_{X_j | X_{-j}}}$$ 
+where $R^2_{X_j | X_{-j}}$ is the coefficient of determination obtained when $x_j$ is regressed on the other regressors $x_i, i \ne j$. 
+
+$$\var(b_j) = \frac{s^2}{\sum_{i=1}^n(x_{ij} - \bar{x}_j)^2} \times \text{VIF}_j$$
+
+- $\text{VIF}_j$ measures the **combined** effect of the dependencies among the regressors on the variance of $b_j$.
+
+- If $x_j$ is *near linearly dependent* on some subset of the remaining regressors, ${\bf C}_{jj}$ is large.
+
+::: question
+Remember what does linear (in)dependence mean?
+:::
+
+::: notes
+$$\text{VIF}_j = {\bf C}_{jj} = \frac{1}{1 - R^2_j}$$ 
+  + $R_j^2$: the coefficient of determination obtained when $x_j$ is regressed on the remaining regressors $x_i, i \ne j$.
+- If $x_j$ can be explained a lot from other regressors, $x_j$ is probably unnecessary in the regression model when all others are in the model. When it is in the model, the model cannot understand what the real effect the predictor can provide, and therefore its coefficient has a large variance.
+- The regressors that have high VIFs probably have poorly estimated coefficients.
+- The Collinearity produces an inflation in the variances of the estimated coefficients, an increase in *60-fold* over the *ideal case* when the two regressors are orthogonal.
+- Since the variance of the j th regression coefficients is C jj σ 2 , we can view C jj as the factor by which the variance of ˆβj is increased due to near - linear dependences among the regressors.
+
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Data
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: !expr c(2)
+#| class-output: my_class600
+manpower <- read.csv(file = "./data/manpower.csv", 
+                     header = TRUE)
+manpower
+```
+:::
+
+
+::: {.column width="50%"}
+
+$y$: Monthly man-hours
+
+<br>
+
+$x_1$: Average daily patient load
+
+<br>
+
+$x_2$: Monthly X-ray exposures
+
+<br>
+
+$x_3$: Monthly occupied bed days
+
+<br>
+
+$x_4$: Eligible population in the area / 1000
+
+<br>
+
+$x_5$: Average length of patients' stay in days
+:::
+::::
+
+::: question
+Do you expect to see positive or negative relationship between $y$ and $x_i$?
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Pairwise Dependence
+```{r}
+#| out-width: 80%
+par(mar = c(0, 0, 0, 0), mgp = c(1, 0.5, 0), las = 1)
+pairs(manpower)
+```
+
+
+## [R Lab]{.pink} Hospital Manpower - Model Fit
+
+```{r}
+#| echo: true
+#| output.lines: !expr c(10:16, 20, 21)
+lm_full <- lm(y ~ ., data = manpower)
+(summ_full <- summary(lm_full))
+```
+
+::: question
+Excellent fit. But any issues of the this fitted result?
+:::
+
+. . .
+
+- The coefficients $b_1$, $b_4$ and $b_5$ are **negative.**
+- In the case of $x_1$, an increase in patient load, when other $x$'s are held constant, corresponds to a decrease in hospital manpower. (**wrong sign** due to large variance)
+
+
+::: notes
+- Even though the regression model fits the data quite well, the rather curious signs on the regression coefficients may be the result of the effect of Collinearity.
+:::
+
+
+
+## [R Lab]{.pink} Hospital Manpower - VIF
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+X <- manpower[, -1]
+(Sig <- cor(X))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+(C <- solve(Sig))
+## VIF 
+diag(C)
+```
+:::
+::::
+
+. . .
+
+```{r}
+#| echo: true
+## put the fitted model in vif()
+(vif_all <- car::vif(lm_full))
+```
+
+$x_1$ `Average daily patient load` and $x_3$ `Monthly occupied bed days` are highly correlated.
+
+
+## [R Lab]{.pink} Hospital Manpower - Confidence Interval
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0), las = 1)
+plot(manpower$x1, manpower$x3, xlab = "x1", ylab = "x3",
+     las = 1, pch = 16, col = 4, cex = 2, cex.lab = 2)
+```
+- Marginally, $b_1$ and $b_3$ vary a lot. The CI for $\beta_1$ and CI for $\beta_3$ both contain zero.
+```{r}
+confint(lm_full)[c(2, 4), ]
+```
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| out-width: 100%
+
+par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0), las = 1)
+confidenceEllipse(lm_full, which.coef = c(2, 4), col="black",
+                  fill=TRUE, 
+                  center.cex=2,
+                  levels=c(0.8, 0.95), fill.alpha=0.1,
+                  xlab=expression(beta[1]), 
+                  ylab=expression(beta[3]), 
+                  las=1, segments=1000, cex.lab = 2)
+abline(h = 0, v = 0)
+points(0, 0, pch = 15, cex = 2, col = 2)
+```
+- But very confident that $\beta_1$ and $\beta_3$ cannot be both zero.
+:::
+:::
+::::
+
+
+
+
+::: notes
+- The model is quite not sure how much $x_1$ and $x_3$ affect $y$.
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Confidence Interval
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0), las = 1)
+plot(manpower$x4, manpower$x5, xlab = "x4", ylab = "x5",
+     las = 1, pch = 16, col = 4, cex = 2, cex.lab = 2)
+```
+:::
+
+
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+
+par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0), las = 1)
+confidenceEllipse(lm_full, which.coef = c(5, 6), col="black",
+                  fill=TRUE, 
+                  center.cex=2,
+                  levels=c(0.8, 0.95), fill.alpha=0.1,
+                  xlab=expression(beta[4]), 
+                  ylab=expression(beta[5]), 
+                  las=1, segments=1000, cex.lab = 2)
+abline(h = 0, v = 0)
+points(0, 0, pch = 15, cex = 2, col = 2)
+```
+:::
+::::
+
+- $x_4$ and $x_5$ are not highly correlated pairwisely. $r_{45} = 0.46$.
+- However, their CI is still inflated due to the collinearity effect of *other* variables.
+```{r}
+confint(lm_full)[c(5, 6), ]
+```
+
+
+::: notes
+Don't just look at the pairwise correlation
+:::
+
+
+
+## Eigensystem Analysis: Condition Indices
+- The eigenvalues of ${\bf \Sigma}$ (the correlation matrix of $\bf X$), $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure collinearity.  
+- If there are one or more near-linear dependencies, one or more of the $\lambda_i$s will be (relatively) *small*.
+<!-- - **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$.  -->
+<!-- - $\kappa > 100$ implies collinearity. -->
+<!-- - $\kappa$ does not tell us *how many* regressors are involved. -->
+- **Condition indices** of ${\bf \Sigma}$ are $\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}$. 
+- The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf \Sigma}.$
+
+
+::: notes
+- The eigenvalues of ${\bf X'X}$, $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure Collinearity.  
+- If there are one or more near-linear dependencies in the data, one or more of the $\lambda_i$s will be small.
+- **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$. 
+- $\kappa > 100$ implies Collinearity.
+- $\kappa$ does not tell us *how many* regressors are involved.
+- **Condition indices** of ${\bf X'X}$ is $\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}$. 
+- The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf X'X}.$
+:::
+
+## [R Lab]{.pink} Hospital Manpower - Eigensystem Analysis
+```{r}
+#| echo: true
+eigen_Sig <- eigen(Sig)
+## eigenvalues
+(lambda <- eigen_Sig$values)
+## Conditional indices
+max(lambda) / lambda
+```
+
+- $\lambda_5 \approx 0$ and $\kappa_5 \approx 77770$, indicating collinearity.
+
+::: alert
+Eigenvalues are listed in a decreasing order, $\lambda_1 > \lambda_2 > \cdots > \lambda_k$, and $\lambda_5$ is *not* the eigenvalue of $x_5$.
+:::
+
+
+::: notes
+```{r}
+## eigenvectors
+(V <- eigen_Sig$vectors)
+## length of eigenvectors is 1
+apply(V, 2, function(x) sum(x^2))
+```
+There is one near linear dependency.
+:::
+
+
+## Eigensystem Analysis: Eigendecomposition
+
+- Eigendecomposition $${\bf \Sigma = V\bLambda V'}$$
+  + $\bLambda$ is a $k \times k$ diagonal matrix whose elements are $\lambda_j$.
+  + ${\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_k]$ is a $k \times k$ orthogonal matrix whose columns are the eigenvectors of ${\bf \Sigma}$.
+- If $\lambda_j \approx 0$, the associated ${\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'$ describes how (and what) regressors are linearly dependent:
+$$\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}$$
+
+<!-- - $\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}$: The "weights" $c_i$ are the individual elements in the ${\bf v}_j$. -->
+
+::: notes
+- If $\lambda_j \approx 0$, the associated ${\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'$ describes the nature of this linear dependence.
+- $\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}$: The "weights" $c_i$ are the individual elements in the ${\bf v}_j$.
+:::
+
+## [R Lab]{.pink} Hospital Manpower - Eigensystem Analysis
+
+```{r}
+unit_length_scale <- function(x, center = TRUE) {
+    if (length(unique(x)) == 1) {
+        x / sqrt(sum(x^2))
+    } else{
+        if (center) {
+            (x - mean(x)) / sqrt(sum( (x - mean(x)) ^ 2))
+        } else{
+            x / sqrt(sum(x^2))
+        }
+    }
+}
+```
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{r}
+#| echo: true
+
+## eigenvector matrix
+(V <- eigen_Sig$vectors)
+```
+- ${\bf X}{\bf v}_5 = \sum_{i=1}^5v_{i5}{\bf x}_i \approx {\bf 0}$.
+- $0.720 {\bf x}_1 + 0.001 {\bf x}_2 - 0.694 {\bf x}_3 - 0.023 {\bf x}_4 - 0.007 {\bf x}_5 \approx {\bf 0}$
+- Highly correlated $x_1$ and $x_3$ causes collinearity.
+
+```{r}
+#| echo: false
+#| code-fold: true
+unit_len_scale <- function(x, center = TRUE) {
+    if (length(unique(x)) == 1) {
+        x / sqrt(sum(x^2))
+    } else{
+        if (center) {
+            (x - mean(x)) / sqrt(sum( (x - mean(x)) ^ 2))
+        } else{
+            x / sqrt(sum(x^2))
+        }
+    }
+}
+
+```
+:::
+
+::: {.column width="35%"}
+
+
+
+```{r}
+#| echo: true
+#| class-output: my_class800
+X_s <- apply(X, 2, unit_len_scale)
+X_s %*% V[, 5]
+```
+
+:::
+::::
+
+
+
+
+::: notes
+```{r}
+## V'(X'X)V = Lambda
+round(t(V) %*% Sig %*% V, 7)
+```
+
+```{r, echo=TRUE}
+## Orthogonal matrix
+round(t(V)%*%V, 1)
+##  V(Lambda)V' = X'X
+V %*% diag(lambda) %*% t(V)
+```
+
+
+```{r, echo=TRUE}
+## near-zero vector
+X_s%*%V[, 5]
+```
+:::
+
+
+
+## Eigensystem Analysis: Variance Proportion
+<!-- - ${\bf X'X = V\bsLambda V'}$, therefore ${\bf (X'X)^{-1} = V\bsLambda^{-1} V'}$ -->
+<!-- - $\var\left( {\bf b} \right) = \sigma^2 {\bf (X'X)} ^{-1} = \sigma^2 {\bf V\bsLambda^{-1} V'}$ -->
+<!-- - $\var\left( b_j \right) = \sigma^2 \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i} =\sigma^2\text{VIF}_j$ -->
+- $\text{VIF}_j = \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i}$
+<!-- - $\sum_{j=1}^k \var\left( b_j \right) =\sigma^2 \sum_{i=1}^k\sum_{j=1}^k\frac{v_{ji}^2}{\lambda_i} = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}$ (length of ${\bf v}_j$ is 1) -->
+- $\pi_{ij} = \frac{v_{ji}^2/\lambda_i}{\text{VIF}_j}$ is the **variance decomposition proportion** that measures the proportion of the variance of $b_j$ contributed by $\lambda_i$.
+- $\pi_{ij} > 0.5$ indicates collinearity. 
+
+::: alert
+- A small $\lambda_i$, accompanied by a subset of regressors with high variance proportions $\pi_{ij}$ represents a dependency involving the regressors in that subset.
+- If $\pi_{32}$ and $\pi_{34}$ are large, $\lambda_3$ is associated with a collinearity that inflats the variance of $b_2$ and $b_4$.
+:::
+
+
+::: notes
+- ${\bf X'X = V\bsLambda V'}$, therefore ${\bf (X'X)^{-1} = V\bsLambda^{-1} V'}$
+- $\var\left( {\bf b} \right) = \sigma^2 {\bf (X'X)} ^{-1} = \sigma^2 {\bf V\bsLambda^{-1} V'}$
+- $\var\left( b_j \right) = \sigma^2 \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i} =\sigma^2\text{VIF}_j$
+- $\sum_{j=1}^k \var\left( b_j \right) =\sigma^2 \sum_{i=1}^k\sum_{j=1}^k\frac{v_{ji}^2}{\lambda_i} = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}$ (length of ${\bf v}_j$ is 1)
+- $\pi_{ij} = \frac{v_{ji}^2/\lambda_i}{\text{VIF}_j}$ is the **variance decomposition proportion**, which is attributed to (or blamed on) the colliearity characterized by the eigenvalue $\lambda_i$.
+- $\pi_{ij} > 0.5$ indicates Collinearity. 
+
+A small $\lambda_i$, accompanied by a subset of regressors with high variance proportions $\pi_{ij}$: 
++ represents a dependency involving the regressors in that subset, and the dependency is damaging to the precision of estimation of the coefficients in the subset.
+
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Variance Proportion
+```{r}
+#| echo: true
+
+# Variance Proportion
+var_prop <- function(V, lambda, vif_all) {
+    ## diag(1 / lambda) means divide by lambda row-wise
+    round(t(V ^ 2 %*% diag(1 / lambda)) %*% diag(1/vif_all), 5)
+}
+var_prop(V = V, lambda = lambda, vif_all = vif_all)
+```
+
+- $\pi_{51}$ and $\pi_{53}$ are large, indicating that $\lambda_5$ is inflating the variance of $b_1$ and $b_3$.
+
+
+::: notes
+```{r, echo=TRUE}
+## diag(V (Lambda)^-1 V') = VIF
+diag(V %*% diag(1/lambda) %*% t(V))
+
+vif_all
+## sum(vif) = sum(1/lambda)
+sum(vif(lm_full))
+sum(1/lambda)
+```
+
+```{r, eval=FALSE}
+library(perturb)
+colldiag(lm_full, scale = TRUE, center = TRUE)
+pi_1 <- (V[1, ] ^ 2 / lambda) / vif_all[1]
+pi_2 <- (V[2, ] ^ 2 / lambda) / vif_all[2]
+pi_3 <- (V[3, ] ^ 2 / lambda) / vif_all[3]
+pi_4 <- (V[4, ] ^ 2 / lambda) / vif_all[4]
+pi_5 <- (V[5, ] ^ 2 / lambda) / vif_all[5]
+pi_mat <- cbind(pi_1, pi_2, pi_3, pi_4, pi_5)
+round(pi_mat, 5)
+```
+:::
+
+## Other Diagnostics
+
+Collinearity may exist if
+
+- overall $F$-test for regression is significant, but individual $t$-tests are all non-significant.
+
+- the coefficient estimates are **instable**
+  + adding or removing a regressor produces large changes in the estimates
+  + deleting one or more observations results in large changes in the estimates
+  + if the signs or magnitudes of the estimates are contrary to prior expectation
+
+
+## [R Lab]{.pink} Hospital Manpower - Significance
+```{r}
+#| echo: true
+summ_full$coefficients  ## t-test not significant
+```
+```{r}
+#| echo: true
+summ_full$fstatistic  ## F-test significant
+```
+
+```{r}
+#| echo: true
+lm_no_x3 <- lm(y~x1+x2+x4+x5, data = manpower)
+summary(lm_no_x3)$coef
+```
+
+
+
+## Diagonastics Summary
+::: alert
+
+*Summary*:
+
++ Eigenvalue (or ratios): assess the seriousness of a particular dependency
++ Variance proportion: signify what regressors are involved and to what extent
++ VIF: determine the damage to the individual coefficient
+:::
+
+
+## Methods for Dealing with Collinearity 
+**Data collection**: <span style="color:blue"> Collect more data to break up the collinearity </span> in the existing data
+
+<br>
+
+. . .
+
+
+**Model specification/An overdefined model**: Respecify the model
+
+- <span style="color:blue"> *redefining* the regressors </span>: Use $x = x_1+x_2$ or $x = x_1x_2$.
+  + Avoid combining regressors in different units.
+  
+- <span style="color:blue"> *eliminating* regressors </span>: remove $x_1$ or $x_2$.
+  + May damage the predictive power if the removed regressors have significant explanatory power. (Variable selection)
+  + If we remove $x_2$, we estimate the *marginal* relationship between $y$ and $x_1$, ignoring $x_2$, rather than the *partial* relationship conditioning on $x_2$.
+
+. . .
+
+**Constraint on the model or in the population**: Say goodbye to least-squares estimation.
+
+  + <span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span>
+
+
+## Unbiased vs. Biased Estimators
+- The LSE ${\bf b}$ is *unbiased*, i.e., $E({\bf b}) = \bbeta$.
+- LSE is a BLUE: has *minimum variance* among all *unbiased* linear estimators
+- *No guarantee that this variance will be small.*
+- When collinearity exists, $\var({\bf b})$ is largely inflated.
+
+```{r}
+#| fig-asp: 0.35
+par(mar = c(2, 0, 2, 0), mgp = c(0.5, 0.5, 0), las = 1)
+x <- seq(-3, 3, by = 0.1)
+plot(x, dnorm(x), type = "l", lwd = 3, axes = F, xlab = "", ylab = "")
+title(main = "Sampling distribution of LSE b")
+axis(1, at = c(-3, 0.1, 3), labels = c("", expression(bold(beta) == E(b)), ""), 
+     tick = T, tck = -0.01)
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0), lty = 2)
+text(2, dnorm(1), expression(paste("E(b) = ", bold(beta), " (unbiased)")), cex = 1.5)
+text(2.5, dnorm(1.5), paste("Var(b) large"), cex = 1.5)
+```
+
+
+::: notes
+implying that confidence intervals on β would be wide and the point estimate ˆb is very unstable.
+:::
+
+
+## Biased Estimators
+
+:::: {.columns}
+
+::: {.column width="45%"}
+A good estimator is the one that *balances bias and variance well*, or the one that *minimizes the mean square error* $$\small \text{MSE}(\hat{\beta}) = E[(\hat{\beta} - \beta)^2] = \var(\hat{\beta}) + \text{bias}(\hat{\beta})^2$$
+
+- Biasedness and variance have a *trade-off* relationship!
+- Find a **biased** estimator ${\bf \hat{b}}$ that has *smaller variance and MSE* than ${\bf b}$.
+:::
+
+::: {.column width="55%"}
+```{r}
+#| out-width: 100%
+par(mar = c(2, 0, 2, 0), mgp = c(0.5, 0.5, 0), las = 1)
+x <- seq(-6, 6, by = 0.1)
+plot(x, dnorm(x), type = "l", lwd = 3, axes = F, xlab = "", ylab = "",
+     xlim = c(-8, 8))
+title(main = list(expression(paste("Sampling distribution a biased estimator ", hat(b))), cex = 2))
+axis(1, at = c(-8, -1, 0, 8), 
+     labels = c("", expression(bold(beta)), expression(E(b)), ""), 
+     tick = T, tck = -0.01, cex.lab = 2)
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0), lty = 2)
+segments(x0 = -1, y0 = 0, x1 = -1, y1 = dnorm(-1), lty = 2)
+text(3.5, dnorm(1), expression(paste(E(hat(b)) != bold(beta), " (biased)")), cex = 2)
+text(4, dnorm(1.5), expression(paste(Var(hat(b)), " small")), cex = 2)
+```
+:::
+::::
+
+
+::: notes
+<!-- .question[ -->
+<!-- Can we obtain an estimator that has a smaller variance? -->
+<!-- ] -->
+:::
+
+
+
+## Ridge Regression: Motivation  {visibility="hidden"}
+
+- ${\bf \Sigma} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$ $\quad {\bf  \Sigma}^{-1} = \begin{bmatrix} 62.8 & -62.2 \\ -62.2 & 62.8 \end{bmatrix}$
+- $\lambda_1 = 1.992$ and $\lambda_2 = 0.008$
+
+. . .
+
+- ${\bf \Sigma} = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix}$ $\quad {\bf \Sigma}^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$
+- $\lambda_1 = 1$ and $\lambda_2 = 1$
+
+. . .
+
+- IDEA: To make ${\bf \Sigma}$ behave more like the orthogonal case. But how?
+
+
+. . .
+
+- Use $({\bf X'X + \delta I})$ with a small $\delta >0$.
+- The eigenvalues of $({\bf X'X + \delta I})$ are $\lambda_1+\delta$ and $\lambda_2 + \delta$.
+- If $\delta = 0.1$,
+$({\bf X'X + \delta I}) = \begin{bmatrix} 1.1 & 0.992 \\ 0.992 & 1.1 \end{bmatrix}$ and $({\bf X'X + \delta I})^{-1} = \begin{bmatrix} 4.87 & -4.39 \\ -4.39 & 4.87 \end{bmatrix}$
+
+
+
+::: notes
+- The diagonals *do not dominate* as in the orthogonal case whose matrix diagonals dominate and $\lambda_1 = \lambda_2 = 1$.
+Adding $\delta$ to the main diagonal effectively replaces $\lambda$ by $\lambda+\delta$. 
+:::
+
+
+## Ridge Regression Estimator
+
+- With a small $\delta >0$, the ridge estimator ${\bf b}_R$ is $${\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}$$
+
+- ${\bf b}_R$ is a *biased* estimator for $\bbeta$.
+
+::: notes
+- $\sum_{i=1}^k \var\left( b_{Ri} \right) \le \sum_{i=1}^k \var\left( b_i \right)$ with equality when $\delta = 0$.
+:::
+
+. . .
+
+- As $\delta$ increases,
+  + $\sum_{i=1}^k \var\left( b_{Ri} \right)$ decreases
+  + Bias $E\left[ {\bf b}_R \right] - \bbeta$ increases
+  + $R^2$ decreases (it's OK as we care more about stable estimates and better prediction)
+
+. . .
+
+- Choose $\delta$ by the **ridge trace** that is a plot of $\{ b_{Ri} \}_{i=1}^k$ vs. $\delta$.
+  + Select a small value of $\delta$ at which the ridge estimates ${\bf b}_R$ are stable.
+
+  
+  
+  
+::: notes
+- Cross Validation
+- The ridge estimator ${\bf b}_R$ is $${\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}$$
+- ${\bf b}_R$ is a *biased* estimator of $\bsbeta$:
+$$E\left[ {\bf b}_R \right] = E\left[({\bf X'X + \delta I})^{-1}{\bf X'y} \right]  = E\left[({\bf X'X + \delta I})^{-1}({\bf X'X}){\bf b}\right] = {\bf Z_{\delta}}\bsbeta$$
+- The covariance matrix of ${\bf b}_R$ is
+$$\var\left({\bf b}_R \right) = \sigma^2 ({\bf X'X + \delta I})^{-1}{\bf X'X }({\bf X'X + \delta I})^{-1}$$
+- For LSE, $\sum_{i=1}^k \var\left( b_i \right) = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}$
+- For ridge estimator,  $\sum_{i=1}^k \var\left( b_{Ri} \right) = \sigma^2\sum_{i=1}^k\frac{\lambda_i}{(\lambda_i+\delta)^2}$
+- $\sum_{i=1}^k \var\left( b_{Ri} \right) \le \sum_{i=1}^k \var\left( b_i \right)$ with equality when $\delta = 0$.
+- As $\delta$ increases, $\sum_{i=1}^k \var\left( b_{Ri} \right)$ decreases.
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Ridge Regression
+:::: {.columns}
+
+::: {.column width="40%"}
+::: midi
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+#| class-source: my_class800
+
+manpower_scale <- apply(manpower, 2, 
+                        unit_length_scale)
+df <- as.data.frame(manpower_scale)
+delta <- seq(0, 0.5, by = 0.01)
+ridge_fit <- MASS::lm.ridge(
+  y ~ . -1, data = df, lambda = delta)
+matplot(coef(ridge_fit), type = "l",
+        xlab = "delta", ylab = "Coef", 
+        main = "Ridge Trace")
+abline(v = which(delta == 0.07), 
+       col = "orange", lty = 2)
+```
+:::
+:::
+
+
+::: {.column width="60%"}
+```{r}
+#| out-width: 100%
+library(MASS)
+manpower_scale <- apply(manpower, 2, 
+                        unit_length_scale)
+delta <- seq(0, 0.5, by = 0.01)
+ridge_fit <- lm.ridge(y ~ . -1, 
+                      data = as.data.frame(manpower_scale), 
+                      lambda = delta)
+par(mar = c(3, 3.5, 2, 0), mgp = c(2, 0.5, 0), las = 1)
+matplot(coef(ridge_fit), type = "l", xlab = "delta", axes = F, cex.lab = 1.5,
+        ylab = "Coefficients", main = "Ridge Trace", lwd = 2.5, cex.main = 2)
+axis(2, at = seq(-0.5, 1.5, by = 0.5))
+axis(1, at = c(0, 10, 20, 30, 40, 50), labels = delta[c(0, 10, 20, 30, 40, 50)+1])
+text(jitter(rep(15, 5), factor = 3), jitter(coef(ridge_fit)[15, ]), colnames(manpower_scale)[-1], cex = 1.5)
+abline(v = which(delta == 0.07), col = "orange", lty = 2)
+```
+:::
+::::
+
+
+
+::: notes
+```{r, eval=FALSE}
+# use GCV to select the best delta
+plot(ridge_fit$lambda, ridge_fit$GCV, type = "l", col = "darkorange", 
+     ylab = "GCV", xlab = "delta", lwd = 3)
+title("Hospital Manpower Data: GCV")
+ridge_fit$lambda[which.min(ridge_fit$GCV)]
+```
+:::
+
+
+## [R Lab]{.pink} Hospital Manpower - Ridge Regression
+```{r}
+#| out-width: 78%
+manpower_scale <- as.data.frame(manpower_scale)
+lm_full_scale <- lm(y ~ ., data = manpower_scale)
+par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0))
+confidenceEllipse(lm_full_scale, which.coef = c(5, 6), col="black",
+                  fill=TRUE,
+                  center.cex=1,
+                  levels=c(0.8, 0.95), fill.alpha=0.1,
+                  xlab=expression(beta[4]), 
+                  ylab=expression(beta[5]), 
+                  las=1, segments=1000, cex.lab = 2)
+abline(h = 0, v = 0)
+points(0, 0, pch = 15, cex = 1, col = 2)
+
+X_stX_s <- t(X_s) %*% X_s
+A <- X_stX_s + diag(0.07, 5)
+Ainv <- solve(A)
+var_ridge <- summary(lm_full_scale)$sigma^2 * Ainv %*% X_stX_s %*% Ainv
+# center <- c(0.10711510, 0.11790894)
+# center <- c(-0.007907946, -0.020534287)
+center <- c(-0.01925995, -0.02575226)
+ellipse(center, shape = var_ridge[c(4, 5), c(4, 5)], center.cex=1,
+        radius = sqrt(qchisq(c(0.95), df = 2)), fill=TRUE, fill.alpha=0.1)
+ellipse(center, shape = var_ridge[c(4, 5), c(4, 5)], center.cex=1,
+        radius = sqrt(qchisq(c(0.8), df = 2)), fill=TRUE, fill.alpha=0.1)
+
+# ellipse(center, shape = var_ridge[c(1, 3), c(1, 3)], center.cex=1,
+#         radius = sqrt(qchisq(c(0.95), df = 2)), fill=TRUE, fill.alpha=0.1)
+# ellipse(center, shape = var_ridge[c(1, 3), c(1, 3)], center.cex=1,
+#         radius = sqrt(qchisq(c(0.8), df = 2)), fill=TRUE, fill.alpha=0.1)
+
+# confidenceEllipse(ridge_fit, which.coef = c(2, 4), col="black",
+#                   fill=TRUE, 
+#                   center.cex=1,
+#                   levels=c(0.8, 0.95), fill.alpha=0.1,
+#                   xlab=expression(beta[1]), 
+#                   ylab=expression(beta[3]), 
+#                   las=1, segments=1000)
+# abline(h = 0, v = 0)
+# points(0, 0, pch = 15, cex = 1, col = 2)
+```

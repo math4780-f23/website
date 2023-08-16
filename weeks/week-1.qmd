@@ -10,17 +10,23 @@ editor: visual
 
 📖 Get your computing environment ready
 
+📖 Be familiar with your computing language
+
+## Reading
+
+📖 Introduction to Statistics, [Ch 8 - 13, 15](https://chenghanyu-introstatsbook.netlify.app/prob-rv).
+
 ## Participate
 
-🖥️ [Lecture 1 - Welcome to MATH 4780](/slides/01-syllabus.html)
+🖥️ [Slides - Welcome to MATH 4780](/slides/01-syllabus.html)
 
-🖥️ [Lecture 1 - Overview of Regression](/slides/02-overview.html)
+🖥️ [Slides - Overview of Regression](/slides/02-overview.html)
 
-🖥️ [Lecture 2 - Probability and Statistics](/slides/03-prob-stat.html)
+🖥️ [Slides - Probability and Statistics](/slides/03-prob-stat.html)
 
-## Practice
+## Exercise
 
-📋 AE 0 - Movies
+📋 [Exercise 1](/exercise/ex-1.html)
 
 <br><br>
 

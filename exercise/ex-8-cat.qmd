@@ -1,0 +1,31 @@
+---
+title: "Exercise 8: Categorical Variables"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+<!-- ## Conceptual -->
+<!-- ISL 3.3 -->
+
+Suppose we have a data set with five predictors, $X_1 = \text{GPA}$, $X_2 = \text{IQ}$, $X_3 = \text{Level}$ (1 for College and 0 for High School), $X_4 =$ Interaction between GPA and IQ, and $X_5 =$ Interaction between GPA and Level. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get
+$b_0 = 50$, $b_1 = 20$, $b_2 = 0.07$, $b_3 = 35$, $b_4 = 0.01$, $b_5 = −10.$.
+
+a. Which answer is correct, and why?
+
+    i. For a fixed value of IQ and GPA, high school graduates earn more, on average, than college graduates.
+  
+    ii. For a fixed value of IQ and GPA, college graduates earn more, on average, than high school graduates.
+  
+    iii. For a fixed value of IQ and GPA, high school graduates earn more, on average, than college graduates provided that the GPA is high enough.
+    
+    iv. For a fixed value of IQ and GPA, college graduates earn more, on average, than high school graduates provided that the GPA is high enough.
+    
+    
+b. Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.
+
+c. True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.
+

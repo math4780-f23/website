@@ -42,7 +42,6 @@ execute:
 
 #  {visibility="hidden"}
 
-```{=tex}
 \def\bx{\mathbf{x}}
 \def\bg{\mathbf{g}}
 \def\bw{\mathbf{w}}
@@ -61,7 +60,8 @@ execute:
 \def\bmu{\boldsymbol \mu}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \def\Trace{\text{Trace}}
-```
+
+
 ```{r}
 #| label: setup
 #| include: false

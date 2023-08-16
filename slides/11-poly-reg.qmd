@@ -1,0 +1,530 @@
+---
+title: "Regression Diagnostics - Linearity `r emo::ji('right')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(MASS)
+library(car)
+knitr::opts_chunk$set(
+    fig.asp = 0.6,
+    fig.align = "center",
+    out.width = "70%",
+    fig.retina = 10,
+    fig.path = "./images/11-poly-reg/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+par(cex = 4)
+```
+
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- CIA <- read.table("./data/CIA.txt", header = TRUE) -->
+<!-- ciafit <- lm(infant ~ gdp + health + gini, data = CIA) -->
+<!-- r_stud <- rstudent(ciafit) -->
+<!-- logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA) -->
+<!-- ``` -->
+
+
+
+
+# Polynomial Regression
+<h2> Polynomial Models in One Variable </h2>
+<h2> Piecewise Regression </h2>
+<h2> Splines </h2>
+
+
+## Why Polynomial Regression
+
+- Polynomials are widely used in situations where the response surface is curvilinear.
+- Many complex nonlinear relationships can be adequately modeled by polynomials over reasonably small ranges of the $x$'s.
+
+```{r}
+par(mfrow = c(1, 2))
+par(mar = c(2, 2, 2, 0), mgp = c(0.5, 0, 0), las = 1)
+x <- seq(-1, 1, by = 0.01)
+y_qua <- 1 + x - 3 * x ^ 2 + rnorm(length(x), 0, 1)
+y_cube <- 1 + x - x ^ 2 + 5 * x ^ 3 + rnorm(length(x), 0, 1)
+plot(x, y_qua, xlab = "x", ylab = "y", 
+     main = expression(paste("E(y|x) = 1 + x - 3", x^2)),cex.main = 2,
+     pch = 16, col = 4, xaxt = "n",  yaxt = "n", cex = 0.8)
+lines(x, 1 + x - 3 * x ^ 2, col = 2, lwd = 3)
+plot(x, y_cube, xlab = "x", ylab = "y", cex.main = 2,
+     main = expression(paste("E(y|x) = 1 + x - 3", x^2 + 3*x^3)),
+     pch = 16, col = 4, xaxt = "n",  yaxt = "n", cex = 0.8)
+lines(x, 1 + x - x ^ 2 + 5 * x ^ 3, col = 2, lwd = 3)
+```
+
+::: notes
+- They are also useful as approximating functions to unknown and possibly very complex nonlinear relationships.
+- In this sense, the polynomial model is just the Taylor series expansion of the unknown function.
+:::
+
+
+## Polynomial Regression Models
+- A **second**-order (degree) polynomial in **one** variable or a **quadratic** model is
+$$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \epsilon$$
+
+- A **second**-order polynomial in **two** variables is
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{11}x_1^2 + \beta_{22}x_2^2 + \beta_{12}x_1x_2 + \epsilon$$
+
+- The **$k$th-order** polynomial model in **one** variable is
+$$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \cdots + \beta_kx^k + \epsilon$$
+
+- If we set $x_j = x^j$, this is just a multiple linear regression model with $k$ predictors $x_1, x_2, \dots, x_k$!
+
+
+
+
+## Important Considerations
+::: large
+_Keep the order of the model **as low as possible**_.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Transform data to keep the model 1st order.
+
+- If fails, try a 2nd order model.
+
+- Avoid higher-order polynomials unless they can be justified for reasons *outside the data*.
+
+- `r emo::ji('point_right')` **Occam's Razor**: among competing models that predict equally well, choose the "simplest" one, i.e., a **parsimonious** model.
+  + This avoids **overfitting** that leads to nearly perfect fit to the data, but bad prediction performance.
+  
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-cap: "Source: Wikiversity"
+knitr::include_graphics("./images/11-poly-reg/polynomial.png")
+```
+:::
+
+::::
+  
+::: notes
+There are several important considerations that arise when fitting a polynomial
+in one variable.
+- A low-order model in a transformed variable is almost always preferable to a high-order model in the original metric. 
+- Arbitrary fitting of high-order polynomials is a serious abuse of regression analysis.
+- You can always fit a polynomial model with very high order. It may give you a pretty good fit, but with very high chance, it will end up with very bad prediction, leading to overfitting.
+  + **Occam's Razor**: among competing models that predict equally well, choose the "simplest" one, i.e., **parsimonious** model.
+  + This avoid **overfitting** that leads to bad prediction performance.
+
+:::
+
+. . .
+
+::: alert
+*"Bayesian Deep Learning and a Probabilistic Perspective of Generalization"* Wilson and Izmailov (2020) for the rationale of choosing a super high-order polynomial as the regression model.
+:::
+
+::: notes
+- the ground truth explanation for the data is out of class for any of these choices, but there is some setting of the coefficients in choice (3) which provides a better description of reality than could be managed by choices (1)
+and (2).
+- our beliefs about the generative processes for our observations, which are often very sophisticated, typically ought to be independent of how many data points we happen to observe.
+- we often use neural networks with millions of parameters to fit datasets with thousands of points
+:::
+
+
+## Important Considerations
+::: large
+*Model building strategy*
+:::
+
+- `r emo::ji('point_right')` **Forward selection**: successively fit models of increasing order until the $t$-test for the highest order term is non-significant.
+
+- `r emo::ji('point_right')` **Backward elimination**: fit the highest order model and then delete terms one at a time until the highest order remaining term has a significant $t$ statistic.
+
+- `r emo::ji('point_right')` They do not necessarily lead to the same model.
+
+- `r emo::ji('point_right')` Restrict our attention to low-order polynomials.
+
+## Important Considerations
+::: large
+*Extrapolation*
+:::
+
+- Can be extremely dangerous when the model is higher-order polynomial. 
+- The nature of the true underlying relationship may change or be completely different from the system that produced the data used to fit the model.
+
+```{r}
+#| out-width: 40%
+knitr::include_graphics("./images/11-poly-reg/fig72_extrapolation.png")
+```
+
+
+## Important Considerations
+::: large
+*Ill-conditioning*
+:::
+
+  + **Ill-conditioning**: *as the order of the model increases, ${\bf X'X}$ matrix inversion will become inaccurate*, and error may be introduced into the parameter estimates
+  + Centering the predictors may remove some ill conditioning but not all.
+  + One solution is to use **orthogonal polynomials** (LRA Sec 7.5).
+  
+  
+::: notes
+  + **Ill-conditioning** refers to the fact that *as the order of the model increases, ${\bf X'X}$ matrix inversion will become inaccurate*, and error can be introduced into the parameter estimates
+  + Centering the predictors may remove some ill conditioning but not all.
+:::
+
+## Example 7.1: Hardwood Data (LRA)
+- Strength of kraft paper vs. the percentage of hardwood in the batch of pulp from which the paper was produced.
+- A quadratic model may adequately describe the relationship between tensile strength and hardwood concentration.
+
+:::: {.columns}
+
+::: {.column width="33%"}
+```{r}
+#| echo: !expr c(3)
+hardwood <- read.csv(file = "./data/data-ex-7-1.csv", header = TRUE)
+colnames(hardwood) <- c("concentration", "strength")
+hardwood[1:14, ]
+```
+:::
+
+::: {.column width="66%"}
+```{r}
+#| out-width: 90%
+par(mar = c(3.5, 3.5, 0, 0), mgp = c(2, 0.8, 0), las = 1)
+par(mfrow = c(1, 1))
+plot(hardwood$concentration, hardwood$strength, pch = 16, 
+     xlab = "Hardwood concentration %", ylab = "Tensile strength",
+     xlim = c(0, 16), ylim = c(0, 60), cex.lab = 1.5, cex = 2)
+```
+:::
+::::
+
+
+## [R Lab]{.pink} Hardwood Data Model Fitting
+- Following the suggestion that centering the data may remove nonessential ill-conditioning:
+$$y = \beta_0 + \beta_1 (x - \bar{x}) + \beta_2 (x - \bar{x}) ^ 2 + \epsilon$$
+
+```{r}
+#| echo: true
+concen_cen <- hardwood$concentration - mean(hardwood$concentration)
+(hardwood_lm <- lm(strength ~ concen_cen + I(concen_cen ^ 2), 
+                   data = hardwood))
+```
+
+- $y = 45.3 + 2.55 (x - 7.26) - 0.63 (x - 7.26) ^ 2 + \epsilon$
+- Inference, prediction and residual diagnostics procedures are the same as multiple linear regression.
+
+
+
+::: notes
+- We don't need to create an extra predictor concentration ^ 2 in the data set.
+- We can construct the x_sq term in the lm() function. 
+- We use I() function to wrap up the operation concen_cen ^ 2, so that concen_cen ^ 2 is not interpreted as a part of formula, but actual arithmetic operation.
+- To avoid this confusion, the function I() can be used to bracket those portions of a model formula where the operators are used in their arithmetic sense. For example, in the formula y ~ a + I(b+c), the term b+c is to be interpreted as the sum of b and c.
+:::
+
+
+## Piecewise (Polynomial) Regression
+- A polynomial regression may provide a poor fit, and increasing the order does not improve the situation.
+- This may happen when *the regression function behaves differently in different parts of the range of $x$*.
+
+. . .
+
+- SOLUTION: `r emo::ji('point_right')` *piecewise* polynomial regression that **fits separate polynomials over different regions of $x$**.
+- Example:
+$$y=\begin{cases}
+    \beta_{01} + \beta_{11}x+ \beta_{21}x^2+\beta_{31}x^3 +\epsilon     & \quad \text{if } x < c\\
+    \beta_{02} + \beta_{12}x+ \beta_{22}x^2+\beta_{32}x^3+\epsilon      & \quad \text{if } x \ge c
+  \end{cases}$$
+  
+- The joint points of pieces are called **knots**.
+
+. . .
+
+- Using more knots leads to a more flexible piecewise polynomial. 
+
+::: question
+With $K$ different knots, how many different polynomials do we have?
+:::
+
+<!-- - With $K$ different knots, we fit $K + 1$ different polynomials. -->
+<!-- - Piecewise polynomials of order $k$ are called **splines**. -->
+
+::: notes
+- There might be tow different systems or schemes that govern the relationship between response and predictor variables.
+- Any issue of fitting a piecewise polynomial regression?
+- In other words, we fit two different polynomial functions to the data, one on the subset of the observations with $xi < c$, and one on the subset of
+the observations with $xi ≥ c$. The first polynomial function has coefficients β01, β11, β21, β31, and the second has coefficients β02, β12, β22, β32. 
+- Each of these polynomial functions can be fit using least squares applied to simple functions of the original predictor.
+- the function is discontinuous
+- locations of the knots are known, otherwise it is a nonlinear regression problem.
+- WE could fit piecewise regression with order 1.
+- (or more constrained?) 
+:::
+
+
+
+## U.S. Birth Rate from 1917 to 2003
+:::: {.columns}
+
+::: {.column width="30%"}
+```{r}
+#| class-output: my_class800
+load("./data/birthrates.Rda")
+head(birthrates, n = 20)
+```
+:::
+
+::: {.column width="70%"}
+```{r}
+#| out-width: 100%
+par(mar = c(3, 3.5, 0, 0), mgp = c(2, 0.8, 0))
+plot(birthrates, pch = 19, col = 4, cex.lab = 1.5, cex = 1.5)
+```
+:::
+::::
+
+
+## [R Lab]{.pink} A Polynomial Regression Provide a Poor Fit
+```{r}
+#| echo: true
+#| results: hide
+lmfit3 <- lm(Birthrate ~ poly(Year - mean(Year), degree = 3, raw = TRUE),  
+             data = birthrates)
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+par(mar = c(3, 3.5, 2, 0), mgp = c(2, 0.8, 0))
+lmfit3 <- lm(Birthrate ~ poly(Year-mean(Year), degree = 3, raw = TRUE),  data = birthrates)
+plot(birthrates, pch = 19, col = 4, main = "degree = 3", cex.lab = 1.5, cex = 1.5, cex.main = 2)
+lines(birthrates$Year, lmfit3$fitted.values, lty = 1, 
+      col = 2, lwd = 3)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+par(mar = c(3, 3.5, 2, 0), mgp = c(2, 0.8, 0))
+lmfit5 <- lm(Birthrate ~ poly(Year-mean(Year), degree = 5, raw = TRUE), data = birthrates)
+plot(birthrates, pch = 19, col = 4, main = "degree = 5", cex.lab = 1.5, cex = 1.5, cex.main = 2)
+lines(birthrates$Year, lmfit5$fitted.values, lty = 1, 
+      col = 2, lwd = 3)
+```
+:::
+::::
+
+
+::: notes
+It might be interesting to fit a linear regression with high order polynomials to approximate this curve. This can be carried out using the poly() function, which calculates all polynomials up to a certain power. Please note that this is a more stable method compared with writing out the powers such as I(Year^2), I(Year^3) etc because the Year variable is very large, and is numerically unstable.
+:::
+
+
+## [R Lab]{.pink} Piecewise Polynomials: 3 knots at 1936, 60, 78
+```{r}
+#| out-width: 65%
+# par(mfrow=c(1,2))
+myknots = c(1936, 1960, 1978)
+bounds = c(1917, myknots, 2003)  
+
+# # piecewise constant
+# mybasis = cbind("x_1" = (birthrates$Year < myknots[1]), 
+#                 "x_2" = (birthrates$Year >= myknots[1])*(birthrates$Year < mykots[2]), 
+#                 "x_3" = (birthrates$Year >= myknots[2])*(birthrates$Year < mykots[3]),
+#                 "x_4" = (birthrates$Year >= myknots[3]))
+#     
+# lmfit <- lm(birthrates$Birthrate ~ . -1, data = data.frame(mybasis))
+# par(mar = c(2,3,2,0))    
+# plot(birthrates, pch = 19, col = "darkorange")
+# abline(v = myknots, lty = 2)
+# title("Piecewise constant")
+# 
+# for (k in 1:4)
+#     points(c(bounds[k], bounds[k+1]), rep(lmfit$coefficients[k], 2), type = "l", lty = 1, col = "deepskyblue", lwd = 4)
+    
+    # piecewise linear
+mybasis = cbind("x_1" = (birthrates$Year < myknots[1]), 
+                "x_2" = (birthrates$Year >= myknots[1])*(birthrates$Year < myknots[2]), 
+                "x_3" = (birthrates$Year >= myknots[2])*(birthrates$Year < myknots[3]),
+                "x_4" = (birthrates$Year >= myknots[3]),
+                "x_11" = birthrates$Year*(birthrates$Year < myknots[1]), 
+                "x_21" = birthrates$Year*(birthrates$Year >= myknots[1])*(birthrates$Year < myknots[2]),
+                "x_31" = birthrates$Year*(birthrates$Year >= myknots[2])*(birthrates$Year < myknots[3]),
+                "x_41" = birthrates$Year*(birthrates$Year >= myknots[3]))
+        
+lmfit <- lm(birthrates$Birthrate ~ .-1, data = data.frame(mybasis))
+par(mar = c(2,3,2,0))  
+plot(birthrates, pch = 19, col = 4)
+abline(v = myknots, lty = 2)
+title(main = list("Piecewise linear", cex = 2))
+
+for (k in 1:4)
+points(c(bounds[k], bounds[k+1]), 
+       lmfit$coefficients[k] + c(bounds[k], bounds[k+1]) * lmfit$coefficients[k+4], 
+       type = "l", lty = 1, col = 2, lwd = 3)
+```
+
+
+::: question
+Any issue of piecewise polynomials?
+:::
+
+
+::: notes
+these functions are not continuous. Hence we use a trick to construct continuous basis
+:::
+
+
+
+## Splines
+Splines of degree $k$ are piecewise polynomials of degree $k$ with **continuity in derivatives** (smoothing) up to degree $k-1$ at each knot.
+
+- Use `bs()` function in the **splines** package.
+
+```{r}
+#| echo: !expr c(1)
+#| out-width: 55%
+lin_sp <- lm(Birthrate ~ splines::bs(Year, degree = 1, knots = c(1936, 1960, 1978)), 
+             data = birthrates)
+par(mar = c(3, 3, 2,0)) 
+plot(birthrates, pch = 19, col = 4, main = "Linear spline (k = 1) with 3 knots",
+     cex.main = 2)
+lines(birthrates$Year, lin_sp$fitted.values, lty = 1, col = 2, lwd = 3)
+```
+
+
+
+## Cubic Splines
+- The cubic spline is a spline of degree 3 with *first 2 derivatives are continuous* at the knots.
+
+
+```{r}
+#| echo: !expr c(1)
+#| out-width: 55%
+cub_sp <- lm(Birthrate ~ splines::bs(Year, degree = 3, knots = c(1936, 1960, 1978)), 
+             data = birthrates)
+par(mar = c(3, 3, 2,0)) 
+plot(birthrates, pch = 19, col = 4, main = "Cubic spline (k = 3) with 3 knots",
+     cex.main = 2)
+lines(birthrates$Year, cub_sp$fitted.values, lty = 1, col = 2, lwd = 3)
+```
+
+
+## Practical Issue
+
+- *How many knots should be used*
+  + As few knots as possible
+  + At least 5 data points per segment
+
+- *Where to place the knots*
+  + No more than one extreme point per segment
+  + If possible, the extreme points should be centered in the segment
+
+- *What is the degree of functions in each region*
+  + Cubic spline is popular

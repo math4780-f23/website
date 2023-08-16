@@ -6,17 +6,16 @@ title: "Syllabus"
 
 ## Time and location
 
-|           | Day       | Time              | Location                       |
-|-----------|-----------|-------------------|--------------------------------|
-| Lectures  | Tu & Th   | 5:00 - 6:15 PM    | Cudahy Hall 120                |
-| Lab       | None      | None              | None                           |
-
+|          | Day     | Time           | Location        |
+|----------|---------|----------------|-----------------|
+| Lectures | Tu & Th | 5:00 - 6:15 PM | Cudahy Hall 120 |
+| Lab      | None    | None           | None            |
 
 ## Office Hours
 
-- My in-person office hours are TuTh 3:20 - 4:50 PM, in Cudahy Hall room 353.
+-   My in-person office hours are TuTh 3:20 - 4:50 PM, in Cudahy Hall room 353.
 
-- You are welcome to schedule an online meeting via Microsoft Teams if you need/prefer.
+-   You are welcome to schedule an online meeting via Microsoft Teams if you need/prefer.
 
 ## Learning objectives
 
@@ -29,91 +28,90 @@ By the end of the semester, you will be able to...
 
 ## Prerequisites
 
-- MATH 2780 (Intro to Regression and Classification), MATH 4720 (Intro to Statistics) or equivalent. 
+-   MATH 2780 (Intro to Regression and Classification), MATH 4720 (Intro to Statistics) or equivalent.
 
-- Programming experience is helpful because the course involves doing regression analysis using [\textsf{R}](https://www.r-project.org/about.html) programming language. 
+-   Programming experience is helpful because the course involves doing regression analysis using [\textsf{R}](https://www.r-project.org/about.html) programming language.
 
-- Some linear algebra exposure at the level of MATH 3100 (Linear Algebra and Matrix Theory) would helps especially for MSSC 5780 students as some matrix operations are used for modeling and computation. 
+-   Some linear algebra exposure at the level of MATH 3100 (Linear Algebra and Matrix Theory) would helps especially for MSSC 5780 students as some matrix operations are used for modeling and computation.
 
-- MSSC 5780 students, having taken MATH 4700 (Probability) and MATH 4710 (Statistical Inference) would help too. 
+-   MSSC 5780 students, having taken MATH 4700 (Probability) and MATH 4710 (Statistical Inference) would help too.
 
-- Talk to me if you are not sure whether or not this is the right course for you.
+-   Talk to me if you are not sure whether or not this is the right course for you.
 
 ## E-mail Policy
 
-- I will attempt to reply your email quickly, at least **within 24 hours**.
+-   I will attempt to reply your email quickly, at least **within 24 hours**.
 
-- **Expect a reply on Monday if you send a question during weekends**. If you do not receive a response from me within two days, re-send your question/comment in case there was a "mix-up" with email communication (Hope this won't happen!).
+-   **Expect a reply on Monday if you send a question during weekends**. If you do not receive a response from me within two days, re-send your question/comment in case there was a "mix-up" with email communication (Hope this won't happen!).
 
-- Please start your subject line with **[math4780]** or **[mssc5780]** followed by a clear description of your question. See an example below.
+-   Please start your subject line with **\[math4780\]** or **\[mssc5780\]** followed by a clear description of your question. See an example below.
 
 ![Email Subject Line Example](./images/email.png)
 
-- Email etiquette is important. Please read this [article](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) to learn more about email etiquette.
+-   Email etiquette is important. Please read this [article](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) to learn more about email etiquette.
 
-- I am more than happy to answer your questions about this course or statistics in general. However, due to time constraint, I may choose **NOT** to respond to students' e-mail if
+-   I am more than happy to answer your questions about this course or statistics in general. However, due to time constraint, I may choose **NOT** to respond to students' e-mail if
 
-    1. The student could answer his/her own inquiry by reading the syllabus or information on the course website or D2L.
-    
-    2. The student is asking for an extra credit opportunity. The answer is "no".
-    
-    3. The student is requesting an extension on homework. The answer is "no".
-    
-    4. The student is asking for a grade to be raised for no legitimate reason. The answer is "no".
-    
-    5. The student is sending an email with no etiquette. 
-    
+    1.  The student could answer his/her own inquiry by reading the syllabus or information on the course website or D2L.
+
+    2.  The student is asking for an extra credit opportunity. The answer is "no".
+
+    3.  The student is requesting an extension on homework. The answer is "no".
+
+    4.  The student is asking for a grade to be raised for no legitimate reason. The answer is "no".
+
+    5.  The student is sending an email with no etiquette.
+
 ## Textbooks
 
-### Required Textbook
+<!-- ### Required Textbook -->
 
-- [(**LRA**) *Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. (Graduate-level book that requires knowledge of matrix algebra)
+- [(**IS**) *Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/) by Cheng-Han Yu. (Good resource for brushing up your basic probability, statistics and simple linear regression knowledge.)
 
-
-### Optional References
-
-In addition to the textbook, the course materials are borrowed from the following books:
-
-- [(**ROS**) *Regression and Other Stories*](https://avehtari.github.io/ROS-Examples/) by Andrew Gelman, Jennifer Hill, and Aki Vehtari. Publisher: Cambridge University Press. 
+- [(**LRA**) *Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. (Graduate-level book that requires knowledge of matrix algebra.)
 
 - [(**CAR**) *An R Companion to Applied Regression*](https://socialsciences.mcmaster.ca/jfox/Books/Companion/), by John Fox and Sanford Weisberg. Publisher: SAGE. (Doing regression much easier by the `car` and `effects` R packages.)
 
-- [(**RD**) *Regression Daignostics*](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html), by John Fox. Publisher: SAGE.
+- [(**RD**) *Regression Daignostics*](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html), by John Fox. Publisher: SAGE. (Great concise book for learning regression diagnostics.)
 
-- [(**CMR**) *Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&pd_rd_i=0534380166&pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&pd_rd_w=tDw1K&pd_rd_wg=OIjNY&pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&psc=1&refRID=PY1Q3JBBS4PS1M7D7DZF), by Raymond Myers. Publisher: Duxbury Press. (The textbook I used for my master degree).
+- [(**CMR**) *Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&pd_rd_i=0534380166&pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&pd_rd_w=tDw1K&pd_rd_wg=OIjNY&pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&psc=1&refRID=PY1Q3JBBS4PS1M7D7DZF), by Raymond Myers. Publisher: Duxbury Press. (The textbook when I was a master student.).
+
 
 ## Programming Languages
+
 The default language of this course is \textsf{R}. Python code will be provided as well. Due to time constraint, I will NOT teach you \textsf{R} or Python programming from A to Z. If you never use R/Python and would like to grasp its syntax quickly, read my MATH 3570 R/Python programming slides on D2L. I am more than happy to answer any questions about \textsf{R} if you have any. There are a lot of online resources for learning \textsf{R} including the sites below.
 
-- [*Quick-R*](https://www.statmethods.net/index.html)
+-   [*Quick-R*](https://www.statmethods.net/index.html)
 
-- [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) 
+-   [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/)
 
 <!-- - [*A Student's Guide to R*](https://cran.r-project.org/doc/contrib/Horton+Pruim+Kaplan_MOSAIC-StudentGuide.pdf)  -->
 
 <!-- - [*R for Cats*](https://rforcats.net/)  -->
 
-You may use any other language to complete your homework, exams and project. However, I will not debug your code or provide comments on any technical issues of those languages. 
-
+You may use any other language to complete your homework, exams and project. However, I will not debug your code or provide comments on any technical issues of those languages.
 
 ## Grading Policy
-- Students in this class range from juniors to second-year PhD students, so it makes sense to evaluate student performance using a different scale. 
 
-- The homework/exams questions involving matrix algebra (MATH 3100) and calculus-based probability and statistical inference (MATH 4700/4710) are **optional** for MATH 4780 students.
+-   Students in this class range from juniors to second-year PhD students, so it makes sense to evaluate student performance using a different scale.
 
-- For students in **MATH 4780**, the final grade is earned out of **1000 total points** distributed as follows:
-  - **Homework 1 to 6: 600 pts (100 pts each)**
-  - **Final project: 400 pts**
-  - **(Optional) MSSC problems: Up to extra 50 pts**
+-   The homework/exams questions involving matrix algebra (MATH 3100) and calculus-based probability and statistical inference (MATH 4700/4710) are **optional** for MATH 4780 students.
 
-- For students in **MSSC 5780**, the final grade is earned out of **1200 total points** distributed as follows:
-  - **Homework 1 to 6: 600 pts (100 pts each)**
-  - **Final project: 400 pts**
-  - **(Required) MSSC problems: 200 pts**
-  
-- You will **NOT** be allowed any extra credit projects/homework/exam to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exam will **NOT** be curved.
+-   For students in **MATH 4780**, the final grade is earned out of **1000 total points** distributed as follows:
 
-- The final grade is based on your percentage of points earned out of 1000 or 1200 points and the grade-percentage conversion Table. $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.1 is in $[93, 100]$ and the grade is A and 92.8 is in $[90, 94)$ and the grade is A-.
+    -   **Homework 1 to 6: 600 pts (100 pts each)**
+    -   **Final project: 400 pts**
+    -   **(Optional) MSSC problems: Up to extra 50 pts**
+
+-   For students in **MSSC 5780**, the final grade is earned out of **1200 total points** distributed as follows:
+
+    -   **Homework 1 to 6: 600 pts (100 pts each)**
+    -   **Final project: 400 pts**
+    -   **(Required) MSSC problems: 200 pts**
+
+-   You will **NOT** be allowed any extra credit projects/homework/exam to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exam will **NOT** be curved.
+
+-   The final grade is based on your percentage of points earned out of 1000 or 1200 points and the grade-percentage conversion Table. $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.1 is in $[93, 100]$ and the grade is A and 92.8 is in $[90, 94)$ and the grade is A-.
 
 ```{r, echo=FALSE}
 letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
@@ -125,29 +123,30 @@ grade_dist <- data.frame(Grade = letter, Percentage = percentage)
 knitr::kable(grade_dist, longtable = TRUE, caption = "Grade-Percentage Conversion")
 ```
 
-- This is not a course that gives most of students grade A. If you want to obtain a good grade, study hard. No pain, no gain.
+-   This is not a course that gives most of students grade A. If you want to obtain a good grade, study hard. No pain, no gain.
 
 ## Homework
 
-- Homework will be assigned through the course website in weekly modules. 
+-   Homework will be assigned through the course website in weekly modules.
 
-- To submit your homework, please go to **Assessments > Dropbox** and upload your homework in **PDF** format.
-  + [Combine images into a PDF file](https://www.youtube.com/watch?v=hQxfU-r5qKs)
-  + [Microsoft Word to PDF in 10 Seconds](https://www.youtube.com/watch?v=ibELbGJQTK8&feature=youtu.be)
-  + [Convert images to PDF in Macbook/iMac](https://www.youtube.com/watch?v=CgsidiVdaRM)
-  + [Combine two or more images to get a single PDF file](https://apple.stackexchange.com/questions/11163/how-do-i-combine-two-or-more-images-to-get-a-single-pdf-file)
+-   To submit your homework, please go to **D2L \> Assessments \> Dropbox** and upload your homework in **PDF** format.
 
-- There will be 6 homework sets to be graded, Homework 1 to 6.
+    -   [Combine images into a PDF file](https://www.youtube.com/watch?v=hQxfU-r5qKs)
+    -   [Microsoft Word to PDF in 10 Seconds](https://www.youtube.com/watch?v=ibELbGJQTK8&feature=youtu.be)
+    -   [Convert images to PDF in Macbook/iMac](https://www.youtube.com/watch?v=CgsidiVdaRM)
+    -   [Combine two or more images to get a single PDF file](https://apple.stackexchange.com/questions/11163/how-do-i-combine-two-or-more-images-to-get-a-single-pdf-file)
 
-- Some questions are required for MSSC students.
+-   There will be 6 homework sets to be graded, Homework 1 to 6.
 
-- You will get a better understanding of the material if you discuss it with others. However, you must submit YOUR OWN work. 
+-   Some questions are required for MSSC students.
 
-- **NO LATE HOMEWORK WILL BE ACCEPTED NOR WILL YOU BE ALLOWED TO MAKE UP MISSED HOMEWORK!** 
+-   You will get a better understanding of the material if you discuss it with others. However, you must submit YOUR OWN work.
+
+-   **NO LATE HOMEWORK WILL BE ACCEPTED NOR WILL YOU BE ALLOWED TO MAKE UP MISSED HOMEWORK!**
 
 <!-- - You have at least **one week** to finish your homework. -->
 
-- **Handwriting is not allowed for data analysis part**.
+-   **Handwriting is not allowed for data analysis part**.
 
 ## Final Project
 
@@ -163,7 +162,7 @@ knitr::kable(grade_dist, longtable = TRUE, caption = "Grade-Percentage Conversio
 
 <!-- - Exam 1 covers Week 1 to 6. Exam 2 covers Week 1 to 11. If there is one, the final exam is comprehensive and covers the **all course materials**. -->
 
-- A detailed final project guideline will be released later.
+-   A detailed final project guideline will be released later.
 
 <!-- - Some questions are required for MSSC students. -->
 
@@ -173,20 +172,21 @@ knitr::kable(grade_dist, longtable = TRUE, caption = "Grade-Percentage Conversio
 
 <!-- - **NO make-up final exam/project** for any reason. -->
 
-
-
 ## University and college policies
 
 As a student in this course, you have agreed to comply with [Marquette undergraduate policies and regulations](https://bulletin.marquette.edu/policies/).
 
 <!-- ```{=html} -->
+
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/_KN97j30ST4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> -->
+
 <!-- </iframe> -->
+
 <!-- ``` -->
 
 ## Accommodation
-If you need to request accommodations, or modify existing accommodations that address disability-related needs, please contact [Disability Service](https://www.marquette.edu/disability-services/).
 
+If you need to request accommodations, or modify existing accommodations that address disability-related needs, please contact [Disability Service](https://www.marquette.edu/disability-services/).
 
 ## Important dates
 

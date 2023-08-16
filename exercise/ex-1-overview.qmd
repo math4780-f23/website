@@ -1,0 +1,46 @@
+---
+title: "Exercise 1: Overview"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+## Overview of Regression
+<!-- ISL 2.4 2.6 -->
+1. Describe three real-life applications in which regression might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.
+
+2. Describe the differences between a parametric and a non-parametric statistical learning approach.
+
+## Checking Data with R
+<!-- ISL 2.10 -->
+1. Load in the `Boston` data set in `ISLR2` package.
+
+2. How many rows are in this data set? How many columns? What do the rows and columns represent?
+
+3. Make some pairwise scatterplots of the predictors (columns) in this data set. Describe your findings.
+
+4. Are any of the predictors associated with per capita crime rate? If so, explain the relationship.
+
+5. Do any of the census tracts of Boston appear to have particularly high crime rates? Tax rates? Pupil-teacher ratios? Comment on the range of each predictor.
+
+6. How many of the census tracts in this data set bound the Charles river?
+
+7. What is the median pupil-teacher ratio among the towns in this data set?
+
+<!-- 8. Which census tract of Boston has lowest median value of owneroccupied homes? What are the values of the other predictors for that census tract, and how do those values compare to the overall ranges for those predictors? Comment on your findings. -->
+
+<!-- 9. In this data set, how many of the census tracts average more than seven rooms per dwelling? More than eight rooms per dwelling? Comment on the census tracts that average more than eight rooms per dwelling. -->
+
+
+
+## Probability and Statistics
+<!-- ROS 3.3, 4.5 -->
+1. Plot normal density curves with different choices of mean and standard deviation.
+
+2. Choose a continuous variable in `Boston`. Use the `sample()` function to draw a simple random sample of size 20 from this population. Calculate the sample average.
+
+3. Repeat 2. several times to get a sampling distribution of the sample mean.
+

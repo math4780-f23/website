@@ -1,0 +1,767 @@
+---
+title: "Nonparametric Regression `r emo::ji('hammer_and_wrench')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "./images/12-nonpara-reg/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+
+# Nonparametric Regression
+
+<h2> Nonparametric Kernel Smoother </h2>
+<h2> Local Regression </h2>
+
+## Nonparametric Statistics
+- A general regression model $y = f(x) + \epsilon$.
+- **Parametric** model: make an assumption about the shape of $f$, e.g., $f(x) = \beta_0 + \beta_1 x$, then learn the **parameters** $\beta_0$ and $\beta_1$.
+
+. . .
+
+- **Nonparametric** methods do NOT make assumptions about the form of $f$.
+  + Seek an estimate of $f$ that gets close to the data points without being too rough or wiggly.
+  + Avoid the possibility that the functional form used to estimate $f$ is very different from the true $f$.
+  + Do not reduce the problem of estimating $f$ to a small number of parameters, so more data are required to obtain an accurate estimate of $f$.
+
+
+::: notes
+- So far, with a general regression model $y = f(x) + \epsilon$, we make an assumption about the form or shape of $f$, for example, $f(x) = \beta_0 + \beta_1 x$, then learn the **parameters** $\beta_0$ and $\beta_1$ to understand the relationship between $y$ and $x$. This is a **parametric** model.
+- **Nonparametric** methods do not make assumptions about the form of $f$.
+  + They seek an estimate of $f$ that gets close to the data points without being too rough or wiggly.
+  + The methods avoid the possibility that the functional form used to estimate $f$ is very different from the true $f$.
+  + Since they do not reduce the problem of estimating $f$ to a small number of parameters, more observations are required to obtain an accurate estimate for $f$.
+
+:::
+
+
+## Parametric vs. Nonparametric Models
+:::: {.columns}
+
+::: {.column width="50%"}
+**Parametric** (Linear regression)
+<br>
+
+```{r}
+#| out-width: 90%
+#| fig-asp: 1
+income_data <- read.csv("./data/Income1.csv")
+par(mar = c(4, 4, 0, 0))
+plot(income_data$Income~income_data$Education, cex = 2,
+     col = "red", xlab = "Years of Education", cex.axis = 1.5,
+     ylab = "Income (1000 USD)", pch = 19, las = 1, cex.lab = 1.5)
+reg <- lm(income_data$Income~income_data$Education)
+abline(reg, col = "blue", lwd = 6)
+```
+:::
+
+
+::: {.column width="50%"}
+
+**Nonparametric** (Kernel smoother)
+<br>
+
+```{r}
+#| out-width: 90%
+#| fig-asp: 1
+par(mar = c(4, 4, 0, 0))
+plot(income_data$Income~income_data$Education, col = "red", 
+     xlab = "Years of Education", cex.axis = 1.5, cex = 2,
+     ylab = "Income (1000 USD)", pch = 19, las = 1, cex.lab = 1.5)
+# lo <- lowess(income_data$Income~income_data$Education, delta = 0.01)
+ks <- KernSmooth::locpoly(y=income_data$Income, x=income_data$Education, degree = 0, bandwidth = 1)
+lines(ks$x, ks$y, col = 3, lwd = 6)
+```
+:::
+::::
+
+
+## Nonparametric Regression
+- In (parametric) linear regression, $\small \hat{y}_i = \sum_{j=1}^n h_{ij}y_j$.
+<!-- - The fitted value for the $i$th response is a linear combination of the original data. -->
+- Nonparametric regression, with no assumption on $f$, is trying to estimate $y_i$ using *the weighted average of the data*:
+$$\small \hat{y}_i = \sum_{j=1}^n w_{ij}y_j$$ where $\sum_{j=1}^nw_{ij} = 1$.
+
+
+::: alert
+$w_{ij}$ is larger when $x_i$ and $x_j$ are closer. $y_i$ is affected more by its *neighbors*.
+:::
+
+
+::: notes
+$$\small {\bf \hat{y} = Xb = X(X'X)^{-1}X'y = Hy},$$
+-  $w_{ij}$: the influence power of $y_j$ on $y_i$.
+:::
+
+
+
+## Kernel Smoother
+
+- In nonparametric statistics, a **kernel** $K(t)$ is used as a *weighting* function satisfying
+  + $K(t) \ge 0$ for all $t$
+  + $\int_{-\infty}^{\infty} K(t) \,dt = 1$
+  + $K(-t) = K(t)$ for all $t$
+
+::: question
+Can you give me an kernel function?
+:::
+
+
+
+## Kernel Smoother
+
+- In nonparametric statistics, a **kernel** $K(t)$ is used as a *weighting* function satisfying
+  + $K(t) \ge 0$ for all $t$
+  + $\int_{-\infty}^{\infty} K(t) \,dt = 1$
+  + $K(-t) = K(t)$ for all $t$
+  
+
+```{r}
+#| out-width: 50%
+x <- seq(-1.5, 1.5, by = 0.01)
+ker_fcn <- cbind(0.5 * (abs(x) <= 1), 
+                (1 - abs(x)) * (abs(x) <= 1), 
+                0.75 * (1 - x ^ 2) * (abs(x) <= 1), 
+                15/16 * (1 - x ^ 2) ^ 2 * (abs(x) <= 1),
+                35/32 * (1 - x ^ 2) ^ 3 * (abs(x) <= 1), 
+                dnorm(x),
+                pi/4 * cos(pi/2 * x))
+    
+colnames(ker_fcn) = c("Uniform", "Triangular", "Parabolic", "Biweight",
+                      "Triweight", "Gaussian", "Cosine")
+par(mar = c(1.5, 1.5, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+matplot(x, ker_fcn, type = "l", xlim = c(-1.5, 1.5), axes = F,
+        col = 1:7, lty = 1, lwd = 4, ylim = c(0, 1.1), xlab =  "", ylab = "")
+axis(1, tck = 0.01)
+axis(2, tck = 0.01)
+legend("topright", cex = 1.5,
+       c("Uniform", "Triangle", "Parabolic", "Biweight", "Triweight", "Gaussian",
+         "Cosine"), col = 1:7, lwd = rep(4, 7), bty = "n")
+```
+
+## Kernel Smoother
+- Let $\tilde{y}_i$ be the **kernel smoother** of the $i$th response. Then
+$$\small \tilde{y}_i = \sum_{j=1}^n w_{ij}y_j$$ where $\sum_{j=1}^nw_{ij} = 1$.
+
+- The Nadaraya–Watson kernel regression uses the weights given by $$\small w_{ij} = \frac{K \left( \frac{x_i - x_j}{b}\right)}{\sum_{k=1}^nK \left( \frac{x_i - x_k}{b}\right)}$$
+  + Parameter $b$ is the **bandwidth** that controls the smoothness of the fitted curve.
+  - Closer points are given higher weights: $w_{ij}$ is larger if $x_i$ and $x_j$ are closer.
+
+::: notes
+<!-- or ${\bf \tilde{y} = S y}$ where ${\bf S} = \left[ w_{ij}\right]$ is the smoothing matrix created by a kernel function $K(\cdot)$. -->
+- $\tilde{y}_i$s will not be as much variationed as $y_j$.
+- By weighted averaging, the value $\tilde{y}_i$ is synthesized or integrated by other data points. The average value tends to wash out some unexplained noises, and look more like its other data points.
+- These kernel smoothers use a bandwidth, $b$, to define this neighborhood of interest.
+:::
+
+
+## Gaussian Kernel Smoother Example
+```{r}
+#| eval: false
+#| echo: true
+ksmooth(x, y, bandwidth = 1, kernel = "normal")
+KernSmooth::locpoly(x, y, degree = 0, kernel = "normal", bandwidth = 1)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- $y = 2\sin(x) + \epsilon$
+- $K_b(x_i, x_j) = \frac{1}{b \sqrt{2\pi}}\exp \left( - \frac{(x_i - x_j)^2}{2b^2}\right)$
+
+```{r}
+#| out-width: 100%
+    # library(kknn)
+    set.seed(1)
+    
+    # generate some data
+    x <- runif(40, 0, 2 * pi)
+    y <- 2*sin(x) + rnorm(length(x))
+    
+    testx <- seq(0, 2 * pi, 0.01)
+    
+    # # compare two different kernels: rectangular or Epanechnikov
+    # 
+    # par(mfrow = c(1, 2), mar=rep(2,4))
+    # 
+    # knn.fit = kknn(y ~ x, train = data.frame("x" = x, "y" = y),
+    #                test = data.frame("x" = testx),
+    #                k = 10, kernel = "rectangular")
+    # 
+    # plot(x, y, xlim = c(0, 2*pi), cex = 1.5, xlab = "", ylab = "", cex.lab = 1.5, pch = 19)
+    # title(main=paste("KNN"), cex.main = 1.5)
+    # lines(testx, 2*sin(testx), col = "deepskyblue", lwd = 3)
+    # lines(testx, knn.fit$fitted.values, type = "s", col = "darkorange", lwd = 3)
+    # box()
+    # ks_fit_01 <- ksmooth(x, y, bandwidth = 0.1, kernel = "normal", x.points = testx)
+    # ks_fit_05 <- ksmooth(x, y, bandwidth = 0.2, kernel = "normal", x.points = testx)
+    # ks_fit_1 <- ksmooth(x, y, bandwidth = 1, kernel = "normal", x.points = testx)
+    # # ks_fit_2 <- ksmooth(x, y, bandwidth = 2, kernel = "normal", x.points = testx)
+    # ks_fit_3 <- ksmooth(x, y, bandwidth = 3, kernel = "normal", x.points = testx)
+    
+    ks_fit_02 <- KernSmooth::locpoly(x, y, degree = 0, bandwidth = 0.2, kernel = "normal")
+    ks_fit_1 <- KernSmooth::locpoly(x, y, degree = 0, bandwidth = 1, kernel = "normal")
+    # ks_fit_2 <- ksmooth(x, y, bandwidth = 2, kernel = "normal", x.points = testx)
+    # ks_fit_3 <- KernSmooth::locpoly(x, y, degree = 0, bandwidth = 3, kernel = "normal")
+    
+    
+    par(mar = c(1.5, 1.5, 2, 0), mgp = c(0, 0.2, 0), las = 1)
+    plot(x, y, xlim = c(0, 2 * pi), cex = 1.5, xaxt = "n", yaxt = "n",
+         xlab = "", ylab = "", cex.lab = 1, pch = 16)
+    # axis(1, tck = 0.01)
+    # axis(2, tck = 0.01)
+    title(main = list("Gaussian kernel", cex = 2))
+    lines(testx, 2 * sin(testx), col = 2, lwd = 4)
+    # lines(testx, ks_fit_01$y, col = 3, lwd = 3)
+    lines(ks_fit_02$x, ks_fit_02$y, col = 4, lwd = 3)
+    lines(ks_fit_1$x, ks_fit_1$y, col = 3, lwd = 3)
+    # lines(testx, ks_fit_2$y, col = 6, lwd = 3)
+    # lines(ks_fit_3$x, ks_fit_3$y, col = 7, lwd = 3)
+    legend("bottomleft", c("true f", paste("b = ", c(0.2, 1))), cex = 2,
+           col = c(2, 4, 3), lwd = rep(3, 4), bty = "n")
+    
+    # box()
+    
+    # plotrix::draw.circle(0.2, 0.5, 0.4, lwd = 3, border = "red")
+    # plotrix::draw.circle(2*pi-0.2, -0.5, 0.4, lwd = 3, border = "red")
+```
+:::
+
+
+
+::: {.column width="50%"}
+$$\small w_{ij} = \frac{K \left( \frac{x_i - x_j}{b}\right)}{\sum_{k=1}^nK \left( \frac{x_i - x_k}{b}\right)}$$ 
+Bandwidth $b$ defines *"neighbors"* of $x_i$, and controls the smoothness of the estimated $f$.
+
+::: alert
+- **Large $b$**: More data points have large weights. The fitted curve becomes smoother
+- **Small $b$**: Less of the data are used, and the resulting curve looks wiggly.
+:::
+
+:::
+::::
+
+
+::: notes
+- Bandwidth $b$ defines *"neighbors"* of the specific location of interest, and control the smoothness of the estimated function $f$.
+- When $b$ is large, more data points with large weights are used to predict the response $y_i$ at the specific $x_i$. The fitted curve becomes smoother as $b$ increases.
+- As $b$ decreases, less of the data are used, and the resulting curve looks more wiggly.
+- When $b$ is large, more points having large weights to predict the response at the specific $x$. The resulting plot of predicted values becomes smoother as $b$ increases.
+- These kernel smoothers use a bandwidth, $b$, to define this neighborhood of interest. 
+- A large value for $b$ results in more of the data being used to predict the response at the specific location. Consequently, the resulting plot of predicted values becomes much smoother as $b$ increases. 
+- Conversely, as $b$ decreases, less of the data are used to generate the prediction, and the resulting plot looks more "wiggly" or bumpy.
+:::
+
+
+## Gaussian Kernel Smoother Example
+
+```{r}
+#| out-width: 80%
+    par(mfrow = c(2, 2))
+    for (x0 in c(2, 3, 4, 5)) {
+        # predicting the point at x_0
+      par(mar = c(0, 0, 2, 0), mgp = c(0, 0.2, 0), las = 1)
+        plot(x, y, xlim = c(0, 2*pi), cex = 4*dnorm(x, x0), xlab = "", ylab = "",
+             pch = 16, xaxt='n', yaxt='n')
+        title(main = paste0("Kernel average at x = ", x0, "; b = 1"), cex.main = 1.5)
+        lines(testx, 2*sin(testx), col = 2, lwd = 3)
+        lines(ks_fit_1$x, ks_fit_1$y, type = "s", col = 3, lwd = 3)
+        idx <- which.min(abs(ks_fit_1$x - x0))
+        points(ks_fit_1$x[idx], ks_fit_1$y[idx], col = "red", pch = 18, cex = 2)
+        cord.x <- seq(x0 - 3, x0 + 3, 0.01)
+        cord.y <- 3*dnorm(cord.x, x0) - 3
+     
+        # The Gaussian Kernel Function
+        polygon(cord.x, cord.y, col = rgb(0.5, 0.9, 0.5, 0.2), 
+                border = rgb(0.5, 0.9, 0.5, 0.6))
+    }
+```
+
+
+
+::: notes
+- The kernel function shows the weights and how fast the weights decay.
+- Point sizes correspond to their kernel weight, or the influence on the fitted or predicted value of $y$ at $x$.
+- To get the estimated fitted curve, we can create a grid of $x$ points. For each $x$, find its response value by taking weighted average of the data points whose weight is determined by the kernel function.
+- The estimated regression function $f$ is the result of connecting all the weighted average responses of the $x$s in the grid.
+:::
+
+
+
+
+## Gaussian Kernel Smoother Example
+
+```{r}
+#| out-width: 80%
+    par(mfrow = c(2, 2))
+    for (x0 in c(2, 3, 4, 5)) {
+        # predicting the point at x_0
+        par(mar = c(0, 0, 2, 0), mgp = c(0, 0.2, 0), las = 1)
+        plot(x, y, xlim = c(0, 2*pi), cex = 2*dnorm(x, x0, 0.5), xlab = "", ylab = "", 
+             pch = 16, xaxt='n', yaxt='n')
+        title(main = paste0("Kernel average at x = ", x0, "; b = 0.2"), cex.main = 1.5)
+        lines(testx, 2*sin(testx), col = 2, lwd = 3)
+        lines(ks_fit_02$x, ks_fit_02$y, type = "s", col = 4, lwd = 3)
+        idx <- which.min(abs(ks_fit_02$x - x0))
+        points(ks_fit_02$x[idx], ks_fit_02$y[idx], col = "red", pch = 18, cex = 2)
+        cord.x <- seq(x0 - 3, x0 + 3, 0.01)
+        cord.y <- 3*dnorm(cord.x, x0, 0.5) - 3
+     
+        # The Gaussian Kernel Function
+        polygon(cord.x, cord.y, col = rgb(0.5, 0.5, 0.9, 0.2), 
+                border = rgb(0.5, 0.5, 0.9, 0.6))
+    }
+```
+
+
+## Local Regression
+- **Local regression** is another nonparametric regression alternative.
+
+. . .
+
+- In ordinary least squares, minimize $\sum_{i=1}^n(y_i - \beta_0 - \beta_1x_i)^2$
+- In weighted least squares, minimize $\sum_{i=1}^nw_i(y_i - \beta_0 - \beta_1x_i)^2$
+
+. . .
+
+In local weighted linear regression, 
+
+- Use a *kernel as a weighting function* to define neighborhoods and weights to perform weighted least squares.
+
+- Find the estimates of $\beta_0$ and $\beta_1$ at $x_0$ by minimizing $$\sum_{i=1}^nK_b(x_0, x_i)(y_i - \beta_0 - \beta_1x_i)^2$$
+
+
+
+::: notes
+- **Local regression** (local polynomial regression, moving regression) is another nonparametric regression alternative.
+- Idea: *Use a kernel as a weighting function to define neighborhoods and weights to perform weighted least squares.*
+  + Local weighted linear regression
+  + Local weighted polynomial regression
+
+:::
+
+
+## Local Regression
+In locally weighted linear regression, we find the estimates of $\beta_0$ and $\beta_1$ at $x_0$ by minimizing $$\sum_{i=1}^nK_b(x_0, x_i)(y_i - \beta_0 - \beta_1x_i)^2$$
+
+  + Pay more attention to the points that are closer to the target point $x_0$.
+
+. . .
+  
+  + The estimated (local) linear function and $\hat{\beta}_0$ and $\hat{\beta}_1$ are only valid at the local point $x_0$.
+
+  
+. . .
+
+  + If interested in a different target $x_0$, we need to refit the model. 
+
+. . .
+
+- In locally weighted polynomial regression, minimize $$\sum_{i=1}^nK_b(x_0, x_i)(y_i - \beta_0 - \sum_{r=1}^d\beta_rx_i^r)^2$$
+  <!-- + It is very sensitive to the choice of bandwidth $b$. -->
+  <!-- + Do not use $r > 2$. (overfitting) -->
+  
+
+::: notes
+- $\hat{\beta}_0$ and $\hat{\beta}_1$ are a function of $x_0$ (of course a function of $(x_i, y_i)_{i=1}^n$).
+:::
+
+
+## Local Linear Regression w/ Gaussian Kernel Weights
+```{r}
+#| out-width: 100%
+#| fig-asp: 0.5
+    # generate some data
+    set.seed(1)
+    n <- 150
+    x <- seq(0, 2 * pi, length.out = n)
+    y <- 2 * sin(x) + rnorm(n)
+    
+    # Silverman optimal bandwidth for univariate regression
+    h = 1.06 * sd(x) * n ^ (-1 / 5) 
+
+    par(mfrow = c(1, 2))
+    par(mar = c(0, 0, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+    for (x0 in c(0, 1.5*pi)) {
+        # Plotting the data
+        plot(x, y, xlim = c(0, 2*pi), cex = 3*h*dnorm(x, x0, h), xlab = "", ylab = "", 
+             cex.lab = 1.5, pch = 16, xaxt = 'n', yaxt = 'n')
+        title(main = paste("Local Linear Reg at x =", round(x0, 3)), cex.main = 1)
+        lines(x, 2*sin(x), col = 2, lwd = 2)
+        
+        # kernel smoother
+        # ksmooth.fit <- ksmooth(x, y, bandwidth = h, kernel = "normal", 
+        #                        x.points = x)
+        ksmooth.fit <- KernSmooth::locpoly(x, y, bandwidth = h, kernel = "normal")
+        lines(ksmooth.fit$x, ksmooth.fit$y, type = "l", col = 4, lwd = 2)
+          
+        # local linear
+        K <- exp(-0.5*((x - x0)/h)^2)/sqrt(2*pi)/h
+        wX <- sweep(cbind(1, x), 1, sqrt(K), FUN = "*")
+        wy <- y * sqrt(K)
+        b <- solve(t(wX) %*% wX) %*% t(wX) %*% wy
+    
+        segments(x0 - h, b[1] + (x0 - h) * b[2], x0 + h, b[1] + (x0 + h) * b[2], 
+                 lwd = 2, col = 3)
+        points(x0, b[1] + x0 * b[2], col = 3, pch = 18, cex = 2)
+        
+        # The Gaussian Kernel Function
+        cord.x <- seq(x0 - 3 * h, x0 + 3 * h, 0.01)
+        cord.y <- 3 * h * dnorm(cord.x, x0, h) - 3
+        polygon(cord.x, cord.y, col = rgb(0.0, 0.9, 0.5, 0.2), 
+                border = rgb(0.0, 0.9, 0.5, 0.5))
+        legend("topright", c("kernel smoother", "local linear"), lty = c(1, 1), 
+               col = c(4, 3), lwd = 2, pch = c(NA, 18), cex = 1, bty = "n")
+    }
+```
+
+
+## Local Quadratic Regression w/ Gaussian Weights
+```{r}
+#| out-width: 100%
+#| fig-asp: 0.5
+    # local quadratic regression
+    par(mfrow = c(1, 2))
+    par(mar = c(0, 0, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+    
+    for (x0 in c(0, 1.5*pi)) {
+      
+
+        # Plotting the data
+        plot(x, y, xlim = c(0, 2*pi), cex = 3*h*dnorm(x, x0, h), xlab = "", ylab = "", 
+             cex.lab = 1.5, pch = 16, xaxt = 'n', yaxt = 'n')
+        title(main=paste("Local Quadratic Reg at x =", round(x0, 3)), cex.main = 1)
+        lines(x, 2*sin(x), col = 2, lwd = 2)
+        
+        # kernel smoother
+        # ksmooth.fit <- ksmooth(x, y, bandwidth = h, kernel = "normal", 
+        #                        x.points = x)
+        lines(ksmooth.fit$x, ksmooth.fit$y, type = "l", col = 4, lwd = 2)
+          
+        # local linear
+        K = exp(-0.5*((x - x0)/h)^2)/sqrt(2*pi)/h
+        wX = sweep(cbind(1, x, x^2), 1, sqrt(K), FUN = "*")
+        wy = y*sqrt(K)
+        b = solve(t(wX) %*% wX) %*% t(wX) %*% wy
+    
+        x_seq <- seq(x0 - h, x0 + h, 0.01)
+        points(x_seq, b[1] + b[2] * x_seq + b[3] * x_seq ^ 2, 
+               col = 3, type = "l", lwd = 2)
+        points(x0, b[1] + x0 * b[2] + x0 ^ 2 * b[3], col = 3, pch = 18, cex = 2)
+        
+        # The Gaussian Kernel Function
+        cord.x <- seq(x0 - 3 * h, x0 + 3 * h, 0.01)
+        cord.y <- 3 * h * dnorm(cord.x, x0, h) - 3
+        polygon(cord.x, cord.y, col = rgb(0, 0.9, 0.5, 0.2), 
+                border = rgb(0, 0.9, 0.5, 0.5))
+        legend("topright", c("kernel smoother", "local quadratic"), lty = c(1, 1), 
+               col = c(4, 3), lwd = 2, pch = c(NA, 18), cex = 1, bty = "n")
+    }
+```
+
+## Local Polynomial Regression in R
+Use `KernSmooth` or `locfit` package.
+<!-- - We can use WLS formula with weights computed by a specified kernel. -->
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
+#| echo: true
+library(KernSmooth)
+locpoly(x, y, degree, 
+        kernel = "normal", 
+        bandwidth, ...)
+```
+
+- `degree = 1`: local linear
+- `degree = 2`: local quadratic
+- `degree = 0`: **kernel smoother**
+
+:::
+
+
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
+#| echo: true
+library(locfit)
+locfit(y ~ lp(x, nn = 0.2, 
+              h = 0.5, deg = 2), 
+       weights = 1, subset, ...)
+# weights: Prior weights (or sample sizes) 
+#          for individual observations.
+# subset: Subset observations in the 
+#         data frame.
+# nn: Nearest neighbor component of 
+#     the smoothing parameter. 
+# h: The constant component of 
+#    the smoothing parameter.
+# deg: Degree of polynomial to use.
+```
+
+- Various ways to specify the bandwidth.
+
+:::
+::::
+
+
+::: notes
+
+::: question
+How does local regression determine the weights?
+:::
+
+- But why local regression?
+  + The Nadaraya-Watson kernel is notorious for boundary effects.
+  + There is a substantial bias at the boundaries.
+  + *Intuition*: all neighbors are smaller/larger than the boundary point.
+  + *Solution*: Locally weighted regression can (partially) correct it.
+- Its most common methods are **LOESS (locally estimated scatterplot smoothing)** and **LOWESS (locally weighted scatterplot smoothing)**.
+- Like kernel regression, LOESS uses the data from a neighborhood around the specific location.
+- The neighborhood $N(x_0)$ is defined by the **span** parameter $\alpha$, the fraction of the total points closest to $x_0$.
+- The LOESS uses the points in $N(x_0)$ to generate a weighted least-squares estimate
+of $y(x_0)$.
+
+:::
+
+## LOESS
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**LOESS (LOcally Estimated Scatterplot Smoothing)** uses the **tricube** kernel $K(x_0, x_i)$ defined as $$K\left( \frac{|x_0 - x_i|}{\max_{k \in N(x_0)} |x_0 - x_k|}\right)$$ where $$K(t) = \begin{cases} (1-t^3)^3       & \quad \text{for } 0 \le t \le 1\\ 0 & \quad \text{otherwise } \end{cases}$$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+x <- seq(-1.5, 1.5, by = 0.01)
+y_tricube <- (1 - abs(x) ^ 3) ^ 3 * (abs(x) <= 1)
+par(mfrow = c(1, 1))
+par(mar = c(3, 3, 1, 0), mgp = c(2, 0.5, 0), las = 1)
+plot(x, y_tricube, type = "l", xlim = c(-1.5, 1.5), main = "Tricube Kernel",
+     col = 4, lty = 1, lwd = 4, xlab =  "x", ylab = "K(x)")
+```
+:::
+
+::::
+
+
+- The neighborhood $N(x_0)$ is defined by the **span** parameter $\alpha$, the fraction of the total points closest to $x_0$.
+```{r}
+#| echo: true
+#| eval: false
+loess(y ~ x, span = 0.75, degree = 2) ## Default setting
+```
+- Larger $\alpha$ means more neighbors and smoother fitting.
+
+
+
+::: notes
+LOESS is a special case of Local Polynomial Regression Fitting
+:::
+
+
+## LOESS Example
+- LOESS uses the points in $N(x_0)$ to generate a WLS estimate of $y(x_0)$.
+
+```{r}
+#| out-width: 70%
+set.seed(1)
+n <- 150
+x <- seq(0, 2 * pi, len = n)
+y <- 2 * sin(x) + rnorm(n)
+par(mfrow = c(2, 2))
+par(mar = c(0, 0, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+span_vec <- c(0.1, 0.3, 0.5, 1)
+for (i in 1:4) {
+  plot(x, y, xlim = c(0, 2*pi), cex = 0.9, xlab = "", ylab = "", 
+     cex.lab = 1.5, pch = 16, xaxt = 'n', yaxt = 'n')
+  title(main = list(paste("LOESS", " alpha =", span_vec[i]), cex = 1.5))
+  loess_fit <- loess(y ~ x, span = span_vec[i], degree = 2)
+  lines(x, loess_fit$fitted, col = 2*i, lwd = 4)
+}
+```
+
+::: notes
+- LOESS is a special case of local polynomial regression.
+:::
+
+
+## R Implementation
+
+- `loess()`, `KernSmooth::locploy()`, `locfit::locfit()`, `ksmooth()`. **Not all of them uses the same definition of the bandwidth**.
+
+- `ksmooth`: The kernels are scaled so that their quartiles are at $\pm 0.25 * \text{bandwidth}$.
+
+- `KernSmooth::locpoly` uses the raw value that we directly plug into the kernel.
+
+
+```{r}
+#| out-width: 82%
+#| fig-asp: 0.4
+    # library(kknn)
+    library(KernSmooth)
+    set.seed(1)
+    
+    # generate some data
+    x <- runif(40, 0, 2 * pi)
+    y <- 2*sin(x) + rnorm(length(x))
+    
+    testx <- seq(0, 2 * pi, 0.01)
+    
+    ks_fit <- ksmooth(x, y, bandwidth = 0.2, kernel = "normal", x.points = testx)
+    
+    loc_fit <- locpoly(x, y, degree = 0, bandwidth = 0.2, kernel = "normal")
+    par(mfrow = c(1, 2))
+    par(mar = c(0, 0, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+    
+    # par(mar = c(1.5, 1.5, 1, 0), mgp = c(0, 0.2, 0), las = 1)
+    plot(x, y, xlim = c(0, 2 * pi), cex = 1, xaxt = "n", yaxt = "n",
+         xlab = "", ylab = "", cex.lab = 1, pch = 16)
+    # axis(1, tck = 0.01)
+    # axis(2, tck = 0.01)
+    title(main = "ksmooth b = 0.2")
+    lines(testx, 2 * sin(testx), col = 2, lwd = 4)
+    # lines(testx, ks_fit_01$y, col = 3, lwd = 3)
+    lines(testx, ks_fit$y, col = 4, lwd = 3)
+    
+    plot(x, y, xlim = c(0, 2 * pi), cex = 1, xaxt = "n", yaxt = "n",
+         xlab = "", ylab = "", cex.lab = 1, pch = 16)
+    # axis(1, tck = 0.01)
+    # axis(2, tck = 0.01)
+    title(main = "locpoly b = 0.2")
+    lines(testx, 2 * sin(testx), col = 2, lwd = 4)
+    # lines(testx, ks_fit_01$y, col = 3, lwd = 3)
+    lines(loc_fit$x, loc_fit$y, col = 4, lwd = 3)
+    # 
+    # legend("bottomleft", c("true f", paste("b = ", c(0.2, 1, 3))), 
+    #        col = c(2, 4, 3, 7), lwd = rep(3, 4), bty = "n")
+    
+    # box()
+    
+    # plotrix::draw.circle(0.2, 0.5, 0.4, lwd = 3, border = "red")
+    # plotrix::draw.circle(2*pi-0.2, -0.5, 0.4, lwd = 3, border = "red")
+```
+
+
+::: notes
+- h=1.06σxn−1/5
+- ksmooth: The kernels are scaled so that their quartiles (viewed as probability densities) are at ± 0.25*bandwidth.
+- span: In this case, the bandwidth is decided by first finding the closes k neighbors and then use a tri-cubic weighting on the range of these neighbors. the bandwidth essentially varies depending on the target point
+- the kknn() also utilize such a feature as default, so when you want to fit the standard KNN, you should specify method = "rectangular", otherwise, the neighboring points will not receive the same weight.
+:::
+
+

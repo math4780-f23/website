@@ -1,0 +1,860 @@
+---
+title: "Model Building, Selection and Validation"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    # code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: false
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\balpha{\boldsymbol \alpha}
+\def\bbeta{\boldsymbol \beta}
+\def\beps{\boldsymbol \epsilon}
+\def\bLambda{\boldsymbol \Lambda}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+library(car)
+library(olsrr)
+library(leaps)
+library(MASS)
+library(kableExtra)
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "./images/15-var-select/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 3
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+
+
+# Model Building, Selection and Validation
+<h2> Model Building Process </h2>
+<h2> Model Selection Criteria </h2>
+<h2> Selection Methods </h2>
+
+## Model Building
+
+So far, we assume that we
+
+- have a very good idea of the basic form of the model (linear form after transformation)
+- know (nearly) all of the regressors that are important and should be used.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Model Adequacy**
+
+```{r}
+#| out-width: 75%
+knitr::include_graphics("./images/15-var-select/model_building.png")
+```
+:::
+
+
+
+::: {.column width="50%"}
+
+**Model Selection**
+
+```{r}
+#| out-width: 26%
+knitr::include_graphics("./images/15-var-select/model_selection.png")
+```
+:::
+::::
+
+
+::: notes
+Our strategy is 
+- Fit the full model
+- Perform a thorough analysis (residual analysis, outliers, collinearity, etc)
+- Transformation of response/regressors
+- Test regressor significance
+- Perform a thorough analysis
+:::
+
+
+
+## Variable Selection
+
+- We have a *large pool of __candidate regressors__*, of which only a few are likely to be important. 
+- Finding an appropriate subset of regressors for the model is called **model/variable selection**.
+
+. . .
+
+Two "conflicting" goals in model building:
+
+- as many regressors as possible for better *predictive performance on new data* (**smaller bias**).
+
+- as few regressors as possible because as the number of regressors increases, 
+  + $\var(\hat{y})$ will increase (**larger variance**)
+  + cost more in data collecting and maintaining
+  + more model complexity
+
+A compromise between the two hopefully leads to the *"best" regression equation*.
+
+::: question
+What does **best** mean?
+:::
+
+::: notes
+- In most practical problems, we have a *large pool of possible __candidate regressors__*, of which only a few are likely to be important. 
+- Finding an appropriate subset of regressors for the model is called **variable selection**.
+- Two "conflicting" goals in model building:
+  + as many regressors as possible for more information for prediction
+  + as few regressors as possible (1) the variance of $\hat{y}$ will increase as the number of regressors increases (2) cost more in data collection (3) more model complexity
+
+A compromise between the two hopefully leads to the *"best" regression equation*.
+:::
+
+. . .
+
+There is **no unique definition of "best"**, and different methods specify **different subsets of the candidate regressors as best**.
+
+
+<!-- --- -->
+<!-- ## Model Misspecification -->
+<!-- - *Exclusion of relevant variables (underspecified)* -->
+<!--   + **True model**: ${\bf y = X_1\bsbeta_1 + X_2\bsbeta_2 + \bsep}$ -->
+<!--   + **Underspecified model**: ${\bf y = X_1\bsbeta_1 + \bsdel}$ -->
+<!-- - *Inclusion of irrelevant variables (overspecified)* -->
+<!--   + **True model**: ${\bf y = X\bsbeta + \bsep}$ -->
+<!--   + **Overspecified model**: ${\bf y = X\bsbeta + Z\bsgamma + \bsdel}$ -->
+
+
+<!-- |Property         | Underfit | Overfit | -->
+<!-- |:-------------------|:-------|:-------| -->
+<!-- | Bias of $\small {\bf b}$        | $E[\small {\bf b_1}_{under}] \ne \bsbeta_1$ unless $\small {\bf X_1'X_2=0}$| $E[{\bf b}_{over}] = \bsbeta$ -->
+<!-- | MSE                | $\small MSE({\bf b_1}_{under}) > MSE({\bf b_1})$ unless $\small {\bf X_1'X_2=0}$| $\small MSE({\bf b}_{over}) > MSE({\bf b})$ unless $\small {\bf X'Z=0}$ -->
+<!-- | Bias of $\small \hat{\sigma}^2$ | $\small E[\hat{\sigma}^2_{under}] > \sigma^2$ even if $\small {\bf X_1'X_2=0}$| $\small E[\hat{\sigma}^2_{over}] = \sigma^2$ -->
+
+## Predictive Performance
+- A selected model that fits the observed sample data well may not predict well on new observations.
+- Build a good regression function/model in terms of **prediction accuracy**. (Model validation/assessment)
+- Want: The selected model minimizes the mean square prediction error (MSPE) on the *new data*:
+$$\small MSPE(\hat{y}) = E\left[ (\hat{y} - y)^2\right] = E\left[ (\hat{y} - E(\hat{y}))^2\right] + [E(\hat{y}) - y]^2 = \var(\hat{y}) + \text{Bias}^2(\hat{y})$$
+
+
+. . .
+
+- The mechanics of prediction is **easy**:
+  - Plug in values of predictors to the model equation.
+  - Calculate the predicted value of the response $\hat{y}$
+
+::: notes
+- So, the mechanics of prediction is **easy**:
+  - Once you have your model, you can Plug in values of predictors to the model equation
+  - Calculate the predicted value of the response variable, $\hat{y}$, either numerical or categorical.
+  
+:::
+
+
+ 
+. . .
+
+- Getting it right is **hard**! **No guarantee that**
+  - the model estimates are close to the truth
+  - your model performs as well with new data as it did with your sample data
+  
+  
+::: notes
+- But Getting it right is **hard**!
+  - There is no guarantee the model estimates you have are correct
+  - Or that your model will perform as well with new data as it did with your sample data
+- Test data are the new data that are not used for training or fitting our model, but the data we are interested in predicting its value.
+- So we care about the prediction performance on the test data much more than the performance on the training data.
+
+:::
+  
+
+## Spending Our Data
+
+- Several steps to create a useful model: 
+    + Parameter estimation
+    + Model building and selection
+    + Performance assessment, etc.
+
+
+. . .
+
+- Doing all of this on the entire data may lead to **overfitting**: 
+
+<br>
+
+> *The model performs well on the current sample data, but awfully predicts the response on the new data we are interested.*
+
+<br>
+
+
+<!-- - **Allocate specific subsets of data for different tasks**, as opposed to allocating the largest possible amount to the model parameter estimation only (what we've done so far). -->
+
+
+::: notes
+- When we are doing modeling, we are doing several steps to create a useful model, 
+    + parameter estimation
+    + model selection
+    + performance assessment, etc.
+- Doing all of this on the entire data we have available may lead to **overfitting**. In classification, it means that our model labels the training response variable almost perfectly with very high classification accuracy, but the model performs very bad when fitted to the test data or incoming future emails for example.
+
+<!-- - What we wanna do is to  **Allocate specific subsets of data for different tasks**, as opposed to allocating the largest possible amount of the data to the model parameter estimation only which is exactly what we've done so far. Remember in linear regression, we also use the entire data set to train our linear regression model, and estimate the regression coefficients. -->
+<!-- - But now, if we wanna make sure that our model is good at predicting things, we probably want to avoid overfitting. And how? -->
+:::
+
+
+## Overfitting
+
+> *The model performs well on the current sample data, but awfully predicts the response on the new data we are interested.*
+
+- **Low error rate on observed data, but high prediction error rate on future unobserved data!**
+
+```{r}
+#| fig-cap: "Source: https://i.pinimg.com/originals/72/e2/22/72e222c1542539754df1d914cb671bd7.png"
+knitr::include_graphics("./images/15-var-select/overfit_reg.png")
+```
+
+
+
+::: notes
+https://i.pinimg.com/originals/72/e2/22/72e222c1542539754df1d914cb671bd7.png
+- Look at this illustration, and let's focus on the overfitting and classification case.
+- the blue and red points are our training data representing two categories, and the green points are the new data to be classified.
+- the black curve is the classification boundary that separates the two categories.
+- Based on the boundary, you can see that the classification performance on the training data set is perfect, because all blue points and red points are perfectly separated.
+- However, such classification rule generated by the training data may not be good for the new data.
+- With this boundary, ...
+- OK so, if we wanna make sure that our model is good at predicting things, we probably want to avoid overfitting. 
+- But how?
+:::
+
+## Splitting Data
+
+- Often, we don't have another unused data to assess the performance of our model.
+
+- Solution: Pretend we have new data by splitting our data into **training set** and **test set (validation set)**!
+
+. . .
+
+- **Training set:**
+    - Sandbox for model building/selection
+    - Spend most of your time using the training set to develop the model
+    - Majority of the original sample data (usually ~ 80%)
+- **Test set:**
+    - Held in reserve to determine efficacy of one or two chosen models
+    - Critical to look at it *once only*, otherwise it becomes part of the modeling process
+    - Remainder of the data (usually ~ 20%)
+  
+  
+::: notes
+- **Allocate specific subsets of data for different tasks**, as opposed to allocating the largest possible amount to the model parameter estimation only (what we've done so far).
+- Well we do this by splitting our data. So we split our data into to sets, training set and testing set, or sometimes called validation set.
+- You can think about your training set as your sandbox for model building. You can do whatever you want, like data wrangling, data transformation, data tidying, and data visualization, all of which help you build an appropriate model.
+- So you Spend most of your time using the training set to develop the model
+- And this is the Majority of the original sample data, which is usually about 75% - 80% of your data. So you basically take a random sample from the data that is about 80% of it. 
+- And you don't touch the remaining 20% of the data until you are ready to test your model performance.
+- So the test set is held in reserve to determine efficacy of one or two chosen models
+- Critical to look at it once, otherwise it becomes part of the modeling process
+- and that is the Remainder of the data, usually 20% - 25%
+- So ideally, we hope to use our entire data as training data to train our model, right? And to test the model performance, we just collect another data set as test data to be used for testing performance. But in reality, it is not the usual case. In reality, we only have one single data set, and it is hard to collect another sample data as test data.
+- So under this situation, this type of splitting data becomes a must if we want to have both training and test data. 
+:::
+
+
+## Model Selection Criteria
+- The full (largest) model has $M$ candidate regressors.
+- There are $M \choose p-1$ possible subset models of size $p$.
+- There are totally $2^M$ possible subset models.
+
+- An evaluation metric should consider **Goodness of Fit** and **Model Complexity**:
+
+> **Goodness of Fit**: The more regressors, the better
+
+> **Complexity Penalty**: The less regressors, the better
+
+. . .
+
+- Evaluate subset models:
+  + $R_{adj}^2$ $\uparrow$
+  + Mallow's $C_p$  $\downarrow$
+  + Information Criterion (AIC, BIC)  $\downarrow$
+  + **PRE**diction **S**um of **S**quares (PRESS) $\downarrow$ (Allen, D.M. (1974))
+
+
+::: notes
+- $R^2$ $\uparrow$
+- $MS_{res}$ $\downarrow$
+- The idea of model selection is to apply some penalty on the number of parameters used in the model. On one hand, we want to model fitting to be as good as possible, i.e., the mean squared error is small. On the other hand, we also want to restrict on the number of variables. We know that as we keep adding variables into a linear regression, the R2 would usually increase. Hence, there is a trade-off between the two. In general, we consider a criterion in the form of
+:::
+
+## Selection Criteria: Mallow's $C_p$ Statistic $\downarrow$
+For a model with $p$ coefficients ( $k$ predictors ),
+
+$$\begin{align} C_p &= \frac{SS_{res}(p)}{\hat{\sigma}^2} - n + 2p \\ &= p + \frac{(s^2 - \hat{\sigma}^2)(n-p)}{\hat{\sigma}^2} \end{align}$$
+
+- $\hat{\sigma}^2$ is the variance estimate from the *full* model, i.e., $\hat{\sigma}^2 = MS_{res}(M)$.
+
+- $s^2$ is the variance estimate from the model with $p$ coefficients, i.e., $s^2 = MS_{res}(p)$.
+
+- Favors the candidate model with the **smallest $C_p$**.
+
+- For unbiased models that $E[\hat{y}_i] = E[y_i]$, $C_p = p$.
+  + All of the errors in $\hat{y}_i$ is variance, and the model is not underfitted. 
+
+::: notes
+- $C_p = M + 1$ for the full model. 
+:::
+
+
+## Mallow's $C_p$ Plot
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| out-width: 100%
+#| fig-asp: 1
+par(mar = c(4, 4, 0, 0), mgp = c(2, 1, 0), las = 1)
+x <- 1:4
+y <- c(2.5, 2.2, 2.2, 4.3)
+plot(x, y, col = 4, axes = F, xlab = "p", ylab = "Cp", pch = 19, cex = 2,
+     xlim = c(0, 5), ylim = c(0, 5), cex.lab = 2)
+axis(1, 0:5, cex.axis = 2)
+axis(2, 0:5, cex.axis = 2)
+text(x[1], y[1]+0.4, "A", cex = 2)
+text(x[2], y[2]+0.4, "B", cex = 2)
+text(x[3], y[3]+0.4, "C", cex = 2)
+text(x[4], y[4]+0.4, "D", cex = 2)
+abline(a = 0, b = 1, lwd = 2, col = "#003366")
+text(c(0.1), c(0.4), "Cp = p", srt = 45, font = 3, cex = 2)
+```
+:::
+
+::: {.column width="50%"}
+- Model A is a heavily biased model.
+- Model D is the poorest performer.
+- Model B and C are reasonable.
+- Model C has $C_p < 3$ which implies $MS_{res}(3) < MS_{res}(M)$
+:::
+::::
+
+
+## Selection Criteria: Information Criterion $\downarrow$
+For a model with $p$ coefficients ( $k$ predictors ),
+
+- Akaike information criterion (AIC) is $$\text{AIC} = n \ln \left( \frac{SS_{res}(p)}{n} \right) + 2p$$
+- Bayesian information criterion (BIC) is $$\text{BIC} = n \ln \left( \frac{SS_{res}(p)}{n} \right) + p \ln (n)$$
+- BIC penalizes more when adding more variables as the sample size increases. 
+- BIC tends to choose models with less regressors.
+
+
+## Selection Criteria: PRESS $\downarrow$
+- Predicted Residual Error Sum of Squares (PRESS)
+
+- $\text{PRESS}_p = \sum_{i=1}^n[y_i - \hat{y}_{(i)}]^2 = \sum_{i=1}^n\left( \frac{e_i}{1-h_{ii}}\right)^2$ where $e_i = y_i - \hat{y}_i$.
+
+- $R_{pred, p}^2 = 1 - \frac{PRESS_p}{SS_T}$
+
+- $\text{Absolute PRESS}_p = \sum_{i=1}^n|y_i - \hat{y}_{(i)}|$ can also be considered when some large prediction errors are too influential.
+
+
+## [R Lab]{.pink} Criteria Computation
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+manpower <- read.csv(file = "./data/manpower.csv", header = TRUE)
+lm_full <- lm(y ~ x1 + x2 + x3 + x4 + x5, 
+              data = manpower)
+summ_full <- summary(lm_full)
+
+## Adjusted R sq.
+summ_full$adj.r.squared  
+# PRESS
+sum((lm_full$residual / 
+       (1 - hatvalues(lm_full))) ^ 2) 
+```
+
+<!-- - `AIC()` calculating AIC using -2 log-likelihood. -->
+- `ols_mallows_cp()` for Mallow's $C_p$ in [`olsrr`](https://olsrr.rsquaredacademy.com/) package
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+## AIC
+extractAIC(lm_full, k = 2)  
+## BIC
+n <- length(manpower$y)
+extractAIC(lm_full, k = log(n)) 
+```
+
+<!-- # ```{r} -->
+<!-- # #| out-width: 50% -->
+<!-- # knitr::include_graphics("./images/15-var-select/hex_olsrr.png") -->
+<!-- # ``` -->
+[![](./images/15-var-select/hex_olsrr.png){width=50% height=50%}](https://olsrr.rsquaredacademy.com/)
+:::
+::::
+
+
+
+
+::: notes
+```{r}
+logLik(lm_full)
+p <- 6
+n * log(sum(lm_full$residual^2)/n) + 2 * p
+n * log(sum(lm_full$residual^2)/n) + log(n) * p
+library(olsrr)
+full_model <- lm(mpg ~ ., data = mtcars)
+mod <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_mallows_cp(model = mod, fullmodel = full_model)
+```
+:::
+
+
+## Selection Methods: Best Subset (All Possible) Selection
+- Assume the intercept is in all models.
+- If there are $M$ possible regressors, we investigate all $2^M - 1$ possible regression equations.
+- Use the selection criteria to determine some candidate models and complete regression analysis on them.
+- If the estimates of a particular coefficient tends to "jump around", this could be an indication of collinearity.
+
+
+## [R Lab]{.pink} Best Subset Selection  `ols_step_all_possible()`
+
+<!-- - The `ols_step_all_possible()` function in [`olsrr`](https://olsrr.rsquaredacademy.com/) package. -->
+
+
+```{r}
+#| echo: true
+olsrr_all <- olsrr::ols_step_all_possible(lm_full)
+names(olsrr_all)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- `n`: number of predictors
+- `predictors`: predictors in the model
+- `rsquare`: R-square of the model
+- `adjr`: adjusted R-square of the model
+- `predrsq`: predicted R-square of the model
+:::
+
+
+
+::: {.column width="50%"}
+- `cp`: Mallow’s Cp
+- `aic`: AIC
+- `sbic`: Sawa BIC
+- `sbc`: Schwarz BIC (the one we defined)
+:::
+::::
+
+##
+
+
+::: small
+Model (x2 x3 x5)
+```{r}
+#| class-output: my_classfull
+# rownames(olsrr_all) <- NULL
+print(olsrr_all, row.names = FALSE)
+```
+:::
+
+
+
+::: notes
+```{r}
+ols_aic(lm_full, method = "R") ## -2 logL + 2(p + 1)
+ols_aic(lm_full, method = "STATA") ## -2 logL + 2p
+ols_aic(lm_full, method = "SAS") ## n log(SS_res / n) + 2p
+## Schwartz
+ols_sbc(lm_full, method = "R") ## -2 logL + log(n) * (p + 1)
+ols_sbc(lm_full, method = "STATA") ## -2 logL + log(n) * p
+ols_sbc(lm_full, method = "SAS") ## n log(SS_res / n) + p log(n)
+ols_sbc(lm_full, method = "SAS") + n + n * log(2*pi)
+ols_sbc(lm_full, method = "STATA") + log(n)
+## Sawa
+ols_sbic(model = lm_full, full_model = lm_full)
+# plot(olsrr_all)
+```
+:::
+
+## [R Lab]{.pink} `ols_step_best_subset()`
+
+::: small
+```{r}
+#| echo: true
+#| class-output: my_classfull
+# metric = c("rsquare", "adjr", "predrsq", "cp", "aic", "sbic", "sbc", "msep", "fpe", "apc", "hsp")
+olsrr::ols_step_best_subset(lm_full, metric = "predrsq")
+```
+:::
+
+
+::: notes
+- `ols_step_best_subset()` identifies the best model of each size using $R^2$ by default.
+:::
+
+
+## [R Lab]{.pink} Best Subset Selection
+
+```{r}
+X <- manpower[, -1]; y <- manpower$y
+## method = Cp, r2, adjr2
+leaps_all <- leaps::leaps(x = X, y = y,
+                          method = "adjr2") 
+# leaps_all$which[1:15, ]*1
+```
+
+
+```{r}
+get_ic <- function(ssres, n, p, k = 2) {
+    n * log(ssres/n) + k * p
+}
+adjr2_to_msres <- function(adjr2, sst, n) {
+    sst / (n - 1) * (1 - adjr2)
+}
+msres_to_adjr2 <- function(msres, sst, n) {
+    1 - (msres / (sst / (n - 1)))
+}
+
+K <- 2 ^ 5-1
+press <- rep(0, K)
+abs_press <- rep(0, K)
+r2_pred <- rep(0, K)
+sst <- sum((y - mean(y))^2)
+all_adjr2 <- leaps(x = X, y = y, method = "adjr2")
+n <- length(y)
+for (i in 1:K) {
+    ## MS_res
+    msres <- adjr2_to_msres(all_adjr2$adjr2, sst = sst, n = length(y))
+
+    ## AIC and BIC
+    p_vec <- apply(all_adjr2$which, 1, sum) + 1
+    ssres <- msres * (n - p_vec)
+    aic <- get_ic(ssres = ssres, n = n, p = p_vec, k = 2)
+    bic <- get_ic(ssres = ssres, n = n, p = p_vec, k = log(n))
+    
+    ## PRESS
+    X_sub <- as.matrix(cbind(1, X[, all_adjr2$which[i, ]]))
+    H <- X_sub %*% solve(t(X_sub) %*% X_sub) %*% t(X_sub)
+    y_pred <- H %*% y
+    h <- diag(H)
+    press_res <- (y - y_pred) / (1 - h)
+    press[i] <- sum(press_res ^ 2)
+    abs_press[i] <- sum(abs(press_res))
+    r2_pred[i] <- 1 - press[i]/sst
+}
+
+r2 <- leaps(x = X, y = y, method = "r2")$r2
+adj_r2 <- leaps(x = X, y = y, method = "adjr2")$adjr2
+cp <- leaps(x = X, y = y, method = "Cp")$Cp
+all_model_sel <- cbind(all_adjr2$which, r2, adj_r2, cp, 
+                       press, abs_press, r2_pred, aic, bic)
+df <- cbind("k" = as.numeric(rownames(all_model_sel)), all_model_sel)
+rownames(df) <- NULL
+```
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+kable(df[1:15, ]) |> kable_styling(bootstrap_options = "striped", font_size = 21)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+kable(df[16:31, ]) |> kable_styling(bootstrap_options = "striped", font_size = 21)
+```
+:::
+::::
+
+## [R Lab]{.pink} Best Subset Selection
+
+Scale Cp, AIC, BIC to $[0, 1]$.
+
+```{r}
+#| out-width: 72%
+# Rescale Cp, AIC, BIC to (0,1).
+reg_all <- leaps::regsubsets(X, y)
+summ_reg_all <- summary(reg_all)
+inrange <- function(x) { (x - min(x)) / (max(x) - min(x)) }
+Cp <- summ_reg_all$cp; Cp <- inrange(Cp);
+BIC <- summ_reg_all$bic; BIC <- inrange(BIC);
+msize <- apply(summ_reg_all$which,1,sum)
+AIC <- n * log(summ_reg_all$rss / n) + 2 * msize; AIC <- inrange(AIC)
+par(mar = c(4, 4, 0, 0))
+plot(range(msize), c(0, 1.05), type="n", xlab="Model Size p (with Intercept)", 
+     ylab  = "Model Selection Criteria", cex.lab = 1.5)
+points(msize, Cp, col="red", type="b", lwd = 2)
+points(msize, AIC, col="blue", type="b", lwd = 2)
+points(msize, BIC, col="black", type="b", lwd = 2)
+legend("topright", lty = rep(1, 3), lwd = rep(2, 3), 
+       col = c("red", "blue", "black"), legend = c("Cp", "AIC", "BIC"), bty = "n")
+```
+
+
+## Selection Methods: Forward Selection
+
+- Begins with **no regressors**.
+- Insert regressors into the model **one at a time**.
+
+. . .
+
+- The first regressor selected, $x_1$, is the one producing the **largest $R^2$** of any single regressor. It is the one with
+  + the **highest correlation** with the response. 
+  + the **largest $F_{test}$** and $F_{test} > F_{IN}(\alpha, 1, n-2)$, where $F_{IN}$ is the pre-specified $F$ threshold.
+
+. . .
+
+- The second regressor $x_2$ produces the **largest increase in $R^2$ in the presence of $x_1$**. It is the one with
+  + the **largest partial correlation** with the response. 
+  + the **largest partial $F_{test}  = \frac{SS_R(x_2|x_1)}{MS_{res}(x_1, x_2)}$** and $F_{test} > F_{IN}(\alpha, 1, n-3)$
+
+. . .
+
+- The process terminates when 
+  + partial $F_{test} <F_{IN}(\alpha, 1, n-p)$, or
+  + the last candidate regressor is added to the model.
+
+::: notes
+$F_{test} > F_{\alpha, 1, n-2}$
+$F_{test}  = \frac{SS_R(x_2|x_1)}{MS_{res}(x_1, x_2)}> F_{\alpha, 1, n-2}$
+Once a regressor has been added, it cannot be removed at a later step.
+- Begins with **no regressors** in the model other than the intercept.
+- Insert regressors into the model **one at a time**.
+- The first regressor selected to be entered into the model, say $x_1$, is the one that produces the **largest $R^2$** of any single regressor.
+  + the one with the **highest correlation** with the response. 
+  + the one with the **largest $F_{test}$** and $F_{test} > F_{IN}$
+- The second regressor examined is the one, say $x_2$, that produces the **largest increase in $R^2$ in the presence of $x_1$**.
+  + the one with the **largest partial correlation** with the response. 
+  + the one with the **largest $F_{test}  = \frac{SS_R(x_2|x_1)}{MS_{res}(x_1, x_2)}$** and $F_{test} > F_{IN}$
+- The process terminates either when the partial $F$ statistic at a particular step does not exceed $F_{IN}$ or when the last candidate regressor is added to the model.
+
+:::
+
+
+
+
+## [R Lab]{.pink} Forward Selection `ols_step_forward_p()`
+
+- The default threshold compared with the $p$-value $=P(F_{1, n-p} > F_{test})$ is 0.3.
+- If $p$-value < 0.3, the regressor is entered.
+
+```{r}
+#| echo: true
+(olsrr_for <- olsrr::ols_step_forward_p(lm_full, penter = 0.3))
+# names(olsrr_for)
+```
+
+
+## [R Lab]{.pink} Forward Selection `ols_step_forward_p()`
+```{r}
+#| echo: true
+olsrr_for$model
+```
+
+- `progress = TRUE`, `details = TRUE` for detailed selection progress.
+
+```{r}
+#| echo: true
+#| eval: false
+olsrr::ols_step_forward_p(lm_full, penter = 0.3, progress = TRUE, details = TRUE)
+```
+
+## .pink[R Lab:] Forward Selection `ols_step_forward_aic()` {visibility="hidden"}
+
+```{r, echo=TRUE}
+(olsrr_for_aic <- olsrr::ols_step_forward_aic(lm_full))
+names(olsrr_for_aic)
+```
+
+
+
+## Selection Methods: Stepwise Regression
+
+- This procedure is a *modification of forward selection.*
+- At each step, all regressors put into the model are reassessed via their partial $F$ statistic.
+- A regressor added at an earlier step may now be redundant because of the relationships between it and regressors now in the equation. 
+- If the partial $F_{test} < F_{OUT}$, the variable will be removed.
+- The method requires both an $F_{IN}$ and $F_{OUT}$.
+
+
+::: notes
+it becomes insignificant with the addition of other variables to the model.
+:::
+
+## [R Lab]{.pink} Stepwise Regression `ols_step_both_p()`
+- If $p$-value < pent = 0.1, the regressor is entered.
+- After refitting, the regressor is removed if $p$-value > prem = 0.3.
+
+```{r}
+#| echo: true
+(olsrr_both <- olsrr::ols_step_both_p(lm_full, pent = 0.1, prem = 0.3))
+```
+
+## [R Lab]{.pink} Stepwise Regression `step()` {visibility="hidden"}
+```{r}
+stats::step(lm_full, direction = "both", trace = 0) 
+```
+
+::: notes
+- Choose a model by AIC in a Stepwise Algorithm
+:::
+
+
+
+
+## Comments on Stepwise-Type Procedures
+
+- There is a **backward elimination** stepwise-type procedure
+  + Begin with the model with all $M$ candidate regressors.
+  + Remove regressors from the model **one at a time**.
+  + `olsrr::ols_step_backward_p()`
+  + Check [Variable Selection Methods](https://olsrr.rsquaredacademy.com/articles/variable_selection.html#best-subset-regression)
+
+. . .
+
+- One can select models/variables based on other metrics such as AIC
+  + `olsrr::ols_step_forward_aic()`
+  + `olsrr::ols_step_both_aic()`
+  + `olsrr::ols_step_backward_aic()`
+  
+. . .
+
+- The order in which the regressors enter or leave the model does *not* imply an order of importance to the regressors.
+
+- *No one model may be the "best".*
+
+- Different stepwise techniques could result in different models.
+<!-- - Inexperienced analysts may use the final model simply because the procedure spit it out. -->
+
+
+::: notes
+- The order in which the regressors enter or leave the model does not imply an order of importance to the regressors.
+- This is in fact a general problem with the forward selection procedure. Once a regressor has been added, it cannot be  removed at a later step.
+- forward selection tends to agree with all possible regressions for small subset sizes but not for large ones
+- backward elimination tends to agree with all possible regressions for large subset sizes but not for small ones.
+- the most common being that none of the procedures generally guarantees that the best subset regression model of any size will be identified.
+- there is one best subset model, but that there are several equally good ones.
+
+
+set F IN = F OUT = 4, as this corresponds roughly to the upper 5% point of the F distribution
+Bendel and Afi fi [ 1974 ] recommend α = 0.25 for
+forward selection. F IN of between 1.3 and 2.
+
+Kennedy and Bancroft [ 1971] suggest α = 0.25 for forward selection and recommend α = 0.10 for backward elimi
+
+- STRATEGY FOR VARIABLE SELECTION AND MODEL BUILDING
+the PRESS statistic tends to recommend smaller models than Mallow's Cp, which in turn tends to recommend smaller models than the adjusted R2 .
+:::
+
+
+
+
+
+
+
+
+
+

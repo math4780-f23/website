@@ -41,7 +41,6 @@ execute:
 
 #  {visibility="hidden"}
 
-```{=tex}
 \def\bx{\mathbf{x}}
 \def\bg{\mathbf{g}}
 \def\bw{\mathbf{w}}
@@ -60,7 +59,8 @@ execute:
 \def\bmu{\boldsymbol \mu}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \def\Trace{\text{Trace}}
-```
+
+
 ```{r}
 #| label: setup
 #| include: false
@@ -357,6 +357,7 @@ knitr::include_graphics("./images/01-syllabus/d2l_4780.png")
     -   **Homework 1 to 6: 600 pts (100 pts each)**
     -   **Final project: 400 pts**
     -   **MSSC 5780 problems: 200 pts**
+
 -   `r emo::ji("x")` No extra credit projects/homework/exam to compensate for a poor grade.
 -   Individual grade will **NOT** be curved.
 -   Want to obtain a good grade? Study hard. No pain, no gain! ✍ ✍

@@ -1,0 +1,23 @@
+---
+title: "Exercise 7: Nonparametric Regression"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Nonparametric Regression
+
+<!-- Yu -->
+
+1. For the `Boston` data, use `medv` as the response and `crim` as the predictor, then do
+
+    (a) Polynomial Regression
+    (b) Kernel Smoother
+    (c) LOESS
+    
+    Try to find the best parameter of each method to get the best fit.

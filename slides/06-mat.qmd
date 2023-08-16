@@ -1,0 +1,634 @@
+---
+title: "Matrix Algebra `r emo::ji('coder')`"
+subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+# date: "`r format(Sys.time(), '%B %d %Y')`"
+# macros: _macros.tex # import a list of TeX/LaTeX definitions
+format: 
+  revealjs:
+    code-line-numbers: false
+    #     - "macros.tex"
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # include-in-header:
+    highlight-style: arrow
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t    
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
+    theme: ["simple", "slides.scss"]
+    multiplex: true
+    code-link: true
+    fig-cap-location: bottom
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    title-slide-attributes:
+      data-background-color: "#447099"
+      # data-background-image: images/paper-texture.jpg
+      # data-background-size: cover
+      # data-background-color: "#698ED5"
+editor: source
+execute:
+  freeze: true
+  echo: true
+  purl: true
+---
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bsLambda{\boldsymbol \Lambda}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(countdown)
+library(emo)
+library(knitr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+
+knitr::opts_chunk$set(
+    fig.asp = 0.618,
+    fig.align = "center",
+    out.width = "100%",
+    fig.retina = 10,
+    fig.path = "./images/06-mat/",
+    message = FALSE,
+    global.par = TRUE
+)
+options(
+  htmltools.dir.version = FALSE,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6,
+  tibble.width = 80,
+  width = 80,
+  digits = 2
+  )
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+
+
+## Matrix
+- A **matrix** ${\bf A}$ that has $n$ rows and $m$ columns is defined as $${\bf A} = (a_{ij})_{n \times m}\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1m} \\ a_{21} & a_{22} & \cdots & a_{2m} \\ \vdots  & \vdots  & \ddots & \vdots  \\ a_{n1} & a_{n2} & \cdots & a_{nm} \end{bmatrix}_{n \times m}$$
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+(A <- matrix(data = 1:6, 
+             nrow = 2, ncol = 3))
+class(A)
+```
+:::
+
+
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+attributes(A)
+```
+:::
+::::
+
+. . .
+
+::: question
+But what is the geometrical meaning of matrices?
+:::
+
+
+::: notes
+- First index is for row and the second index is for column
+- Use command matrix() to create a matrix.
+- A matrix is a two-dimensional analog of a vector.
+- Like **all** elements of a matrix must be of the **same type.**
+:::
+
+
+
+##
+
+```{r}
+#| fig-cap: "https://gfycat.com/cooperativequerulousfirefly (3Blue1Brown)"
+#| echo: false
+knitr::include_graphics("https://thumbs.gfycat.com/CooperativeQuerulousFirefly-size_restricted.gif")
+```
+
+
+::: notes
+- A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.
+- If we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate. 
+- Linear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed.
+- Grids lines are parallel and evenly spaced after linear transformation.
+- (-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)
+:::
+
+
+## Column Vector
+- If $m = 1$, it becomes a $n$ by 1 matrix or a **column vector** of size $n$.
+$$\small {\bf y} = \begin{bmatrix} y_{1}  \\ y_{2}  \\ \vdots  \\  y_{n} \end{bmatrix}_{n \times 1} \quad {\bf 1} = \begin{bmatrix} 1  \\ 1  \\ \vdots  \\  1 \end{bmatrix}_{n \times 1}$$
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+A
+
+## 2nd column
+A[, 2]
+
+## becomes a numeric vector
+class(A[, 2]) 
+```
+:::
+
+
+
+::: {.column width="50%"}
+```{r}
+## keep its matrix class
+A[, 2, drop = FALSE] 
+class(A[, 2, drop = FALSE])  
+```
+:::
+::::
+
+
+
+
+## Row Vector
+- If $n = 1$, it becomes a $1$ by $m$ matrix or a **row vector** of size $m$.
+$${\bf x} = \begin{bmatrix} x_{1} &  x_{2}  & \dots  &  x_{m} \end{bmatrix}_{1 \times m}$$
+- By default, a vector means a *column* vector.
+
+```{r}
+## 2nd row
+A[2, , drop = FALSE]
+## keep its matrix class
+class(A[2, , drop = FALSE]) 
+```
+
+## Transpose
+- Let ${\bf A}$ be an $n \times m$ matrix. The transpose of ${\bf A}$, denoted by ${\bf A}'$ or ${\bf A}^T$, is a $m \times n$ matrix whose columns are the rows of ${\bf A}$.
+$${\bf A} = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ \end{bmatrix} \quad {\bf A}' =\begin{bmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6\end{bmatrix}$$
+$${\bf X}_{n \times 2}\begin{bmatrix} 1 & x_1 \\ 1 & x_{2} \\ \vdots  & \vdots  \\ 1 & x_n \end{bmatrix} = \begin{bmatrix} {\bf 1} & {\bf x} \end{bmatrix}$$
+$${\bf X}'_{2 \times n} = \begin{bmatrix} 1 & 1 & \cdots & 1 \\ x_1 & x_2 & \cdots & x_n \end{bmatrix} = \begin{bmatrix} {\bf 1}' \\ {\bf x}' \end{bmatrix}$$
+
+
+## Transpose in R
+```{r}
+A
+t(A)
+```
+
+## Linear Independence
+<!-- - Vectors ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_k$ is said to be **linearly dependent** if there exists scalars $c_{1},c_{2},\dots,c_{k},$ not all zero, such that  -->
+<!-- $$c_{1}{\bf v}_1 + c_{2}{\bf v}_2 + \cdots + c_{k}{\bf v}_k = \bf 0$$ -->
+- Vectors ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_k$ is said to be **linearly independent** if for scalars $c_{1},c_{2},\dots,c_{k} \in \mathbf{R},$
+$$c_{1}{\bf v}_1 + c_{2}{\bf v}_2 + \cdots + c_{k}{\bf v}_k = \bf 0$$ can only be satisfied by $c_i = 0$ for all $i = 1, 2, \dots, k$.
+
+::: question
+Are ${\bf v}_1 = (1, 1)'$ and ${\bf v}_2 = (-3, 2)'$ linearly independent?
+:::
+
+. . .
+
+Ways to check linear independence:
+
+- solve the homogeneous linear system
+$\begin{bmatrix} 1 & -3 \\ 1 & 2 \end{bmatrix}\begin{bmatrix} c_1 \\ c_2 \end{bmatrix}=\begin{bmatrix} 0 \\ 0 \end{bmatrix}$ for $c_1$ and $c_2$.
+
+- check if $\text{det} \left( \begin{bmatrix} 1 & -3 \\ 1 & 2 \end{bmatrix} \right)$ is non-zero.
+
+
+
+## Linear Independence
+
+```{r}
+V <- matrix(c(1, 1, -3, 2), 2, 2)
+solve(V, b = rep(0, 2))
+det(V)
+```
+
+
+::: notes
+- A is invertible, that is, A has an inverse, is nonsingular, and is nondegenerate.
+- A is row-equivalent to the n-by-n identity matrix In.
+- A is column-equivalent to the n-by-n identity matrix In.
+- A has n pivot positions.
+- A has full rank; that is, rank A = n.
+- Based on the rank A=n, the equation Ax = 0 has only the trivial solution x = 0. and the equation Ax = b has exactly one solution for each b in Kn.
+- The kernel (null space) of A is trivial
+- The columns of A are linearly independent.
+- The columns of A span Kn.
+- The columns of A form a basis of Kn.
+- det A ≠ 0.
+- The number 0 is not an eigenvalue of A.
+- The transpose AT is an invertible matrix 
+:::
+
+
+
+##  Rank
+- The **rank** of a matrix ${\bf A} = \begin{bmatrix} {\bf a}_1 & {\bf a}_2 & \cdots & {\bf a}_m \end{bmatrix}$ is the *number of linearly independent columns* (dimension of the column space).
+
+- If $k$ of the $m$ column vectors ${\bf a}_1, {\bf a}_2, \dots, {\bf a}_m$ are linearly independent, the rank of ${\bf A}$ is $k$. 
+
+- The remaining $m-k$ columns of ${\bf A}$ can be written as a linear combination of the $k$ linearly independent columns.
+
+
+::: notes
+- If $k = m$, it is full rank
+- If $k$ of the $n$ column vectors ${\bf a}_1, {\bf a}_2, \dots, {\bf a}_n$ are linearly independent, the rank of ${\bf A}$ is $k$. The remaining $n-k$ columns can be written as a linear combination of the $k$ columns.
+- The vectors ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_k$ is said to be **linearly dependent** if there exist scalars $c_{1},c_{2},\dots,c_{k},$ not all zero, such that 
+$$c_{1}{\bf v}_1 + c_{2}{\bf v}_2 + \cdots + c_{k}{\bf v}_k = \bf 0$$
+- The column vectors ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_k$ is said to be **linearly independent** if it is not linearly dependent, that is, if
+$$c_{1}{\bf v}_1 + c_{2}{\bf v}_2 + \cdots + c_{k}{\bf v}_k = \bf 0$$ can only be satisfied by $c_i = 0, i = 1, 2, \dots, k.$
+:::
+
+
+
+## Rank
+```{r}
+(M <- matrix(1:9, nrow = 3, ncol = 3))
+# install.packages("Matrix")
+library(Matrix)
+rankMatrix(M)[1]
+```
+
+::: question
+Can you see why the rank is 2, meaning that one column can be written as a linear combo of the other two?
+:::
+
+. . .
+
+- ${\bf a}_3 = 2{\bf a_2}-{\bf a}_1$
+
+```{r}
+2 * M[, 2] - 1 * M[, 1]
+```
+
+::: notes
+- Find the row or column basis of A using reduced row echelon form
+- the dimension of the vector space generated (or spanned) by its columns
+- dimension: number of basis in the vector space.
+:::
+
+
+## Operations: Addition
+
+- **Addition:** ${\bf A + B}$ is adding the corresponding elements together $a_{ij} + b_{ij}$. 
+
+- ${\bf A}$ and ${\bf B}$ must have an *equal* number of rows and columns.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+A
+(B <- matrix(6:1, nrow = 2, ncol = 3))
+A + B
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+```{r}
+#| error: true
+(B <- matrix(1:4, nrow = 2, ncol = 2))
+A + B
+```
+
+:::
+
+:::
+::::
+
+
+## Operations: Multiplication
+- **Multiplication:** The product of matrices ${\bf A}$ and ${\bf B}$ is denoted as ${\bf AB}$.
+
+```{r}
+#| echo: false
+#| out-width: 55%
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/1/18/Matrix_multiplication_qtl1.svg")
+```
+
+- The number of columns in ${\bf A}$ must be equal to the number of rows ${\bf B}$. 
+- The result matrix ${\bf C}$ has the number of rows of ${\bf A}$ and the number of columns of the ${\bf B}$.
+
+
+::: notes
+- The number of columns in the first matrix ${\bf A}$ must be equal to the number of rows in the second matrix of ${\bf B}$. 
+- The resulting matrix ${\bf C}$ has dimension of the number of rows of the first and the number of columns of the second matrix.
+:::
+
+
+## Operations: Multiplication
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+A
+(B <- matrix(1:12, nrow = 3, ncol = 4))
+```
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+```{r}
+#| error: true
+(C <- A %*% B)
+(B <- matrix(1:8, nrow = 2, ncol = 4))
+A %*% B
+```
+:::
+
+:::
+::::
+
+
+
+## Operations: Multiplication
+
+- ${\bf A}{\bf B} \ne {\bf B}{\bf A}$ in general.
+
+- $({\bf A}{\bf B})' =  {\bf B}'{\bf A}'$.
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+(C <- matrix(1:4, 2, 2))
+(D <- matrix(2:5, 2, 2))
+C %*% D
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+```{r}
+#| error: true
+D %*% C
+t(C %*% D)
+t(D) %*% t(C)
+```
+:::
+
+:::
+
+::::
+
+
+
+## Special Matrices: Symmetric and Identity
+- A square matrix $(m = n)$ ${\bf A}_{n \times n}$ is a **symmetric** matrix if ${\bf A = A}'$.
+
+$${\bf A} = \begin{bmatrix} 1 & 2  \\ 2 & 5 \\ \end{bmatrix} \quad {\bf A}' =\begin{bmatrix} 1 & 2 \\ 2 & 5 \end{bmatrix}$$
+
+
+- A square matrix ${\bf I}_{n \times n}$ whose diagonal elements are 1's and off diagonal elements are 0's is called an **identity** matrix of order $n$.
+$${\bf I} = \begin{bmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots  & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & 1 \end{bmatrix}$$
+
+
+::: notes
+- If the inverse exists, it is unique.
+:::
+
+
+
+## Identity and Diagonal Matrix
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+## Identity matrix
+I <- diag(5)
+I
+## A diagonal matrix
+diag(c(4, 2, 5))
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+## Extract diagonal elements
+D <- matrix(1:4, 2, 2)
+D
+diag(D)
+```
+:::
+::::
+
+
+
+## Inverse Matrix
+- The **inverse** of a square matrix ${\bf A}$, denoted by ${\bf A}^{-1}$, is a square matrix such that $${\bf A}^{-1}{\bf A} = {\bf A}{\bf A}^{-1} = {\bf I}$$
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+D
+D_inv <- solve(D)
+D_inv
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+D_inv %*% D
+D %*% D_inv
+```
+:::
+::::
+
+
+
+## Idempotent, Orthogonal, Positive Definite
+- A square matrix ${\bf A}$ is **idempotent** if ${\bf A}{\bf A} = {\bf A}$.
+- A square matrix ${\bf A}$ is **orthogonal** if ${\bf A}^{-1} = {\bf A}'$ and hence ${\bf A}'{\bf A} = {\bf I}$.
+
+. . .
+
+- Let ${\bf A}$ be a $n \times n$ matrix and ${\bf y}$ be a $n \times 1$ vector. $${\bf y}'{\bf A} {\bf y} = \sum_{i=1}^n\sum_{j=1}^na_{ij}y_iy_j$$ is called a **quadratic form** of ${\bf y}$.
+
+. . .
+
+- A symmetric matrix ${\bf A}$ is said to be 
+  <!-- + ${\bf A}' = {\bf A}$ -->
+  + **positive definite** if ${\bf y}'{\bf A} {\bf y} > 0$ for all ${\bf y \ne 0}$.
+  + **positive semi-definite** if ${\bf y}'{\bf A} {\bf y} \ge 0$ for all ${\bf y \ne 0}$ and ${\bf y}'{\bf A} {\bf y} = 0$ for some ${\bf y \ne 0}$.
+- If ${\bf A}$ is symmetric and idempotent, then ${\bf A}$ is positive semi-definite.
+
+::: notes
+- How about negative definite
+:::
+
+
+## Special Matrices: Idempotent, Orthogonal
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+## Idempotent and symmetric matrix
+(A <- matrix(1, 3, 3)/3)
+A %*% A
+## positive semi-definite
+y <- c(-2, 5, 2)
+t(y) %*% A %*% y
+```
+:::
+::: {.column width="50%"}
+```{r}
+## Orthogonal matrix
+(E <- matrix(c(1, -1, 1, 1)/sqrt(2), 2, 2))
+E %*% t(E)
+t(E) %*% E
+```
+:::
+::::
+
+
+
+## Trace
+- The **trace** of ${\bf A}_{n \times n}$, denoted by $\text{tr}({\bf A})$, is defined as $$\text{tr}({\bf A}) = a_{11} + a_{22} + \dots + a_{nn}$$
+
+- $\text{tr}({\bf A}{\bf B}) = \text{tr}({\bf B}{\bf A})$
+
+
+```{r}
+(G <- matrix(1:9, 3, 3))
+sum(diag(G))
+```
+
+
+
+## Eigenvalues and Eigenvectors
+
+- For a square matrix ${\bf A}$, if we can find a scalar $\lambda$ and a non-zero vector ${\bf x}$ such that $${\bf Ax} = \lambda {\bf x},$$
+  + $\lambda$ is an **eigenvalue** of ${\bf A}$
+  + ${\bf x}$ is a corresponding **eigenvector** of ${\bf A}$.
+
+- A $n \times n$ matrix ${\bf A}$ will have $n$ eigenvalues and $n$ corresponding eigenvectors.
+
+
+
+
+##
+
+```{r}
+#| fig-cap: "https://gfycat.com/ifr/WickedSaltyAnemonecrab (3Blue1Brown)"
+#| echo: false
+knitr::include_graphics("https://thumbs.gfycat.com/WickedSaltyAnemonecrab-size_restricted.gif")
+```
+
+
+
+## Eigen-decomposition
+- **Eigen-decomposition**: Any symmetric matrix ${\bf A}_{n \times n}$ can be decomposed as $${\bf A} = {\bf V\bsLambda V'}$$
+
+- $\bsLambda$ is a $n \times n$ diagnonal matrix whose elements are eigenvalues $\lambda_j$ of ${\bf A}$
+  $$\bsLambda = \begin{bmatrix} \lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots  & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & \lambda_n \end{bmatrix}$$
+  
+- ${\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_n]$ is a $n \times n$ orthogonal matrix whose columns are the eigenvectors of ${\bf A}.$
+
+
+
+## Eigenvalues and Eigenvectors
+
+- $\text{tr}({\bf A}) = \sum_{i=1}^n\lambda_i$
+- $|{\bf A}| = \prod_{i=1}^n \lambda_i$
+- $\text{rank}({\bf A}) =$ the number of non-zero $\lambda_i$
+- If ${\bf A}$ is symmetric, all $\lambda_i \in \mathbf{R}$
+
+
+
+## Eigenvalues and Eigenvectors
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+(A <- matrix(c(3, 1, 1, 2), 2, 2))
+eigen_decomp <- eigen(A)
+(lam <- eigen_decomp$values)
+(V <- eigen_decomp$vectors)
+```
+:::
+::: {.column width="50%"}
+```{r}
+V %*% diag(lam) %*% t(V)
+sum(diag(A))
+sum(lam)
+det(A)
+prod(lam)
+```
+:::
+::::
+

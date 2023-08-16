@@ -1,0 +1,42 @@
+---
+title: "Exercise 9: Collinearity"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+## Collinearity
+
+<!-- ISL 3.14 -->
+
+1. Perform the code
+
+```{r}
+#| eval: false
+set.seed(1)
+x1 <- runif(100)
+x2 <- 0.5 * x1 + rnorm (100) / 10
+y <- 2 + 2 * x1 + 0.3 * x2 + rnorm (100)
+```
+
+
+  Write out the form of the linear model. What are the regression coefficients?
+
+
+2. Create a scatterplot displaying the relationship between `x1` and `x2`.
+
+
+3. Fit a least squares regression to the data using `x1` and `x2`. How the LSEs relate to the true $\beta_0$, $\beta_1$ and $\beta_2$? Can you reject $H0 : \beta_1 = 0$? How about $H0 : \beta_2 = 0$?
+
+
+4. Fit a least squares regression using only `x1`. Comment on your results. Can you reject $H0 : \beta_1 = 0$?
+
+
+5. Fit a least squares regression using only `x2`. Comment on your results. Can you reject $H0 : \beta_2 = 0$?
+
+
+6. Do the results obtained in (3)–(5) contradict each other? Explain your answer.

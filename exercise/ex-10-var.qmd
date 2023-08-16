@@ -1,0 +1,17 @@
+---
+title: "Exercise 10: Variable Selection"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Variable Selection
+
+<!-- Yu -->
+
+1. Consider `Boston` data with all variables except `chas`. Use `crim` as the response. Perform Best Subset Selection and Forward Selection.
