@@ -304,8 +304,7 @@ $$
 
 ## Risk of coronary heart disease
 
-This dataset is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts.
-We want to use `age` to predict if a randomly selected adult is high risk of having coronary heart disease in the next 10 years.
+This dataset is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. We want to use `age` to predict if a randomly selected adult is high risk of having coronary heart disease in the next 10 years.
 
 `high_risk`:
 

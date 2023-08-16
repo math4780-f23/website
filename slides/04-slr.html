@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="04-slr_files/libs/clipboard/clipboard.min.js"></script>
-<script src="04-slr_files/libs/quarto-html/tabby.min.js"></script>
-<script src="04-slr_files/libs/quarto-html/popper.min.js"></script>
-<script src="04-slr_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="04-slr_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="04-slr_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="04-slr_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.335">
 <meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
-<title>Simple Linear Regression </title>
+<title>MATH 4780 - Fall 2023 - Simple Linear Regression r fontawesome::fa("chart-line")</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="04-slr_files/libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="04-slr_files/libs/revealjs/dist/reveal.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
 <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -93,11 +93,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="04-slr_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-<link href="04-slr_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="04-slr_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="04-slr_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="04-slr_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
 <style type="text/css">
 
   .callout {
@@ -382,6 +382,9 @@
       margin-right: 0; 
     }
   </style>
+<meta property="og:title" content="MATH 4780 - Fall 2023 - Simple Linear Regression r fontawesome::fa(&quot;chart-line&quot;)">
+<meta property="og:description" content="MATH 4780 / MSSC 5780 Regression Analysis">
+<meta property="og:site-name" content="MATH 4780 - Fall 2023">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1481,10 +1484,17 @@ displ       -3.91  -3.15</code></pre>
       }</style></aside></section><section id="r-lab-testing-on-beta_0-and-beta_1" class="slide level2"><h2>
 <span class="pink">R Lab</span> Testing on <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>
 </h2>
-<div class="cell" data-layout-align="center" data-output.lines="[10,11,12,13,14]">
+<div class="cell" data-layout-align="center" data-output.lines="[3,4,5,6,7,8,9,10,11,12,13,14]">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_reg_fit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="my_class500"><code>...
+<pre class="my_class600"><code>...
+lm(formula = hwy ~ displ, data = mpg)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-7.104 -2.165 -0.224  2.059 15.010 
+
+Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)   35.698      0.720    49.5   &lt;2e-16 ***
 displ         -3.531      0.195   -18.1   &lt;2e-16 ***
@@ -1881,7 +1891,7 @@ F-statistic:  329 on 1 and 232 DF,  p-value: &lt;2e-16
 </section><section id="predicting-the-mean-response-sampling-distribution" class="slide level2"><h2>Predicting the Mean Response: Sampling Distribution</h2>
 <ul>
 <li>
-<p>With predictor value <span class="math inline">\(x = x_0\)</span>, we want to estimate the mean response <span class="math display">\[E(y\mid x_0) = \mu_{y|x_0} = \beta_0 + \beta_1 x_0.\]</span></p>
+<p>With predictor value <span class="math inline">\(x = x_0\)</span>, we want to estimate the mean response <span class="math display">\[E(y\mid x_0) = \mu_{y|x_0} = \beta_0 + \beta_1 x_0\]</span>.</p>
 <ul>
 <li><span style="color:blue"> The <strong>mean</strong> highway MPG <span class="math inline">\(E(y \mid x_0)\)</span> when displacement is <span class="math inline">\(x = x_0 = 5.5\)</span>. </span></li>
 </ul>
@@ -2456,6 +2466,7 @@ F-statistic:  329 on 1 and 232 DF,  p-value: &lt;2e-16
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://math4780-f23.github.io/website/">math4780-f23.github.io/website</a></p>
 </div>
@@ -2463,7 +2474,7 @@ F-statistic:  329 on 1 and 232 DF,  p-value: &lt;2e-16
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="04-slr_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="04-slr_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="04-slr_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="04-slr_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="04-slr_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="04-slr_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="04-slr_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="04-slr_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="04-slr_files/libs/revealjs/plugin/notes/notes.js"></script><script src="04-slr_files/libs/revealjs/plugin/search/search.js"></script><script src="04-slr_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="04-slr_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/

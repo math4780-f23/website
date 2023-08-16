@@ -60,8 +60,7 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
 
 ## Risk of coronary heart disease {.smaller}
 
-This dataset is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts.
-We want to examine the relationship between various health characteristics and the risk of having heart disease.
+This dataset is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. We want to examine the relationship between various health characteristics and the risk of having heart disease.
 
 -   `high_risk`:
 
@@ -211,8 +210,7 @@ $$
 
 **Conclusion:**
 
-The p-value is very small, so we reject $H_0$.
-The data provide sufficient evidence that age is a statistically significant predictor of whether someone is high risk of having heart disease, *after accounting for education*.
+The p-value is very small, so we reject $H_0$. The data provide sufficient evidence that age is a statistically significant predictor of whether someone is high risk of having heart disease, *after accounting for education*.
 
 # Comparing models
 
@@ -375,9 +373,7 @@ pchisq(test_stat, 1, lower.tail = FALSE)
 
 . . .
 
-**Conclusion:** The p-value is very small, so we reject $H_0$.
-The data provide sufficient evidence that the coefficient of `currentSmoker` is not equal to 0.
-Therefore, we should add it to the model.
+**Conclusion:** The p-value is very small, so we reject $H_0$. The data provide sufficient evidence that the coefficient of `currentSmoker` is not equal to 0. Therefore, we should add it to the model.
 
 ## Drop-in-Deviance test in R
 
@@ -492,8 +488,7 @@ heart_disease %>%
 
 ## Calculating empirical logit (quantitative predictor)
 
-1.  Divide the range of the predictor into intervals with approximately equal number of cases.
-    (If you have enough observations, use 5 - 10 intervals.)
+1.  Divide the range of the predictor into intervals with approximately equal number of cases. (If you have enough observations, use 5 - 10 intervals.)
 
 2.  Calculate the mean value of the predictor in each interval.
 
@@ -541,8 +536,7 @@ emplogitplot1(high_risk ~ totChol,
 
 . . .
 
-`r emo::ji("white_check_mark")` The linearity condition is satisfied.
-There is a linear relationship between the empirical logit and the predictor variables.
+`r emo::ji("white_check_mark")` The linearity condition is satisfied. There is a linear relationship between the empirical logit and the predictor variables.
 
 ## Checking randomness {.smaller}
 
@@ -553,15 +547,13 @@ We can check the randomness condition based on the context of the data and how t
 
 . . .
 
-`r emo::ji("white_check_mark")` The randomness condition is satisfied.
-We do not have reason to believe that the participants in this study differ systematically from adults in the U.S. in regards to health characteristics and risk of heart disease.
+`r emo::ji("white_check_mark")` The randomness condition is satisfied. We do not have reason to believe that the participants in this study differ systematically from adults in the U.S. in regards to health characteristics and risk of heart disease.
 
 ## Checking independence
 
-- We can check the independence condition based on the context of the data and how the observations were collected.
-- Independence is most often violated if the data were collected over time or there is a strong spatial relationship between the observations.
+-   We can check the independence condition based on the context of the data and how the observations were collected.
+-   Independence is most often violated if the data were collected over time or there is a strong spatial relationship between the observations.
 
 . . .
 
-`r emo::ji("white_check_mark")` The independence condition is satisfied.
-It is reasonable to conclude that the participants' health characteristics are independent of one another.
+`r emo::ji("white_check_mark")` The independence condition is satisfied. It is reasonable to conclude that the participants' health characteristics are independent of one another.
