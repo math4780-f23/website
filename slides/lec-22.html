@@ -470,7 +470,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <span id="cb2-8"><a href="#cb2-8"></a>  )</span>
 <span id="cb2-9"><a href="#cb2-9"></a></span>
 <span id="cb2-10"><a href="#cb2-10"></a>heart_disease</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,086 × 6
      age education TenYearCHD totChol currentSmoker high_risk
    &lt;dbl&gt; &lt;fct&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;         &lt;fct&gt;    
@@ -484,7 +484,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8    45 2                  0     313 1             0        
  9    52 1                  0     260 0             0        
 10    43 1                  0     225 1             0        
-# … with 4,076 more rows</code></pre>
+# ℹ 4,076 more rows</code></pre>
 </div>
 </div>
 </section></section>
@@ -838,7 +838,7 @@ P(|Z| &gt; |13.4|) \approx 0
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(<span class="fl">13.4</span>,<span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.046315e-41</code></pre>
 </div>
 </div>
@@ -1070,11 +1070,11 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Calculate deviance for each model:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>(dev_reduced <span class="ot">&lt;-</span> <span class="fu">glance</span>(risk_fit_reduced)<span class="sc">$</span>deviance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3244.187</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>(dev_full <span class="ot">&lt;-</span> <span class="fu">glance</span>(risk_fit_full)<span class="sc">$</span>deviance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3221.901</code></pre>
 </div>
 </div>
@@ -1082,7 +1082,7 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Drop-in-deviance test statistic:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>(test_stat <span class="ot">&lt;-</span> dev_reduced <span class="sc">-</span> dev_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 22.2863</code></pre>
 </div>
 </div>
@@ -1093,7 +1093,7 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Calculate the p-value using a <code>pchisq()</code>, with degrees of freedom equal to the number of new model terms in the second model:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">pchisq</span>(test_stat, <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.348761e-06</code></pre>
 </div>
 </div>
@@ -1111,12 +1111,12 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">anova</span>(risk_fit_reduced<span class="sc">$</span>fit, risk_fit_full<span class="sc">$</span>fit, <span class="at">test =</span> <span class="st">"Chisq"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  Resid..Df Resid..Dev    df Deviance     p.value
-      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
-1      4081      3244.    NA     NA   NA         
-2      4080      3222.     1     22.3  0.00000235</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  term                              Resid..Df Resid..Dev    df Deviance  p.value
+  &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 high_risk ~ age + education            4081      3244.    NA     NA   NA      
+2 high_risk ~ age + education + cu…      4080      3222.     1     22.3  2.35e-6</code></pre>
 </div>
 </div>
 </div>
@@ -1136,7 +1136,7 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Let’s look at the AIC for the model that includes <code>age</code>, <code>education</code>, and <code>currentSmoker</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">glance</span>(risk_fit_full)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3233.901</code></pre>
 </div>
 </div>
@@ -1144,7 +1144,7 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p><strong>Calculating AIC</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">glance</span>(risk_fit_full)<span class="sc">$</span>logLik <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3233.901</code></pre>
 </div>
 </div>
@@ -1155,11 +1155,11 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Let’s compare the full and reduced models using AIC.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">glance</span>(risk_fit_reduced)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3254.187</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">glance</span>(risk_fit_full)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3233.901</code></pre>
 </div>
 </div>
@@ -1172,11 +1172,11 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <p>Let’s compare the full and reduced models using BIC</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">glance</span>(risk_fit_reduced)<span class="sc">$</span>BIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3285.764</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">glance</span>(risk_fit_full)<span class="sc">$</span>BIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 3271.793</code></pre>
 </div>
 </div>
@@ -1282,7 +1282,7 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
 <span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">filter</span>(high_risk <span class="sc">==</span> <span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">mutate</span>(<span class="at">emp_logit =</span> <span class="fu">log</span>(prop<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>prop)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
 # Groups:   currentSmoker [2]
   currentSmoker high_risk     n  prop emp_logit
@@ -1601,12 +1601,15 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1617,13 +1620,6 @@ H_A&amp;: \text{ at least 1 }\beta_j \text{ is not } 0
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

@@ -499,7 +499,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Age), <span class="sc">!</span><span class="fu">is.na</span>(Sleep7))</span>
 <span id="cb2-5"><a href="#cb2-5"></a>sleep <span class="sc">%&gt;%</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">relocate</span>(Age, Sleep7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 446 × 6
      Age Sleep7 Sleep           SmokeLife SmokeDaily MarijuaEver
    &lt;int&gt;  &lt;int&gt; &lt;fct&gt;           &lt;fct&gt;     &lt;fct&gt;            &lt;int&gt;
@@ -513,7 +513,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8    16      1 8 hours         Yes       No                   0
  9    16      1 8 hours         No        No                   0
 10    18      0 4 or less hours Yes       Yes                  1
-# … with 436 more rows</code></pre>
+# ℹ 436 more rows</code></pre>
 </div>
 </div>
 </div>
@@ -626,7 +626,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sleep <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">count</span>(Sleep7) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">round</span>(n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   Sleep7     n     p
    &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
@@ -700,7 +700,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">select</span>(age, high_risk)</span>
 <span id="cb8-6"><a href="#cb8-6"></a></span>
 <span id="cb8-7"><a href="#cb8-7"></a>heart_disease</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,240 × 2
      age high_risk
    &lt;dbl&gt; &lt;fct&gt;    
@@ -714,7 +714,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8    45 0        
  9    52 0        
 10    43 0        
-# … with 4,230 more rows</code></pre>
+# ℹ 4,230 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -810,21 +810,21 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Predicted log odds</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">augment</span>(heart_disease_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,240 × 8
-   high_risk   age .fitted .resid .std.resid     .hat .sigma   .cooksd
-   &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 0            39  -2.65  -0.370     -0.370 0.000466  0.895 0.0000165
- 2 0            46  -2.13  -0.475     -0.475 0.000322  0.895 0.0000192
- 3 0            48  -1.98  -0.509     -0.509 0.000288  0.895 0.0000199
- 4 1            61  -1.01   1.62       1.62  0.000706  0.895 0.000968 
- 5 0            46  -2.13  -0.475     -0.475 0.000322  0.895 0.0000192
- 6 0            43  -2.35  -0.427     -0.427 0.000384  0.895 0.0000183
- 7 1            63  -0.858  1.56       1.56  0.000956  0.895 0.00113  
- 8 0            45  -2.20  -0.458     -0.458 0.000342  0.895 0.0000189
- 9 0            52  -1.68  -0.585     -0.585 0.000262  0.895 0.0000244
-10 0            43  -2.35  -0.427     -0.427 0.000384  0.895 0.0000183
-# … with 4,230 more rows</code></pre>
+   high_risk   age .fitted .resid     .hat .sigma   .cooksd .std.resid
+   &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+ 1 0            39  -2.65  -0.370 0.000466  0.895 0.0000165     -0.370
+ 2 0            46  -2.13  -0.475 0.000322  0.895 0.0000192     -0.475
+ 3 0            48  -1.98  -0.509 0.000288  0.895 0.0000199     -0.509
+ 4 1            61  -1.01   1.62  0.000706  0.895 0.000968       1.62 
+ 5 0            46  -2.13  -0.475 0.000322  0.895 0.0000192     -0.475
+ 6 0            43  -2.35  -0.427 0.000384  0.895 0.0000183     -0.427
+ 7 1            63  -0.858  1.56  0.000956  0.895 0.00113        1.56 
+ 8 0            45  -2.20  -0.458 0.000342  0.895 0.0000189     -0.458
+ 9 0            52  -1.68  -0.585 0.000262  0.895 0.0000244     -0.585
+10 0            43  -2.35  -0.427 0.000384  0.895 0.0000183     -0.427
+# ℹ 4,230 more rows</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -836,7 +836,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Predicted probabilities</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">predict</span>(heart_disease_fit, <span class="at">new_data =</span> heart_disease, <span class="at">type =</span> <span class="st">"prob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,240 × 2
    .pred_0 .pred_1
      &lt;dbl&gt;   &lt;dbl&gt;
@@ -850,7 +850,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8   0.900  0.0996
  9   0.843  0.157 
 10   0.913  0.0870
-# … with 4,230 more rows</code></pre>
+# ℹ 4,230 more rows</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -861,7 +861,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Predicted classes</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">predict</span>(heart_disease_fit, <span class="at">new_data =</span> heart_disease, <span class="at">type =</span> <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,240 × 1
    .pred_class
    &lt;fct&gt;      
@@ -875,7 +875,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8 0          
  9 0          
 10 0          
-# … with 4,230 more rows</code></pre>
+# ℹ 4,230 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -884,7 +884,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p>For a logistic regression, the default prediction is the <code>class</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">predict</span>(heart_disease_fit, <span class="at">new_data =</span> heart_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,240 × 1
    .pred_class
    &lt;fct&gt;      
@@ -898,7 +898,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
  8 0          
  9 0          
 10 0          
-# … with 4,230 more rows</code></pre>
+# ℹ 4,230 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -911,7 +911,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">predict</span>(heart_disease_fit, <span class="at">new_data =</span> heart_disease) <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">bind_cols</span>(heart_disease) <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">count</span>(high_risk, .pred_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   high_risk .pred_class     n
   &lt;fct&gt;     &lt;fct&gt;       &lt;int&gt;
@@ -1158,12 +1158,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1174,13 +1177,6 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
