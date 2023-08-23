@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MATH 4780 - Fall 2023 - HW 3 - Logistic regression and log transformation</title>
+<title>MATH 4780 - Fall 2023 - Homework 3 - Multiple Linear Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -125,8 +62,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="MATH 4780 - Fall 2023 - HW 3 - Logistic regression and log transformation">
-<meta property="og:description" content="Due Friday, March 25, 5pm on Gradescope">
+<meta property="og:title" content="MATH 4780 - Fall 2023 - Homework 3 - Multiple Linear Regression">
+<meta property="og:description" content="Due Friday, October 6, 11:59 PM on D2L">
 <meta property="og:site-name" content="MATH 4780 - Fall 2023">
 </head>
 
@@ -136,7 +73,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">HW 3 - Logistic regression and log transformation</h1>
+      <h1 class="quarto-secondary-nav-title">Homework 3 - Multiple Linear Regression</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -338,16 +275,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  </ul></li>
-  <li><a href="#part-1---palmer-penguins" id="toc-part-1---palmer-penguins" class="nav-link" data-scroll-target="#part-1---palmer-penguins">Part 1 - Palmer penguins</a></li>
-  <li><a href="#part-2---gdp-and-urban-population" id="toc-part-2---gdp-and-urban-population" class="nav-link" data-scroll-target="#part-2---gdp-and-urban-population">Part 2 - GDP and Urban population</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#homework-instruction-and-requirement" id="toc-homework-instruction-and-requirement" class="nav-link active" data-scroll-target="#homework-instruction-and-requirement">Homework Instruction and Requirement</a></li>
+  <li><a href="#mathematical-derivation-and-reasoning" id="toc-mathematical-derivation-and-reasoning" class="nav-link" data-scroll-target="#mathematical-derivation-and-reasoning">Mathematical Derivation and Reasoning</a></li>
+  <li><a href="#statistical-computing-and-data-analysis" id="toc-statistical-computing-and-data-analysis" class="nav-link" data-scroll-target="#statistical-computing-and-data-analysis">Statistical Computing and Data Analysis</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/math4780-f23/website/edit/main/hw/hw-3.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/math4780-f23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -356,8 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">HW 3 - Logistic regression and log transformation</h1>
-<p class="subtitle lead">Due Friday, March 25, 5pm on Gradescope</p>
+<h1 class="title d-none d-lg-block">Homework 3 - Multiple Linear Regression</h1>
+<p class="subtitle lead">Due Friday, October 6, 11:59 PM on D2L</p>
 </div>
 
 
@@ -372,250 +302,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this assignment, you’ll get to put into practice the logistic regression skills you’ve developed.</p>
-<section id="learning-goals" class="level3">
-<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
-<p>In this assignment, you will…</p>
+<section id="homework-instruction-and-requirement" class="level1">
+<h1>Homework Instruction and Requirement</h1>
 <ul>
-<li>Fit and interpret logistic regression models.</li>
-<li>Fit and interpret multiple linear regression models with log transformed outcomes.</li>
-<li>Reason around log transformations of various types.</li>
-<li>Continue developing a workflow for reproducible data analysis.</li>
+<li><p>Homework 3 covers course materials of Week 1 to 6.</p></li>
+<li><p>Please submit your work in <strong>one</strong> <strong>PDF</strong> file including all parts to <strong>D2L &gt; Assessments &gt; Dropbox</strong>. <em>Multiple files or a file that is not in pdf format are not allowed.</em></p></li>
+<li><p>In your homework, please number and answer questions <strong>in order</strong>.</p></li>
+<li><p>Your answers may be handwritten on the Mathematical Derivation and Reasoning part. However, you need to scan your paper and make it a PDF file.</p></li>
+<li><p>Your entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, <a href="https://rmarkdown.rstudio.com/">(R)Markdown</a>, <a href="https://quarto.org/">Quarto</a>, <a href="https://www.latex-project.org/">LaTex</a>, etc) and your preferred programming language. Your document should be a PDF file.</p></li>
+<li><p>Questions starting with <strong>(MSSC)</strong> are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.</p></li>
+<li><p>It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on <em>what you show, not what you want to show</em>. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.</p></li>
 </ul>
 </section>
-<section id="getting-started" class="level3">
-<h3 class="anchored" data-anchor-id="getting-started">Getting started</h3>
-<p>Your repo for this assignment is at <a href="https://github.com/sta210-s22" title="Course GitHub organization">github.com/sta210-s22</a> and starts with the prefix <strong>hw-3</strong>. For more detailed instructions on getting started, see <a href="hw-1.html">HW 1</a>.</p>
-</section>
-<section id="packages" class="level3">
-<h3 class="anchored" data-anchor-id="packages">Packages</h3>
-<p>The following packages will be used in this assignment. You can add other packages as needed.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="part-1---palmer-penguins" class="level2">
-<h2 class="anchored" data-anchor-id="part-1---palmer-penguins">Part 1 - Palmer penguins</h2>
-<p>In this part we’ll go back to the Palmer penguins dataset from <a href="hw-2.html">HW 2</a>.</p>
-<p>We will use the following variables:</p>
-<table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 58%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: left;">class</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">integer</td>
-<td style="text-align: left;">Penguin species (Adelie, Gentoo, Chinstrap)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">island</td>
-<td style="text-align: left;">integer</td>
-<td style="text-align: left;">Island where recorded (Biscoe, Dream, Torgersen)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">flipper_length_mm</td>
-<td style="text-align: left;">integer</td>
-<td style="text-align: left;">Flipper length in mm</td>
-</tr>
-</tbody>
-</table>
-<p>The goal of this analysis is to use logistic regression to understand the relationship between flipper length, island, and whether a penguin is from the Adelie species. First, we need to create a new response variable to identify whether a penguin is from the Adelie species.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adelie =</span> <span class="fu">factor</span>(<span class="fu">if_else</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>, <span class="dv">1</span>, <span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And let’s check to make sure the new variable looks right before we continue with the analysis.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(adelie, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  adelie species       n
-  &lt;fct&gt;  &lt;fct&gt;     &lt;int&gt;
-1 0      Chinstrap    68
-2 0      Gentoo      124
-3 1      Adelie      152</code></pre>
-</div>
-</div>
-<p>Let’s start by looking at the relationship between island and whether a penguin is from the Adelie species.</p>
+<section id="mathematical-derivation-and-reasoning" class="level1">
+<h1>Mathematical Derivation and Reasoning</h1>
+<p>The simple linear regression and multiple linear regression models and notations are the same as defined in our course slides and textbook.</p>
+<p>In simple linear regression,</p>
 <ol type="1">
-<li><p>What does the <code>values_fill</code> argument do in the following chunk? The documentation for the function will be helpful in answering this question.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(island, adelie) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> adelie, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  island      `0`   `1`
-  &lt;fct&gt;     &lt;int&gt; &lt;int&gt;
-1 Biscoe      124    44
-2 Dream        68    56
-3 Torgersen     0    52</code></pre>
-</div>
-</div></li>
-<li><p>Calculate the odds ratio of a penguin being from the Adelie species for those recorded on Dream compared to those recorded on Biscoe.</p></li>
-<li><p>You want to fit a model using <code>island</code> to predict the odds of being from the Adelie species. Let <span class="math inline">\(\pi\)</span> be the probability a penguin is from the Adelie species. The model has the following form. What do you expect the value of <span class="math inline">\(\hat{\beta}_1\)</span>, the estimated coefficient for <em>Dream</em>, to be? Explain your reasoning.</p></li>
+<li><strong>(MSSC)</strong> Show that <span class="math inline">\(r^2 = \frac{SS_R}{SS_T} = R^2\)</span>, that is, the square of the sample correlation coefficient between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> is equal to the coefficient of determination.</li>
 </ol>
-<p><span class="math display">\[
-\log\Big(\frac{\pi}{1-\pi}\Big) = \beta_0 + \beta_1 ~ Dream + \beta_2 ~ Torgersen
-\]</span></p>
-<ol start="4" type="1">
-<li>Fit a model predicting <code>adelie</code> from <code>island</code> and display the model output. For the following exercise, use this model.</li>
-<li>Based on this model, what are the <strong>odds</strong> of a penguin being from the Adelie species if it was recorded on Biscoe island? on Dream island?</li>
-<li>Next, add flipper length to the model so that there are two predictors. Display the model output. For the following exercises, use this model.</li>
-<li>Write the regression equation for the model.</li>
-<li>Interpret the coefficient of <code>flipper_length_mm</code> in terms of the log-odds of being from the Adelie species.</li>
-<li>Interpret the coefficient of <code>flipper_length_mm</code> in terms of the odds of being from the Adelie species.</li>
-<li>Interpret the coefficient of <code>Dream</code> in terms of the odds of being from the Adelie species.</li>
-<li>How do you expect the log-odds of being from the Adelie species to change when going from a penguin with flipper length 185 mm to a penguin with flipper length 200 mm? Assume both penguins were recorded on the Dream island.</li>
-<li>How do you expect the odds of being from the Adelie species to change when going from a penguin with flipper length 185 mm to a penguin with flipper length 200 mm? Assume both penguins were recorded on the Dream island.</li>
+<!-- 2. **(MSSC)** Show that $\mathrm{Cov}(b_0, b_1) = \frac{-\bar{x}\sigma^2}{S_{xx}}$. [Hint: Use the fact that $\mathrm{Cov}(aX + bY, W) = a\mathrm{Cov}(X, W) + b\mathrm{Cov}(Y, W)$ and $\mathrm{Cov}(\bar{y}, b_1) = 0$]. This tells us the least-squares intercept and slope are negatively correlated when the average of $x$ is positive. -->
+<!-- 3. **(MSSC)** Show that for the test $H_0: \beta_1 = 0; \,\,H_1:\beta_1 \ne 0$, the square of $t$ test statistic is equal to the $F$ test statistic, i.e., $t^2_{test} = F_{test}$. -->
+<!-- 4. **(Optional)** Show that $\mathrm{Cov}(\bar{y}, b_1) = 0$. This tells us that the sample mean of response is uncorrelated with the least-squares slope. -->
+<p>Suppose <span class="math inline">\({\bf A}_{n \times n}\)</span> is a symmetric idempotent matrix.</p>
+<ol start="2" type="1">
+<li><strong>(MSSC)</strong> Show that the eigenvalues of <span class="math inline">\({\bf A}\)</span> are either zero or one, and therefore <span class="math inline">\(\text{tr}({\bf A}) = \text{rank}({\bf A})\)</span>.</li>
+</ol>
+<p>In multiple linear regression, let the hat matrix <span class="math inline">\({\bf H}_{n \times n} = {\bf X(X'X)}^{-1}{\bf X'}\)</span>.</p>
+<ol start="3" type="1">
+<li><p><strong>(MSSC)</strong> Show that <span class="math inline">\({\bf H}\)</span> and <span class="math inline">\((\bf I - H)\)</span> are symmetric and idempotent.</p></li>
+<li><p><strong>(MSSC)</strong> Show that <span class="math inline">\(\text{tr}({\bf H}) = p\)</span>.</p></li>
 </ol>
 </section>
-<section id="part-2---gdp-and-urban-population" class="level2">
-<h2 class="anchored" data-anchor-id="part-2---gdp-and-urban-population">Part 2 - GDP and Urban population</h2>
-<p>Data on countries’ Gross Domestic Product (GDP) and percentage of urban population was collected and made available by <a href="http://data.worldbank.org/">The World Bank</a> in 2020. A description of the variables as defined by The World Bank are provided below.</p>
-<ul>
-<li><strong>GDP:</strong> “GDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars.”</li>
-<li><strong>Urban Population (% of total):</strong> “Urban population refers to people living in urban areas as defined by national statistical offices. It is calculated using World Bank population estimates and urban ratios from the United Nations World Urbanization Prospects.”</li>
-</ul>
-<p>The data can be found in the <code>data</code> folder of your repository. Read the data and name it <code>gdp_2020</code>.</p>
-<ol start="13" type="1">
-<li>Fit a model predicting GDP from urban population. Then make a plot of residuals vs.&nbsp;fitted for this model. Does the linear model seem appropriate for modeling this relationship? Explain your reasoning.</li>
-<li>Add a new column to the <code>gdp_2020</code> dataset called <code>gdp_log</code> which is the (natural) log of <code>gdp</code>.</li>
-<li>Fit a new model, predicting the log of GDP from urban population. Then make a plot of residuals vs.&nbsp;fitted for this model. Does the model predicting logged GDP or original GDP appear to be a better fit? Explain your reasoning.</li>
+<section id="statistical-computing-and-data-analysis" class="level1">
+<h1>Statistical Computing and Data Analysis</h1>
+<p>Please perform a data analysis using <span class="math inline">\(\texttt{R}\)</span> or your preferred language. <strong>Any results should be generated by computer outputs, and your work should be done entirely by your computer. Handwriting is not allowed. Relevant code should be attached.</strong></p>
+<p>We use the same data set <a href="./data/mpg.csv"><code>mpg.csv</code></a> for data analysis.</p>
+<ol type="1">
+<li><p>Fit a MLR model <span class="math inline">\(y = \beta_0 + \beta_1x_1 + \beta_6x_6+\epsilon\)</span> relating gasoline mileage <span class="math inline">\(y\)</span> (miles per gallon) to engine displacement <span class="math inline">\(x_1\)</span> and the number of carburetor barrels <span class="math inline">\(x_6\)</span>. Interpret the regression coefficients <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_6\)</span>.</p></li>
+<li><p>Write down the <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> for testing significance of regression, and construct the ANOVA table to test the significance. Explain your decision rule and conclusion.</p></li>
+<li><p>Obtain <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R_{Adj}^2\)</span> for this MLR model. Compare these to the <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R_{Adj}^2\)</span> for the SLR model relating mileage to engine displacement.</p></li>
+<li><p>Find a <span class="math inline">\(95\%\)</span> confidence interval (CI) for <span class="math inline">\(\beta_1\)</span>. Interpret your results.</p></li>
+<li><p>With <span class="math inline">\(\alpha = 0.05\)</span>, do the marginal test <span class="math inline">\(H_0: \beta_6 = 0\)</span>. Interpret your results.</p></li>
+<li><p>Find a <span class="math inline">\(95\%\)</span> CI on the mean gasoline mileage when <span class="math inline">\(x_1 = 275\)</span> in<span class="math inline">\(^3\)</span> and <span class="math inline">\(x_6 = 2\)</span> barrels.</p></li>
+<li><p>Find a <span class="math inline">\(95\%\)</span> prediction interval (PI) for a new observation on gasoline mileage when <span class="math inline">\(x_1 = 275\)</span> in<span class="math inline">\(^3\)</span> and <span class="math inline">\(x_6 = 2\)</span> barrels.</p></li>
+<li><p>In Homework 2 you were asked to compute <span class="math inline">\(95\%\)</span> CI on mean gasoline mileage and PI on a car’s gasoline mileage when the engine displacement <span class="math inline">\(x_1 = 275\)</span> in<span class="math inline">\(^3\)</span>. Compare the length of these intervals to the length of the CI and PI from the question 6 and 7 above. Does adding <span class="math inline">\(x_6\)</span> to the model help in terms of prediction or uncertainty reduction?</p></li>
+<li><p>Perform matrix operations to compute <span class="math inline">\(({\bf y - X b})'({\bf y - X b})\)</span> and verify it is <span class="math inline">\(SS_{res} = \sum_{i=1}^n(y_i - \hat{y}_i)^2\)</span>.</p></li>
+<li><p>Generate the predictor effect plot for <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_6\)</span>. Explain the plot by discussing the effect of each predictor on <span class="math inline">\(y\)</span>.</p></li>
+<li><p>Construct the <span class="math inline">\(95\%\)</span> confidence region for the coefficients <span class="math inline">\((\beta_1, \beta_6)\)</span>. Interpret the region.</p></li>
 </ol>
-<p>The model output for predicting logged GDP.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped">
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">6.107</td>
-<td style="text-align: right;">0.202</td>
-<td style="text-align: right;">30.291</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">urban</td>
-<td style="text-align: right;">0.042</td>
-<td style="text-align: right;">0.003</td>
-<td style="text-align: right;">13.769</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The linear model for predicting log of GDP can be expressed as follows:</p>
-<p><span class="math display">\[
-\widehat{\log(GDP)} = 6.11 + 0.042 \times urban
-\]</span></p>
-<p>Therefore, the coefficient of <code>urban</code> (0.042) can be interpreted as the change in logged GDP associated with 1 percentage point increase in urban population. The problem is, logged GDP is not a very informative value to talk about. So we need to undo the transformation we’ve done.</p>
-<p>To do so, let’s do a quick review of some properties of logs.</p>
-<ul>
-<li>Subtraction and logs: <span class="math inline">\(log(a) − log(b) = log(\frac{a}{b})\)</span></li>
-<li>Natural logarithm: <span class="math inline">\(e^{log(x)} = x\)</span></li>
-</ul>
-<p>Based on the interpretation of the slope above, the difference between the predicted values of logged GDP for a given value of <code>urban</code> and a value that is 1 percentage point higher is 0.0425. Let’s write this out mathematically, and then use the properties we’ve listed above to work through the equation.</p>
-<p><span class="math display">\[
-\begin{aligned}
-log(\text{GDP for urban } x + 1) - log(\text{GDP for urban } x) &amp;= 0.042 \\
-log\Big( \frac{\text{GDP for urban } x + 1}{\text{GDP for urban } x} \Big) &amp;= 0.042 \\
-e^{log\Big( \frac{\text{GDP for urban } x + 1}{\text{GDP for urban } x} \Big)} &amp;= e^{0.042}\\
-\frac{\text{GDP for urban } x + 1}{\text{GDP for urban } x} &amp;= e^{0.042}
-\end{aligned}
-\]</span></p>
-<ol start="16" type="1">
-<li><p>Based on the derivation above, fill in the blanks in the following sentence for an alternative (and more useful interpretation) of the slope of <code>urban</code>.</p>
-<blockquote class="blockquote">
-<p>For each additional percentage point the urban population is higher, the GDP of a country is expected to be ___, on average, by a factor of ___.</p>
-</blockquote></li>
-</ol>
-</section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Before you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.</p>
-<p>Remember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.</p>
-</div>
-</div>
-<p>To submit your assignment:</p>
-<ul>
-<li>Go to <a href="http://www.gradescope.com/">http://www.gradescope.com</a> and click <em>Log in</em> in the top right corner.</li>
-<li>Click <em>School Credentials</em> ➡️ <em>Duke NetID</em> and log in using your NetID credentials.</li>
-<li>Click on your <em>STA 210</em> course.</li>
-<li>Click on the assignment, and you’ll be prompted to submit it.</li>
-<li>Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).</li>
-<li>Select the first page of your PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</li>
-</ul>
-</section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>Total points available: 50 points.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ex 1 - 9</td>
-<td>45</td>
-</tr>
-<tr class="even">
-<td>Workflow &amp; formatting</td>
-<td>5<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
-</tr>
-</tbody>
-</table>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

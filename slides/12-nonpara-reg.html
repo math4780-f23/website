@@ -551,8 +551,8 @@ Local Regression
           display:block!important;
       }</style></aside></section><section id="gaussian-kernel-smoother-example" class="slide level2"><h2>Gaussian Kernel Smoother Example</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ksmooth</span>(x, y, <span class="at">bandwidth =</span> <span class="dv">1</span>, <span class="at">kernel =</span> <span class="st">"normal"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>KernSmooth<span class="sc">::</span><span class="fu">locpoly</span>(x, y, <span class="at">degree =</span> <span class="dv">0</span>, <span class="at">kernel =</span> <span class="st">"normal"</span>, <span class="at">bandwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/ksmooth.html">ksmooth</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, bandwidth <span class="op">=</span> <span class="fl">1</span>, kernel <span class="op">=</span> <span class="st">"normal"</span><span class="op">)</span></span>
+<span><span class="fu">KernSmooth</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/KernSmooth/man/locpoly.html">locpoly</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, degree <span class="op">=</span> <span class="fl">0</span>, kernel <span class="op">=</span> <span class="st">"normal"</span>, bandwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -701,10 +701,10 @@ Local Regression
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(KernSmooth)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">locpoly</span>(x, y, degree, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="at">kernel =</span> <span class="st">"normal"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4"></a>        bandwidth, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">KernSmooth</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/KernSmooth/man/locpoly.html">locpoly</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">degree</span>, </span>
+<span>        kernel <span class="op">=</span> <span class="st">"normal"</span>, </span>
+<span>        <span class="va">bandwidth</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>
@@ -717,19 +717,19 @@ Local Regression
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(locfit)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">locfit</span>(y <span class="sc">~</span> <span class="fu">lp</span>(x, <span class="at">nn =</span> <span class="fl">0.2</span>, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>              <span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">deg =</span> <span class="dv">2</span>), </span>
-<span id="cb3-4"><a href="#cb3-4"></a>       <span class="at">weights =</span> <span class="dv">1</span>, subset, ...)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># weights: Prior weights (or sample sizes) </span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#          for individual observations.</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># subset: Subset observations in the </span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#         data frame.</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># nn: Nearest neighbor component of </span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#     the smoothing parameter. </span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># h: The constant component of </span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#    the smoothing parameter.</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># deg: Degree of polynomial to use.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">locfit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/locfit/man/locfit.html">locfit</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/locfit/man/lp.html">lp</a></span><span class="op">(</span><span class="va">x</span>, nn <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>              h <span class="op">=</span> <span class="fl">0.5</span>, deg <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, </span>
+<span>       weights <span class="op">=</span> <span class="fl">1</span>, <span class="va">subset</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="co"># weights: Prior weights (or sample sizes) </span></span>
+<span><span class="co">#          for individual observations.</span></span>
+<span><span class="co"># subset: Subset observations in the </span></span>
+<span><span class="co">#         data frame.</span></span>
+<span><span class="co"># nn: Nearest neighbor component of </span></span>
+<span><span class="co">#     the smoothing parameter. </span></span>
+<span><span class="co"># h: The constant component of </span></span>
+<span><span class="co">#    the smoothing parameter.</span></span>
+<span><span class="co"># deg: Degree of polynomial to use.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Various ways to specify the bandwidth.</li>
@@ -783,7 +783,7 @@ Local Regression
 <li>The neighborhood <span class="math inline">\(N(x_0)\)</span> is defined by the <strong>span</strong> parameter <span class="math inline">\(\alpha\)</span>, the fraction of the total points closest to <span class="math inline">\(x_0\)</span>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">loess</span>(y <span class="sc">~</span> x, <span class="at">span =</span> <span class="fl">0.75</span>, <span class="at">degree =</span> <span class="dv">2</span>) <span class="do">## Default setting</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, span <span class="op">=</span> <span class="fl">0.75</span>, degree <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co">## Default setting</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Larger <span class="math inline">\(\alpha\)</span> means more neighbors and smoother fitting.</li>
@@ -854,7 +854,7 @@ Local Regression
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -867,7 +867,6 @@ Local Regression
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"0ea44d10cbdef4fc","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1041,7 +1040,7 @@ Local Regression
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]

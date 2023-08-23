@@ -542,7 +542,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## 10 binomial variable values with m = 5</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 2 1 2 3 1 3 2 2 1 2</code></pre>
+<pre><code> [1] 2 2 2 2 2 2 0 1 3 3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## P(X = 3) of binom(5, 0.4)</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -567,7 +567,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="do">## the default mean = 0 and sd = 1 (standard normal)</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.154  0.842  1.520  0.733  2.304</code></pre>
+<pre><code>[1] -0.151  0.259 -0.649  0.846 -0.660</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -610,7 +610,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <pre><code>[1] 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="do">## var</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>(sig2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">-</span> mu) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> m, <span class="at">prob =</span> p)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">sum</span>((<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">-</span> mu) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> m, <span class="at">prob =</span> p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.2</code></pre>
 </div>
@@ -639,7 +639,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </ul>
 <div class="fragment">
 <ul>
-<li>If <span class="math inline">\(X \sim N(\mu_X, \sigma_X^2)\)</span> and <span class="math inline">\(Y \sim N(\mu_Y, \sigma_Y^2)\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent. Then for <span class="math inline">\(a, b \in \mathbf{R}\)</span>, <span class="math display">\[aX + bY \sim N\left(a\mu_X+b\mu_Y, a^2\sigma_X^2 + b^2\sigma_Y^2\right)\]</span>
+<li>If <span class="math inline">\(X \sim N(\mu_X, \sigma_X^2)\)</span> and <span class="math inline">\(Y \sim N(\mu_Y, \sigma_Y^2)\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent. Then for <span class="math inline">\(a, b \in \mathbf{R}\)</span>, <span class="math display">\[aX + bY \sim N\left(a\mu_X+b\mu_Y, \color{red}{a^2} \color{black} \sigma_X^2 + \color{red}{b^2} \color{black} \sigma_Y^2\right)\]</span>
 </li>
 </ul>
 </div>
@@ -664,12 +664,8 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside>
 </div>
-</section><section id="normal-chi-square-student-t-and-f" class="slide level2"><h2>Normal, Chi-Square, Student-t and F</h2>
-<ul>
-<li><p>If <span class="math inline">\(Z \sim N(0, 1)\)</span>, <span class="math inline">\(V \sim \chi^2_v\)</span> and <span class="math inline">\(Z\)</span> and <span class="math inline">\(V\)</span> are independent, then <span class="math display">\[\frac{Z}{\sqrt{V/v}} \sim t_{v}\]</span></p></li>
-<li><p>If <span class="math inline">\(V \sim \chi^2_v\)</span>, <span class="math inline">\(W \sim \chi^2_w\)</span> and <span class="math inline">\(V\)</span> and <span class="math inline">\(W\)</span> are independent, then <span class="math display">\[\frac{V/v}{W/w} \sim F_{v, w}\]</span></p></li>
-</ul></section><section id="statistics-comes-in" class="slide level2"><h2>Statistics Comes In</h2>
-<p>Suppose each data point <span class="math inline">\(Y_i\)</span> of the sample <span class="math inline">\((Y_1, Y_2, \dots, Y_n)\)</span> is a random variable from an identical population distribution <span class="math inline">\(N(\mu, \sigma^2)\)</span>: <span class="math display">\[Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n\]</span></p>
+</section><section id="statistics-comes-in" class="slide level2"><h2>Statistics Comes In</h2>
+<p>Suppose each data point <span class="math inline">\(Y_i\)</span> of the sample <span class="math inline">\((Y_1, Y_2, \dots, Y_n)\)</span> is a random variable from the same population whose distribution is <span class="math inline">\(N(\mu, \sigma^2)\)</span>, and <span class="math inline">\(Y_i\)</span>s are independent each other: <span class="math display">\[Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n\]</span></p>
 
 <img data-src="./images/03-prob-stat/unnamed-chunk-12-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="statistics-comes-in-sampling-distribution" class="slide level2"><h2>Statistics Comes In: Sampling Distribution</h2>
 <p>If <span class="math inline">\(Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n\)</span>,</p>
@@ -725,12 +721,14 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <img data-src="./images/03-prob-stat/unnamed-chunk-15-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section><section id="alpha100-confidence-interval-for-mu-probability" class="slide level2"><h2>
 <span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\mu\)</span>: Probability</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p><span class="math display">\[\small P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\]</span></p>
+<div class="column" style="width:45%;">
+<div class="small">
+<p><span class="math display">\[P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\]</span></p>
+</div>
 <div class="question">
 <p>Is the interval <span class="math inline">\(\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}, \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right)\)</span> our confidence interval?</p>
 </div>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -747,12 +745,14 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </section><section id="alpha100-confidence-interval-for-mu-formula" class="slide level2"><h2>
 <span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\mu\)</span>: Formula</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p><span class="math display">\[\small \begin{align}
+<div class="column" style="width:45%;">
+<div class="small">
+<p><span class="math display">\[\begin{align}
 &amp;P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \overline{Y} &lt; \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\\
 &amp;P\left( \boxed{\overline{Y}- t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} &lt; \mu &lt; \overline{Y} + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}} \right) = 1-\alpha
 \end{align}\]</span></p>
-</div><div class="column" style="width:60%;">
+</div>
+</div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -829,7 +829,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -842,7 +842,6 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"a53ffe0015e1ec5a","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1016,7 +1015,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]

@@ -370,7 +370,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside></section><section><section id="section-2" class="title-slide slide level1 center"><h1></h1>
 <div class="center">
-<div class="huge">
+<div class="xlarge">
 <p>Regression is a statistical technique for investigating and modeling the <strong>relationships between variables</strong>.</p>
 </div>
 </div>
@@ -627,6 +627,9 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </li>
 <li>
 <span class="math inline">\(X\)</span>: <strong>predictor, covariate, feature, regressor, explanatory/ independent</strong> variable, e.g., <em><code>years of education</code></em>, which is <strong>known and fixed</strong>.</li>
+</ul>
+<div class="fragment">
+<ul>
 <li>Explain the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and make predictions through a model <span class="math display">\[Y = f(X) + \epsilon\]</span>
 </li>
 <li>
@@ -642,6 +645,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <span class="math inline">\(f(\cdot)\)</span>: <strong>fixed</strong> but <strong>unknown</strong> function describing the relationship between <span class="math inline">\(X\)</span> and the <strong>mean of <span class="math inline">\(Y\)</span></strong>. <!-- - $f$ represents the systematic information that X provides about Y. -->
 </li>
 </ul>
+</div>
 <div class="fragment">
 <div class="question">
 <p>In Intro Stats, what is the form of <span class="math inline">\(f\)</span> and what assumptions you made on the random error <span class="math inline">\(\epsilon\)</span> ?</p>
@@ -700,7 +704,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <!-- - **<span style="color:red">Red</span>** dots: observed values -->
 <ul>
 <li>
-<strong><span style="color:blue">Blue</span></strong> curve: true underlying relationship between (the mean) income and years of education.</li>
+<strong><span style="color:blue">Blue</span></strong> curve: true underlying relationship between (the mean) <code>income</code> and <code>years of education</code>.</li>
 <li>
 <strong>Black</strong> lines: error associated with each observation</li>
 </ul>
@@ -1102,7 +1106,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </div>
 </div>
 </section><section id="linear-vs.-nonlinear-models-1" class="slide level2"><h2>Linear vs.&nbsp;Nonlinear Models</h2>
-<div class="cell" data-layout-align="center" data-hash="02-overview_cache/html/unnamed-chunk-19_5f6d8b8ef57ea77e98a33f4732646341">
+<div class="cell" data-layout-align="center" data-hash="02-overview_cache/revealjs/unnamed-chunk-19_74f3a6941820f1bdb501e537da061f8d">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure><p><img data-src="./images/02-overview/unnamed-chunk-19-1.png" style="width:65.0%"></p>
@@ -1131,7 +1135,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1144,7 +1148,6 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"c66c6c41fb802901","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1318,11 +1321,46 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

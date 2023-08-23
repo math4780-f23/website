@@ -378,7 +378,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Exercises are for practice purpose only.</p>
+
 </div>
 </div>
 <div class="cell">
@@ -441,10 +441,10 @@ Note
 <li>Generate a simulated data of size <span class="math inline">\(n = 100\)</span> from the regression</li>
 </ol>
 <p><span class="math display">\[y_i = 10 + 5x_i + \epsilon_i, ~~ \epsilon_i \stackrel{iid}{\sim} N(0, 2)\]</span></p>
-<p>using the code</p>
+<p>by completing the code</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(_____)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> ____ <span class="sc">+</span> ____ <span class="sc">*</span> ____ <span class="sc">+</span> <span class="fu">r____</span>(_____, <span class="at">sd =</span> _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Fit a simple linear regression model to the data, then check whether the true slope is captured by the 90% confidence interval for the slope.</p>
 

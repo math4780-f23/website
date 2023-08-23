@@ -838,12 +838,12 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load the data set</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>delivery <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"./data/data-ex-3-1.csv"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>delivery_data <span class="ot">&lt;-</span> delivery[, <span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">colnames</span>(delivery_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"time"</span>, <span class="st">"cases"</span>, <span class="st">"distance"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">str</span>(delivery_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the data set</span></span>
+<span><span class="va">delivery</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"./data/data-ex-3-1.csv"</span>,</span>
+<span>                     header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">delivery_data</span> <span class="op">&lt;-</span> <span class="va">delivery</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">delivery_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"cases"</span>, <span class="st">"distance"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">delivery_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   25 obs. of  3 variables:
  $ time    : num  16.7 11.5 12 14.9 13.8 ...
@@ -862,34 +862,34 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 </div><div class="column" style="width:30%;">
 <div class="midi">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>delivery_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delivery_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource my_class800 number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>   time cases distance</span>
-<span id="cb4-2"><a href="#cb4-2"></a>1  16.7     7      560</span>
-<span id="cb4-3"><a href="#cb4-3"></a>2  11.5     3      220</span>
-<span id="cb4-4"><a href="#cb4-4"></a>3  12.0     3      340</span>
-<span id="cb4-5"><a href="#cb4-5"></a>4  14.9     4       80</span>
-<span id="cb4-6"><a href="#cb4-6"></a>5  13.8     6      150</span>
-<span id="cb4-7"><a href="#cb4-7"></a>6  18.1     7      330</span>
-<span id="cb4-8"><a href="#cb4-8"></a>7   8.0     2      110</span>
-<span id="cb4-9"><a href="#cb4-9"></a>8  17.8     7      210</span>
-<span id="cb4-10"><a href="#cb4-10"></a>9  79.2    30     1460</span>
-<span id="cb4-11"><a href="#cb4-11"></a>10 21.5     5      605</span>
-<span id="cb4-12"><a href="#cb4-12"></a>11 40.3    16      688</span>
-<span id="cb4-13"><a href="#cb4-13"></a>12 21.0    10      215</span>
-<span id="cb4-14"><a href="#cb4-14"></a>13 13.5     4      255</span>
-<span id="cb4-15"><a href="#cb4-15"></a>14 19.8     6      462</span>
-<span id="cb4-16"><a href="#cb4-16"></a>15 24.0     9      448</span>
-<span id="cb4-17"><a href="#cb4-17"></a>16 29.0    10      776</span>
-<span id="cb4-18"><a href="#cb4-18"></a>17 15.3     6      200</span>
-<span id="cb4-19"><a href="#cb4-19"></a>18 19.0     7      132</span>
-<span id="cb4-20"><a href="#cb4-20"></a>19  9.5     3       36</span>
-<span id="cb4-21"><a href="#cb4-21"></a>20 35.1    17      770</span>
-<span id="cb4-22"><a href="#cb4-22"></a>21 17.9    10      140</span>
-<span id="cb4-23"><a href="#cb4-23"></a>22 52.3    26      810</span>
-<span id="cb4-24"><a href="#cb4-24"></a>23 18.8     9      450</span>
-<span id="cb4-25"><a href="#cb4-25"></a>24 19.8     8      635</span>
-<span id="cb4-26"><a href="#cb4-26"></a>25 10.8     4      150</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="my_class800"><code>   time cases distance
+1  16.7     7      560
+2  11.5     3      220
+3  12.0     3      340
+4  14.9     4       80
+5  13.8     6      150
+6  18.1     7      330
+7   8.0     2      110
+8  17.8     7      210
+9  79.2    30     1460
+10 21.5     5      605
+11 40.3    16      688
+12 21.0    10      215
+13 13.5     4      255
+14 19.8     6      462
+15 24.0     9      448
+16 29.0    10      776
+17 15.3     6      200
+18 19.0     7      132
+19  9.5     3       36
+20 35.1    17      770
+21 17.9    10      140
+22 52.3    26      810
+23 18.8     9      450
+24 19.8     8      635
+25 10.8     4      150</code></pre>
 </div>
 </div>
 </div>
@@ -916,7 +916,7 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
       }</style></aside></section><section id="r-lab-scatterplot-matrix" class="slide level2"><h2>
 <span class="pink">R Lab</span> Scatterplot Matrix</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pairs</span>(delivery_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">delivery_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="./images/05-mlr/unnamed-chunk-19-1.png" style="width:78.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
@@ -934,12 +934,12 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
       }</style></aside></section><section id="r-lab-3d-scatterplot" class="slide level2"><h2>
 <span class="pink">R Lab</span> 3D Scatterplot</h2>
 <div class="cell" data-layout-align="center">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">par</span>(<span class="at">mgp =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.8</span>, <span class="dv">0</span>), <span class="at">las =</span> <span class="dv">1</span>, <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(scatterplot3d)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">scatterplot3d</span>(<span class="at">x =</span> delivery_data<span class="sc">$</span>cases, <span class="at">y =</span> delivery_data<span class="sc">$</span>distance, <span class="at">z =</span> delivery_data<span class="sc">$</span>time,</span>
-<span id="cb6-4"><a href="#cb6-4"></a>              <span class="at">xlab =</span><span class="st">"cases"</span>, <span class="at">ylab =</span> <span class="st">"distance"</span>, <span class="at">zlab =</span> <span class="st">"time"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>              <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">30</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">1640</span>), <span class="at">zlim =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">80</span>),</span>
-<span id="cb6-6"><a href="#cb6-6"></a>              <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">angle =</span> <span class="dv">30</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Code</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mgp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.8</span>, <span class="fl">0</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">scatterplot3d</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/scatterplot3d/man/scatterplot3d.html">scatterplot3d</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">delivery_data</span><span class="op">$</span><span class="va">cases</span>, y <span class="op">=</span> <span class="va">delivery_data</span><span class="op">$</span><span class="va">distance</span>, z <span class="op">=</span> <span class="va">delivery_data</span><span class="op">$</span><span class="va">time</span>,</span>
+<span>              xlab <span class="op">=</span><span class="st">"cases"</span>, ylab <span class="op">=</span> <span class="st">"distance"</span>, zlab <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>              xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">30</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">36</span>, <span class="fl">1640</span><span class="op">)</span>, zlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">80</span><span class="op">)</span>,</span>
+<span>              box <span class="op">=</span> <span class="cn">TRUE</span>, color <span class="op">=</span> <span class="st">"blue"</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, angle <span class="op">=</span> <span class="fl">30</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <img data-src="./images/05-mlr/unnamed-chunk-20-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
@@ -957,8 +957,8 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
       }</style></aside></section><section id="r-lab-multiple-linear-regression" class="slide level2"><h2>
 <span class="pink">R Lab</span> Multiple Linear Regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>delivery_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(time <span class="sc">~</span> cases <span class="sc">+</span> distance, <span class="at">data =</span> delivery_data)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>delivery_lm<span class="sc">$</span>coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delivery_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span> <span class="op">+</span> <span class="va">distance</span>, data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
+<span><span class="va">delivery_lm</span><span class="op">$</span><span class="va">coef</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)       cases    distance 
       2.341       1.616       0.014 </code></pre>
@@ -1002,22 +1002,22 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 <span class="pink">R Lab</span> Estimation of <span class="math inline">\(\sigma^2\)</span>
 </h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">## method 1</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>summ_delivery <span class="ot">&lt;-</span> <span class="fu">summary</span>(delivery_lm)  <span class="do">## check names(summ_delivery)</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>summ_delivery<span class="sc">$</span>sigma <span class="sc">^</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## method 1</span></span>
+<span><span class="va">summ_delivery</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span>  <span class="co">## check names(summ_delivery)</span></span>
+<span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">sigma</span> <span class="op">^</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="do">## method 2</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(delivery_lm<span class="sc">$</span>residuals)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>(SS_res <span class="ot">&lt;-</span> <span class="fu">sum</span>(delivery_lm<span class="sc">$</span>residuals <span class="sc">*</span> delivery_lm<span class="sc">$</span>residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## method 2</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">SS_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">$</span><span class="va">residuals</span> <span class="op">*</span> <span class="va">delivery_lm</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 234</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>SS_res <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SS_res</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
@@ -1025,12 +1025,12 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="do">## method 3</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>(SS_res1 <span class="ot">&lt;-</span> <span class="fu">sum</span>((delivery_data<span class="sc">$</span>time <span class="sc">-</span> delivery_lm<span class="sc">$</span>fitted.values)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## method 3</span></span>
+<span><span class="op">(</span><span class="va">SS_res1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">delivery_data</span><span class="op">$</span><span class="va">time</span> <span class="op">-</span> <span class="va">delivery_lm</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 234</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>SS_res1 <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SS_res1</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
@@ -1072,7 +1072,7 @@ PI for New Observations
 </ul></section><section id="wald-ci-for-coefficients" class="slide level2"><h2>Wald CI for Coefficients</h2>
 <p>The <span class="math inline">\((1-\alpha)100\%\)</span> Wald CI for <span class="math inline">\(\beta_j\)</span>, <span class="math inline">\(j = 0, 1, \dots, k\)</span> is <span class="math display">\[\left(b_j- t_{\alpha/2, n-p}~se(b_j), \quad b_j + t_{\alpha/2, n-p}~ se(b_j)\right)\]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>(ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(delivery_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">ci</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             2.5 % 97.5 %
 (Intercept) 0.0668  4.616
@@ -1124,16 +1124,16 @@ distance    0.0069  0.022</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="do">## variance-covariance matrix</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>(V <span class="ot">&lt;-</span> <span class="fu">vcov</span>(delivery_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## variance-covariance matrix</span></span>
+<span><span class="op">(</span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            (Intercept)    cases distance
 (Intercept)     1.20282 -0.04726 -8.9e-04
 cases          -0.04726  0.02915 -5.1e-04
 distance       -0.00089 -0.00051  1.3e-05</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="do">## standard error</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">sqrt</span>(<span class="fu">diag</span>(V))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## standard error</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)       cases    distance 
      1.0967      0.1707      0.0036 </code></pre>
@@ -1141,8 +1141,8 @@ distance       -0.00089 -0.00051  1.3e-05</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="do">## correlation matrix</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">cov2cor</span>(V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## correlation matrix</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov2cor</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            (Intercept) cases distance
 (Intercept)        1.00 -0.25    -0.22
@@ -1168,20 +1168,20 @@ distance          -0.22 -0.82     1.00</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r my_class800 number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="do">## confidence region</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>car<span class="sc">::</span><span class="fu">confidenceEllipse</span>(</span>
-<span id="cb27-3"><a href="#cb27-3"></a>    delivery_lm, </span>
-<span id="cb27-4"><a href="#cb27-4"></a>    <span class="at">levels =</span> <span class="fl">0.95</span>, </span>
-<span id="cb27-5"><a href="#cb27-5"></a>    <span class="at">which.coef =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"distance"</span>), </span>
-<span id="cb27-6"><a href="#cb27-6"></a>    <span class="at">main =</span> <span class="fu">expression</span>(</span>
-<span id="cb27-7"><a href="#cb27-7"></a>        <span class="fu">paste</span>(<span class="st">"95% Confidence Region for "</span>, </span>
-<span id="cb27-8"><a href="#cb27-8"></a>              beta[<span class="dv">1</span>], <span class="st">" and "</span>,  beta[<span class="dv">2</span>])</span>
-<span id="cb27-9"><a href="#cb27-9"></a>        )</span>
-<span id="cb27-10"><a href="#cb27-10"></a>    )</span>
-<span id="cb27-11"><a href="#cb27-11"></a><span class="do">## marginal CI for cases</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a><span class="fu">abline</span>(<span class="at">v =</span> ci[<span class="dv">2</span>, ], <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  </span>
-<span id="cb27-13"><a href="#cb27-13"></a><span class="do">## marginal CI for distance</span></span>
-<span id="cb27-14"><a href="#cb27-14"></a><span class="fu">abline</span>(<span class="at">h =</span> ci[<span class="dv">3</span>, ], <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## confidence region</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html">confidenceEllipse</a></span><span class="op">(</span></span>
+<span>    <span class="va">delivery_lm</span>, </span>
+<span>    levels <span class="op">=</span> <span class="fl">0.95</span>, </span>
+<span>    which.coef <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"distance"</span><span class="op">)</span>, </span>
+<span>    main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"95% Confidence Region for "</span>, </span>
+<span>              <span class="va">beta</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="st">" and "</span>,  <span class="va">beta</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="co">## marginal CI for cases</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">ci</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  </span>
+<span><span class="co">## marginal CI for distance</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">ci</span><span class="op">[</span><span class="fl">3</span>, <span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -1223,9 +1223,9 @@ distance          -0.22 -0.82     1.00</code></pre>
 </li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">predict</span>(delivery_lm,</span>
-<span id="cb28-2"><a href="#cb28-2"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="dv">8</span>, <span class="at">distance =</span> <span class="dv">275</span>),</span>
-<span id="cb28-3"><a href="#cb28-3"></a>        <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
+<span>        newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="fl">8</span>, distance <span class="op">=</span> <span class="fl">275</span><span class="op">)</span>,</span>
+<span>        interval <span class="op">=</span> <span class="st">"confidence"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  fit lwr upr
 1  19  18  21</code></pre>
@@ -1263,9 +1263,9 @@ distance          -0.22 -0.82     1.00</code></pre>
 </li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">predict</span>(delivery_lm,</span>
-<span id="cb31-2"><a href="#cb31-2"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="dv">8</span>, <span class="at">distance =</span> <span class="dv">275</span>),</span>
-<span id="cb31-3"><a href="#cb31-3"></a>        <span class="at">interval =</span> <span class="st">"predict"</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
+<span>        newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="fl">8</span>, distance <span class="op">=</span> <span class="fl">275</span><span class="op">)</span>,</span>
+<span>        interval <span class="op">=</span> <span class="st">"predict"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  fit lwr upr
 1  19  12  26</code></pre>
@@ -1305,8 +1305,8 @@ distance          -0.22 -0.82     1.00</code></pre>
 </ul></section><section id="r-lab-predictor-effect-plots" class="slide level2"><h2>
 <span class="pink">R Lab</span> Predictor Effect Plots</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">plot</span>(effects<span class="sc">::</span><span class="fu">predictorEffects</span>(<span class="at">mod =</span> delivery_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">effects</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu">effects</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/effects/man/predictorEffects.html">predictorEffects</a></span><span class="op">(</span>mod <span class="op">=</span> <span class="va">delivery_lm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1439,27 +1439,27 @@ Tests on Subsets of Coefficients (Later)
 <span class="pink">R Lab</span> Test for Significance</h2>
 <p><span style="color:blue"> <span class="math inline">\(H_0: \beta_{1} = \beta_{2} = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one } j\)</span> </span></p>
 <div class="cell" data-layout-align="center" data-output.lines="[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>summ_delivery</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource my_class800 number-lines code-with-copy"><code class="sourceCode"><span id="cb36-1"><a href="#cb36-1"></a>...</span>
-<span id="cb36-2"><a href="#cb36-2"></a>lm(formula = time ~ cases + distance, data = delivery_data)</span>
-<span id="cb36-3"><a href="#cb36-3"></a></span>
-<span id="cb36-4"><a href="#cb36-4"></a>Residuals:</span>
-<span id="cb36-5"><a href="#cb36-5"></a>   Min     1Q Median     3Q    Max </span>
-<span id="cb36-6"><a href="#cb36-6"></a>-5.788 -0.663  0.436  1.157  7.420 </span>
-<span id="cb36-7"><a href="#cb36-7"></a></span>
-<span id="cb36-8"><a href="#cb36-8"></a>Coefficients:</span>
-<span id="cb36-9"><a href="#cb36-9"></a>            Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span id="cb36-10"><a href="#cb36-10"></a>(Intercept)  2.34123    1.09673    2.13  0.04417 *  </span>
-<span id="cb36-11"><a href="#cb36-11"></a>cases        1.61591    0.17073    9.46  3.3e-09 ***</span>
-<span id="cb36-12"><a href="#cb36-12"></a>distance     0.01438    0.00361    3.98  0.00063 ***</span>
-<span id="cb36-13"><a href="#cb36-13"></a>---</span>
-<span id="cb36-14"><a href="#cb36-14"></a>Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span id="cb36-15"><a href="#cb36-15"></a></span>
-<span id="cb36-16"><a href="#cb36-16"></a>Residual standard error: 3.3 on 22 degrees of freedom</span>
-<span id="cb36-17"><a href="#cb36-17"></a>Multiple R-squared:  0.96,  Adjusted R-squared:  0.956 </span>
-<span id="cb36-18"><a href="#cb36-18"></a>F-statistic:  261 on 2 and 22 DF,  p-value: 4.69e-16</span>
-<span id="cb36-19"><a href="#cb36-19"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="my_class800"><code>...
+lm(formula = time ~ cases + distance, data = delivery_data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-5.788 -0.663  0.436  1.157  7.420 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2.34123    1.09673    2.13  0.04417 *  
+cases        1.61591    0.17073    9.46  3.3e-09 ***
+distance     0.01438    0.00361    3.98  0.00063 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.3 on 22 degrees of freedom
+Multiple R-squared:  0.96,  Adjusted R-squared:  0.956 
+F-statistic:  261 on 2 and 22 DF,  p-value: 4.69e-16
+...</code></pre>
 </div>
 </div>
 <aside class="notes"><ul>
@@ -1477,8 +1477,8 @@ Tests on Subsets of Coefficients (Later)
       }</style></aside></section><section id="r-lab-wrong-anova-table" class="slide level2"><h2>
 <span class="pink">R Lab</span> Wrong ANOVA Table</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="do">## This is for sequential F-test</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">anova</span>(delivery_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## This is for sequential F-test</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -1519,10 +1519,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center" data-output.lines="[1,2,3,4,5,6,7]">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="do">## regression with intercept only</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>null_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(time <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb39-3"><a href="#cb39-3"></a>                 <span class="at">data =</span> delivery_data)</span>
-<span id="cb39-4"><a href="#cb39-4"></a><span class="fu">anova</span>(null_model, delivery_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## regression with intercept only</span></span>
+<span><span class="va">null_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>                 data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">null_model</span>, <span class="va">delivery_lm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 Analysis of Variance Table
@@ -1634,7 +1634,7 @@ Model 2: time ~ cases + distance
 <span class="pink">R Lab</span> <span class="math inline">\(R^2\)</span> and Adjusted <span class="math inline">\(R^2\)</span>
 </h2>
 <div class="cell" data-layout-align="center" data-output.lines="[16,17,18]">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>summ_delivery</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 
@@ -1644,11 +1644,11 @@ Multiple R-squared:  0.96,  Adjusted R-squared:  0.956
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>summ_delivery<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.96</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>summ_delivery<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">adj.r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.96</code></pre>
 </div>
@@ -1689,7 +1689,7 @@ Multiple R-squared:  0.96,  Adjusted R-squared:  0.956
 <li><span style="color:blue"> <span class="math inline">\(H_0: \beta_{2} = 0 \quad H_1: \beta_2 \ne 0\)</span> </span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>summ_delivery<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)    2.341     1.0967     2.1  4.4e-02
@@ -1751,7 +1751,7 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1764,7 +1764,6 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"0f7e0703db992a89","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1938,7 +1937,7 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]

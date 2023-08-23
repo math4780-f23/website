@@ -523,12 +523,12 @@ Randomization test for Linear Regression*
 <li>Consider 20 one-bedroom apartments that were randomly selected on Craigslist Manhattan from apartments listed as “by owner”.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>manhattan <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"./data/manhattan.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">range</span>(manhattan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manhattan</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"./data/manhattan.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">manhattan</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1470 4195</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">glimpse</span>(manhattan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">manhattan</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 1
@@ -730,9 +730,9 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <code>specify()</code> the variable of interest.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>manhattan <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>    <span class="co"># specify the variable of interest</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="fu">specify</span>(<span class="at">response =</span> rent) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manhattan</span> <span class="op">|&gt;</span></span>
+<span>    <span class="co"># specify the variable of interest</span></span>
+<span>    <span class="fu">specify</span><span class="op">(</span>response <span class="op">=</span> <span class="va">rent</span><span class="op">)</span> <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes"><ul>
 <li>All right, let’s do it step by step.</li>
@@ -756,11 +756,11 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <code>generate()</code> a fixed number of bootstrap samples.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>manhattan <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="co"># specify the variable of interest</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="fu">specify</span>(<span class="at">response =</span> rent) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="co"># generate 15000 bootstrap samples</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>    <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">15000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>)  <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manhattan</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="co"># specify the variable of interest</span></span>
+<span>    <span class="fu">specify</span><span class="op">(</span>response <span class="op">=</span> <span class="va">rent</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="co"># generate 15000 bootstrap samples</span></span>
+<span>    <span class="fu">generate</span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">15000</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span>  <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes"><ul>
 <li>And then we generate our BT samples using generate() function, reps 15000 times, and specify type = “bootstrap”.</li>
@@ -785,13 +785,13 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <code>calculate()</code> the bootstrapped statistic(s).</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>manhattan <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>    <span class="co"># specify the variable of interest</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="fu">specify</span>(<span class="at">response =</span> rent) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="co"># generate 15000 bootstrap samples</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">15000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="co"># calculate the median of each bootstrap sample</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>    <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"median"</span>)  <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manhattan</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="co"># specify the variable of interest</span></span>
+<span>    <span class="fu">specify</span><span class="op">(</span>response <span class="op">=</span> <span class="va">rent</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="co"># generate 15000 bootstrap samples</span></span>
+<span>    <span class="fu">generate</span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">15000</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="co"># calculate the median of each bootstrap sample</span></span>
+<span>    <span class="fu">calculate</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span>  <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes"><ul>
 <li>Once we collect or BT samples, we calculate the bootstrapped statistic(s) which is median using calculate() function.</li>
@@ -818,14 +818,14 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <li>save bootstrapping distribution for analysis.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># save resulting bootstrap distribution</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>boot_sample <span class="ot">&lt;-</span> manhattan <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="co"># specify the variable of interest</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="fu">specify</span>(<span class="at">response =</span> rent) <span class="sc">|&gt;</span>  </span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="co"># generate 15000 bootstrap samples</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">15000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="co"># calculate the median of each bootstrap sample</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"median"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save resulting bootstrap distribution</span></span>
+<span><span class="va">boot_sample</span> <span class="op">&lt;-</span> <span class="va">manhattan</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="co"># specify the variable of interest</span></span>
+<span>    <span class="fu">specify</span><span class="op">(</span>response <span class="op">=</span> <span class="va">rent</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
+<span>    <span class="co"># generate 15000 bootstrap samples</span></span>
+<span>    <span class="fu">generate</span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">15000</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
+<span>    <span class="co"># calculate the median of each bootstrap sample</span></span>
+<span>    <span class="fu">calculate</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes"><ul>
 <li>Then we are done! We have the BT samples or distribution of median rent for analysis.</li>
@@ -846,7 +846,7 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <p>👤 How many observations are there in <code>boot_sample</code>? What does each observation represent?</p>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(boot_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">boot_sample</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 15,000
 Columns: 2
@@ -873,10 +873,10 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
       }</style></aside></section><section id="r-lab-visualize-the-bootstrap-distribution" class="slide level2"><h2>
 <span class="pink">R Lab</span> Visualize the Bootstrap Distribution</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>bt_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> boot_sample, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bootstrap distribution of medians"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
-<span id="cb11-4"><a href="#cb11-4"></a>bt_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bt_dist</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">boot_sample</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">stat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Bootstrap distribution of medians"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">bt_dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="./images/11-bootstrapunnamed-chunk-18-1.png" style="width:65.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
@@ -896,9 +896,9 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>bt_ci <span class="ot">&lt;-</span> infer<span class="sc">::</span><span class="fu">get_ci</span>(</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  boot_sample, <span class="at">level =</span> .<span class="dv">95</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>bt_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bt_ci</span> <span class="op">&lt;-</span> <span class="fu">infer</span><span class="fu">::</span><span class="fu"><a href="https://infer.tidymodels.org/reference/get_confidence_interval.html">get_ci</a></span><span class="op">(</span></span>
+<span>  <span class="va">boot_sample</span>, level <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span></span>
+<span><span class="va">bt_ci</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   lower_ci upper_ci
@@ -908,9 +908,9 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 </div>
 </div><div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>bt_dist <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(bt_ci<span class="sc">$</span>lower_ci, bt_ci<span class="sc">$</span>upper_ci), </span>
-<span id="cb14-2"><a href="#cb14-2"></a>                     <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"and 95% CI"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bt_dist</span> <span class="op">+</span> <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">bt_ci</span><span class="op">$</span><span class="va">lower_ci</span>, <span class="va">bt_ci</span><span class="op">$</span><span class="va">upper_ci</span><span class="op">)</span>, </span>
+<span>                     color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">labs</span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"and 95% CI"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure><p><img data-src="./images/11-bootstrapboot-ci-1.png" style="width:100.0%"></p>
@@ -1159,27 +1159,27 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>boot_fits <span class="ot">&lt;-</span> delivery_data <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">specify</span>(time <span class="sc">~</span> cases) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">100</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">fit</span>()</span>
-<span id="cb16-6"><a href="#cb16-6"></a>boot_fits</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
+<span><span class="va">boot_fits</span> <span class="op">&lt;-</span> <span class="va">delivery_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">specify</span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">generate</span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">100</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">fit</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">boot_fits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource my_class600 number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href="#cb17-1"></a># A tibble: 200 × 3</span>
-<span id="cb17-2"><a href="#cb17-2"></a># Groups:   replicate [100]</span>
-<span id="cb17-3"><a href="#cb17-3"></a>  replicate term      estimate</span>
-<span id="cb17-4"><a href="#cb17-4"></a>      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;</span>
-<span id="cb17-5"><a href="#cb17-5"></a>1         1 intercept    0.738</span>
-<span id="cb17-6"><a href="#cb17-6"></a>2         1 cases        2.54 </span>
-<span id="cb17-7"><a href="#cb17-7"></a>3         2 intercept    2.24 </span>
-<span id="cb17-8"><a href="#cb17-8"></a>4         2 cases        2.33 </span>
-<span id="cb17-9"><a href="#cb17-9"></a>5         3 intercept    4.16 </span>
-<span id="cb17-10"><a href="#cb17-10"></a>6         3 cases        2.14 </span>
-<span id="cb17-11"><a href="#cb17-11"></a># ℹ 194 more rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="my_class600"><code># A tibble: 200 × 3
+# Groups:   replicate [100]
+  replicate term      estimate
+      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+1         1 intercept    0.738
+2         1 cases        2.54 
+3         2 intercept    2.24 
+4         2 cases        2.33 
+5         3 intercept    4.16 
+6         3 cases        2.14 
+# ℹ 194 more rows</code></pre>
 </div>
 </div>
 </div>
@@ -1191,10 +1191,10 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <strong>Percentile method</strong>: Compute the 95% CI as the middle 95% of the bootstrap distribution:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>observed_fit <span class="ot">&lt;-</span> delivery_data <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">specify</span>(time <span class="sc">~</span> cases) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">fit</span>()</span>
-<span id="cb18-4"><a href="#cb18-4"></a>boot_fits <span class="sc">|&gt;</span> <span class="fu">get_ci</span>(<span class="at">point_estimate =</span> observed_fit, <span class="at">type =</span> <span class="st">"percentile"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">observed_fit</span> <span class="op">&lt;-</span> <span class="va">delivery_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">specify</span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">fit</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">boot_fits</span> <span class="op">|&gt;</span> <span class="fu">get_ci</span><span class="op">(</span>point_estimate <span class="op">=</span> <span class="va">observed_fit</span>, type <span class="op">=</span> <span class="st">"percentile"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   term      lower_ci upper_ci
@@ -1209,7 +1209,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <strong>Standard error method</strong>: Compute the 95% CI as the point estimate <span class="math inline">\(\pm\)</span> ~2 standard deviations of the bootstrap distribution:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>boot_fits <span class="sc">|&gt;</span> <span class="fu">get_ci</span>(<span class="at">point_estimate =</span> observed_fit, <span class="at">type =</span> <span class="st">"se"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">boot_fits</span> <span class="op">|&gt;</span> <span class="fu">get_ci</span><span class="op">(</span>point_estimate <span class="op">=</span> <span class="va">observed_fit</span>, type <span class="op">=</span> <span class="st">"se"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   term      lower_ci upper_ci
@@ -1239,9 +1239,9 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <code><a href="https://rdrr.io/pkg/car/man/Boot.html">car::Boot()</a></code> is a simple interface to the <code><a href="https://rdrr.io/pkg/boot/man/boot.html">boot::boot()</a></code>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(time <span class="sc">~</span> cases, <span class="at">data =</span> delivery_data)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>car_boot <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Boot</span>(lm_fit, <span class="at">R =</span> <span class="dv">100</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">brief</span>(car_boot<span class="sc">$</span>t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span>, data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
+<span><span class="va">car_boot</span> <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boot.html">Boot</a></span><span class="op">(</span><span class="va">lm_fit</span>, R <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="fu">brief</span><span class="op">(</span><span class="va">car_boot</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>100 x 2 matrix (95 rows omitted)
        (Intercept) cases
@@ -1259,14 +1259,14 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <li>BC<span class="math inline">\(_a\)</span> is the <strong>accelerated bias-corrected percentile interval</strong>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">hist</span>(car_boot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="./images/11-bootstrapunnamed-chunk-46-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section><section id="r-lab-carconfint" class="slide level2"><h2>
 <span class="pink">R Lab</span> <code>car::Confint()</code>
 </h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>car<span class="sc">::</span><span class="fu">Confint</span>(lm_fit, <span class="at">vcov. =</span> <span class="fu">vcov</span>(car_boot))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/S.html">Confint</a></span><span class="op">(</span><span class="va">lm_fit</span>, vcov. <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Standard errors computed by vcov(car_boot) </code></pre>
 </div>
@@ -1296,7 +1296,7 @@ cases           2.18  1.613   2.74</code></pre>
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1309,7 +1309,6 @@ cases           2.18  1.613   2.74</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"f028d1b73fb46599","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1483,7 +1482,7 @@ cases           2.18  1.613   2.74</code></pre>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]
