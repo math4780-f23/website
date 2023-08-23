@@ -1,0 +1,69 @@
+---
+title: "Exercise 11: Logistic Regression Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Logistic Regression
+
+<!-- ISL 4.6 -->
+
+1. Suppose we collect data for a group of students in a statistics class with variables $X_1 =$hours studied, $X_2 =$undergrad GPA, and $Y =$receive an A. We fit a logistic regression and produce estimated coefficient, $\hat{\beta_0} = −6$, $\hat{\beta_1} = 0.05$, $\hat{\beta_2} = 1$. 
+
+    (a) Estimate the probability that a student who studies for 40 hours and has an undergrad GPA of 3.5 gets an A in the class.
+    
+    (b) How many hours would the student in part (a) need to study to have a 50% chance of getting an A in the class?
+    
+
+```{r}
+b0 <- -6
+b1 <- 0.05
+b2 <- 1
+x2 <- 3.5
+x1 <- 40
+1 / (1 + exp(-(b0 + b1 * x1 + b2 * x2)))
+```
+
+The followings use `Boston` data set.
+```{r}
+library(ISLR2)
+attach(Boston)
+```
+
+2. Create a new variable `crim01` having value 0 if `crim` is smaller than its median, and value 1 otherwise. Add the variable into the Boston data set.
+
+```{r}
+crim01 <- rep(0, length(crim))
+crim01[crim > median(crim)] <- 1
+Boston1 <- cbind(Boston, crim01)
+```
+
+
+
+3. Split the *new* `Boston` data set into training (~80%) and test sets (~20%).
+
+```{r}
+set.seed(1)
+idx <- sample(nrow(Boston1), 406)
+train <- Boston1[idx, ]
+test <- Boston1[-idx, ]
+```
+
+
+3. Using the training set, fit logistic regression to predict whether a given census tract in the test set has a crime rate above or below the median.
+
+```{r}
+fit <- glm(crim01 ~ . - crim01 - crim, data = train, 
+           family = binomial)
+prob <- predict(fit, test, type = "response")
+pred <- 1 * (prob > 0.5)
+table(pred, test$crim01)
+mean(pred == test$crim01)
+```
+

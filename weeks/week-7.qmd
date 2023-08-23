@@ -1,35 +1,36 @@
 ---
 title: "Week 7"
-subtitle: "MLR: Feature engineering and model evaluation"
+subtitle: "Regression Diagnostics"
 editor: visual
 ---
 
 ::: callout-important
-Due dates:
-
--   HW 2 - Friday, Feb 18
--   Project ideas - Friday, Feb 18
 :::
-
-## Prepare
-
-📖 Read Tidy Modeling in R Chp 8: [Feature engineering with recipes](https://www.tmwr.org/recipes.html)
 
 ## Participate
 
-🖥️ [Lecture 12 - MLR: Feature engineering](/slides/lec-12.html)
+🖥️ Slides - Regression Diagnostics: Residuals and Unusual Data
 
-🖥️ [Lecture 13 - MLR: Feature engineering (cont.)](/slides/lec-13.html)
+🖥️ Slides - Regression Diagnostics: Symmetry and Normality
 
-## Practice
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
-📋 [Application Exercise 5 - The Office](/ae/ae-5-the-office.html)
+`r fontawesome::fa("table")`  `carData::Duncan` (<https://www.john-fox.ca/Companion/downloads.html>)
+
+`r fontawesome::fa("table")`  [Data - CIA World Factbook Data](/slides/data/CIA.txt)
+
+
+## Reading
+
+📖 LRA - Ch 4.1 - 4.4, 6.1 - 6.5
+
+📖 CMR - Ch 5 - 6
+
+📖 CAR - Ch 8.1 - 8.4
+
+📖 Regression Diagnostics (RD) - Ch 3 - 5
 
 ## Perform
-
-✍️ [HW 2 - Multiple linear regression](/hw/hw-2.html)
-
-📂 [Project - Topic ideas](/project-description.html)
 
 <br><br>
 

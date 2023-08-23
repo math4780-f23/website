@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -158,7 +158,7 @@ summ_delivery <- summary(delivery_lm)
 - An **outlier** is a case whose *response value is unusual given the value of the regressors*.
 
 ```{r}
-#| out-width: 85%
+#| out-width: 87%
 set.seed(1468) # for reproducibility
 par(cex = 2)
 x <- mvrnorm(50, mu = c(0, 0), Sigma = matrix(c(1, .85, .85, 1), 2, 2),
@@ -212,6 +212,11 @@ summ_delivery <- summary(delivery_lm)
 
 
 ::: {.column width="75%"}
+
+:::midi
+Observation 9 and 22 are away from the center of ${\bf x}$ space, and are likely leverage points.   
+:::
+
 ```{r}
 #| out-width: 85%
 par(mar = c(2.9, 2.9, 0, 0), mgp = c(2, 0.5, 0))
@@ -227,9 +232,7 @@ text(distance[c(9, 22)] ~ cases[c(9, 22)], labels = c("9", "22"),
      data = delivery_data, cex = 2.3, font = 2, col = "red")
 ```
 
-:::midi
-Observation 9 and 22 are away from the center of ${\bf x}$ space, and are likely leverage points.   
-:::
+
 :::
 ::::
 
@@ -342,7 +345,7 @@ legend("topleft", c("without point", "with point"), cex = 1.5,
 
 
 ## Measuring Leverage: Hat Values
-- ${\bf H} = {\bf X(X'X)}^{-1} {\bf X}'$. 
+- ${\bf H} = {\bf X}({\bf X}' {\bf X}) ^{-1} {\bf X}'$. 
 
 - The **hat value** $h_{ii}$ is the $i$th diagonal element of $\bf H$.
 
@@ -841,7 +844,7 @@ $$\small \begin{align}\hat{x}_{i1}(x_{(1)}) &= a_0^{(1)} + a_2^{(1)}x_{i2} + \do
 
 
 
-## [R Lab]{.pink} Duncan's Occupational Prestige Data
+## [R Lab]{.pink} [Duncan's Occupational Prestige Data](https://www.john-fox.ca/Companion/downloads.html)
 :::: {.columns}
 
 ::: {.column width="65%"}

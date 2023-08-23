@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -301,6 +301,12 @@ $\sigma^2 \propto [E(y)]^4$          | $y' = y^{-1}$ (reciprocal)
 
 
 ## [R Lab]{.pink} Nonconstant Variance (CIA Example)
+
+```{r}
+#| echo: true
+#| eval: false
+car::scatterplot(fitted(ciafit), rstudent(ciafit))
+```
 
 :::: {.columns}
 

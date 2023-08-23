@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -143,7 +143,7 @@ knitr::knit_hooks$set(output = function(x, options) {
 
 :::: center
 
-::: huge
+::: xlarge
 Regression is a statistical technique for investigating and modeling the **relationships between variables**.
 :::
 
@@ -427,6 +427,9 @@ is just as important as the model, if not more!
 ## Regression Model
 - $Y$: **response, outcome, label, dependent** variable, e.g., *`income`*
 - $X$: **predictor, covariate, feature, regressor, explanatory/ independent** variable, e.g., *`years of education`*, which is **known and fixed**.
+
+. . .
+
 - Explain the relationship between $X$ and $Y$ and make predictions through a model
 $$Y = f(X) + \epsilon$$
 - $\epsilon$: **irreducible** random error
@@ -482,7 +485,7 @@ knitr::include_graphics("./images/02-overview/regression_line_data.png")
 
 ## True Unknown Function $f$ of the Model $Y = f(X) + \epsilon$
 <!-- - **<span style="color:red">Red</span>** dots: observed values -->
-- **<span style="color:blue">Blue</span>** curve: true underlying relationship between (the mean) income and years of education.
+- **<span style="color:blue">Blue</span>** curve: true underlying relationship between (the mean) `income` and `years of education`.
 - **Black** lines: error associated with each observation
 
 :::: {.columns}
@@ -510,11 +513,11 @@ plot(income_data$Income~income_data$Education,
      ylab = "Income (1000 USD)", pch = 19, cex = 2, las = 1, cex.lab = 2)
 lo <- lowess(income_data$Income~income_data$Education, f = 0.4,
              delta = 0.01)
-lines(lo, col = "blue", lwd = 3)
+lines(lo, col = "blue", lwd = 4)
 for (i in 1:length(lo$x)) {
     lines(rep(lo$x[i], 2), 
           c(income_data$Income[i], lo$y[i]), 
-          col = 1, lwd = 2)
+          col = 1, lwd = 3)
 }
 ```
 :::

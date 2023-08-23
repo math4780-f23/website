@@ -6,7 +6,7 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 # macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
   revealjs:
-    # code-line-numbers: false
+    code-line-numbers: true
     #     - "macros.tex"
     html-math-method:
       method: mathjax
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -479,9 +479,7 @@ $$y_i^{(\lambda)} = \beta_0 + \beta_1x_{i1}+ \cdots + \beta_kx_{ik} + \epsilon_i
 
 
 
-## [R Lab]{.pink} CIA World Factbook Data
-
-- CIA World Facebook for 134 nations downloaded at <https://github.com/thewiremonkey/factbook.csv>
+## [R Lab]{.pink} [CIA World Factbook Data](https://www.john-fox.ca/RegressionDiagnostics/index.html)
 
 ```{r}
 CIA <- read.table("./data/CIA.txt", header = TRUE)
@@ -551,6 +549,7 @@ boxplot(
 ## [R Lab]{.pink} Choose $\lambda$ Analytically
 ```{r}
 #| echo: true
+#| class-output: my_class600
 summary(car::powerTransform(ciafit, family = "bcPower"))
 ```
 

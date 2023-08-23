@@ -5,15 +5,19 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
 
 ## Diagnostics
 
-<!-- ISL 3.15 -->
+<!-- Yu -->
 
+1. This problem involves the `Boston` data set. We now try to predict per capita crime rate using the median value of owner-occupied homes.
 
-
-
+    a. Fit a simple linear regression model. Check if there are any potential leverage points and     outliers.
+    
+    b. Check the normality, constant variance and linearity.
+    
+    c. Transform $y$ and/or $x$, and fit a new linear regression. Make sure it satisfies linear     regression assumptions.

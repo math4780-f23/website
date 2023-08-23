@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -386,7 +386,7 @@ p <- 0.4
 (mu <- sum(0:5 * dbinom(0:5, size = m, prob = p)))
 m * p
 ## var
-(sig2 <- sum((0:5 - mu) ^ 2 * dbinom(0:5, size = m, prob = p)))
+sum((0:5 - mu) ^ 2 * dbinom(0:5, size = m, prob = p))
 m * p * (1 - p)
 ```
 
@@ -410,7 +410,7 @@ knitr::include_graphics("./images/03-prob-stat/dist-fcn-r.png")
 . . .
 
 - If $X \sim N(\mu_X, \sigma_X^2)$ and $Y \sim N(\mu_Y, \sigma_Y^2)$ and $X$ and $Y$ are independent. Then for $a, b \in \mathbf{R}$,
-$$aX + bY \sim N\left(a\mu_X+b\mu_Y, a^2\sigma_X^2 + b^2\sigma_Y^2\right)$$
+$$aX + bY \sim N\left(a\mu_X+b\mu_Y, \color{red}{a^2} \color{black} \sigma_X^2 + \color{red}{b^2} \color{black} \sigma_Y^2\right)$$
 
 . . .
 
@@ -430,7 +430,7 @@ What is the distribution of $a_1Y_1 + a_2Y_2 + \cdots + a_nY_n$ if $Y_i \sim N(\
 :::
 
 
-## Normal, Chi-Square, Student-t and F
+## Normal, Chi-Squared, Student's-t and F {visibility="hidden"}
 
 - If $Z \sim N(0, 1)$, $V \sim \chi^2_v$ and $Z$ and $V$ are independent, then $$\frac{Z}{\sqrt{V/v}} \sim t_{v}$$
 
@@ -438,7 +438,7 @@ What is the distribution of $a_1Y_1 + a_2Y_2 + \cdots + a_nY_n$ if $Y_i \sim N(\
 
 
 ## Statistics Comes In
-Suppose each data point $Y_i$ of the sample $(Y_1, Y_2, \dots, Y_n)$ is a random variable from an identical population distribution $N(\mu, \sigma^2)$: $$Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n$$
+Suppose each data point $Y_i$ of the sample $(Y_1, Y_2, \dots, Y_n)$ is a random variable from the same population whose distribution is $N(\mu, \sigma^2)$, and  $Y_i$s are independent each other: $$Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2), \quad i = 1, 2, \dots, n$$
 
 ```{r}
 #| out-width: "60%"
@@ -539,9 +539,11 @@ axis(1, at = c(-4, -t_cri,0, t_cri, 4), cex.axis = 2.2, pos = 0,
 :::: {.columns}
 
 
-::: {.column width="40%"}
+::: {.column width="45%"}
 
-$$\small P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} < \overline{Y} < \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha$$
+::: small
+$$P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} < \overline{Y} < \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha$$
+:::
 
 ::: question
 Is the interval $\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}, \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right)$ our confidence interval?
@@ -550,7 +552,7 @@ Is the interval $\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}, \mu + t_{\alpha/
 :::
 
 
-::: {.column width="60%"}
+::: {.column width="55%"}
 ```{r}
 #| purl: false
 #| label: ci_95
@@ -594,17 +596,21 @@ axis(1, at = c(-3, -z_cri,0, z_cri, 3), labels, pos = 0, line = 1, cex.axis = 2)
 
 :::: {.columns}
 
-::: {.column width="40%"}
-$$\small \begin{align}
+::: {.column width="45%"}
+
+::: small
+$$\begin{align}
 &P\left(\mu-t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} < \overline{Y} < \mu + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} \right) = 1-\alpha\\
 &P\left( \boxed{\overline{Y}- t_{\alpha/2, n-1}\frac{S}{\sqrt{n}} < \mu < \overline{Y} + t_{\alpha/2, n-1}\frac{S}{\sqrt{n}}} \right) = 1-\alpha
 \end{align}$$
 
 :::
 
+:::
 
 
-::: {.column width="60%"}
+
+::: {.column width="55%"}
 
 ```{r}
 #| label: ci_95

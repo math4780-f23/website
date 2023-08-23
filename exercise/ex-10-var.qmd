@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
@@ -15,3 +15,4 @@ Exercises are for practice purpose only.
 <!-- Yu -->
 
 1. Consider `Boston` data with all variables except `chas`. Use `crim` as the response. Perform Best Subset Selection and Forward Selection.
+

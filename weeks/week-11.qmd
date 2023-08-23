@@ -1,36 +1,33 @@
 ---
 title: "Week 11"
-subtitle: "TBA"
+subtitle: "Polynomial and Nonparametric Regression"
 editor: visual
 ---
 
 ::: callout-important
-Due dates:
-
--   Lab 5 - Friday, Mar 25
--   HW 3 - Friday, Mar 25
 :::
-
-## Prepare
-
-No additional readings this week.
-Catch up with previously assigned readings if you've fallen behind.
 
 ## Participate
 
-🖥️ [Lecture 20 - LR: Prediction / classification](/slides/lec-20.html)
+🖥️ Slides - Polynomial Regression
 
-🖥️ [Lecture 21 - LR: Model validation](/slides/lec-21.html)
+🖥️ Slides - Nonparametric Regression
 
-## Practice
+`r fontawesome::fa("table")`  [Data - Hardwood](/slides/data/data-ex-7-1.csv)
 
-📋 [Application Exercise 10 - Flight delays](/ae/ae-10-flight-delays.html)
+`r fontawesome::fa("table")`  [Data - U.S. Birth Rate](/slides/data/birthrates.rda)
+
+## Reading
+
+📖 LRA - Ch 7.1 - 7.3
+
+## Exercise
+
+📋 [Exercise 6](/exercise/ex-3-mlr.html)
+
+📋 [Exercise 7](/exercise/ex-3-mlr.html)
 
 ## Perform
-
-✍️ [HW 3 - Logistic regression and log transformation](/hw/hw-3.html)
-
-⌨️ [Lab 5 - General Social Survey](labs/lab-5.html)
 
 <br><br>
 

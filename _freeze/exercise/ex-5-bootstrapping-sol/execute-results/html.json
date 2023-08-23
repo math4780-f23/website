@@ -1,0 +1,14 @@
+{
+  "hash": "d4a03cca810215e1624571a9b7f67a32",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 5: Bootstrapping Solution\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n\n\n## Bootstrapping Standard Deviation\n\n<!-- ISL 5.9 -->\n\n\n1. Based on the `Boston` data set, provide an estimate for the population\nmean of `medv`. Call the estimate $\\hat{\\mu}$.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ISLR2)\nattach(Boston)\n(mu_hat <- mean(medv))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 22.53281\n```\n:::\n:::\n\n\n\n2. Provide an estimate of the standard error of $\\hat{\\mu}$. Interpret this\nresult. *Hint: We can compute the standard error of the sample mean by dividing the sample standard deviation by the square root of the number of observations.*\n\n\n::: {.cell}\n\n```{.r .cell-code}\n(se <- sd(medv)/sqrt(length(medv)))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.4088611\n```\n:::\n:::\n\n\n\n3. Estimate the standard error of $\\hat{\\mu}$ using the bootstrap. \n\n<!-- *Hint: We can use [boot::boot()](https://rdrr.io/cran/boot/man/boot.html) function.* -->\n\n\n::: {.cell}\n\n```{.r .cell-code}\nboot.fn <- function(data, idx) mean(data[idx])\nlibrary(boot)\nbstrap <- boot::boot(data = medv, statistic = boot.fn, R = 1000)\nbstrap\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\nORDINARY NONPARAMETRIC BOOTSTRAP\n\n\nCall:\nboot::boot(data = medv, statistic = boot.fn, R = 1000)\n\n\nBootstrap Statistics :\n    original        bias    std. error\nt1* 22.53281 -0.0005235178   0.4113452\n```\n:::\n\n```{.r .cell-code}\n## bias = bt_mean - obs_mean\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidymodels)\nboot_sample <- Boston |> \n    # specify the variable of interest\n    specify(response = medv) |>  \n    # generate 15000 bootstrap samples\n    generate(reps = 1000, type = \"bootstrap\") |>  \n    # calculate the median of each bootstrap sample\n    calculate(stat = \"mean\")\nsd(boot_sample$stat)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.3958047\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

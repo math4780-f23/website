@@ -1,0 +1,14 @@
+{
+  "hash": "62dd0e0b3317fe124b289c21b1d8fb40",
+  "result": {
+    "markdown": "---\ntitle: \"Week 1\"\nsubtitle: \"Welcome to MATH 4780\"\neditor: visual\n---\n\n\n## Prepare\n\n📖 Read the [syllabus](/course-syllabus.html)\n\n📖 Get your computing environment ready\n\n📖 Be familiar with your computing language\n\n## Reading\n\n📖 Introduction to Statistics (IS) - [Ch 3 - 5, 8 - 13, 15](https://chenghanyu-introstatsbook.netlify.app).\n\n📖 An R Companion to Applied Regression (CAR) - Ch 1 - 3, 9, 10.\n\n## Participate\n\n🖥️ [Slides - Welcome to MATH 4780](/slides/01-syllabus.html)\n\n🖥️ [Slides - Overview of Regression](/slides/02-overview.html)\n\n🖥️ [Slides - Probability and Statistics](/slides/03-prob-stat.html)\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html}  [Data - Delivery](/slides/data/data-ex-3-1.csv)\n\n## Exercise\n\n📋 [Exercise 1](/exercise/ex-1.html)\n\n<br><br>\n\n::: {style=\"font-size: 0.875em;\"}\nBack to [course schedule](/ \"Course schedule\") ⏎\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

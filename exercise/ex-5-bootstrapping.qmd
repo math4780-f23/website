@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
@@ -21,4 +21,6 @@ mean of `medv`. Call the estimate $\hat{\mu}$.
 2. Provide an estimate of the standard error of $\hat{\mu}$. Interpret this
 result. *Hint: We can compute the standard error of the sample mean by dividing the sample standard deviation by the square root of the number of observations.*
 
-3. Estimate the standard error of $\hat{\mu}$ using the bootstrap. *Hint: We can use [boot::boot()](https://rdrr.io/cran/boot/man/boot.html) function.*
+3. Estimate the standard error of $\hat{\mu}$ using the bootstrap. 
+
+<!-- *Hint: We can use [boot::boot()](https://rdrr.io/cran/boot/man/boot.html) function.* -->

@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -219,7 +219,7 @@ legend("bottomright", c("Female", "Male"), pch = c(16, 15), col = c(2, 4), bty =
 <!-- [FIGURE] -->
 
 
-## Example 8.1 Tool Life Data (LRA)
+## Example 8.1 [Tool Life Data](./data/data-ex-8-1.csv) (LRA)
 Relate the effective life (hours) of a cutting tool $(y)$ used on a lathe to
 
 - the lathe *speed* in revolutions per minute $(x_1)$ (Numerical)

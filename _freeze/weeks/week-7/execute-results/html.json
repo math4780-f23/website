@@ -1,0 +1,14 @@
+{
+  "hash": "640315f9bce09cee550ddf245e61b0fa",
+  "result": {
+    "markdown": "---\ntitle: \"Week 7\"\nsubtitle: \"Regression Diagnostics\"\neditor: visual\n---\n\n\n::: callout-important\n:::\n\n## Participate\n\n🖥️ Slides - Regression Diagnostics: Residuals and Unusual Data\n\n🖥️ Slides - Regression Diagnostics: Symmetry and Normality\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html}  [Data - Delivery](/slides/data/data-ex-3-1.csv)\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html}  `carData::Duncan` (<https://www.john-fox.ca/Companion/downloads.html>)\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html}  [Data - CIA World Factbook Data](/slides/data/CIA.txt)\n\n\n## Reading\n\n📖 LRA - Ch 4.1 - 4.4, 6.1 - 6.5\n\n📖 CMR - Ch 5 - 6\n\n📖 CAR - Ch 8.1 - 8.4\n\n📖 Regression Diagnostics (RD) - Ch 3 - 5\n\n## Perform\n\n<br><br>\n\n::: {style=\"font-size: 0.875em;\"}\nBack to [course schedule](/ \"Course schedule\") ⏎\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

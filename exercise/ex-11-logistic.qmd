@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
@@ -21,6 +21,6 @@ Exercises are for practice purpose only.
     (b) How many hours would the student in part (a) need to study to have a 50% chance of getting an A in the class?
     
     
-2. Split the `Boston` data set into training and test sets.
+2. Split the `Boston` data set into training (80%) and test sets (20%).
 
 3. Using the training set, fit logistic regression to predict whether a given census tract in the test set has a crime rate above or below the median.

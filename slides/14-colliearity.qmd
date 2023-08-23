@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -318,7 +318,7 @@ Ideal characteristics of a collinearity diagnostic:
 ## Examination of the Correlation Matrix of $x$s
 
 
-- After *unit length scaling*, ${\bf X'X} = \left[r_{ij}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^1] For example,
+- After *unit length scaling*[^1], ${\bf X'X} = \left[r_{ij}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^2] For example,
 $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$
 
 
@@ -328,8 +328,9 @@ $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$
 - Inspecting $r_{ij}$ is not sufficient for detecting more complex collinearity.
 
 
+[^1]: $\tilde{x}_{ij} = \frac{x_{ij} - \overline{x}_j}{\sqrt{\sum_{i=1}^n (x_{ij} - \overline{x}_j)^2}}$ for $~~i = 1, 2, \dots, n$, $~~ j = 1, 2, \dots, k$.
 
-[^1]: The term *correlation* is a bit of misnomer. The regressors are not random variables. The correlation coefficient $r_{ij}$ does measure linear dependency between *$x_i$ and $x_j$ in the data*.
+[^2]: The term *correlation* is a bit of misnomer. The regressors are not random variables. The correlation coefficient $r_{ij}$ does measure linear dependency between *$x_i$ and $x_j$ in the data*.
 
 
 
@@ -384,7 +385,7 @@ $$\text{VIF}_j = {\bf C}_{jj} = \frac{1}{1 - R^2_j}$$
 :::
 
 
-## [R Lab]{.pink} Hospital Manpower - Data
+## [R Lab]{.pink} [Hospital Manpower](./data/manpower.csv) Data
 
 :::: {.columns}
 
@@ -392,6 +393,7 @@ $$\text{VIF}_j = {\bf C}_{jj} = \frac{1}{1 - R^2_j}$$
 ```{r}
 #| echo: !expr c(2)
 #| class-output: my_class600
+#| code-line-numbers: false
 manpower <- read.csv(file = "./data/manpower.csv", 
                      header = TRUE)
 manpower
@@ -443,6 +445,7 @@ pairs(manpower)
 ```{r}
 #| echo: true
 #| output.lines: !expr c(10:16, 20, 21)
+#| code-line-numbers: false
 lm_full <- lm(y ~ ., data = manpower)
 (summ_full <- summary(lm_full))
 ```
@@ -469,6 +472,7 @@ Excellent fit. But any issues of the this fitted result?
 ::: {.column width="50%"}
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 X <- manpower[, -1]
 (Sig <- cor(X))
 ```
@@ -477,6 +481,7 @@ X <- manpower[, -1]
 ::: {.column width="50%"}
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 (C <- solve(Sig))
 ## VIF 
 diag(C)
@@ -488,6 +493,7 @@ diag(C)
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 ## put the fitted model in vif()
 (vif_all <- car::vif(lm_full))
 ```
@@ -611,6 +617,7 @@ Don't just look at the pairwise correlation
 ## [R Lab]{.pink} Hospital Manpower - Eigensystem Analysis
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 eigen_Sig <- eigen(Sig)
 ## eigenvalues
 (lambda <- eigen_Sig$values)
@@ -672,13 +679,15 @@ unit_length_scale <- function(x, center = TRUE) {
 ::: {.column width="65%"}
 ```{r}
 #| echo: true
-
+#| code-line-numbers: false
 ## eigenvector matrix
 (V <- eigen_Sig$vectors)
 ```
 - ${\bf X}{\bf v}_5 = \sum_{i=1}^5v_{i5}{\bf x}_i \approx {\bf 0}$.
 - $0.720 {\bf x}_1 + 0.001 {\bf x}_2 - 0.694 {\bf x}_3 - 0.023 {\bf x}_4 - 0.007 {\bf x}_5 \approx {\bf 0}$
 - Highly correlated $x_1$ and $x_3$ causes collinearity.
+
+
 
 ```{r}
 #| echo: false
@@ -696,6 +705,19 @@ unit_len_scale <- function(x, center = TRUE) {
 }
 
 ```
+
+::: alert
+
+- All ${\bf x}$s here are unit length scaled.
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+X_s <- apply(X, 2, unit_len_scale)
+```
+:::
+
+
 :::
 
 ::: {.column width="35%"}
@@ -705,7 +727,7 @@ unit_len_scale <- function(x, center = TRUE) {
 ```{r}
 #| echo: true
 #| class-output: my_class800
-X_s <- apply(X, 2, unit_len_scale)
+#| code-line-numbers: false
 X_s %*% V[, 5]
 ```
 
@@ -769,7 +791,7 @@ A small $\lambda_i$, accompanied by a subset of regressors with high variance pr
 ## [R Lab]{.pink} Hospital Manpower - Variance Proportion
 ```{r}
 #| echo: true
-
+#| code-line-numbers: false
 # Variance Proportion
 var_prop <- function(V, lambda, vif_all) {
     ## diag(1 / lambda) means divide by lambda row-wise
@@ -820,16 +842,21 @@ Collinearity may exist if
 ## [R Lab]{.pink} Hospital Manpower - Significance
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 summ_full$coefficients  ## t-test not significant
 ```
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 summ_full$fstatistic  ## F-test significant
 ```
 
+. . .
+
 ```{r}
 #| echo: true
-lm_no_x3 <- lm(y~x1+x2+x4+x5, data = manpower)
+#| code-line-numbers: false
+lm_no_x3 <- lm(y ~ . -x3, data = manpower)
 summary(lm_no_x3)$coef
 ```
 
@@ -1014,8 +1041,7 @@ $$\var\left({\bf b}_R \right) = \sigma^2 ({\bf X'X + \delta I})^{-1}{\bf X'X }({
 #| code-line-numbers: false
 #| class-source: my_class800
 
-manpower_scale <- apply(manpower, 2, 
-                        unit_length_scale)
+manpower_scale <- apply(manpower, 2, scale)
 df <- as.data.frame(manpower_scale)
 delta <- seq(0, 0.5, by = 0.01)
 ridge_fit <- MASS::lm.ridge(
@@ -1034,8 +1060,9 @@ abline(v = which(delta == 0.07),
 ```{r}
 #| out-width: 100%
 library(MASS)
-manpower_scale <- apply(manpower, 2, 
-                        unit_length_scale)
+# manpower_scale <- apply(manpower, 2, 
+#                         unit_length_scale)
+manpower_scale <- apply(manpower, 2, scale)
 delta <- seq(0, 0.5, by = 0.01)
 ridge_fit <- lm.ridge(y ~ . -1, 
                       data = as.data.frame(manpower_scale), 
@@ -1083,7 +1110,7 @@ points(0, 0, pch = 15, cex = 1, col = 2)
 X_stX_s <- t(X_s) %*% X_s
 A <- X_stX_s + diag(0.07, 5)
 Ainv <- solve(A)
-var_ridge <- summary(lm_full_scale)$sigma^2 * Ainv %*% X_stX_s %*% Ainv
+var_ridge <- summary(lm_full_scale)$sigma^2 * Ainv %*% X_stX_s %*% Ainv / (nrow(manpower) - 1)
 # center <- c(0.10711510, 0.11790894)
 # center <- c(-0.007907946, -0.020534287)
 center <- c(-0.01925995, -0.02575226)

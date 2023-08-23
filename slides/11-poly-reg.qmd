@@ -1,5 +1,5 @@
 ---
-title: "Regression Diagnostics - Linearity `r emo::ji('right')`"
+title: "Polynomial Regression `r emo::ji('right')`"
 subtitle: "MATH 4780 / MSSC 5780 Regression Analysis"
 author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
 # date: "`r format(Sys.time(), '%B %d %Y')`"
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -273,7 +273,7 @@ knitr::include_graphics("./images/11-poly-reg/fig72_extrapolation.png")
   + Centering the predictors may remove some ill conditioning but not all.
 :::
 
-## Example 7.1: Hardwood Data (LRA)
+## Example 7.1: [Hardwood Data](./data/data-ex-7-1.csv) (LRA)
 - Strength of kraft paper vs. the percentage of hardwood in the batch of pulp from which the paper was produced.
 - A quadratic model may adequately describe the relationship between tensile strength and hardwood concentration.
 
@@ -283,8 +283,8 @@ knitr::include_graphics("./images/11-poly-reg/fig72_extrapolation.png")
 ```{r}
 #| echo: !expr c(3)
 hardwood <- read.csv(file = "./data/data-ex-7-1.csv", header = TRUE)
-colnames(hardwood) <- c("concentration", "strength")
-hardwood[1:14, ]
+colnames(hardwood) <- c("conc", "strength")
+hardwood[1:9, ]
 ```
 :::
 
@@ -293,7 +293,7 @@ hardwood[1:14, ]
 #| out-width: 90%
 par(mar = c(3.5, 3.5, 0, 0), mgp = c(2, 0.8, 0), las = 1)
 par(mfrow = c(1, 1))
-plot(hardwood$concentration, hardwood$strength, pch = 16, 
+plot(hardwood$conc, hardwood$strength, pch = 16, 
      xlab = "Hardwood concentration %", ylab = "Tensile strength",
      xlim = c(0, 16), ylim = c(0, 60), cex.lab = 1.5, cex = 2)
 ```
@@ -307,9 +307,8 @@ $$y = \beta_0 + \beta_1 (x - \bar{x}) + \beta_2 (x - \bar{x}) ^ 2 + \epsilon$$
 
 ```{r}
 #| echo: true
-concen_cen <- hardwood$concentration - mean(hardwood$concentration)
-(hardwood_lm <- lm(strength ~ concen_cen + I(concen_cen ^ 2), 
-                   data = hardwood))
+conc_cen <- hardwood$conc - mean(hardwood$conc)
+lm(strength ~ conc_cen + I(conc_cen ^ 2), data = hardwood)
 ```
 
 - $y = 45.3 + 2.55 (x - 7.26) - 0.63 (x - 7.26) ^ 2 + \epsilon$
@@ -365,7 +364,7 @@ the observations with $xi ≥ c$. The first polynomial function has coefficients
 
 
 
-## U.S. Birth Rate from 1917 to 2003
+## [U.S. Birth Rate from 1917 to 2003](./data/birthrates.Rda)
 :::: {.columns}
 
 ::: {.column width="30%"}

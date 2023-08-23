@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -455,12 +455,13 @@ For a model with $p$ coefficients ( $k$ predictors ),
 ## [R Lab]{.pink} Criteria Computation
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{r}
 #| echo: true
-manpower <- read.csv(file = "./data/manpower.csv", header = TRUE)
-lm_full <- lm(y ~ x1 + x2 + x3 + x4 + x5, 
-              data = manpower)
+#| code-line-numbers: false
+manpower <- read.csv(file = "./data/manpower.csv", 
+                     header = TRUE)
+lm_full <- lm(y ~ ., data = manpower)
 summ_full <- summary(lm_full)
 
 ## Adjusted R sq.
@@ -475,9 +476,10 @@ sum((lm_full$residual /
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 ## AIC
 extractAIC(lm_full, k = 2)  
 ## BIC
@@ -524,6 +526,7 @@ ols_mallows_cp(model = mod, fullmodel = full_model)
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 olsrr_all <- olsrr::ols_step_all_possible(lm_full)
 names(olsrr_all)
 ```
@@ -585,6 +588,7 @@ ols_sbic(model = lm_full, full_model = lm_full)
 ```{r}
 #| echo: true
 #| class-output: my_classfull
+#| code-line-numbers: false
 # metric = c("rsquare", "adjr", "predrsq", "cp", "aic", "sbic", "sbc", "msep", "fpe", "apc", "hsp")
 olsrr::ols_step_best_subset(lm_full, metric = "predrsq")
 ```
@@ -743,6 +747,7 @@ Once a regressor has been added, it cannot be removed at a later step.
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 (olsrr_for <- olsrr::ols_step_forward_p(lm_full, penter = 0.3))
 # names(olsrr_for)
 ```
@@ -751,6 +756,7 @@ Once a regressor has been added, it cannot be removed at a later step.
 ## [R Lab]{.pink} Forward Selection `ols_step_forward_p()`
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 olsrr_for$model
 ```
 
@@ -759,12 +765,15 @@ olsrr_for$model
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: false
 olsrr::ols_step_forward_p(lm_full, penter = 0.3, progress = TRUE, details = TRUE)
 ```
 
 ## .pink[R Lab:] Forward Selection `ols_step_forward_aic()` {visibility="hidden"}
 
-```{r, echo=TRUE}
+```{r}
+#| echo: true
+#| code-line-numbers: false
 (olsrr_for_aic <- olsrr::ols_step_forward_aic(lm_full))
 names(olsrr_for_aic)
 ```
@@ -790,6 +799,7 @@ it becomes insignificant with the addition of other variables to the model.
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 (olsrr_both <- olsrr::ols_step_both_p(lm_full, pent = 0.1, prem = 0.3))
 ```
 

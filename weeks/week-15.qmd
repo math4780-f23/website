@@ -1,24 +1,33 @@
 ---
 title: "Week 15"
-subtitle: "Wrap up"
+subtitle: "Logistic Regression"
 editor: visual
 ---
 
 ::: callout-important
-Due dates: Tue, Apr 19 - HW 5
+-   Due date: HW 6 - Fri, 12/8 11:59 PM
 :::
 
 ## Participate
 
-🖥️ [Lecture 28 - Wrap up](/slides/lec-28.html)
+🖥️ Slides - Logistic Regression
 
-## Practice
+`r fontawesome::fa("table")`  `ISLR2::Default`
 
-📋 [Application Exercise 13 - A Tale of Two Creeks](https://github.com/sta210-s22/ae-13-tale-of-two-creeks)
+`r fontawesome::fa("table")`  [Data - Strength of Fastener](/slides/data/data-prob-13-3.csv)
+
+
+## Reading
+
+📖 ISL - Ch 4.1 - 4.3
+
+## Exercise
+
+📋 [Exercise 11](/exercise/ex-3-mlr.html)
 
 ## Perform
 
-✍️ [HW 5 - Statistics experience](/hw/hw-5.html)
+✍️ HW 6 due 12/8 11:59 PM
 
 <br><br>
 

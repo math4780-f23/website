@@ -4,9 +4,24 @@ subtitle: "Simple Linear Regression - II"
 editor: visual
 ---
 
+::: callout-important
+-   Drop deadline 9/5 11:59 PM
+-   Due date: HW 1 - Fri, 9/8 11:59 PM
+:::
+
 ## Participate
 
 🖥️ [Slides - Simple Linear Regression](/slides/04-slr.html)
+
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+
+## Reading
+
+📖 ISL - Ch 3.1
+
+📖 LRA - Ch 2.1 - 2.6, 2.10
+
+📖 CMR - Ch 2.1 - 2.3, 2.5, 2.6, 2.8, 2.9
 
 ## Exercise
 

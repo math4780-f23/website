@@ -6,7 +6,7 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 # macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
   revealjs:
-    # code-line-numbers: false
+    code-line-numbers: false
     #     - "macros.tex"
     html-math-method:
       method: mathjax
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -243,11 +243,15 @@ abline(lm(advertising_data$sales ~ advertising_data$instagram), col = "red", lwd
 
 **I hope you don't feel...**
 
+::: small
+
 ```{r}
 #| fig-cap: "Source: https://memegenerator.net/instance/62248186/first-world-problems-multiple-regression-more-like-multiple-depression"
+#| out-width: 46%
 knitr::include_graphics("./images/05-mlr/mlr_depress.jpeg")
 ```
 
+:::
 
 
 
@@ -255,9 +259,16 @@ knitr::include_graphics("./images/05-mlr/mlr_depress.jpeg")
 
 **What I hope is...**
 
+::: small
+
 ```{r}
+#| fig-cap: "https://www.tldrpharmacy.com/content/how-to-be-awesome-at-biostatistics-and-literature-evaluation-part-iii"
+#| out-width: 82%
 knitr::include_graphics("./images/05-mlr/mlr_meme.jpeg")
 ```
+:::
+
+
 
 ## Multiple Linear Regression (MLR) Model
 - We have $k$ distinct predictors. The (population) multiple linear regression model:
@@ -302,7 +313,7 @@ y_i &= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \epsil
 \end{align}$$
 
 ```{r}
-#| out-width: 49%
+#| out-width: 48%
 knitr::include_graphics("./images/05-mlr/mlr_data_matrix.png")
 ```
 
@@ -574,7 +585,7 @@ $$\begin{align}
 :::
 
 
-## [R Lab]{.pink} Delivery Time Data
+## [R Lab]{.pink} [Delivery Time Data](./data/data-ex-3-1.csv)
 
 :::: {.columns}
 
@@ -719,13 +730,13 @@ segments(orig$x, orig$y, plane$x, plane$y, col = "black", lty = c(2, 1)[i.negpos
 
 - $MS_{res} = \frac{SS_{res}}{n - p}$ with $p = k + 1$.
 
-- $s^2 = MS_{res}$ is *unbiased* for $\sigma^2$, i.e., $E[MS_{res}] = \sigma^2$.
+- $S^2 = MS_{res}$ is *unbiased* for $\sigma^2$, i.e., $E[MS_{res}] = \sigma^2$.
 
 <!-- - $\hat{\sigma}^2 = MS_{res}$ is model dependent. Its value varies with change of the model. -->
 
-- $s^2$ of SLR may be quite larger than the $s^2$ of MLR.
+- $S^2$ of SLR may be quite larger than the $S^2$ of MLR.
 
-- $s^2$ measures the variation of the *unexplained* noise about the fitted regression line/hyperplane, so we prefer a small residual mean square.
+- $S^2$ measures the variation of the *unexplained* noise about the fitted regression line/hyperplane, so we prefer a small residual mean square.
 
 
 ::: notes
@@ -762,7 +773,7 @@ SS_res / (n - 3)
 #| echo: true
 
 ## method 3
-(SS_res1 <- sum((delivery_data$time - delivery_lm$fitted.values)^2))
+(SS_res1 <- sum((delivery_data$time - delivery_lm$fitted.values) ^ 2))
 SS_res1 / (n - 3)
 ```
 
@@ -889,13 +900,14 @@ How do we specify a confidence level that applies **simultaneously** to a **set*
 ## Confidence Region
 - The $(1-\alpha)100\%$ CI for a **set** of $b_j$s will be an **elliptically-shaped region**!
 
-:::: {.columns}
+<!-- :::: {.columns} -->
 
-::: {.column width="50%"}
+<!-- ::: {.column width="50%"} -->
 ```{r}
 #| echo: true
-#| eval: false
-#| class-source: my_class800
+#| eval: true
+#| code-fold: true
+par(mgp = c(2.8, 0.9, 0), mar = c(4, 4, 2, 0))
 ## confidence region
 car::confidenceEllipse(
     delivery_lm, 
@@ -909,24 +921,26 @@ car::confidenceEllipse(
 ## marginal CI for cases
 abline(v = ci[2, ], lty = 2, lwd = 2)  
 ## marginal CI for distance
-abline(h = ci[3, ], lty = 2, lwd = 2)  
-```
-:::
-
-
-::: {.column width="50%"}
-```{r}
-#| out-width: 100%
-par(mgp = c(2.8, 0.9, 0), mar = c(4, 4, 2, 0))
-car::confidenceEllipse(delivery_lm, levels = 0.95, which.coef = c("cases", "distance"), 
-                       main = expression(paste("95% Confidence Region for ", beta[1], " and ",  beta[2])))
-abline(v = ci[2, ], lty = 2, lwd = 2)  ## marginal CI for cases
-abline(h = ci[3, ], lty = 2, lwd = 2)  ## marginal CI for distance
+abline(h = ci[3, ], lty = 2, lwd = 2)
 points(x = 1.4, y = 0.01, col = "red", cex = 2, pch = 16)
 points(x = 2, y = 0.008, col = "black", cex = 2, pch = 16)
 ```
-:::
-::::
+<!-- ::: -->
+
+
+<!-- ::: {.column width="50%"} -->
+<!-- # ```{r} -->
+<!-- # #| out-width: 100% -->
+<!-- # par(mgp = c(2.8, 0.9, 0), mar = c(4, 4, 2, 0)) -->
+<!-- # car::confidenceEllipse(delivery_lm, levels = 0.95, which.coef = c("cases", "distance"),  -->
+<!-- #                        main = expression(paste("95% Confidence Region for ", beta[1], " and ",  beta[2]))) -->
+<!-- # abline(v = ci[2, ], lty = 2, lwd = 2)  ## marginal CI for cases -->
+<!-- # abline(h = ci[3, ], lty = 2, lwd = 2)  ## marginal CI for distance -->
+<!-- # points(x = 1.4, y = 0.01, col = "red", cex = 2, pch = 16) -->
+<!-- # points(x = 2, y = 0.008, col = "black", cex = 2, pch = 16) -->
+<!-- # ``` -->
+<!-- ::: -->
+<!-- :::: -->
 
 - Some points (red) within the marginal intervals are implausible according to the joint region.
 - The joint region includes values of the coefficient for cases (black), for example, that are excluded from the marginal interval.
@@ -1120,10 +1134,18 @@ with(delivery_data,
 $H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one } j$ </span>
 <!-- - The $F$ test of ANOVA performs the test. -->
 
-```{r}
-knitr::include_graphics("./images/05-mlr/anova_mlr.png")
-```
+<!-- # ```{r} -->
+<!-- # knitr::include_graphics("./images/05-mlr/anova_mlr.png") -->
+<!-- # ``` -->
 <!-- - $SS_T = {\bf y'y} - \frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_R = {\bf b'X'y}-\frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_{res} = {\bf y'y} - {\bf b'X'y}$ -->
+
+
+| Source of Variation | SS | df | MS | F | $p$-value |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| Regression | $SS_R$| $k$ | $MS_R$  |  $\frac{MS_R}{MS_{res}} = F_{test}$ |  $P(F_{k, n-k-1} > F_{test})$ |
+| Residual | $SS_{res}$ | $n-k-1$   |  $MS_{res}$ |   |  | 
+| Total | $SS_{T}$ | $n-1$   |   |   |  | 
+
 - Reject $H_0$ if $F_{test} > F_{\alpha, k, n - k - 1}$.
 
 ::: notes
@@ -1142,7 +1164,7 @@ $H_0: \beta_{1} = \beta_{2} = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one
 
 ```{r}
 #| echo: true
-#| output.lines: !expr c(3:19)
+#| output.lines: !expr c(9:19)
 #| class-output: my_class800
 summ_delivery
 ```
@@ -1154,20 +1176,27 @@ summ_delivery
 
 
 ## [R Lab]{.pink} Wrong ANOVA Table
+
+| Source of Variation | SS | df | MS | F | $p$-value |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| Regression | $SS_R$| $k$ | $MS_R$  |  $\frac{MS_R}{MS_{res}} = F_{test}$ |  $P(F_{k, n-k-1} > F_{test})$ |
+| Residual | $SS_{res}$ | $n-k-1$   |  $MS_{res}$ |   |  | 
+| Total | $SS_{T}$ | $n-1$   |   |   |  | 
+
+
 ```{r}
 #| echo: true
 ## This is for sequential F-test
 anova(delivery_lm)
 ```
 
-
 - This is so called **Type-I** ANOVA table for a *sequential F-test*, which is **NOT** what we want.
 
 
-```{r}
-
-knitr::include_graphics("./images/05-mlr/anova_mlr.png")
-```
+<!-- # ```{r} -->
+<!-- #  -->
+<!-- # knitr::include_graphics("./images/05-mlr/anova_mlr.png") -->
+<!-- # ``` -->
 
 
 

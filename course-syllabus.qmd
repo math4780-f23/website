@@ -66,16 +66,15 @@ By the end of the semester, you will be able to...
 
 <!-- ### Required Textbook -->
 
-- [(**IS**) *Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/) by Cheng-Han Yu. (Good resource for brushing up your basic probability, statistics and simple linear regression knowledge.)
+-   [(**IS**) *Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/) by Cheng-Han Yu. (Good resource for brushing up your basic probability, statistics and simple linear regression knowledge.)
 
-- [(**LRA**) *Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. (Graduate-level book that requires knowledge of matrix algebra.)
+-   [(**LRA**) *Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. (Graduate-level book that requires knowledge of matrix algebra.)
 
-- [(**CAR**) *An R Companion to Applied Regression*](https://socialsciences.mcmaster.ca/jfox/Books/Companion/), by John Fox and Sanford Weisberg. Publisher: SAGE. (Doing regression much easier by the `car` and `effects` R packages.)
+-   [(**CAR**) *An R Companion to Applied Regression*](https://socialsciences.mcmaster.ca/jfox/Books/Companion/), by John Fox and Sanford Weisberg. Publisher: SAGE. (Doing regression much easier by the `car` and `effects` R packages.)
 
-- [(**RD**) *Regression Daignostics*](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html), by John Fox. Publisher: SAGE. (Great concise book for learning regression diagnostics.)
+-   [(**RD**) *Regression Daignostics*](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html), by John Fox. Publisher: SAGE. (Great concise book for learning regression diagnostics.)
 
-- [(**CMR**) *Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&pd_rd_i=0534380166&pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&pd_rd_w=tDw1K&pd_rd_wg=OIjNY&pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&psc=1&refRID=PY1Q3JBBS4PS1M7D7DZF), by Raymond Myers. Publisher: Duxbury Press. (The textbook when I was a master student.).
-
+-   [(**CMR**) *Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&pd_rd_i=0534380166&pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&pd_rd_w=tDw1K&pd_rd_wg=OIjNY&pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&psc=1&refRID=PY1Q3JBBS4PS1M7D7DZF), by Raymond Myers. Publisher: Duxbury Press. (The textbook when I was a master student.).
 
 ## Programming Languages
 
@@ -99,15 +98,18 @@ You may use any other language to complete your homework, exams and project. How
 
 -   For students in **MATH 4780**, the final grade is earned out of **1000 total points** distributed as follows:
 
-    -   **Homework 1 to 6: 600 pts (100 pts each)**
-    -   **Final project: 400 pts**
-    -   **(Optional) MSSC problems: Up to extra 50 pts**
+    -   **Homework 1 to 6: 480 pts (80 pts each)**
+    -   **In-class Exam: 160 pts**
+    -   **Final project: 300 pts**
+    -   **Class Participation: 60 pts**
 
 -   For students in **MSSC 5780**, the final grade is earned out of **1200 total points** distributed as follows:
 
-    -   **Homework 1 to 6: 600 pts (100 pts each)**
-    -   **Final project: 400 pts**
-    -   **(Required) MSSC problems: 200 pts**
+    -   **Homework 1 to 6: 480 pts (80 pts each)**
+    -   **In-class Exam: 160 pts**
+    -   **Final project: 300 pts**
+    -   **Class Participation: 60 pts**
+    -   **MSSC 5780 work: 200 pts**
 
 -   You will **NOT** be allowed any extra credit projects/homework/exam to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exam will **NOT** be curved.
 
@@ -148,7 +150,25 @@ knitr::kable(grade_dist, longtable = TRUE, caption = "Grade-Percentage Conversio
 
 -   **Handwriting is not allowed for data analysis part**.
 
+## In-Class Exam
+
+-   The in-class exam covers materials in Week 1 to Week 7 on simple linear regression and multiple linear regression.
+
+-   Some questions are required for MSSC students.
+
+-   **NO make-up midterm exam** unless you miss exams due to COVID-19 symptoms, exposure, diagnosis, quarantine, and/or isolation, or you have an excused absence as defined in [Attendance in Academic Regulations](https://bulletin.marquette.edu/undergrad/academicregulations/#attendance).
+
+## Class Participation
+
+-   You will be presenting exercise problems.
+
+-   More details will be released later.
+
 ## Final Project
+
+-   A detailed final project guideline will be released later.
+
+<!-- ## Final Project -->
 
 <!-- - There will be 2 in-class midterm exams and probably 1 final exam. -->
 
@@ -162,7 +182,7 @@ knitr::kable(grade_dist, longtable = TRUE, caption = "Grade-Percentage Conversio
 
 <!-- - Exam 1 covers Week 1 to 6. Exam 2 covers Week 1 to 11. If there is one, the final exam is comprehensive and covers the **all course materials**. -->
 
--   A detailed final project guideline will be released later.
+<!-- -   A detailed final project guideline will be released later. -->
 
 <!-- - Some questions are required for MSSC students. -->
 

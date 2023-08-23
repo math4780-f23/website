@@ -6,7 +6,7 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 # macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
   revealjs:
-    # code-line-numbers: false
+    code-line-numbers: false
     #     - "macros.tex"
     html-math-method:
       method: mathjax
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -88,7 +88,7 @@ knitr::opts_chunk$set(
     fig.align = "center",
     out.width = "100%",
     fig.retina = 10,
-    fig.path = "./images/11-bootstrap",
+    fig.path = "./images/11-bootstrap/",
     message = FALSE,
     global.par = TRUE
 )
@@ -975,7 +975,7 @@ confint(lm(time~cases, data = delivery_data))
 #| echo: true
 lm_fit <- lm(time ~ cases, data = delivery_data)
 car_boot <- car::Boot(lm_fit, R = 100)
-brief(car_boot$t)
+car::brief(car_boot$t)
 ```
 
 ## [R Lab]{.pink} Histogram of Bootstrap Samples
@@ -1002,3 +1002,10 @@ car::Confint(lm_fit, vcov. = vcov(car_boot))
 check boot::boot.ci
 
 :::
+
+
+## [R Lab]{.pink} `boot::boot()`
+
+- <https://stats.oarc.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/> 
+
+- ISL Lab 5.3.4

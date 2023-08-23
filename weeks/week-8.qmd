@@ -1,32 +1,33 @@
 ---
 title: "Week 8"
-subtitle: "MLR: Cross validation"
+subtitle: "Diagnostics: Constant Variance"
 editor: visual
 ---
 
 ::: callout-important
-Due date: Lab 4 - Friday, Feb 25
+-   *In-Class Exam* Tue, 10/17
 :::
-
-## Prepare
-
-📖 Read Tidy Modeling in R Chp 10: [Resampling for evaluating performance](https://www.tmwr.org/resampling.html)
 
 ## Participate
 
-🖥️ [Lecture 14 - MLR: Cross validation](/slides/lec-14.html)
+🖥️ Slides - Diagnostics: Constant Variance
 
-🖥️ [Lecture 15 - Exam 2 review](/slides/lec-15.html)
+`r fontawesome::fa("table")`  [Data - CIA World Factbook Data](/slides/data/CIA.txt)
 
-## Practice
 
-[Application Exercise 6 - The office - CV](/ae/ae-6-the-office-cv.html)
+## Reading
 
-[Application Exercise 7 - Exam 2 Review](/ae/ae-7-exam-2-review.html)
+📖 LRA - Ch 5.2, 5.4 - 5.5
+
+📖 CMR - Ch 7.1
+
+📖 CAR - Ch 3.4, 8.5
+
+📖 RD - Ch 5
 
 ## Perform
 
-⌨️ [Lab 4 - The Office, another look](labs/lab-4.html)
+✅ **In-Class Exam**
 
 <br><br>
 

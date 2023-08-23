@@ -1,0 +1,43 @@
+---
+title: "Exercise 10: Variable Selection Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Variable Selection
+
+<!-- Yu -->
+
+1. Consider `Boston` data with all variables except `chas`. Use `crim` as the response. Perform Best Subset Selection and Forward Selection.
+
+
+```{r}
+library(ISLR2)
+library(olsrr) ## 0.6.0 version
+```
+
+
+```{r}
+fit <- lm(crim ~ . -chas, data = Boston)
+best_sub <- olsrr::ols_step_best_subset(fit, metric = "predrsq")
+ord <- order(best_sub$metrics$predrsq, decreasing = TRUE)
+best_sub$metrics$predrsq[ord]
+best_sub$metrics$predictors[ord]
+```
+
+
+```{r}
+olsrr::ols_step_forward_p(fit, penter = 0.3)
+```
+
+
+```{r}
+olsrr::ols_step_forward_aic(fit)
+```
+

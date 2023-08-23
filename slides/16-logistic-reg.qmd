@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -76,7 +76,7 @@ library(gtExtras)
 library(ggplot2)
 library(tidyverse)
 library(tidymodels)
-library(ISLR)
+library(ISLR2)
 library(car)
 library(olsrr)
 library(leaps)
@@ -87,7 +87,7 @@ knitr::opts_chunk$set(
     fig.align = "center",
     out.width = "100%",
     fig.retina = 10,
-    fig.path = "./images/16-logistic-reg",
+    fig.path = "./images/16-logistic-reg/",
     message = FALSE,
     global.par = TRUE
 )
@@ -193,7 +193,7 @@ knitr::include_graphics("images/16-logistic-reg/classification.png")
 ::: {.column width="62%"}
 ```{r}
 Default_tbl <- as_tibble(Default)
-Default_tbl %>% 
+Default_tbl |>  
     ggplot(aes(default, balance, fill = default)) +
     geom_boxplot(color="black") + 
     theme_minimal() +
@@ -582,8 +582,8 @@ $$\hat{\pi}_i = \frac{\exp(\hat{\beta}_0+\hat{\beta}_1 x_{1,i} + \cdots + \hat{\
 
 ```{r}
 #| echo: true
-library(ISLR)
-data("Default")  ## load the dataset
+#| code-line-numbers: false
+library(ISLR2)
 head(Default, 10)
 str(Default)
 ```
@@ -593,6 +593,7 @@ str(Default)
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 table(Default$default)
 table(Default$student)
 summary(Default$balance)
@@ -607,6 +608,7 @@ summary(Default$income)
 ## [R Lab]{.pink} Simple Logistic Regression
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 library(tidyverse)
 Default |>  
     group_by(default) |>
@@ -617,6 +619,7 @@ Default |>
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 logit_fit <- glm(default ~ balance, data = Default, family = binomial)
 summ_logit_fit <- summary(logit_fit)
 summ_logit_fit$coefficients
@@ -730,6 +733,7 @@ $$ \hat{\pi} = \frac{1}{1+\exp(-(-10.651+0.0055 \times 2000)} = 0.586$$
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 pi_hat <- predict(logit_fit, type = "response")
 eta_hat <- predict(logit_fit, type = "link")  ## default gives us b0 + b1*x
 predict(logit_fit, newdata = data.frame(balance = 2000), type = "response")
@@ -817,6 +821,7 @@ In general, if $E(Y_i) = \mu_i$, $g(\mu_i) = \eta_i = {\bf x}_i'\bbeta$, $\mu_i=
 ## [R Lab]{.pink} Multiple Logistic Regression
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 multi_logit_fit <- glm(default ~ balance + I(income/1000), data = Default, 
                        family = binomial)
 summ_multi_logit_fit <- summary(multi_logit_fit)
@@ -903,7 +908,7 @@ What is our response and any distribution can be used to model that?
 :::
 
 
-## [R Lab]{.pink} Strength of Fastener (LRA 13.3)
+## [R Lab]{.pink} [Strength of Fastener](./data/data-prob-13-3.csv) (LRA 13.3)
 
 - The compressive strength of an alloy fastener used in aircraft construction is being studied.
 
@@ -913,6 +918,7 @@ What is our response and any distribution can be used to model that?
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 fastener <- read.csv("./data/data-prob-13-3.csv")
 colnames(fastener) <- c("load", "m", "y")
 fastener
@@ -924,6 +930,7 @@ fastener
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 binom_fit <- glm(cbind(y, m - y) ~ load,  #<<
                  data = fastener, family = binomial)
 binom_summ <- summary(binom_fit)
@@ -982,6 +989,7 @@ table(pred_prob > 0.5, Default$default)
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: false
 caret::confusionMatrix()
 yardstick::conf_mat()
 ```
@@ -991,6 +999,7 @@ yardstick::conf_mat()
 - [caret](https://topepo.github.io/caret/) package (**C**lassification **A**nd **RE**gression **T**raining) provides tools for predictive modeling.
 
 ```{r, echo=TRUE, eval=FALSE}
+#| code-line-numbers: false
 ## Classification And REgression Training
 library(caret) 
 caret::confusionMatrix(data = a factor of predicted classes, 
@@ -1030,6 +1039,7 @@ yardstick::conf_mat(data = df, truth = truth, estimate = estimate)
 #| fig-show: hide
 #| label: roc
 #| echo: true
+#| code-line-numbers: false
 library(ROCR)
 
 # create an object of class prediction 
@@ -1050,6 +1060,7 @@ roc <- ROCR::performance(
 #| eval: true
 #| out-width: 100%
 #| echo: !expr c(-1)
+#| code-line-numbers: false
 par(mar = c(4, 4, 0, 4), mgp = c(2.5, 1, 0), las = 1)
 plot(roc, colorize = TRUE)
 ```
@@ -1076,7 +1087,9 @@ Find the area under the curve:
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 ## object of class 'performance'
+
 auc <- ROCR::performance(
     prediction.obj = pred, 
     measure = "auc")

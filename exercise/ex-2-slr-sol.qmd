@@ -1,0 +1,98 @@
+---
+title: "Exercise 2: Simple Linear Regression Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+library(openintro)
+library(tidyverse)
+library(kableExtra)
+library(broom)
+```
+
+## Simple Linear Regression
+
+<!-- IMS 24.2 -->
+
+### Basic Understanding
+
+1. The scatterplot and least squares summary below show the relationship between weight measured in kilograms and height measured in centimeters of 507 physically active individuals. (Heinz et al., 2003)
+
+```{r}
+#| out.width: 70%
+#| echo: false
+
+ggplot(bdims, aes(x = hgt, y = wgt)) +
+  geom_point() +
+  labs(
+    x = "Height (cm)",
+    y = "Weight (kg)"
+  )
+
+m_wgt_hgt <- lm(wgt ~ hgt, data = bdims)
+r_wgt_hgt <- round(cor(bdims$wgt, bdims$hgt), 2)
+
+tidy(m_wgt_hgt) %>%
+  mutate(p.value = ifelse(p.value < 0.0001, "<0.0001", round(p.value, 4))) %>%
+  kbl(linesep = "", booktabs = TRUE, align = "lrrrr", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), 
+                latex_options = "HOLD_position",
+                full_width = FALSE) %>%
+  column_spec(1, width = "10em", monospace = TRUE) %>%
+  column_spec(2:5, width = "5em")
+```
+
+
+  a.  Describe the relationship between height and weight.
+  
+```{r}
+# positive association
+```
+  
+  b.  Write the equation of the regression line. Interpret the slope and intercept in context.
+```{r}
+# weight_hat = -105.01 + 1.02 height
+```
+
+  c.  Do the data provide convincing evidence that the true slope parameter is different than 0? State the null and   alternative hypotheses, report the p-value, and state your conclusion.
+```{r}
+# Yes
+```
+  
+  d.  The correlation coefficient for height and weight is `r r_wgt_hgt`. Calculate $R^2$ and interpret it.
+```{r}
+0.72^2
+summary(lm(wgt ~ hgt, data = bdims))$r.sq
+```
+
+
+### Simulation
+
+2. Generate a simulated data of size $n = 100$ from the regression 
+
+$$y_i = 10 + 5x_i + \epsilon_i, ~~ \epsilon_i \stackrel{iid}{\sim} N(0, 2)$$
+
+using the code
+
+```{r}
+#| eval: true
+x <- runif(100)
+y <- 10 + 5 * x + rnorm(100, sd = sqrt(2))
+```
+
+
+Fit a simple linear regression model to the data, then check whether the true slope is captured by the 90% confidence interval for the slope.
+
+```{r}
+lm_out <- lm(y ~ x)
+confint(lm_out, level = 0.9)
+```
+

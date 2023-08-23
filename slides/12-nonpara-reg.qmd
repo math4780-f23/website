@@ -6,7 +6,7 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 # macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
   revealjs:
-    # code-line-numbers: false
+    code-line-numbers: false
     #     - "macros.tex"
     html-math-method:
       method: mathjax
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center

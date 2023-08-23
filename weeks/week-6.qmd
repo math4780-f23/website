@@ -1,32 +1,28 @@
 ---
 title: "Week 6"
-subtitle: "MLR: Model building and comparison"
+subtitle: "Multiple Linear Regression in Matrix Form"
 editor: visual
 ---
 
 ::: callout-important
-Due dates: Exam 1 - Mon, Feb 7 at 11:59pm
+-   Due date: HW 3 - Fri, 10/6 11:59 PM
 :::
-
-## Prepare
-
-No reading (take a break after the exam! 😴)
 
 ## Participate
 
-🖥️ [Lecture 10 - MLR: Types of predictors](/slides/lec-10.html)
+🖥️ Slides - MLR in Matrix Form
 
-🖥️ [Lecture 11 - MLR: Model comparison](/slides/lec-11.html)
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
-## Practice
+## Reading
 
-No application exercises
+📖 LRA - Ch 3.1 - 3.5, 3.10
+
+📖 CMR - Ch 3.1 - 3.5, 3.9
 
 ## Perform
 
-No lab
-
-✅ [Exam 1](/exams/exam-1.html)
+✍️ [HW 3 Multiple Linear Regression due 10/6 11:59 PM]()
 
 <br><br>
 

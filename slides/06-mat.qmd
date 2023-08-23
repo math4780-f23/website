@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -79,7 +79,7 @@ library(tidymodels)
 knitr::opts_chunk$set(
     fig.asp = 0.618,
     fig.align = "center",
-    out.width = "100%",
+    out.width = "90%",
     fig.retina = 10,
     fig.path = "./images/06-mat/",
     message = FALSE,
@@ -161,11 +161,15 @@ But what is the geometrical meaning of matrices?
 
 ##
 
+::: small
+
 ```{r}
-#| fig-cap: "https://gfycat.com/cooperativequerulousfirefly (3Blue1Brown)"
+#| fig-cap: "Source: https://gfycat.com/cooperativequerulousfirefly (3Blue1Brown)"
 #| echo: false
 knitr::include_graphics("https://thumbs.gfycat.com/CooperativeQuerulousFirefly-size_restricted.gif")
 ```
+
+:::
 
 
 ::: notes
@@ -260,8 +264,8 @@ $\begin{bmatrix} 1 & -3 \\ 1 & 2 \end{bmatrix}\begin{bmatrix} c_1 \\ c_2 \end{bm
 ## Linear Independence
 
 ```{r}
-V <- matrix(c(1, 1, -3, 2), 2, 2)
-solve(V, b = rep(0, 2))
+V <- matrix(c(1, 1, -3, 2), nrow = 2, ncol = 2)
+solve(a = V, b = rep(0, 2))
 det(V)
 ```
 
@@ -539,18 +543,19 @@ D %*% D_inv
 ::: {.column width="50%"}
 ```{r}
 ## Idempotent and symmetric matrix
-(A <- matrix(1, 3, 3)/3)
+(A <- matrix(1, 2, 2)/2)
 A %*% A
 ## positive semi-definite
-y <- c(-2, 5, 2)
+y <- c(-2, 5)
 t(y) %*% A %*% y
 ```
 :::
 ::: {.column width="50%"}
 ```{r}
 ## Orthogonal matrix
-(E <- matrix(c(1, -1, 1, 1)/sqrt(2), 2, 2))
-E %*% t(E)
+(E <- matrix(c(0, 1, 0, -1, 0, 0, 0, 0, -1), 
+             nrow = 3, ncol = 3))
+solve(E)
 t(E) %*% E
 ```
 :::
@@ -584,13 +589,15 @@ sum(diag(G))
 
 ##
 
+::: small
+
 ```{r}
 #| fig-cap: "https://gfycat.com/ifr/WickedSaltyAnemonecrab (3Blue1Brown)"
 #| echo: false
 knitr::include_graphics("https://thumbs.gfycat.com/WickedSaltyAnemonecrab-size_restricted.gif")
 ```
 
-
+:::
 
 ## Eigen-decomposition
 - **Eigen-decomposition**: Any symmetric matrix ${\bf A}_{n \times n}$ can be decomposed as $${\bf A} = {\bf V\bsLambda V'}$$

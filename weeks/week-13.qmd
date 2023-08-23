@@ -1,31 +1,27 @@
 ---
 title: "Week 13"
-subtitle: "MultiLR"
+subtitle: "Collinearity"
 editor: visual
 ---
 
 ::: callout-important
-Due dates:
-
--   Lab 6 - Friday, April 8
--   Project drafts - Sunday, April 10
 :::
 
 ## Participate
 
-🖥️ [Lecture 24 - MultiLR: Prediction + inferential models](/slides/lec-24.html)
+🖥️ Slides - Collinearity
 
-🖥️ [Lecture 25 - MultiLR: Predictive models](/slides/lec-25.html)
+`r fontawesome::fa("table")`  [Data - Manpower](/slides/data/manpower.csv)
 
-## Practice
+## Reading
 
-📋 [Application Exercise 11 - Volcanoes](/ae/ae-11-volcanoes.html)
+📖 LRA - Ch 3.11 - 3.12, 9.1 - 9.5
 
-## Perform
+📖 CMR - Ch 3.8, 8.1 - 8.2, 8.4
 
-✍️ [HW 4 - Multinomial logistic regression](/hw/hw-4.html)
+## Exercise
 
-[💻](/labs/lab-6.html "Lab instructions") [Lab 6 - Why Many Americans Don't Vote](/labs/lab-6.html)
+📋 [Exercise 9](/exercise/ex-3-mlr.html)
 
 <br><br>
 

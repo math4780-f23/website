@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -157,7 +157,7 @@ $$Y_i = \beta_0 + \beta_1X_i + \epsilon_i$$
 
 ## 
 
-When we collect data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$ $y$ is assumed drawn from a normal distribution. Its value varies around its mean $\mu_y$.
+When we collect (training) data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$ $y$ is assumed drawn from a normal distribution. Its value varies around its mean $\mu_y$.
 
 ```{r}
 knitr::include_graphics("./images/04-slr/regression_line_data.png")
@@ -172,7 +172,7 @@ Let's see what the assumptions of the model mean, and the ideas of behind them.
 
 ##
 
-When we collect data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$ $y$ is assumed drawn from a normal distribution. Its value varies around its mean $\mu_y$.
+When we collect (training) data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$ $y$ is assumed drawn from a normal distribution. Its value varies around its mean $\mu_y$.
 
 ```{r}
 knitr::include_graphics("./images/04-slr/regression_line_data_blue.png")
@@ -310,7 +310,7 @@ $$E(y_i \mid x_i) = \mu_{y|x_i} = \beta_0 + \beta_1~x_{i}$$
 
 . . .
 
-- Use sample statistics $b_0$ and $b_1$ computed from our sample data to estimate $\beta_0$ and $\beta_1$.
+- Use sample statistics $b_0$ and $b_1$ computed from our data to estimate $\beta_0$ and $\beta_1$.
 
 - $\hat{y}_{i} = b_0 + b_1~x_{i}$ is called **fitted value** of $y_i$, a point estimate of the mean $\mu_{y|x_i}$ and $y_i$ itself.
 
@@ -381,7 +381,7 @@ Choose the *best* $b_0$ and $b_1$ or the sample regression line minimizing the *
 
 - If $b_0$ and $b_1$ are the best estimators, plug $e_i = y_i - (b_0 + b_1x_i)$ into $SS_{res}$, we have 
 
-$$\begin{align} SS_{res} &= (y_1 - b_0 - b_1x_1)^2 + (y_2 - b_0 - b_1x_2)^2 + \dots + (y_n - b_0 - b_1x_n)^2\\ &= \sum_{i=1}^n(y_i - b_0 - b_1x_i)^2 \end{align}$$ that is the smallest comparing to any other $SS_{res} = \sum_{i=1}^n(y_i - a_0 - a_1x_i)^2$ that uses another pair of estimators $(a_0, a_1) \ne (b_0, b_1)$.
+$$\begin{align} SS_{res} &= (y_1 - b_0 - b_1x_1)^2 + (y_2 - b_0 - b_1x_2)^2 + \dots + (y_n - b_0 - b_1x_n)^2\\ &= \sum_{i=1}^n(y_i - b_0 - b_1x_i)^2 \end{align}$$ that is the smallest comparing to any other $\sum_{i=1}^n(y_i - a_0 - a_1x_i)^2$ that uses another pair of estimators $(a_0, a_1) \ne (b_0, b_1)$.
 
 
 
@@ -487,13 +487,13 @@ The two equations are called the **normal equations**.
 
 ## Least Squares Estimates: Solve for $\alpha_0$ and $\alpha_1$
 
-- Solve for $\alpha_0$ given $b_1$: 
+- Solve for $b_0$ given $b_1$: 
 
 $$ \color{red}{b_0 = \overline{y} - b_1\overline{x}}$$
 
 . . .
 
-- Solve for $\alpha_1$ given $\color{red}{b_0 = \overline{y} - b_1\overline{x}}$: 
+- Solve for $b_1$ given $\color{red}{b_0 = \overline{y} - b_1\overline{x}}$: 
 
 <!-- $$\sum_{i=1}^nx_iy_i - (\overline{y} - b_1\overline{x})n\overline{x} - b_1\sum_{i=1}^nx_i^2 = 0.$$ -->
 $$\color{red}{b_1 = \frac{\sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = \frac{S_{xy}}{S_{xx}} = r \frac{\sqrt{S_{yy}}}{\sqrt{S_{xx}}}},$$ where $S_{xx} = \sum_{i=1}^n(x_i - \overline{x})^2$, $S_{yy} = \sum_{i=1}^n(y_i - \overline{y})^2$, $S_{xy} = \sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})$, and $r$ is the sample correlation coefficient between $x$ and $y$.
@@ -565,7 +565,7 @@ reg_fit$coefficients
 
 . . .
 
-- $\widehat{hwy}_{i} = b_0 + b_1 \times displ_{i} =  35.698  -3.531 \times displ_{i}$
+- $\widehat{hwy}_{i} = b_0 + b_1 \times displ_{i} =  35.7  - 3.5 \times displ_{i}$
 
 - $b_1$: For one unit (litre) increase of the displacement, we expect the highway MPG to be decreased, [on average]{.red}, by 3.5 miles.
 
@@ -579,6 +579,7 @@ reg_fit$coefficients
 - That's it. And I save the fitted result in an object called reg_fit.
 - You can see lm() function returns a list.
 - We can grab the coefficient estimates this way. 
+- coef(reg_fit)
 :::
 
 
@@ -588,7 +589,7 @@ reg_fit$coefficients
 ## all elements in reg_fit
 names(reg_fit)
 mpg$hwy[1:5]
-## the first 20 fitted value y_hat
+## the first 5 fitted value y_hat
 head(reg_fit$fitted.values, 5)
 mpg$displ[1:5]
 length(reg_fit$fitted.values)
@@ -599,6 +600,7 @@ length(reg_fit$fitted.values)
 - To get the fitted value of $y$, simply type reg_fit$fitted.values 
 - It will show all 234 fitted values of y for each given value of x.
 - Here I just show the first 20 fitted values, and their corresponding value of x.
+- fitted(reg_fit)
 :::
 
 
@@ -769,10 +771,10 @@ $$\scriptstyle  \sum_{i=1}^n\hat{y}_ie_i = 0$$
 ## Estimation for $\sigma^2$
 
 - Think of $\sigma^2$ as **variance around the line** or the **mean squared error**.
-- The estimate of $\sigma^2$, denoted as $s^2$ computed from the sample data is 
+- The estimate of $\sigma^2$, denoted as $s^2$ computed from the sample is 
 $$s^2 = \frac{SS_{res}}{n-2} = \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2} = MS_{res}$$
 - The estimated variance $MS_{res}$, called **mean squared residual**, is often shown in computer output as $\texttt{MS(Error)}$ or $\texttt{MS(Residual)}$.
-- $E(MS_{res}) = \sigma^2$, i.e., $s^2$ is an unbiased estimator for $\sigma^2$. `r emo::ji('thumbsup')`
+- $E(MS_{res}) = \sigma^2$, i.e., $S^2$ is an unbiased estimator for $\sigma^2$. `r emo::ji('thumbsup')`
 
 
 
@@ -798,16 +800,16 @@ y_mis <- 2 + 1 * x^2 + rnorm(50, 0, .5)
 y_vio <- 2 + 1 * x + rnorm(50, 0, sqrt(seq(0, 3, length = 50)))
 par(mfrow = c(1, 3))
 plot(x, y_small, main = "small var", ylab = "y", las = 1,
-     col = 4, pch = 16, ylim = c(0, 8))
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
 abline(lm(y_small~x), col = 2, lwd = 2)
 abline(a = 2, b = 1, col = 1, lwd = 1)
 legend("topleft", c("fitted", "true"), col = c(2, 1), lwd = c(2, 1), bty = "n")
 plot(x, y_mis, main = "large var: model misspecified", ylab = "y", las = 1,
-     col = 4, pch = 16, ylim = c(0, 8), cex.main = 0.9)
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
 abline(lm(y_mis~x), col = 2, lwd = 2)
 lines(x, 2 + 1 * x^2, col = 1, lwd = 1)
 plot(x, y_vio, main = "large var: assumption violated", ylab = "y", las = 1,
-     col = 4, pch = 16, ylim = c(0, 8), cex.main = 0.9)
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
 abline(lm(y_vio~x), col = 2, lwd = 2)
 abline(a = 2, b = 1, col = 1, lwd = 1)
 ```
@@ -826,6 +828,7 @@ abline(a = 2, b = 1, col = 1, lwd = 1)
 ```{r}
 #| echo: true
 #| class-output: my_class800
+#| output.lines: !expr c(9:18)
 (summ_reg_fit <- summary(reg_fit))
 ```
 
@@ -900,12 +903,12 @@ If $Z_1, \dots, Z_n$ are normal variables and constants $c_1, \dots, c_n \in \ma
 
 . . .
 
-- $\small \frac{b_1 - \beta_1}{\sqrt{s^2/S_{xx}}} \sim t_{n-2}$; $\small \quad \frac{b_0 - \beta_0}{\sqrt{s^2\left(\frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right)}} \sim t_{n-2}$
+- $\small \frac{b_1 - \beta_1}{\sqrt{S^2/S_{xx}}} \sim t_{n-2}$; $\small \quad \frac{b_0 - \beta_0}{\sqrt{S^2\left(\frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right)}} \sim t_{n-2}$
 
 . . .
 
-- $(1-\alpha)100\%$ CI for $\beta_1$ is $\small b_1 \pm t_{\alpha/2, n-2}\sqrt{s^2/S_{xx}}$
-- $(1-\alpha)100\%$ CI for $\beta_0$ is $\small b_0 \pm t_{\alpha/2, n-2}\sqrt{s^2\left(\frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right)}$
+- $(1-\alpha)100\%$ CI for $\beta_1$ is $\small b_1 \pm t_{\alpha/2, n-2}\sqrt{S^2/S_{xx}}$
+- $(1-\alpha)100\%$ CI for $\beta_0$ is $\small b_0 \pm t_{\alpha/2, n-2}\sqrt{S^2\left(\frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right)}$
 
 
 
@@ -1002,10 +1005,10 @@ confint(reg_fit, level = 0.95)
 ## Confidence interval for sigma^2 (no built-in function)
 alpha <- 0.05
 SS_res <- sum(reg_fit$residuals ^ 2)
-low_bd <- SS_res / qchisq(alpha / 2, df = reg_fit$df, lower.tail = FALSE)
-upp_bd <- SS_res / qchisq(alpha / 2, df = reg_fit$df, lower.tail = TRUE)
-low_bd
-upp_bd
+low <- SS_res / qchisq(alpha / 2, df = reg_fit$df, lower.tail = FALSE)
+upp <- SS_res / qchisq(alpha / 2, df = reg_fit$df, lower.tail = TRUE)
+low
+upp
 ```
 ```{r}
 #| echo: true
@@ -1017,7 +1020,10 @@ summ_reg_fit$sigma ^ 2
 - Forget about the proof. 
 - Let's be practical and see how to get those numbers in R.
 - There is no built-in function for Confidence interval for sigma^2. You can write your own function to compute it though.
+https://fhernanb.github.io/model/reference/confint_sigma2.html
 :::
+
+
 
 ## Hypothesis Testing: $\beta_1$
 - <span style="color:blue"> $H_0: \beta_1 = \beta_1^0 \quad H_1: \beta_1 \ne \beta_1^0$  </span>
@@ -1038,7 +1044,7 @@ summ_reg_fit$sigma ^ 2
 
 ## Hypothesis Testing: $\beta_0$
 - <span style="color:blue"> $H_0: \beta_0 = \beta_0^0 \quad H_1: \beta_0 \ne \beta_0^0$  </span>
-- standard error of $b_0$: $se(b_0) = \sqrt{MS_{res}\left(1/n + \overline{x}^2/S_{xx}\right)}$
+- standard error of $b_0$: $se(b_0) = \sqrt{MS_{res}\left(\frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right)}$
 - Test statistic: $t_{test} = \frac{b_0 - \color{red}{\beta_0^0}}{se(b_0)} \sim t_{n-2}$ under $H_0$
 - Reject $H_0$ in favor of $H_1$ if 
   + $|t_{test}| > t_{\alpha/2, \, n-2}$ (critical value method)
@@ -1072,19 +1078,27 @@ summ_reg_fit$sigma ^ 2
 
 
 ## [R Lab]{.pink} Testing on $\beta_0$ and $\beta_1$
-```{r}
-#| class-output: my_class500
-#| output.lines: !expr c(10:14)
-#| echo: true
-summ_reg_fit
-```
+<!-- # ```{r} -->
+<!-- # #| class-output: my_class500 -->
+<!-- # #| output.lines: !expr c(10:14) -->
+<!-- # #| echo: true -->
+<!-- # summ_reg_fit -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # ```{r} -->
+<!-- # #| echo: true -->
+<!-- # summ_reg_fit$coefficients -->
+<!-- # ``` -->
 
-```{r}
-#| echo: true
-summ_reg_fit$coefficients
-```
 
 - Testing $H_0: \beta_0 = 0$ and $H_0: \beta_1 = 0$
+
+```{r}
+#| echo: true
+coef(summ_reg_fit)
+```
+
+
 
 
 
@@ -1278,10 +1292,17 @@ knitr::include_graphics("./images/04-slr/partition.png")
 :::
 
 ## ANOVA for Testing Significance of Regression
-```{r}
-#| out-width: 100%
-knitr::include_graphics("./images/04-slr/anova_table.png")
-```
+<!-- # ```{r} -->
+<!-- # #| out-width: 100% -->
+<!-- # knitr::include_graphics("./images/04-slr/anova_table.png") -->
+<!-- # ``` -->
+
+| Source of Variation | SS | df | MS | F | $p$-value |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| Regression | $SS_R$| 1 | $MS_R$  |  $\frac{MS_R}{MS_{res}} = F_{test}$ |  $P(F_{1, n-2} > F_{test})$ |
+| Residual | $SS_{res}$ | $n-2$   |  $MS_{res}$ |   |  | 
+| Total | $SS_{T}$ | $n-1$   |   |   |  | 
+
 - A larger value of $F_{test}$ indicates that regression is significant.
 - Reject $H_0$ if 
   + $F_{test} > F_{\alpha, 1, n-2}$
@@ -1418,11 +1439,11 @@ $$\frac{(b_0 + b_1 x_0) - (\beta_0 + \beta_1 x_0)}{\sigma\sqrt{\frac{1}{n} + \fr
 
 . . .
 
-$$\frac{(b_0 + b_1 x_0) - (\beta_0 + \beta_1 x_0)}{s\sqrt{\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}} \sim t_{n-2}$$
+$$\frac{(b_0 + b_1 x_0) - (\beta_0 + \beta_1 x_0)}{S\sqrt{\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}} \sim t_{n-2}$$
 
 . . .
 
-The $(1-\alpha)100\%$ CI for $E(y\mid x_0)$ is $\boxed{\hat{\mu}_{y | x_0} \pm t_{\alpha/2, n-2} s\sqrt{\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}}$.
+The $(1-\alpha)100\%$ CI for $E(y\mid x_0)$ is $\boxed{\hat{\mu}_{y | x_0} \pm t_{\alpha/2, n-2} S\sqrt{\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}}$.
 
 . . .
 
@@ -1499,11 +1520,11 @@ $$\frac{(y_0 - \hat{y}_0) - \color{red}{0}}{\sigma\sqrt{1 + \frac{1}{n} + \frac{
 
 . . .
 
-$$\frac{y_0 - \hat{y}_0}{s\sqrt{1 + \frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}} \sim t_{n-2}$$
+$$\frac{y_0 - \hat{y}_0}{S\sqrt{1 + \frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}} \sim t_{n-2}$$
 
 . . .
 
-The $(1-\alpha)100\%$ **prediction interval** (PI) for $y_0(x_0)$ is $\small \boxed{\hat{y_0} \pm t_{\alpha/2, n-2} s\sqrt{1+ \frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}}$
+The $(1-\alpha)100\%$ **prediction interval** (PI) for $y_0(x_0)$ is $\small \boxed{\hat{y_0} \pm t_{\alpha/2, n-2} S\sqrt{1+ \frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}}}$
 
 . . .
 

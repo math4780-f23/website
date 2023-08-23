@@ -1,0 +1,14 @@
+{
+  "hash": "4c2f4c2da0a4e6993aebb2c07bad0618",
+  "result": {
+    "markdown": "---\ntitle: \"Week 8\"\nsubtitle: \"Diagnostics: Constant Variance\"\neditor: visual\n---\n\n\n::: callout-important\n-   *In-Class Exam* Tue, 10/17\n:::\n\n## Participate\n\n🖥️ Slides - Diagnostics: Constant Variance\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html}  [Data - CIA World Factbook Data](/slides/data/CIA.txt)\n\n\n## Reading\n\n📖 LRA - Ch 5.2, 5.4 - 5.5\n\n📖 CMR - Ch 7.1\n\n📖 CAR - Ch 3.4, 8.5\n\n📖 RD - Ch 5\n\n## Perform\n\n✅ **In-Class Exam**\n\n<br><br>\n\n::: {style=\"font-size: 0.875em;\"}\nBack to [course schedule](/ \"Course schedule\") ⏎\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

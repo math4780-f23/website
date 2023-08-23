@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -79,7 +79,7 @@ knitr::opts_chunk$set(
     fig.align = "center",
     out.width = "100%",
     fig.retina = 10,
-    fig.path = "images/lec-1",
+    fig.path = "images/01-syllabus",
     message = FALSE,
     global.par = TRUE
 )
@@ -182,8 +182,6 @@ After college, working and doing military service for several years, I came to t
 -   Efficient MCMC for big $n$ big $p$ streaming data
 -   Game-based learning for STEM and data science education
 
-<br>
-
 ::: columns
 ::: {.column width="50%"}
 **fMRI**
@@ -210,7 +208,7 @@ knitr::include_graphics("./images/01-syllabus/eeg.png")
 
 -   Office hours **TuTh 3:20 - 4:50 PM** in **Cudahy Hall 353**.
 -   `r emo::ji('e-mail')` [cheng-han.yu\@marquette.edu](mailto:cheng-han.yu@marquette.edu){.email}
-    -   Answer your question within 24 hours.
+    -   Answer questions within 24 hours.
     -   Expect a reply on **Monday** if shoot me a message **on weekends**.
     -   Start your subject line with **\[math4780\]** or **\[mssc5780\]** followed by a **clear description of your question**.
 
@@ -226,17 +224,19 @@ knitr::include_graphics("./images/01-syllabus/email.png")
 ::: columns
 ::: {.column width="50%"}
 -   [*Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck and G. G. Vining. Publisher: Wiley. <!-- - The 5th edition is sufficient. -->
--   Learn Chapter 1 \~ 10, 13.
+-   Ch 1 \~ 10, 13.
 -   Careful about typos.
 
-In the Preface, \> *The book ... for a course taken by seniors and 1st-year graduate students....*
+In the Preface, 
+
+> *The book ... for a course taken by seniors and 1st-year graduate students....*
 
 > *Some knowledge of matrix algebra is also necessary.*
 :::
 
 ::: {.column width="50%"}
 ```{r}
-#| out-width: "40%"
+#| out-width: "60%"
 #| fig-align: "center"
 knitr::include_graphics("./images/01-syllabus/reg_book.png")
 ```
@@ -249,18 +249,25 @@ knitr::include_graphics("./images/01-syllabus/reg_book.png")
 -   Our [course website](https://math4780-f23.github.io/website) would be helpful.
 :::
 
-## Optional Reference (CMR)
+## Reference (CMR)
 
 ::: columns
 ::: {.column width="50%"}
 -   [*Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166/ref=pd_lpo_14_t_0/135-5067421-1903413?_encoding=UTF8&pd_rd_i=0534380166&pd_rd_r=03ae154d-b095-4e98-9a72-e3dc30666c1f&pd_rd_w=tDw1K&pd_rd_wg=OIjNY&pf_rd_p=3b5203d9-bdd0-47f6-97e5-387010fc3251&pf_rd_r=PY1Q3JBBS4PS1M7D7DZF&psc=1&refRID=PY1Q3JBBS4PS1M7D7DZF), by Raymond Myers. Publisher: Duxbury Press.
--   One of the textbooks when I was a master student at Indiana University Bloomington.
--   Outdated (published in 1990) and no code involved but explains concepts well.
+-   Ch 1 \~ 8.
+-   The textbook when I was a master student at Indiana University.
+-   Outdated (published in 1990) and no code involved.
+- Explains concepts well.
+
+In the Preface, 
+
+> *The book ... for seniors and graduate students majoring in statistics or user subject-matter fields.*
+
 :::
 
 ::: {.column width="50%"}
 ```{r}
-#| out-width: "40%"
+#| out-width: "60%"
 #| fig-align: "center"
 knitr::include_graphics("./images/01-syllabus/myers_book.png")
 ```
@@ -272,16 +279,17 @@ knitr::include_graphics("./images/01-syllabus/myers_book.png")
 -   It's a pretty old book which was published in 1990. So it's a little bit outdated. But it explains basic ideas and concepts pretty well. I enjoyed reading it.
 :::
 
-## Optional Reference (CAR)
+## Reference (CAR)
 
 ::: columns
 ::: {.column width="50%"}
 -   [*An R Companion to Applied Regression*](https://us.sagepub.com/en-us/nam/an-r-companion-to-applied-regression/book246125), by John Fox and Sanford Weisberg. Publisher: SAGE.
--   R scripts and data are available on the [book Website](https://socialsciences.mcmaster.ca/jfox/Books/Companion/)
--   Doing regression much easier by the **car** and **effects** R packages.
+- Ch 3, 5, 8.
+-   R scripts and data on the [book Website](https://socialsciences.mcmaster.ca/jfox/Books/Companion/)
+-   Doing regression easier by the **car** and **effects** R packages.
 
 ```{r}
-#| out-width: "40%"
+#| out-width: "100%"
 #| fig-align: "center"
 knitr::include_graphics("./images/01-syllabus/car_pkg.png")
 ```
@@ -289,7 +297,7 @@ knitr::include_graphics("./images/01-syllabus/car_pkg.png")
 
 ::: {.column width="50%"}
 ```{r}
-#| out-width: "40%"
+#| out-width: "60%"
 #| fig-align: "center"
 knitr::include_graphics("./images/01-syllabus/car.png")
 ```
@@ -303,6 +311,47 @@ knitr::include_graphics("./images/01-syllabus/car.png")
 
 John Fox received a BA from the City College of New York and a PhD from the University of Michigan, both in Sociology. Sanford Weisberg is Professor Emeritus of statistics at the University of Minnesota. He has also served as the director of the University′s Statistical Consulting Service, and has worked with hundreds of social scientists and others on the statistical aspects of their research. He earned a BA in statistics from the University of California, Berkeley, and a Ph.D., also in statistics, from Harvard University
 :::
+
+
+
+## Reference (ISL)
+
+::: columns
+::: {.column width="50%"}
+- [*An Introduction to Statistical Learning*](https://www.statlearning.com/), by James et. al. Publisher: Springer.
+- Ch 3.
+- R and Python code
+
+
+In the Preface, 
+
+> *ISL ... for advanced undergraduates or master's students in Statistics or related quantitative fields......*
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out-width: "60%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/isl.png")
+```
+:::
+:::
+
+## More References
+
+- [Applied Regression Analysis and Generalized Linear Models](https://www.john-fox.ca/AppliedRegression/index.html)
+
+- [Applied Linear Regression](https://www.stat.purdue.edu/~qfsong/teaching/525/book/Weisberg-Applied-Linear-Regression-Wiley.pdf)
+
+- [Linear Models with R/Python](https://julianfaraway.github.io/faraway/LMR/)
+
+- [Applied Linear Statistical Models](https://users.stat.ufl.edu/~winner/sta4211/ALSM_5Ed_Kutner.pdf)
+
+- [Regression Daignostics](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html)
+
+and more!
+
 
 ## Prerequisites
 
@@ -328,22 +377,37 @@ Helpful if you
 -   Nowadays, nobody is doing regression by hand, and we will write some code to do regression. So it would be helpful if you code any language before.
 :::
 
-## Course Website
 
--   ([ ](https://math4780-f23.github.io/website/))
-    -   All course information and materials
+## [My Statistics Book](https://chenghanyu-introstatsbook.netlify.app/)
+
+- Please review probability distributions, confidence interval, and hypothesis testing!
+
+```{r}
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("./images/01-syllabus/introstats.png")
+```
+
+
+
+## Course Website - <https://math4780-f23.github.io/website/>
+
+-   All course materials
 
 ```{r}
 #| out-width: "50%"
 #| fig-align: "center"
-knitr::include_graphics("./images/01-syllabus/logo.png")
+knitr::include_graphics("./images/01-syllabus/website.png")
 ```
 
-## Course Website - D2L
 
--   ([D2L](https://d2l.mu.edu/d2l/home/525088))
-    -   Homework submission
-    -   Gradebook
+
+
+
+## Course Website - [D2L](https://d2l.mu.edu/d2l/home/525088)
+
+-   Homework submission
+-   Gradebook
 
 ```{r}
 #| out-width: "100%"
@@ -354,10 +418,13 @@ knitr::include_graphics("./images/01-syllabus/d2l_4780.png")
 ## Grading Policy ✨
 
 -   For MATH 4780 (MSSC 5780) students, the grade is earned out of **1000 (1200) total points** distributed as follows:
-    -   **Homework 1 to 6: 600 pts (100 pts each)**
-    -   **Final project: 400 pts**
-    -   **MSSC 5780 problems: 200 pts**
-
+    -   **Homework 1 to 6: 480 pts (80 pts each)**
+    -   **In-class Exam: 160 pts** 
+    -   **Final project: 300 pts**
+    -   **Class Participation: 60 pts**
+    -   **MSSC 5780 work: 200 pts**
+    
+    
 -   `r emo::ji("x")` No extra credit projects/homework/exam to compensate for a poor grade.
 -   Individual grade will **NOT** be curved.
 -   Want to obtain a good grade? Study hard. No pain, no gain! ✍ ✍
@@ -370,7 +437,9 @@ knitr::include_graphics("./images/01-syllabus/d2l_4780.png")
 
 ## Grade-Percentage Conversion
 
--   $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.0 is in \[94, 100\] and the grade is A and 93.8 is in \[90, 94) and the grade is A-.
+-   $[x, y)$ means greater than or equal to $x$ and less than $y$. 
+
+- For example, 94.0 is in [94, 100] and the grade is A and 93.8 is in [90, 94) and the grade is A-.
 
 ```{r}
 letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
@@ -380,11 +449,13 @@ percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[84, 87)", "[80, 84)",
                 "[65, 70)", "[60, 65)", "[0, 60)")
 grade_dist <- data.frame(Grade = letter, Percentage = percentage)
 library(kableExtra)
-knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kable_styling(position = "center", font_size = 22)
+knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kable_styling(position = "center", font_size = 35)
 ```
 
 
-## Homework (600 pts)
+## Homework (480 pts)
+
+-   Homework will be assigned through the [course website in weekly schedule](https://math4780-f23.github.io/website/).
 
 -   **D2L \> Assessments \> Dropbox** and upload your homework in **PDF** format.
 
@@ -392,24 +463,50 @@ knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kab
 
 -   `r emo::ji("x")` **No make-up homework**.
 
--   Due **Friday 11:59 PM** (**09/09, 09/23, 10/07, 10/28, 11/11, 12/02. Hard deadline and no late submission**).
+-   Due **Friday 11:59 PM** (**09/08, 09/22, 10/06, 10/27, 11/17, 12/08. Hard deadline and no late submission**).
 
--   `r emo::ji("x")` **Handwriting is NOT allowed** for data analysis.
+-   `r emo::ji("x")` **Handwriting is NOT allowed** for data analysis part.
 
-## MSSC 5780 Questions (200 pts)
+## In-class Exam (160 pts)
 
--   Some extra homework questions are for MSSC 5780 students.
--   `r emo::ji('thumbsup')` MATH 4780 students are encouraged to do the MSSC problems to earn up to **50 pts** extra points.
+- Midterm exam is held in class on **10/17**.
 
-## Project (400 pts)
+- `r emo::ji("page_facing_up")` One piece of **letter size** cheat sheet is allowed. It has to be turned-in with your in-class exam. (Or entirely open book?)
 
--   You will be doing a team project.
+- Exam covers materials in **Week 1 to 7**.
 
--   Your project is about analyzing real-world data using regression methods.
+## Project (300 pts)
 
--   Written report or oral presentation or both??
+-   You will be doing a *team* project.
+
+-   What is your project about?
+
+-   Written report or oral presentation or both?
+
+-   How is your projected evaluated?
 
 -   More information will be released later.
+
+
+::: notes
+ analyzing real-world data using regression methods
+:::
+
+## Class Participation (60 pts)
+
+- Five minute presentation on exercise problems?
+
+- More details will be released later.
+
+
+
+## MSSC 5780 Work (200 pts)
+
+-   Some extra work are for MSSC 5780 students.
+-   `r emo::ji('thumbsup')` MATH 4780 students are encouraged to do the MSSC problems to earn extra points!
+
+
+
 
 ## What Computing Language We Use (I Teach)?
 
@@ -418,11 +515,11 @@ knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kab
 ```{r}
 #| out-width: "50%"
 #| fig-align: "center"
-#| fig-cap: '<a href="https://www.r-project.org/">R Website</a>'
 knitr::include_graphics("./images/01-syllabus/Rlogo.png")
 ```
 
 ::: notes
+#| fig-cap: '<a href="https://www.r-project.org/">R Website</a>'
 -   R is the best language for statistical computing.
 -   Its code for doing regression analysis is pretty clean and concise.
 -   You won't regret learning R.
@@ -461,37 +558,9 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/1/1f/Jul
 This course expects all students to follow University and College statements on [academic integrity](https://bulletin.marquette.edu/undergrad/academicregulations/).
 
 -   **Honor Pledge and Honor Code**: *I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor, and responsibility, by which I earn the respect of others. I support the development of good character, and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code*.
+
+
+::: notes
 -   `r emo::ji("x")` You know what I am talking about. Yes, **DO NOT CHEAT**.
-
-## [COVID-19](https://www.marquette.edu/coronavirus/) {visibility="hidden"}
-
-*It is **your** responsibility as a Marquette University student to protect the health and safety of our community in this course. The University has mandated vaccination for all students for the academic year 2021-2022. COVID Cheq will still be used, but those fully vaccinated that provide documentation will no longer receive the daily symptom screening survey. Instead, they will receive a daily email providing a green check. You may be required to show your automated green check to show clearance for entry into campus buildings. If you are experiencing symptoms related to COVID-19, you must follow the link in the automated email to report symptoms.*
-
--   Visit [What to do if you are exposed to COVID-19 or test positive](https://www.marquette.edu/coronavirus/what-to-do-if-you-are-exposed-or-test-positive.php) website for university guidelines on the best course of action.
-
--   Visit guidance on Spring 2022 [Class attendance, withdrawal, and grading](https://www.marquette.edu/central/registrar/faculty-staff/guidance-on-fall-2021-class-attendance-withdrawal-grading.php)
-
-    -   Students are responsible for contacting instructors **prior** to the missed class session to indicate absence and the need to make up classwork/assignments.\
-    -   Students requesting make up classwork/assignments are required to provide the **COVID Cheq "stop sign"** to confirm inability to attend class.
-
-# `r emo::ji("handshake")` Please read the syllabus!!! Because ... {background-color="#447099"}
-
-## You May Find Something Good!
-
-::: columns
-::: {.column width="50%"}
-```{r}
-#| out-width: "100%"
-#| fig-align: "center"
-knitr::include_graphics("./images/01-syllabus/read_syllabus_1.png")
-```
 :::
 
-::: {.column width="50%"}
-```{r}
-#| out-width: "100%"
-#| fig-align: "center"
-knitr::include_graphics("./images/01-syllabus/read_syllabus.png")
-```
-:::
-:::

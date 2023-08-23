@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 ## Overview of Regression

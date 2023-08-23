@@ -1,0 +1,60 @@
+---
+title: "Exercise 5: Bootstrapping Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Bootstrapping Standard Deviation
+
+<!-- ISL 5.9 -->
+
+
+1. Based on the `Boston` data set, provide an estimate for the population
+mean of `medv`. Call the estimate $\hat{\mu}$.
+
+```{r}
+library(ISLR2)
+attach(Boston)
+(mu_hat <- mean(medv))
+```
+
+
+2. Provide an estimate of the standard error of $\hat{\mu}$. Interpret this
+result. *Hint: We can compute the standard error of the sample mean by dividing the sample standard deviation by the square root of the number of observations.*
+
+```{r}
+(se <- sd(medv)/sqrt(length(medv)))
+```
+
+
+3. Estimate the standard error of $\hat{\mu}$ using the bootstrap. 
+
+<!-- *Hint: We can use [boot::boot()](https://rdrr.io/cran/boot/man/boot.html) function.* -->
+
+```{r}
+boot.fn <- function(data, idx) mean(data[idx])
+library(boot)
+bstrap <- boot::boot(data = medv, statistic = boot.fn, R = 1000)
+bstrap
+## bias = bt_mean - obs_mean
+```
+
+```{r}
+#| message: false
+library(tidymodels)
+boot_sample <- Boston |> 
+    # specify the variable of interest
+    specify(response = medv) |>  
+    # generate 15000 bootstrap samples
+    generate(reps = 1000, type = "bootstrap") |>  
+    # calculate the median of each bootstrap sample
+    calculate(stat = "mean")
+sd(boot_sample$stat)
+```
+

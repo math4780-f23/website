@@ -1,26 +1,29 @@
 ---
 title: "Week 14"
-subtitle: "MultiLR + Exam 3 review"
+subtitle: "Variable Selection"
 editor: visual
 ---
 
 ::: callout-important
-Due dates: Friday, April 15 - Project peer review of drafts
 :::
 
 ## Participate
 
-🖥️ [Lecture 26 - MultiLR: Predictive models (cont.)](/slides/lec-26.html)
+🖥️ Slides - Variable Selection
 
-🖥️ [Lecture 27 - Exam 3 Review](/slides/lec-27.html)
+`r fontawesome::fa("table")`  [Data - Manpower](/slides/data/manpower.csv)
 
-## Practice
+## Reading
 
-📋 [Application Exercise 12 - Exam 3 Review](/ae/ae-12-exam-3-review.html)
+📖 LRA - Ch 10.1 - 10.2
+
+📖 CMR - Ch 4
+
+## Exercise
+
+📋 [Exercise 10](/exercise/ex-3-mlr.html)
 
 ## Perform
-
-✍️ [Project - Peer review of drafts](/project-description.html#peer-review)
 
 <br><br>
 

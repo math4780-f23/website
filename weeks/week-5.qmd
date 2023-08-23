@@ -4,9 +4,18 @@ subtitle: "Multiple Linear Regression - II"
 editor: visual
 ---
 
+::: callout-important
+:::
+
 ## Participate
 
-🖥️ [Slides - Multiple Linear Regression](/slides/lec-7.html)
+🖥️ Slides - Multiple Linear Regression
+
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+
+## Reading
+
+📖 CAR - Ch 4.1 - 4.3, 4.9
 
 ## Exercise
 

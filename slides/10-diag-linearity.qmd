@@ -6,7 +6,7 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 # macros: _macros.tex # import a list of TeX/LaTeX definitions
 format: 
   revealjs:
-    # code-line-numbers: false
+    code-line-numbers: false
     #     - "macros.tex"
     html-math-method:
       method: mathjax
@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: true
+    multiplex: false
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -437,6 +437,7 @@ if true, use raw and not orthogonal polynomials.
 ## [R Lab]{.pink} Improving Model Performance
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 car::brief(logciafit, digits = 2)
 car::brief(logciafit2, digits = 2)
 ```
@@ -448,6 +449,9 @@ car::brief(logciafit2, digits = 2)
 ::: {.column width="50%"}
 ```{r}
 #| out-width: 100%
+#| code-fold: true
+#| echo: true
+#| code-line-numbers: false
 library(effects)
 par(mar = c(2, 2, 0, 0))
 plot(Effect("gdp", logciafit2, residuals = TRUE), 
@@ -463,6 +467,9 @@ plot(Effect("gdp", logciafit2, residuals = TRUE),
 ::: {.column width="50%"}
 ```{r}
 #| out-width: 100%
+#| code-fold: true
+#| echo: true
+#| code-line-numbers: false
 par(mar = c(2, 2, 0, 0))
 plot(Effect("health", logciafit2, residuals = TRUE), 
      lines = list(col = c("blue", "black"), lty = 2), 
@@ -514,6 +521,7 @@ Consider the model $$\log(Infant) = \beta_0 + \beta_1 GDP^{\lambda_1} + \beta_2G
 ```{r}
 #| echo: true
 #| output.lines: !expr c(1:5)
+#| code-line-numbers: false
 car::boxTidwell(log(infant) ~ gdp + gini, 
                 other.x = ~poly(health, 2, raw = TRUE), data = CIA)
 ```

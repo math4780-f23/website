@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
@@ -14,10 +14,12 @@ Exercises are for practice purpose only.
 
 <!-- Yu -->
 
-1. For the `Boston` data, use `medv` as the response and `crim` as the predictor, then do
+1. For the `Boston` data, use `medv` as the response and `lstat` as the predictor, then do
 
-    (a) Polynomial Regression
-    (b) Kernel Smoother
+    (a) Kernel Smoother
+    (b) Local Linear Regression
     (c) LOESS
     
     Try to find the best parameter of each method to get the best fit.
+    
+    

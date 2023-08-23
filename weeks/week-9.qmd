@@ -1,30 +1,36 @@
 ---
 title: "Week 9"
-subtitle: "MLR: Inference + conditions"
+subtitle: "Diagnostics: Linearity"
 editor: visual
 ---
 
 ::: callout-important
-Due date: Exam 1 released on Fri, Feb 35, due Mon, Feb 28 at 11:59pm
+-   Due date: HW 4 - Fri, 10/27 11:59 PM
 :::
-
-## Prepare
-
-No readings this week.
 
 ## Participate
 
-🖥️ [Lecture 16 - MLR: Inference](/slides/lec-16.html)
+🖥️ Slides - Diagnostics: Linearity
 
-🖥️ [Lecture 17 - MLR: Inference conditions + multicollinearity](/slides/lec-17.html)
+`r fontawesome::fa("table")`  [Data - CIA World Factbook Data](/slides/data/CIA.txt)
 
-## Practice
+## Reading
 
-📋 [Application Exercise 8 - Rail Trail](/ae/ae-8-rail-trail.html)
+📖 LRA - Ch 5.3
+
+📖 CMR - Ch 7.3
+
+📖 CAR - Ch 8.4
+
+📖 RD - Ch 6
+
+## Exercise
+
+📋 [Exercise 4](/exercise/ex-3-mlr.html)
 
 ## Perform
 
-✅ [Exam 2](/exams/exam-2.html)
+✍️ HW 4 Diagnostics due 10/27 11:59 PM
 
 <br><br>
 

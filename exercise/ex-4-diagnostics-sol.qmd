@@ -1,0 +1,90 @@
+---
+title: "Exercise 4: Diagnostics Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+
+## Diagnostics
+
+<!-- Yu -->
+```{r}
+library(ISLR2)
+```
+
+1. This problem involves the `Boston` data set. We now try to predict per capita crime rate using the median value of owner-occupied homes.
+
+a. Fit a simple linear regression model. Check if there are any leverage points and outliers.
+
+```{r}
+lmout <- lm(crim ~ medv, data = Boston)
+hat_i <- hatvalues(lmout)
+p <- 2
+n <- dim(Boston)[1]
+hat_i[hat_i > 2 * p/n]
+r_student <- rstudent(lmout)
+r_student[r_student > 2]
+```
+
+b. Check the normality, constant variance and linearity.
+
+```{r}
+## normality
+car::qqPlot(lmout, id = TRUE, col.lines = "blue", 
+            reps = 1000, ylab = "Ordered R-Student Residuals", pch = 16)
+```
+
+
+```{r}
+## normality
+rstud <- rstudent(lmout)
+car::densityPlot(rstud)
+```
+
+
+```{r}
+## constant variance
+car::scatterplot(fitted(lmout), rstudent(lmout), 
+            smooth = list(span = 2/3, lwd.smooth = 3, lwd.spread = 4), 
+            regLine = FALSE, boxplots = FALSE, main = "crim as y",
+            xlab = "Fitted Values", ylab = "R-Student Residuals")
+abline(a = 0, b = 0, col = 2, lwd = 2)
+```
+
+```{r}
+## linearity
+car::crPlots(lmout, ylab = "partial residual", grid = FALSE, main = "")
+```
+
+
+c. Transformming $y$ to satisfy linear regression assumptions.
+
+
+
+
+```{r}
+lmout_log <- lm(log(crim) ~ poly(medv, degree = 2, raw = TRUE), data = Boston)
+```
+
+```{r}
+car::densityPlot(rstudent(lmout_log))
+```
+
+```{r}
+car::scatterplot(fitted(lmout_log), rstudent(lmout_log), 
+            smooth = list(span = 2/3, lwd.smooth = 3, lwd.spread = 4), 
+            regLine = FALSE, boxplots = FALSE, main = "log(crim) as y, medv^2 as x",
+            xlab = "Fitted Values", ylab = "R-Student Residuals")
+abline(a = 0, b = 0, col = 2, lwd = 2)
+```
+
+```{r}
+car::crPlots(lmout_log, ylab = "partial residual", grid = FALSE, main = "")
+```
+
+

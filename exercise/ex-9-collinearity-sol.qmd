@@ -1,0 +1,117 @@
+---
+title: "Exercise 9: Collinearity Solution"
+editor: source
+reference-location: margin
+---
+
+::: callout-note
+Exercises are for practice purpose only.
+:::
+
+
+## Collinearity
+
+<!-- ISL 3.14 -->
+
+1. Perform the code
+
+```{r}
+#| eval: true
+set.seed(1)
+x1 <- runif(100)
+x2 <- 0.5 * x1 + rnorm (100) / 10
+y <- 2 + 2 * x1 + 0.3 * x2 + rnorm (100)
+```
+
+
+  Write out the form of the linear model. What are the regression coefficients?
+
+```{r}
+# y = beta0 + beta1 x1 + beta2 x2 + epsilon
+# beta0 = 2; beta1 = 2, beta2 = 0.3
+```
+
+
+2. Create a scatterplot displaying the relationship between `x1` and `x2`.
+
+```{r}
+plot(x1, x2)
+```
+
+
+3. Fit a least squares regression to the data using `x1` and `x2`. How the LSEs relate to the true $\beta_0$, $\beta_1$ and $\beta_2$? Can you reject $H0 : \beta_1 = 0$? How about $H0 : \beta_2 = 0$?
+
+```{r}
+fit <- lm(y ~ x1 + x2)
+round(summary(fit)$coef, 3)
+```
+
+
+
+4. Fit a least squares regression using only `x1`. Comment on your results. Can you reject $H0 : \beta_1 = 0$?
+
+```{r}
+fit1 <- lm(y ~ x1)
+round(summary(fit1)$coef, 3)
+```
+
+
+5. Fit a least squares regression using only `x2`. Comment on your results. Can you reject $H0 : \beta_2 = 0$?
+
+```{r}
+fit2 <- lm(y ~ x2)
+round(summary(fit2)$coef, 3)
+```
+
+
+6. Do the results obtained in (3)–(5) contradict each other? Explain your answer.
+
+```{r}
+# No, because x1 and x2 have collinearity, it is hard to distinguish their effects when regressed upon together. When they are regressed upon separately, the linear relationship between y and each predictor is indicated more clearly. When using two variables that are highly collinear, the effect on the response of one variable can be masked by the other.
+```
+
+
+7. Now suppose we obtain one additional observation, which was unfortunately mismeasured. Re-fit the linear models from (3) to (5) using this new data. What effect does this new observation have on the each of the models? In each model, is this observation an outlier? A high-leverage point? Both? Explain your answers.
+
+```{r}
+x1 <- c(x1, 0.1)
+x2 <- c(x2, 0.8)
+y <- c(y, 6)
+plot(x1, x2)
+points(0.1, 0.8, pch = 16, col = 2)
+```
+
+```{r}
+misfit <- lm(y ~ x1 + x2)
+round(summary(misfit)$coef, 3)
+misfit1 <- lm(y ~ x1)
+round(summary(misfit1)$coef, 3)
+misfit2 <- lm(y ~ x2)
+round(summary(misfit2)$coef, 3)
+```
+
+```{r}
+plot(misfit$fitted.values, rstudent(misfit))
+rstud <- round(sort(rstudent(misfit), decreasing = TRUE), 2)
+rstud[abs(rstud) > 2]
+hatval <- round(sort(hatvalues(misfit), decreasing = TRUE), 2)
+hatval[hatval > 2 * 3 / 101]
+```
+
+
+```{r}
+plot(misfit1$fitted.values, rstudent(misfit1))
+rstud1 <- round(sort(rstudent(misfit1), decreasing = TRUE), 2)
+rstud1[abs(rstud1) > 2]
+hatval1 <- round(sort(hatvalues(misfit1), decreasing = TRUE), 2)
+hatval1[hatval1 > 2 * 2 / 101]
+```
+
+
+```{r}
+plot(misfit2$fitted.values, rstudent(misfit2))
+rstud2 <- round(sort(rstudent(misfit2), decreasing = TRUE), 2)
+rstud2[abs(rstud2) > 2]
+hatval2 <- round(sort(hatvalues(misfit2), decreasing = TRUE), 2)
+hatval2[hatval2 > 2 * 2 / 101]
+```

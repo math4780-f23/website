@@ -1,0 +1,16 @@
+{
+  "hash": "31f90eb5f5ed731b0d2ecd62e2dd11dc",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 7: Nonparametric Regression Solution\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n\n\n## Nonparametric Regression\n\n<!-- Yu -->\n\n1. For the `Boston` data, use `medv` as the response and `lstat` as the predictor, then do\n\n    (a) Kernel Smoother\n    (b) Local Linear Regression\n    (c) LOESS\n    \n    Try to find the best parameter of each method to get the best fit.\n    \n    \n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ISLR2)\nattach(Boston)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nbw <- c(0.2, 0.5, 0.8, 1, 2, 3, 4)\nplot(lstat, medv, main = \"Kernel Smoother\")\nfor (i in 1: length(bw)) {\n    ks_fit <- KernSmooth::locpoly(lstat, medv, degree = 0, bandwidth = bw[i], \n                                   kernel = \"normal\")\n    lines(ks_fit$x, ks_fit$y, col = i, lwd = 2)\n}\nlegend(\"topright\", paste(\"bandwidth =\", bw), lwd = 2, col = 1:length(bw))\n```\n\n::: {.cell-output-display}\n![](ex-7-nonpar-sol_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nbw <- c(0.2, 0.5, 0.8, 1, 2, 3, 4)\nplot(lstat, medv, main = \"Local Linear Regression\")\nfor (i in 1: length(bw)) {\n    local_fit <- KernSmooth::locpoly(lstat, medv, degree = 1, bandwidth = bw[i], \n                                   kernel = \"normal\")\n    lines(local_fit$x, local_fit$y, col = i, lwd = 2)\n}\nlegend(\"topright\", paste(\"bandwidth =\", bw), lwd = 2, col = 1:length(bw))\n```\n\n::: {.cell-output-display}\n![](ex-7-nonpar-sol_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nspan_vec <- c(0.1, 0.3, 0.5, 1)\nplot(lstat, medv, main = \"LOESS\")\nfor (i in 1: length(span_vec)) {\n  loess_fit <- loess(medv ~ lstat, span = span_vec[i], degree = 2)\n  lines(lstat[order(lstat)], loess_fit$fitted[order(lstat)], col = i, lwd = 2)\n}\nlegend(\"topright\", paste(\"span =\", span_vec), lwd = 2, col = 1:length(span_vec))\n```\n\n::: {.cell-output-display}\n![](ex-7-nonpar-sol_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "ex-7-nonpar-sol_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

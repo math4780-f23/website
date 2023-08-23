@@ -1,30 +1,29 @@
 ---
 title: "Week 10"
-subtitle: "Logistic regression"
+subtitle: "Bootstrapping and Simulation-based Inference"
 editor: visual
 ---
 
 ::: callout-important
-Due date: Project proposal due Fri, Mar 18 at 5:00 pm.
 :::
-
-## Prepare
-
-📖 Read Introduction to Modern Statistics, Chp 9: [Logistic regression](https://openintro-ims.netlify.app/model-logistic.html)
 
 ## Participate
 
-🖥️ [Lecture 18 - Logistic regression](/slides/lec-18.html)
+🖥️ Slides - Bootstrapping
 
-🖥️ [Lecture 19 - Probabilities, odds, odds ratios](/slides/lec-18.html)
+`r fontawesome::fa("table")`  [Data - Manhattan](/slides/data/manhattan.csv)
 
-## Practice
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
-📋 [Application Exercise 9 - Odds](/ae/ae-9-odds.html)
+## Reading
 
-## Perform
+📖 Introduction to Modern Statistics (IMS) - [Ch 12, 24.3](https://openintro-ims.netlify.app/foundations-bootstrapping)
 
-✍️ [HW 3 - Logistic regression and log transformation](/hw/hw-3.html)
+📖 CAR - Ch 5.1 - 5.2
+
+## Exercise
+
+📋 [Exercise 5](/exercise/ex-3-mlr.html)
 
 <br><br>
 

@@ -5,7 +5,7 @@ reference-location: margin
 ---
 
 ::: callout-note
-Exercises are for practice purpose only.
+
 :::
 
 
@@ -66,12 +66,12 @@ tidy(m_wgt_hgt) %>%
 
 $$y_i = 10 + 5x_i + \epsilon_i, ~~ \epsilon_i \stackrel{iid}{\sim} N(0, 2)$$
 
-using the code
+by completing the code
 
 ```{r}
 #| eval: false
-x <- runif(100)
-y <- 10 + 5 * x + rnorm(100, sd = sqrt(2))
+x <- runif(_____)
+y <- ____ + ____ * ____ + r____(_____, sd = _____)
 ```
 
 

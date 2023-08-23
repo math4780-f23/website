@@ -1,0 +1,14 @@
+{
+  "hash": "c3702bca38663c980ee42978e341f4de",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 8: Categorical Variables Solution\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n<!-- ## Conceptual -->\n<!-- ISL 3.3 -->\n\nSuppose we have a data set with five predictors, $X_1 = \\text{GPA}$, $X_2 = \\text{IQ}$, $X_3 = \\text{Level}$ (1 for College and 0 for High School), $X_4 =$ Interaction between GPA and IQ, and $X_5 =$ Interaction between GPA and Level. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get\n$b_0 = 50$, $b_1 = 20$, $b_2 = 0.07$, $b_3 = 35$, $b_4 = 0.01$, $b_5 = −10.$.\n\na. Which answer is correct, and why?\n\n    i. For a fixed value of IQ and GPA, high school graduates earn more, on average, than college graduates.\n  \n    ii. For a fixed value of IQ and GPA, college graduates earn more, on average, than high school graduates.\n  \n    iii. For a fixed value of IQ and GPA, high school graduates earn more, on average, than college graduates provided that the GPA is high enough.\n    \n    iv. For a fixed value of IQ and GPA, college graduates earn more, on average, than high school graduates provided that the GPA is high enough.\n    \n\n\n::: {.cell}\n\n```{.r .cell-code}\n## iii\n```\n:::\n\n\nb. Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngpa <- 4\niq <- 110\nlevel <- 1\n50 + 20 * gpa + 0.07 * iq + 35 * level + 0.01 * (gpa * iq) - 10 * (gpa * level)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 137.1\n```\n:::\n:::\n\n\n\nc. True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n## FALSE\n## 1. We must examine the p-value of the regression coefficient to\n## determine if the interaction term is statistically significant or not.\n## 2. The range of IQ is always between 100~200, which is wider range than GPA(0~4).\n## Therefore, although the coefficient is small, with GPA fixed, the interaction term can have\n## significant effects.\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

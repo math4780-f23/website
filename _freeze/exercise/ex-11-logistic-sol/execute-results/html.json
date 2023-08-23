@@ -1,0 +1,14 @@
+{
+  "hash": "9fe992db5a64a52ae42ea763571bb60a",
+  "result": {
+    "markdown": "---\ntitle: \"Exercise 11: Logistic Regression Solution\"\neditor: source\nreference-location: margin\n---\n\n\n::: callout-note\nExercises are for practice purpose only.\n:::\n\n\n\n## Logistic Regression\n\n<!-- ISL 4.6 -->\n\n1. Suppose we collect data for a group of students in a statistics class with variables $X_1 =$hours studied, $X_2 =$undergrad GPA, and $Y =$receive an A. We fit a logistic regression and produce estimated coefficient, $\\hat{\\beta_0} = −6$, $\\hat{\\beta_1} = 0.05$, $\\hat{\\beta_2} = 1$. \n\n    (a) Estimate the probability that a student who studies for 40 hours and has an undergrad GPA of 3.5 gets an A in the class.\n    \n    (b) How many hours would the student in part (a) need to study to have a 50% chance of getting an A in the class?\n    \n\n\n::: {.cell}\n\n```{.r .cell-code}\nb0 <- -6\nb1 <- 0.05\nb2 <- 1\nx2 <- 3.5\nx1 <- 40\n1 / (1 + exp(-(b0 + b1 * x1 + b2 * x2)))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.3775407\n```\n:::\n:::\n\n\nThe followings use `Boston` data set.\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ISLR2)\nattach(Boston)\n```\n:::\n\n\n2. Create a new variable `crim01` having value 0 if `crim` is smaller than its median, and value 1 otherwise. Add the variable into the Boston data set.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncrim01 <- rep(0, length(crim))\ncrim01[crim > median(crim)] <- 1\nBoston1 <- cbind(Boston, crim01)\n```\n:::\n\n\n\n\n3. Split the *new* `Boston` data set into training (~80%) and test sets (~20%).\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(1)\nidx <- sample(nrow(Boston1), 406)\ntrain <- Boston1[idx, ]\ntest <- Boston1[-idx, ]\n```\n:::\n\n\n\n3. Using the training set, fit logistic regression to predict whether a given census tract in the test set has a crime rate above or below the median.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfit <- glm(crim01 ~ . - crim01 - crim, data = train, \n           family = binomial)\nprob <- predict(fit, test, type = \"response\")\npred <- 1 * (prob > 0.5)\ntable(pred, test$crim01)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n    \npred  0  1\n   0 42  5\n   1  9 44\n```\n:::\n\n```{.r .cell-code}\nmean(pred == test$crim01)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.86\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

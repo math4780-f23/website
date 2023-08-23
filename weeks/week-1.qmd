@@ -14,7 +14,9 @@ editor: visual
 
 ## Reading
 
-📖 Introduction to Statistics, [Ch 8 - 13, 15](https://chenghanyu-introstatsbook.netlify.app/prob-rv).
+📖 Introduction to Statistics (IS) - [Ch 3 - 5, 8 - 13, 15](https://chenghanyu-introstatsbook.netlify.app).
+
+📖 An R Companion to Applied Regression (CAR) - Ch 1 - 3, 9, 10.
 
 ## Participate
 
@@ -23,6 +25,8 @@ editor: visual
 🖥️ [Slides - Overview of Regression](/slides/02-overview.html)
 
 🖥️ [Slides - Probability and Statistics](/slides/03-prob-stat.html)
+
+`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
 ## Exercise
 
