@@ -11,11 +11,9 @@ editor: source
 
 - In your homework, please number and answer questions **in order**. 
 
-- There is no need to submit your work on R programming part. However, I highly recommend reviewing basic R syntax for R data structures and graphics if you haven't got familiar with it.
-
 - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.
 
-- **Relevant code should be attached.**.
+- **Relevant code should be attached.**
 
 
 # Programming and Computing
@@ -30,7 +28,7 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 
 <!-- 1. Use the linearity of expected value $E(X+Y) = E(X) + E(Y)$ and $E(aX) = aE(X)$ where $X$ and $Y$ are random variables and $a$ is a constant to show that for a random variable $Y$, $$\mathrm{Var}(Y) = E(Y^2) - [E(Y)]^2$$ -->
 
-<!-- 1. Let the two independent random variables be $Y_1 \sim N(3, 8)$ and $Y_2 \sim N(1, 4)$. What is the distribution of the variable $2Y_1 + 3Y_2$? -->
+1. $Y_1 \sim N(3, 8)$ and $Y_2 \sim N(1, 4)$, and $Y_1$ and $Y_2$ are independent. What is the distribution the variable $2Y_1 + 3Y_2$ follows?
 
 <!-- 3. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
 
@@ -39,13 +37,13 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 <!--     ii. $\frac{\overline{Y} - \mu}{\sigma/\sqrt{n}}$ and $\frac{(n-1)S^2}{\sigma^2}$ are independent.   -->
 <!--     Use i. and ii. and the fact that *If $Z \sim N(0, 1)$, $V \sim \chi^2_v$ and $Z$ and $V$ are independent, then $\frac{Z}{\sqrt{V/v}} \sim t_{v}$* to show that $$\frac{\overline{Y} - \mu}{S/\sqrt{n}} \sim t_{n-1}$$ -->
 
-1. Plot normal density curves with different choices of mean and standard deviation.
+2. Plot normal density curves with different choices of mean and standard deviation.
 
-2. Choose a continuous variable in `IRLR2::Boston` data set. Use the `sample()` function to draw a simple random sample of size 20 from this population. Calculate the sample average.
+3. Install the R package `IRLR2`. Choose a continuous variable in the `IRLR2::Boston` data set. Use the `sample()` function to draw a simple random sample of size 20 from this population. Calculate the sample average.
 
-3. Repeat 2. several times to get a sampling distribution of the sample mean.
+4. Repeat the sampling in 3. several times to plot a sampling distribution of the sample mean.
 
-4. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$, with unknown $\mu$ and $\sigma$. The $100(1-\alpha)\%$ confidence interval (CI) for the population mean $\mu$ is $\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)$. Use simulation with $\alpha = 0.1$, $\mu = 4$ and $\sigma = 2$ to verify that such CIs contain $\mu$ about $100(1-\alpha)\%$ of times. Fill the percentage in the following table, and comment on your results. Attach your code at the end of your homework PDF file.
+5. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$, with unknown $\mu$ and $\sigma$. The $100(1-\alpha)\%$ confidence interval (CI) for the population mean $\mu$ is $\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)$. Use simulation with $\alpha = 0.1$, $\mu = 4$ and $\sigma = 2$ to verify that such CIs contain $\mu$ about $100(1-\alpha)\%$ of times. Fill the percentage in the following table, and comment on your results.
 
 |Simulation times   | $n=5$        |  $n=30$     | $n=200$
 |------------------ | -------------|-------------|-----------
@@ -54,6 +52,8 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 |$20000$            |
 
 
-5. If $U_1$ and $U_2$ are independent and both are uniform variables over $[0, 1]$ interval (\url{https://en.wikipedia.org/wiki/Continuous_uniform_distribution}), then $X_1$ and $X_2$ defined by $$X_1 = \sqrt{-2\ln(U_1)}\cos(2\pi U_2), \quad X_2 = \sqrt{-2\ln(U_1)}\sin(2\pi U_2)$$ are independent $N(0, 1)$ variables. Draw 10,000 samples for $U_1$ and $U_2$ using the \texttt{runif()} function, and use the transformation to generate the samples of $X_1$ and $X_2$. Verify 
+6. If $U_1$ and $U_2$ are independent and both are uniform random variables over $[0, 1]$ interval <https://en.wikipedia.org/wiki/Continuous_uniform_distribution>, then $X_1$ and $X_2$ defined by $$X_1 = \sqrt{-2\ln(U_1)}\cos(2\pi U_2), \quad X_2 = \sqrt{-2\ln(U_1)}\sin(2\pi U_2)$$ are independent $N(0, 1)$ variables. Draw 10,000 samples for $U_1$ and $U_2$ using the `runif()` function, and use the transformation to generate the samples of $X_1$ and $X_2$. Verify 
     - the standard normality of $X_1$ and $X_2$ by plotting their histogram with a superimposed standard normal density.
     - the independence of $X_1$ and $X_2$ by plotting the scatterplot of $X_1$ and $X_2$ and computing their correlation coefficient.
+
+<!-- 7. **(MSSC)** Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->

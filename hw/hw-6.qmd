@@ -88,7 +88,7 @@ For the following questions (3) to (9), consider all the regressors except $x_4$
 
 4. Calculate the variance inflation factors (VIFs). Is there any evidence of collinearity?
 
-5. Find the eigenvectors associated with the smallest eigenvalues of ${\bf X}'{\bf X}$. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?
+5. Find the eigenvectors associated with the smallest eigenvalues of ${\mathbf X}'{\mathbf X}/(n - 1)$ or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?
 
 6. Compute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data?
 

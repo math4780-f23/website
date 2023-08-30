@@ -37,13 +37,13 @@ In simple linear regression,
 
 Suppose ${\bf A}_{n \times n}$ is a symmetric idempotent matrix.
 
-2. **(MSSC)** Show that the eigenvalues of ${\bf A}$ are either zero or one, and therefore $\text{tr}({\bf A}) = \text{rank}({\bf A})$.
+<!-- 2. **(MSSC)** Show that the eigenvalues of ${\bf A}$ are either zero or one, and therefore $\text{tr}({\bf A}) = \text{rank}({\bf A})$. -->
 
 In multiple linear regression, let the hat matrix ${\bf H}_{n \times n} = {\bf X(X'X)}^{-1}{\bf X'}$.
 
-3. **(MSSC)** Show that ${\bf H}$ and $(\bf I - H)$ are symmetric and idempotent.
+2. **(MSSC)** Show that ${\bf H}$ and $(\bf I - H)$ are symmetric and idempotent.
 
-4. **(MSSC)** Show that $\text{tr}({\bf H}) = p$.
+3. **(MSSC)** Show that $\text{tr}({\bf H}) = p$.
 
 
 # Statistical Computing and Data Analysis
