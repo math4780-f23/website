@@ -365,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
 <ol start="3" type="1">
 <li><p>Obtain the correlation matrix of regressors. Does it give any indication of collinearity?</p></li>
 <li><p>Calculate the variance inflation factors (VIFs). Is there any evidence of collinearity?</p></li>
-<li><p>Find the eigenvectors associated with the smallest eigenvalues of <span class="math inline">\({\bf X}'{\bf X}\)</span>. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?</p></li>
+<li><p>Find the eigenvectors associated with the smallest eigenvalues of <span class="math inline">\({\mathbf X}'{\mathbf X}/(n - 1)\)</span> or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?</p></li>
 <li><p>Compute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data?</p></li>
 <li><p>Fit the ordinary multiple regression and the ridge regression. Use the ridge trace to select an appropriate value of <span class="math inline">\(\delta\)</span>. Explain how the ridge regression coefficients change as the parameter <span class="math inline">\(\delta\)</span> increases. This gives you the idea of why the ridge regression is a <em>shrinkage</em> method.</p></li>
 </ol>

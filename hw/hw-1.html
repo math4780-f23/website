@@ -308,9 +308,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Homework 1 covers course materials of Week 1 to 2.</p></li>
 <li><p>Please submit your work in <strong>one</strong> <strong>PDF</strong> file to <strong>D2L &gt; Assessments &gt; Dropbox</strong>. <em>Multiple files or a file that is not in pdf format are not allowed.</em></p></li>
 <li><p>In your homework, please number and answer questions <strong>in order</strong>.</p></li>
-<li><p>There is no need to submit your work on R programming part. However, I highly recommend reviewing basic R syntax for R data structures and graphics if you haven’t got familiar with it.</p></li>
 <li><p>It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on <em>what you show, not what you want to show</em>. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.</p></li>
-<li><p><strong>Relevant code should be attached.</strong>.</p></li>
+<li><p><strong>Relevant code should be attached.</strong></p></li>
 </ul>
 </section>
 <section id="programming-and-computing" class="level1">
@@ -321,17 +320,19 @@ ul.task-list li input[type="checkbox"] {
 <h1>Probability and Statistics Review</h1>
 <!-- We will use some facts or properties discussed in MATH 4700 and 4710. Here we don't learn why (which should be taught in MATH 4700 and 4710), but just know what they are, and apply them for regression analysis. -->
 <!-- 1. Use the linearity of expected value $E(X+Y) = E(X) + E(Y)$ and $E(aX) = aE(X)$ where $X$ and $Y$ are random variables and $a$ is a constant to show that for a random variable $Y$, $$\mathrm{Var}(Y) = E(Y^2) - [E(Y)]^2$$ -->
-<!-- 1. Let the two independent random variables be $Y_1 \sim N(3, 8)$ and $Y_2 \sim N(1, 4)$. What is the distribution of the variable $2Y_1 + 3Y_2$? -->
+<ol type="1">
+<li><span class="math inline">\(Y_1 \sim N(3, 8)\)</span> and <span class="math inline">\(Y_2 \sim N(1, 4)\)</span>, and <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. What is the distribution the variable <span class="math inline">\(2Y_1 + 3Y_2\)</span> follows?</li>
+</ol>
 <!-- 3. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
 <!-- 4. Let the sample variance be $S^2 = \frac{\sum_{i=1}^n(Y_i - \overline{Y})^2}{n-1}$. The two facts are -->
 <!--     i. $\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}$ -->
 <!--     ii. $\frac{\overline{Y} - \mu}{\sigma/\sqrt{n}}$ and $\frac{(n-1)S^2}{\sigma^2}$ are independent.   -->
 <!--     Use i. and ii. and the fact that *If $Z \sim N(0, 1)$, $V \sim \chi^2_v$ and $Z$ and $V$ are independent, then $\frac{Z}{\sqrt{V/v}} \sim t_{v}$* to show that $$\frac{\overline{Y} - \mu}{S/\sqrt{n}} \sim t_{n-1}$$ -->
-<ol type="1">
+<ol start="2" type="1">
 <li><p>Plot normal density curves with different choices of mean and standard deviation.</p></li>
-<li><p>Choose a continuous variable in <code>IRLR2::Boston</code> data set. Use the <code>sample()</code> function to draw a simple random sample of size 20 from this population. Calculate the sample average.</p></li>
-<li><p>Repeat 2. several times to get a sampling distribution of the sample mean.</p></li>
-<li><p>Suppose <span class="math inline">\(Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)\)</span>, <span class="math inline">\(i = 1, 2, \dots, n\)</span>, with unknown <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. The <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval (CI) for the population mean <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)\)</span>. Use simulation with <span class="math inline">\(\alpha = 0.1\)</span>, <span class="math inline">\(\mu = 4\)</span> and <span class="math inline">\(\sigma = 2\)</span> to verify that such CIs contain <span class="math inline">\(\mu\)</span> about <span class="math inline">\(100(1-\alpha)\%\)</span> of times. Fill the percentage in the following table, and comment on your results. Attach your code at the end of your homework PDF file.</p></li>
+<li><p>Install the R package <code>IRLR2</code>. Choose a continuous variable in the <code>IRLR2::Boston</code> data set. Use the <code>sample()</code> function to draw a simple random sample of size 20 from this population. Calculate the sample average.</p></li>
+<li><p>Repeat the sampling in 3. several times to plot a sampling distribution of the sample mean.</p></li>
+<li><p>Suppose <span class="math inline">\(Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)\)</span>, <span class="math inline">\(i = 1, 2, \dots, n\)</span>, with unknown <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. The <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval (CI) for the population mean <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)\)</span>. Use simulation with <span class="math inline">\(\alpha = 0.1\)</span>, <span class="math inline">\(\mu = 4\)</span> and <span class="math inline">\(\sigma = 2\)</span> to verify that such CIs contain <span class="math inline">\(\mu\)</span> about <span class="math inline">\(100(1-\alpha)\%\)</span> of times. Fill the percentage in the following table, and comment on your results.</p></li>
 </ol>
 <table class="table">
 <thead>
@@ -363,13 +364,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<ol start="5" type="1">
-<li>If <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> are independent and both are uniform variables over <span class="math inline">\([0, 1]\)</span> interval (), then <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> defined by <span class="math display">\[X_1 = \sqrt{-2\ln(U_1)}\cos(2\pi U_2), \quad X_2 = \sqrt{-2\ln(U_1)}\sin(2\pi U_2)\]</span> are independent <span class="math inline">\(N(0, 1)\)</span> variables. Draw 10,000 samples for <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> using the function, and use the transformation to generate the samples of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Verify
+<ol start="6" type="1">
+<li>If <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> are independent and both are uniform random variables over <span class="math inline">\([0, 1]\)</span> interval <a href="https://en.wikipedia.org/wiki/Continuous_uniform_distribution" class="uri">https://en.wikipedia.org/wiki/Continuous_uniform_distribution</a>, then <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> defined by <span class="math display">\[X_1 = \sqrt{-2\ln(U_1)}\cos(2\pi U_2), \quad X_2 = \sqrt{-2\ln(U_1)}\sin(2\pi U_2)\]</span> are independent <span class="math inline">\(N(0, 1)\)</span> variables. Draw 10,000 samples for <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> using the <code>runif()</code> function, and use the transformation to generate the samples of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Verify
 <ul>
 <li>the standard normality of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> by plotting their histogram with a superimposed standard normal density.</li>
 <li>the independence of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> by plotting the scatterplot of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> and computing their correlation coefficient.</li>
 </ul></li>
 </ol>
+<!-- 7. **(MSSC)** Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
 
 
 </section>
