@@ -17,13 +17,13 @@ editor: visual
 
 🖥️ [Slides - Simple Linear Regression](/slides/04-slr.html)
 
-`r fontawesome::fa("table")`  `ggplot2::mpg`
+`r fontawesome::fa("table")` `ggplot2::mpg`
 
-`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+`r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
 ## Perform
 
-✍️ [HW 1 Probability and Statistics due 9/8 11:59 PM](../documents/hw01_4780.pdf)
+✍️ [HW 1 Probability and Statistics due 9/8 11:59 PM](../hw/hw-1.html)
 
 <br><br>
 
