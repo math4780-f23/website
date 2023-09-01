@@ -39,7 +39,7 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 
 2. Plot normal density curves with different choices of mean and standard deviation.
 
-3. Install the R package `IRLR2`. Choose a continuous variable in the `IRLR2::Boston` data set. Use the `sample()` function to draw a simple random sample of size 20 from this population. Calculate the sample average.
+3. Install the R package `ISLR2`. Choose a continuous variable in the `ISLR2::Boston` data set. Use the `sample()` function to draw a simple random sample of size 20 from this population. Calculate the sample average.
 
 4. Repeat the sampling in 3. several times to plot a sampling distribution of the sample mean.
 
