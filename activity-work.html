@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MATH 4780 - Fall 2023 - Homework 6 - Collinearity and Variable Selection</title>
+<title>MATH 4780 - Fall 2023 - Class activity work</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./weeks/week-1.html" rel="next">
+<link href="./activity-description.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -60,10 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="MATH 4780 - Fall 2023 - Homework 6 - Collinearity and Variable Selection">
-<meta property="og:description" content="Due Friday, December 8, 11:59 PM on D2L">
+<meta property="og:title" content="MATH 4780 - Fall 2023 - Class activity work">
 <meta property="og:site-name" content="MATH 4780 - Fall 2023">
 </head>
 
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Homework 6 - Collinearity and Variable Selection</h1>
+      <h1 class="quarto-secondary-nav-title">Class activity work</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -85,8 +85,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/math4780-f23" title="GitHub organization" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
@@ -111,17 +111,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
+  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Schedule</a>
   </div>
 </li>
       </ul>
@@ -136,32 +136,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="./project-description.html" class="sidebar-item-text sidebar-link">Description</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project-tips-resources.html" class="sidebar-item-text sidebar-link">Tips + resources</a>
+  <a href="./project-tips-resources.html" class="sidebar-item-text sidebar-link">Tips + resources</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Class Activities</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Class Activities</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="./activity-description.html" class="sidebar-item-text sidebar-link">Description</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../activity-work.html" class="sidebar-item-text sidebar-link">Activity work</a>
+  <a href="./activity-work.html" class="sidebar-item-text sidebar-link active">Activity work</a>
   </div>
 </li>
       </ul>
@@ -176,77 +176,77 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">Week 1</a>
+  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">Week 1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">Week 2</a>
+  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">Week 2</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">Week 3</a>
+  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">Week 3</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">Week 4</a>
+  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">Week 4</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">Week 5</a>
+  <a href="./weeks/week-5.html" class="sidebar-item-text sidebar-link">Week 5</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">Week 6</a>
+  <a href="./weeks/week-6.html" class="sidebar-item-text sidebar-link">Week 6</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">Week 7</a>
+  <a href="./weeks/week-7.html" class="sidebar-item-text sidebar-link">Week 7</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">Week 8</a>
+  <a href="./weeks/week-8.html" class="sidebar-item-text sidebar-link">Week 8</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link">Week 9</a>
+  <a href="./weeks/week-9.html" class="sidebar-item-text sidebar-link">Week 9</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-10.html" class="sidebar-item-text sidebar-link">Week 10</a>
+  <a href="./weeks/week-10.html" class="sidebar-item-text sidebar-link">Week 10</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-11.html" class="sidebar-item-text sidebar-link">Week 11</a>
+  <a href="./weeks/week-11.html" class="sidebar-item-text sidebar-link">Week 11</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-12.html" class="sidebar-item-text sidebar-link">Week 12</a>
+  <a href="./weeks/week-12.html" class="sidebar-item-text sidebar-link">Week 12</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-13.html" class="sidebar-item-text sidebar-link">Week 13</a>
+  <a href="./weeks/week-13.html" class="sidebar-item-text sidebar-link">Week 13</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-14.html" class="sidebar-item-text sidebar-link">Week 14</a>
+  <a href="./weeks/week-14.html" class="sidebar-item-text sidebar-link">Week 14</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-15.html" class="sidebar-item-text sidebar-link">Week 15</a>
+  <a href="./weeks/week-15.html" class="sidebar-item-text sidebar-link">Week 15</a>
   </div>
 </li>
       </ul>
@@ -261,27 +261,27 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/slr-derivations.html" class="sidebar-item-text sidebar-link">SLR derivations</a>
+  <a href="./supplemental/slr-derivations.html" class="sidebar-item-text sidebar-link">SLR derivations</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">Model diagnostics</a>
+  <a href="./supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">Model diagnostics</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">MLR matrix notation</a>
+  <a href="./supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">MLR matrix notation</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">Log transformations</a>
+  <a href="./supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">Log transformations</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">Model selection criteria</a>
+  <a href="./supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">Model selection criteria</a>
   </div>
 </li>
       </ul>
@@ -295,19 +295,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#homework-instruction-and-requirement" id="toc-homework-instruction-and-requirement" class="nav-link active" data-scroll-target="#homework-instruction-and-requirement">Homework Instruction and Requirement</a></li>
-  <li><a href="#reading-and-writing" id="toc-reading-and-writing" class="nav-link" data-scroll-target="#reading-and-writing">Reading and Writing</a></li>
-  <li><a href="#statistical-computing-and-data-analysis" id="toc-statistical-computing-and-data-analysis" class="nav-link" data-scroll-target="#statistical-computing-and-data-analysis">Statistical Computing and Data Analysis</a></li>
+  <li><a href="#class-activity-1---0919" id="toc-class-activity-1---0919" class="nav-link active" data-scroll-target="#class-activity-1---0919">Class activity 1 - 09/19</a></li>
+  <li><a href="#class-activity-2---0926" id="toc-class-activity-2---0926" class="nav-link" data-scroll-target="#class-activity-2---0926">Class activity 2 - 09/26</a></li>
+  <li><a href="#class-activity-3---1010" id="toc-class-activity-3---1010" class="nav-link" data-scroll-target="#class-activity-3---1010">Class activity 3 - 10/10</a></li>
+  <li><a href="#class-activity-4---1024" id="toc-class-activity-4---1024" class="nav-link" data-scroll-target="#class-activity-4---1024">Class activity 4 - 10/24</a></li>
+  <li><a href="#class-activity-5---1114" id="toc-class-activity-5---1114" class="nav-link" data-scroll-target="#class-activity-5---1114">Class activity 5 - 11/14</a></li>
+  <li><a href="#class-activity-6---1205" id="toc-class-activity-6---1205" class="nav-link" data-scroll-target="#class-activity-6---1205">Class activity 6 - 12/05</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/math4780-f23/website/edit/main/hw/hw-6.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/math4780-f23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/math4780-f23/website/edit/main/activity-work.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/math4780-f23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Homework 6 - Collinearity and Variable Selection</h1>
-<p class="subtitle lead">Due Friday, December 8, 11:59 PM on D2L</p>
+<h1 class="title d-none d-lg-block">Class activity work</h1>
 </div>
 
 
@@ -322,81 +324,47 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="homework-instruction-and-requirement" class="level1">
-<h1>Homework Instruction and Requirement</h1>
+<section id="class-activity-1---0919" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-1---0919">Class activity 1 - 09/19</h2>
 <ul>
-<li><p>Homework 6 covers course materials of Week 1 to 14.</p></li>
-<li><p>Please submit your work in <strong>one</strong> <strong>PDF</strong> file including all parts to <strong>D2L &gt; Assessments &gt; Dropbox</strong>. <em>Multiple files or a file that is not in pdf format are not allowed.</em></p></li>
-<li><p>In your homework, please number and answer questions <strong>in order</strong>.</p></li>
-<li><p>Your entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, <a href="https://rmarkdown.rstudio.com/">(R)Markdown</a>, <a href="https://quarto.org/">Quarto</a>, <a href="https://www.latex-project.org/">LaTex</a>, etc) and your preferred programming language. Your document should be a PDF file.</p></li>
-</ul>
-<!-- - Questions starting with **(MSSC)** are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them. -->
-<ul>
-<li>It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on <em>what you show, not what you want to show</em>. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.</li>
+<li><p>MSSC 5780 Presenters: David Aguilera, Rachel Cutlan</p></li>
+<li><p>MATH 4780 Questioners: Ethan Baierl, Patrick Campbell, Dylan Cardoza</p></li>
 </ul>
 </section>
-<section id="reading-and-writing" class="level1">
-<h1>Reading and Writing</h1>
-<p>In this course, we have been using the classical or frequentist approach to do a variety of statistical inferences, marginal <span class="math inline">\(t\)</span> test for <span class="math inline">\(\beta_j\)</span> and <span class="math inline">\(F\)</span> tests for model comparison for example. But Dr.&nbsp;Yu once said he never uses p-value in his own research, and what is taught in Intro Stats MATH 4720 is mostly problematic. In fact, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic, misused, and resulting in reproducibility and replication crisis in scientific research. Please write a summary paper <em>at least two pages</em> including</p>
+<section id="class-activity-2---0926" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-2---0926">Class activity 2 - 09/26</h2>
 <ul>
-<li>Interpretation of p-value</li>
-<li>List and discussion about the problems of the NHST and p-value method</li>
-<li>Possible solutions to those problems</li>
+<li><p>MSSC 5780 Presenters: Timothy Goodwin, Matt Jaeggin</p></li>
+<li><p>MATH 4780 Questioners: Huangkun Chen, Davion Cook, Nicky Diaz</p></li>
 </ul>
-<p>Some references are</p>
-<ul>
-<li><p><a href="https://en.wikipedia.org/wiki/Misuse_of_p-values">Wikipedia: Misuse of p-values</a></p></li>
-<li><p><a href="https://www.statisticsdonewrong.com/">A. Reinhart (2015), “Statistics Done Wrong”, <em>No Starch Press</em>, San Francisco.</a></p></li>
-<li><p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108">R. L. Wasserstein and Nicole A. Lazar (2016), “The ASA Statement on p-Values: Context, Process, and Purpose”, <em>The American Statistician</em>, 70:2, 129-133.</a></p></li>
-<li><p><a href="https://www.nature.com/articles/d41586-019-00857-9">V. Amrhein, S. Greenland and B. McShane (2019), “Retire statistical significance”, <em>Nature</em>, 567, 305-307.</a></p></li>
-<li><p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2018.1527253">B. McShane, D. Gal, A. Gelman, C. Robert and Jennifer L. Tackett (2019), “Abandon Statistical Significance”, <em>The American Statistician</em>, 73:sup1, 235-245.</a></p></li>
-<li><p><a href="http://stat.columbia.edu/~gelman/research/published/ForkingPaths.pdf">A. Gelamn and E. Loken (2014), “The Statistical Crisis in Science”, <em>American Scientist</em>, 102, 460-465.</a></p></li>
-<li><p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2019.1583913">R. L. Wasserstein, A. L. Schirm and N. A. Lazar (2019), “Moving to a World Beyond p &lt; 0.05”, <em>The American Statistician</em>, 73:sup1, 1-19.</a></p></li>
-</ul>
-<p>There are lots of discussions and papers out there. You are welcome to google more resources to support your argument. The work should be entirely your effort. <em>You are not allowed to copy anyone’s words, and you have to cite any resources you use, papers, blogs, videos, lecture notes, etc, or you violate Marquette academic misconduct policy.</em></p>
-<!--   -  -->
-<!--    -->
-<!--         or  -->
-<!--   - Bayesian Benefits for the Pragmatic Researcher -->
-<!--   -  -->
 </section>
-<section id="statistical-computing-and-data-analysis" class="level1">
-<h1>Statistical Computing and Data Analysis</h1>
-<p>Please perform a data analysis using <span class="math inline">\(\texttt{R}\)</span> or your preferred language. <strong>Any results should be generated by computer outputs, and your work should be done entirely by your computer. Handwriting is not allowed. Relevant code should be attached.</strong></p>
-<p>We use the same data set <code>mpg.csv</code> for data analysis. For the following analysis, if any regressor contains a missing value <code>NA</code>, remove the corresponding row of the data matrix.</p>
-<ol type="1">
-<li><p>Build a linear regression model relating gasoline mileage <span class="math inline">\(y\)</span> to vehicle weight <span class="math inline">\(x_{10}\)</span> and the type of transmission <span class="math inline">\(x_{11}\)</span> (1 automatic; 0 manual). Does the type of transmission significantly affect the mileage performance?</p></li>
-<li><p>Modify the model developed in (1) to include an interaction between vehicle weight and the type of transmission. What conclusions can you draw about the effect of the type of transmission on gasoline mileage? Interpret the parameters in this model.</p></li>
-</ol>
-<p>For the following questions (3) to (9), consider all the regressors except <span class="math inline">\(x_4\)</span>, <span class="math inline">\(x_5\)</span> and <span class="math inline">\(x_{11}\)</span>.</p>
+<section id="class-activity-3---1010" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-3---1010">Class activity 3 - 10/10</h2>
 <ul>
-<li><span class="math inline">\(y\)</span>: MPG</li>
-<li><span class="math inline">\(x_1\)</span>: Displacement (cubic in.)</li>
-<li><span class="math inline">\(x_2\)</span>: Horsepower (ft-lb)</li>
-<li><span class="math inline">\(x_3\)</span>: Torque (ft-lb)</li>
-<li><span class="math inline">\(x_6\)</span>: Carburetor (barrels)</li>
-<li><span class="math inline">\(x_7\)</span>: No.&nbsp;of transmission speeds</li>
-<li><span class="math inline">\(x_8\)</span>: Overall length (in.)</li>
-<li><span class="math inline">\(x_9\)</span>: Width (in.)</li>
-<li><span class="math inline">\(x_{10}\)</span>: Weight (lb)</li>
+<li><p>MSSC 5780 Presenters: Samantha Juedemann, Edward Liu</p></li>
+<li><p>MATH 4780 Questioners: Nathan Fisher, Alberto Gamez Gonzalez, Andrew Hiller</p></li>
 </ul>
-<p><em>Standardize the response and predictors</em> before later analysis.</p>
-<!-- Therefore, now you can treat a correlation matrix of regressors as the matrix ${\bf X}'{\bf X}$, where ${\bf X}$ is formed by the column vectors of predictors after unit length scaling. -->
-<ol start="3" type="1">
-<li><p>Obtain the correlation matrix of regressors. Does it give any indication of collinearity?</p></li>
-<li><p>Calculate the variance inflation factors (VIFs). Is there any evidence of collinearity?</p></li>
-<li><p>Find the eigenvectors associated with the smallest eigenvalues of <span class="math inline">\({\mathbf X}'{\mathbf X}/(n - 1)\)</span> or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?</p></li>
-<li><p>Compute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data?</p></li>
-<li><p>Fit the ordinary multiple regression and the ridge regression. Use the ridge trace to select an appropriate value of <span class="math inline">\(\delta\)</span>. Explain how the ridge regression coefficients change as the parameter <span class="math inline">\(\delta\)</span> increases. This gives you the idea of why the ridge regression is a <em>shrinkage</em> method.</p></li>
-</ol>
-<!-- 8. How much increase in the residual sum of squares has resulted from the -->
-<!-- use of ridge regression? -->
-<!-- 8. How much reduction in $R^2$ has resulted from the use of ridge regression? -->
-<!-- 8. Perform a principal component regression (PCR). In fact, $\lambda_i/\sum_{j=1}^k\lambda_j$ tells us the proportion of total variation of the regreesors that are explained by the $i$-th principal component (PC). Use the fact to choose the number of PCs used in the PCR, so that the proportion of total variation explained by the chosen PCs is at least $95\%$. Compare the coefficients from ordinary least squares, ridge regression and PCR. -->
-<ol start="8" type="1">
-<li><p>Use the all-possible-regressions approach to find an appropriate regression model.</p></li>
-<li><p>Use stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?</p></li>
-</ol>
+</section>
+<section id="class-activity-4---1024" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-4---1024">Class activity 4 - 10/24</h2>
+<ul>
+<li><p>MSSC 5780 Presenters: Sylvester Mensah, Navid Mohseni</p></li>
+<li><p>MATH 4780 Questioners: Jake Konrad, Vanessa Lattas, Danny O’Shea</p></li>
+</ul>
+</section>
+<section id="class-activity-5---1114" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-5---1114">Class activity 5 - 11/14</h2>
+<ul>
+<li><p>MSSC 5780 Presenters: Emmanuel Nyamekye, Adam Reeson</p></li>
+<li><p>MATH 4780 Questioners: Kayley Reith, Donny Robbins, Ray Sun</p></li>
+</ul>
+</section>
+<section id="class-activity-6---1205" class="level2">
+<h2 class="anchored" data-anchor-id="class-activity-6---1205">Class activity 6 - 12/05</h2>
+<ul>
+<li><p>MSSC 5780 Presenters: Anesti Sotirovski, Tanjina Zaman</p></li>
+<li><p>MATH 4780 Questioners: Violet Wang, T.J. James Whapham II, Serena Yang</p></li>
+</ul>
 
 
 </section>
@@ -650,6 +618,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./activity-description.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Description</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./weeks/week-1.html" class="pagination-link">
+        <span class="nav-page-text">Week 1</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
