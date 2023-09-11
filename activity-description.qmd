@@ -1,0 +1,61 @@
+---
+title: "Class activity description"
+date-modified: last-modified
+---
+
+<!-- This class activity guideline was last updated on {{< meta date-modified >}} -->
+
+## Date
+
+There are six in-class activities on **Tuesdays 09/19, 09/26, 10/10, 10/24, 11/14, and 12/05**.
+
+## Format
+
+On each class activity day,
+
+-   [**Two assigned MSSC 5780**](activity-work.html) students are presenting the regression problems assigned two days before the presentation date.
+
+-   Each presentation including Q & A is about **5-minute** long. You will be forced to end your presentation if it is too long.
+
+-   Each presenter should prepare *at least* **two non-Yes-No** questions for all participants to answer.
+
+-   **Each of the [three assigned MATH 4780](activity-work.html)** students should ask either one or both presenters *at least one* **non-Yes-No** question.
+
+## Presentation Materials
+
+-   No specific presentation style/format/materials are required. You, the presenter, decide how you present your work.
+
+-   The presenters should send the presentation materials, PDF, slides for example, to Dr. Yu *before* the class begins on the class activity day.
+
+-   Your presentation materials will be posted on [Activity work](activity-work.html) page.
+
+## Evaluation
+
+There are 60 points for class participation in the final grade calculation. Dr. Yu is the only one who evaluates your participation. Your goal is to convince Dr. Yu that you understand your work well and get engaged in the class activity.
+
+### MSSC 5780
+
+For MSSC 5780 students, your class activity grade is determined by
+
+-   oral presentation
+
+-   presentation material
+
+-   your non-Yes-No questions
+
+-   correctness of your answers to MATH 4780 students
+
+-   5-minute time management
+
+### MATH 4780
+
+For MATH 4780 students, your class activity grade is determined by
+
+-   quality of your non-Yes-No questions
+
+-   the willingness to answer presenters' questions
+
+-   correctness of your answers to the questions asked by MSSC 5780 presenters
+
+
+

@@ -4,7 +4,6 @@ title: "Project description"
 
 To be announced.
 
-
 <!-- ## Timeline -->
 
 <!-- [Topic ideas](#topic-ideas) due Fri, Feb 18 -->
@@ -38,8 +37,11 @@ To be announced.
 <!-- The four primary deliverables for the final project are -->
 
 <!-- -   A written, reproducible report detailing your analysis -->
+
 <!-- -   A GitHub repository corresponding to your report -->
+
 <!-- -   Slides + a video presentation -->
+
 <!-- -   Formal peer review on another team's project -->
 
 <!-- ## Topic ideas {#topic-ideas} -->
@@ -57,6 +59,7 @@ To be announced.
 <!-- -   At least 6 of the columns must be useful and unique predictor variables. -->
 
 <!--     -   Identifier variables such as "name", "social security number", etc. are not useful predictor variables. -->
+
 <!--     -   If you have multiple columns with the same information (e.g. "state abbreviation" and "state name"), then they are not unique predictors. -->
 
 <!-- -   At least one variable that can be identified as a reasonable response variable. -->
@@ -76,7 +79,9 @@ To be announced.
 <!-- #### Introduction and data -->
 
 <!-- -   State the source of the data set. -->
+
 <!-- -   Describe when and how it was originally collected (by the original data curator, not necessarily how you found the data) -->
+
 <!-- -   Describe the observations and the general characteristics being measured in the data -->
 
 <!-- #### Research question -->
@@ -100,8 +105,11 @@ To be announced.
 <!-- The introduction section includes -->
 
 <!-- -   an introduction to the subject matter you're investigating -->
+
 <!-- -   the motivation for your research question (citing any relevant literature) -->
+
 <!-- -   the general research question you wish to explore -->
+
 <!-- -   your hypotheses regarding the research question of interest. -->
 
 <!-- ### Section 2 - Data description -->
@@ -109,6 +117,7 @@ To be announced.
 <!-- In this section, you will describe the data set you wish to explore. This includes -->
 
 <!-- -   description of the observations in the data set, -->
+
 <!-- -   description of how the data was originally collected (not how you found the data but how the original curator of the data collected it). -->
 
 <!-- ### Section 3 - Analysis approach -->
@@ -116,8 +125,11 @@ To be announced.
 <!-- In this section, you will provide a brief overview of your analysis approach. This includes: -->
 
 <!-- -   Description of the response variable. -->
+
 <!-- -   Visualization and summary statistics for the response variable. -->
+
 <!-- -   List of variables that will be considered as predictors -->
+
 <!-- -   Regression model technique (multiple linear regression and logistic regression) -->
 
 <!-- ### Data dictionary (aka code book) -->
@@ -131,10 +143,15 @@ To be announced.
 <!-- ### Proposal grading -->
 
 <!-- | Total                | 10 pts | -->
+
 <!-- |----------------------|--------| -->
+
 <!-- | **Introduction**     | 3 pts  | -->
+
 <!-- | **Data description** | 2 pts  | -->
+
 <!-- | **Analysis plan**    | 4 pts  | -->
+
 <!-- | **Data dictionary**  | 1 pts  | -->
 
 <!-- Each component will be graded as follows: -->
@@ -178,38 +195,63 @@ To be announced.
 <!-- #### Section 1 - M 1:45PM - 3:00PM -->
 
 <!-- | Team being reviewed | Reviewer 1     | Reviewer 2     | -->
+
 <!-- |---------------------|----------------|----------------| -->
+
 <!-- | chaa_chaa_chaa      | yay_stats      | stat_over_flow | -->
+
 <!-- | dekk                | chaa_chaa_chaa | yay_stats      | -->
+
 <!-- | eight               | dekk           | chaa_chaa_chaa | -->
+
 <!-- | housecats           | eight          | dekk           | -->
+
 <!-- | krafthouse          | housecats      | eight          | -->
+
 <!-- | rrawr               | krafthouse     | housecats      | -->
+
 <!-- | stat_over_flow      | rrawr          | krafthouse     | -->
+
 <!-- | yay_stats           | stat_over_flow | rrawr          | -->
 
 <!-- #### Section 2 - M 3:30PM - 4:45PM -->
 
 <!-- | Team being reviewed | Reviewer 1       | Reviewer 2       | -->
+
 <!-- |---------------------|------------------|------------------| -->
+
 <!-- | a_plus_plus_plus    | we_r             | tina             | -->
+
 <!-- | predictors          | a_plus_plus_plus | we_r             | -->
+
 <!-- | sixers              | predictors       | a_plus_plus_plus | -->
+
 <!-- | soy_nuggets         | sixers           | predictors       | -->
+
 <!-- | tina                | soy_nuggets      | sixers           | -->
+
 <!-- | we_r                | tina             | soy_nuggets      | -->
 
 <!-- #### Section 3 - M 5:15PM - 6:30PM -->
 
 <!-- | Team being reviewed              | Reviewer 1                       | Reviewer 2                       | -->
+
 <!-- |------------------------|------------------------|------------------------| -->
+
 <!-- | down_to_earth_goats              | the_three_musketeers             | team_five                        | -->
+
 <!-- | ginger_and_stats                 | down_to_earth_goats              | the_three_musketeers             | -->
+
 <!-- | pineapple_wedge_and_diced_papaya | ginger_and_stats                 | down_to_earth_goats              | -->
+
 <!-- | statchelorettes                  | pineapple_wedge_and_diced_papaya | ginger_and_stats                 | -->
+
 <!-- | statisix                         | statchelorettes                  | pineapple_wedge_and_diced_papaya | -->
+
 <!-- | stats_squad                      | statisix                         | statchelorettes                  | -->
+
 <!-- | team_five                        | stats_squad                      | statisix                         | -->
+
 <!-- | the_three_musketeers             | team_five                        | stats_squad                      | -->
 
 <!-- ### Process and questions -->
@@ -217,9 +259,13 @@ To be announced.
 <!-- Spend \~30 mins to review each team's project. -->
 
 <!-- -   Find your team name on the **Reviewer 1** and **Reviewer 2** columns. -->
+
 <!-- -   For each of the columns, find the name of the team to review in the **Team being reviewed** column. You should already have access to this team's repo. -->
+
 <!-- -   Open the repo of the team you're reviewing, read their project draft, and browser around the rest of their repo. -->
+
 <!-- -   Then, go to the Issues tab in that repo, click on New issue, and click on Get started for the Peer review issue. Fill out this issue, answering the following questions: -->
+
 <!--     -   Peer review by: \[NAME OF TEAM DOING THE REVIEW\] -->
 
 <!--     -   Names of team members that participated in this review: \[FULL NAMES OF TEAM MEMBERS DOING THE REVIEW\] -->
@@ -257,11 +303,17 @@ To be announced.
 <!-- The written report is worth 40 points, broken down as follows -->
 
 <!-- | Total                         | 40 pts | -->
+
 <!-- |-------------------------------|--------| -->
+
 <!-- | **Introduction/data**         | 6 pts  | -->
+
 <!-- | **Methodology**               | 10 pts | -->
+
 <!-- | **Results**                   | 14 pts | -->
+
 <!-- | **Discussion + conclusion**   | 6 pts  | -->
+
 <!-- | **Organization + formatting** | 4 pts  | -->
 
 <!-- [Click here](/documents/project-report-rubric.pdf "Project rubric") for a PDF of the written report rubric. -->
@@ -319,11 +371,17 @@ To be announced.
 <!-- The slide deck should have no more than 6 content slides + 1 title slide. Here is a *suggested* outline as you think through the slides; you [**do not**]{.underline} have to use this exact format for the 6 slides. -->
 
 <!-- -   Title Slide -->
+
 <!-- -   Slide 1: Introduce the topic and motivation -->
+
 <!-- -   Slide 2: Introduce the data -->
+
 <!-- -   Slide 3: Highlights from EDA -->
+
 <!-- -   Slide 4: Final model -->
+
 <!-- -   Slide 5: Interesting findings from the model -->
+
 <!-- -   Slide 6: Conclusions + future work -->
 
 <!-- ### Video presentation -->
@@ -331,8 +389,11 @@ To be announced.
 <!-- For the video presentation, you can speak over your slide deck, similar to the lecture content videos. **The video presentation must be no longer than 8 minutes.** It is fine if the video is shorter than 8 minutes, but it cannot exceed 8 minutes. You may use can use any platform that works best for your group to record your presentation. Below are a few resources on recording videos: -->
 
 <!-- -   [Recording presentations in Zoom](https://kb.siue.edu/61721) -->
+
 <!-- -   [Apple Quicktime for screen recording](https://support.apple.com/en-gb/guide/quicktime-player/qtp97b08e666/mac) -->
+
 <!-- -   [Windows 10 built-in screen recording functionality](https://www.youtube.com/watch?v=OfPbr1mRDuo) -->
+
 <!-- -   [Kap for screen recording](https://getkap.co/) -->
 
 <!-- Once your video is ready, upload the video to Warpwire, then embed the video in an new discussion post on Conversations. -->
@@ -340,19 +401,29 @@ To be announced.
 <!-- #### To upload your video to Warpwire: -->
 
 <!-- -   Click the Warpwire tab in the course Sakai site. -->
+
 <!-- -   Click the "+" and select "Upload files". -->
+
 <!-- -   Locate the video on your computer and click to upload. -->
+
 <!-- -   Once you've uploaded the video to Warpwire, click to share the video and copy the video's URL. You will need this when you post the video in the discussion forum. -->
 
 <!-- #### To post the video to the discussion forum -->
 
 <!-- -   Click the Presentations tab in the course Sakai site. -->
+
 <!-- -   Click the Presentations topic. -->
+
 <!-- -   Click "Start a new conversation". -->
+
 <!-- -   Make the title "Your Team Name: Project Title". For example, "Teaching Team: Our Awesome Presentation". -->
+
 <!-- -   Click the Warpwire icon (between the table and shopping cart icons). -->
+
 <!-- -   Select your video, then click "Insert 1 item." This will embed your video in the conversation. -->
+
 <!-- -   Under the video, paste the URL to your video. -->
+
 <!-- -   You're done! -->
 
 <!-- ## Presentation comments {#presentation-comments} -->
@@ -368,28 +439,51 @@ To be announced.
 <!-- Find your team name in the first column, watch videos from teams in the second column and leave comments. -->
 
 <!-- | Reviewer                         | First video to review            | Second video to review           | -->
+
 <!-- |:-----------------------|:-----------------------|:-----------------------| -->
+
 <!-- | Ginger and Stats                 | Eight                            | We R                             | -->
+
 <!-- | Krafthouse                       | Ginger and Stats                 | Eight                            | -->
+
 <!-- | Soy Nuggets                      | Krafthouse                       | Ginger and Stats                 | -->
+
 <!-- | Down To Earth Goats              | Soy Nuggets                      | Krafthouse                       | -->
+
 <!-- | A+++                             | Down To Earth Goats              | Soy Nuggets                      | -->
+
 <!-- | Team Five                        | A+++                             | Down To Earth Goats              | -->
+
 <!-- | Rrawr                            | Team Five                        | A+++                             | -->
+
 <!-- | Housecats                        | Rrawr                            | Team Five                        | -->
+
 <!-- | Dekk                             | Housecats                        | Rrawr                            | -->
+
 <!-- | Stat OverFlow                    | Dekk                             | Housecats                        | -->
+
 <!-- | The Three Musketeers             | Stat OverFlow                    | Dekk                             | -->
+
 <!-- | Predictors                       | The Three Musketeers             | Stat OverFlow                    | -->
+
 <!-- | Stats Squad                      | Predictors                       | The Three Musketeers             | -->
+
 <!-- | Statisix                         | Stats Squad                      | Predictors                       | -->
+
 <!-- | Sixers                           | Statisix                         | Stats Squad                      | -->
+
 <!-- | Yay Stats                        | Sixers                           | Statisix                         | -->
+
 <!-- | TINA                             | Yay Stats                        | Sixers                           | -->
+
 <!-- | Statchelorettes                  | TINA                             | Yay Stats                        | -->
+
 <!-- | Pineapple Wedge and Diced Papaya | Statchelorettes                  | TINA                             | -->
+
 <!-- | Chaa Chaa Chaa                   | Pineapple Wedge and Diced Papaya | Statchelorettes                  | -->
+
 <!-- | We R                             | Chaa Chaa Chaa                   | Pineapple Wedge and Diced Papaya | -->
+
 <!-- | Eight                            | We R                             | Chaa Chaa Chaa                   | -->
 
 <!-- ## Reproducibility + organization -->
@@ -423,14 +517,23 @@ To be announced.
 <!-- The grade breakdown is as follows: -->
 
 <!-- | Total                              | 100 pts | -->
+
 <!-- |------------------------------------|---------| -->
+
 <!-- | **Topic ideas**                    | 5 pts   | -->
+
 <!-- | **Project proposal**               | 10 pts  | -->
+
 <!-- | **Peer review**                    | 10 pts  | -->
+
 <!-- | **Written report**                 | 40 pts  | -->
+
 <!-- | **Slides + video presentation**    | 20 pts  | -->
+
 <!-- | **Reproducibility + organization** | 5 pts   | -->
+
 <!-- | **Video comments**                 | 5 pts   | -->
+
 <!-- | **Peer teamwork evaluation**       | 5 pts   | -->
 
 <!-- *Note: No late project reports or videos are accepted.* -->
@@ -440,16 +543,23 @@ To be announced.
 <!-- Grading of the project will take into account the following: -->
 
 <!-- -   Content - What is the quality of research and/or policy question and relevancy of data to those questions? -->
+
 <!-- -   Correctness - Are statistical procedures carried out and explained correctly? -->
+
 <!-- -   Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations? -->
+
 <!-- -   Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project? -->
 
 <!-- A general breakdown of scoring is as follows: -->
 
 <!-- -   *90%-100%*: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others. -->
+
 <!-- -   *80%-89%*: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others. -->
+
 <!-- -   *70%-79%*: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear. -->
+
 <!-- -   *60%-69%*: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear. -->
+
 <!-- -   *Below 60%*: Student is not making a sufficient effort. -->
 
 <!-- ### Late work policy -->

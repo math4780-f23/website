@@ -69,6 +69,12 @@ website:
             text: Description
           - href: project-tips-resources.qmd
             text: Tips + resources
+      - section: "Class Activities"
+        contents:
+          - href: activity-description.qmd
+            text: Description
+          - href: activity-work.qmd
+            text: Activity work
       - section: "Weekly materials"
         contents:
           - href: weeks/week-1.qmd
