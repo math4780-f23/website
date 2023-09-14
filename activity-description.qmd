@@ -15,7 +15,7 @@ On each class activity day,
 
 -   [**Two assigned MSSC 5780**](activity-work.html) students are presenting the regression problems assigned two days before the presentation date.
 
--   Each presentation including Q & A is about **5-minute** long. You will be forced to end your presentation if it is too long.
+-   Each presentation including Q & A is about <span style="color:blue"> **7 to 8 minute** </span> long. You will be forced to end your presentation if it is too long.
 
 -   Each presenter should prepare *at least* **two non-Yes-No** questions for all participants to answer.
 
@@ -45,17 +45,14 @@ For MSSC 5780 students, your class activity grade is determined by
 
 -   correctness of your answers to MATH 4780 students
 
--   5-minute time management
+-   ~~5-minute~~ time management
 
 ### MATH 4780
 
 For MATH 4780 students, your class activity grade is determined by
 
--   quality of your non-Yes-No questions
+-   quality of your non-Yes-No questions <span style="color:blue"> (three assigned 4780 students) </span>
 
--   the willingness to answer presenters' questions
+-   the willingness to <span style="color:blue"> answer/ask questions (all students) </span>
 
 -   correctness of your answers to the questions asked by MSSC 5780 presenters
-
-
-

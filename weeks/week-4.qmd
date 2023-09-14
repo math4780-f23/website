@@ -12,7 +12,7 @@ editor: visual
 
 🖥️ Slides - Multiple Linear Regression
 
-`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+`r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
 ## Reading
 
@@ -20,7 +20,7 @@ editor: visual
 
 ## Perform
 
-✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](/)
+✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](hw/hw-2.html)
 
 <br><br>
 

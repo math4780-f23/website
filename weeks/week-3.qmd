@@ -13,7 +13,7 @@ editor: visual
 
 🖥️ [Slides - Simple Linear Regression](/slides/04-slr.html)
 
-`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+`r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
 ## Reading
 
