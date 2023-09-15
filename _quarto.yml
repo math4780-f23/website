@@ -109,8 +109,8 @@ website:
             text: "Week 15"
       - section: "Supplementary materials for MSSC 5780"
         contents:
-          - href: supplemental/slr-derivations.qmd
-            text: SLR derivations
+          # - href: supplemental/slr-derivations.qmd
+          #   text: SLR derivations
           - href: supplemental/model-diagnostics-matrix.qmd
             text: Model diagnostics
           - href: supplemental/mlr-matrix.qmd

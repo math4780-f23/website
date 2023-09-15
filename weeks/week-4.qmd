@@ -20,7 +20,7 @@ editor: visual
 
 ## Perform
 
-✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](hw/hw-2.html)
+✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](../hw/hw-2.html)
 
 <br><br>
 
