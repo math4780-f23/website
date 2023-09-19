@@ -390,7 +390,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Multiple Linear Regression 👩‍💻</h1>
+<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Multiple Linear Regression 👨‍💻</h1>
   <p class="subtitle">MATH 4780 / MSSC 5780 Regression Analysis</p>
 
 <div class="quarto-title-authors">
@@ -540,11 +540,31 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 </div>
 </section><section id="section-1" class="slide level2"><h2></h2>
 <p><strong>I hope you don’t feel…</strong></p>
-
-<img data-src="./images/05-mlr/mlr_depress.jpeg" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">Source: https://memegenerator.net/instance/62248186/first-world-problems-multiple-regression-more-like-multiple-depression</p></section><section id="section-2" class="slide level2"><h2></h2>
+<div class="small">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/05-mlr/mlr_depress.jpeg" style="width:46.0%"></p>
+<p></p><figcaption>Source: https://memegenerator.net/instance/62248186/first-world-problems-multiple-regression-more-like-multiple-depression</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section><section id="section-2" class="slide level2"><h2></h2>
 <p><strong>What I hope is…</strong></p>
-
-<img data-src="./images/05-mlr/mlr_meme.jpeg" style="width:85.0%" class="r-stretch quarto-figure-center"></section><section id="multiple-linear-regression-mlr-model" class="slide level2"><h2>Multiple Linear Regression (MLR) Model</h2>
+<div class="small">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/05-mlr/mlr_meme.jpeg" style="width:82.0%"></p>
+<p></p><figcaption>https://www.tldrpharmacy.com/content/how-to-be-awesome-at-biostatistics-and-literature-evaluation-part-iii</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section><section id="multiple-linear-regression-mlr-model" class="slide level2"><h2>Multiple Linear Regression (MLR) Model</h2>
 <ul>
 <li>We have <span class="math inline">\(k\)</span> distinct predictors. The (population) multiple linear regression model: <span class="math display">\[Y_i= \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \dots + \beta_kX_{ik} + \epsilon_i\]</span>
 </li>
@@ -604,7 +624,7 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 </li>
 </ul>
 
-<img data-src="./images/05-mlr/mlr_data_matrix.png" style="width:49.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/05-mlr/mlr_data_matrix.png" style="width:48.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li>Writing our data and model without using matrix starts getting tedious.</li>
 <li>Later we’ll see our to write it in a more clean way using matrix notation.</li>
 <li>our mpg data set in the homework has this type of structure.</li>
@@ -834,7 +854,8 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
       }</style></aside>
 </div>
 </section><section id="r-lab-delivery-time-data" class="slide level2"><h2>
-<span class="pink">R Lab</span> Delivery Time Data</h2>
+<span class="pink">R Lab</span> <a href="./data/data-ex-3-1.csv">Delivery Time Data</a>
+</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
@@ -977,11 +998,11 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 <ul>
 <li><p><span class="math inline">\(SS_{res} = \sum_{i=1}^ne_i^2 = \sum_{i=1}^n(y_i - \hat{y}_i)^2\)</span>.</p></li>
 <li><p><span class="math inline">\(MS_{res} = \frac{SS_{res}}{n - p}\)</span> with <span class="math inline">\(p = k + 1\)</span>.</p></li>
-<li><p><span class="math inline">\(s^2 = MS_{res}\)</span> is <em>unbiased</em> for <span class="math inline">\(\sigma^2\)</span>, i.e., <span class="math inline">\(E[MS_{res}] = \sigma^2\)</span>.</p></li>
+<li><p><span class="math inline">\(S^2 = MS_{res}\)</span> is <em>unbiased</em> for <span class="math inline">\(\sigma^2\)</span>, i.e., <span class="math inline">\(E[MS_{res}] = \sigma^2\)</span>.</p></li>
 </ul>
 <!-- - $\hat{\sigma}^2 = MS_{res}$ is model dependent. Its value varies with change of the model. --><ul>
-<li><p><span class="math inline">\(s^2\)</span> of SLR may be quite larger than the <span class="math inline">\(s^2\)</span> of MLR.</p></li>
-<li><p><span class="math inline">\(s^2\)</span> measures the variation of the <em>unexplained</em> noise about the fitted regression line/hyperplane, so we prefer a small residual mean square.</p></li>
+<li><p><span class="math inline">\(S^2\)</span> of SLR may be quite larger than the <span class="math inline">\(S^2\)</span> of MLR.</p></li>
+<li><p><span class="math inline">\(S^2\)</span> measures the variation of the <em>unexplained</em> noise about the fitted regression line/hyperplane, so we prefer a small residual mean square.</p></li>
 </ul>
 <aside class="notes"><ul>
 <li>
@@ -1026,7 +1047,7 @@ y_i &amp;= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_k x_{ik} + \e
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## method 3</span></span>
-<span><span class="op">(</span><span class="va">SS_res1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">delivery_data</span><span class="op">$</span><span class="va">time</span> <span class="op">-</span> <span class="va">delivery_lm</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">(</span><span class="va">SS_res1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">delivery_data</span><span class="op">$</span><span class="va">time</span> <span class="op">-</span> <span class="va">delivery_lm</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 234</code></pre>
 </div>
@@ -1099,40 +1120,14 @@ distance    0.0069  0.022</code></pre>
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="correlated-coefficients" class="slide level2"><h2>Correlated Coefficients</h2>
-<div class="fact">
-<p>Covariance of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mathrm{Cov}(X, Y)\)</span> is defined as <span class="math display">\[\small \mathrm{Cov}(X, Y) = E[(X - E(X))(Y - E(Y))]\]</span></p>
-</div>
-<div class="question">
-<p>What is <span class="math inline">\(\mathrm{Cov}(X, X)\)</span>?</p>
-</div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fact">
-<p>The covariance matrix of the coefficient vector <span class="math inline">\({\bf b} = (b_0, b_1, b_2)'\)</span> is <span class="math display">\[\scriptsize \begin{align} \mathrm{Cov}({\bf b}) &amp;= \begin{bmatrix} \mathrm{Cov}(b_0, b_0) &amp; \mathrm{Cov}(b_0, b_1) &amp; \mathrm{Cov}(b_0, b_2) \\ \mathrm{Cov}(b_1, b_0) &amp; \mathrm{Cov}(b_1, b_1) &amp; \mathrm{Cov}(b_1, b_2) \\ \mathrm{Cov}(b_2, b_0) &amp; \mathrm{Cov}(b_2, b_1) &amp; \mathrm{Cov}(b_2, b_2) \end{bmatrix} \end{align}\]</span></p>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fact">
-<p>The correlation matrix of the coefficient vector <span class="math inline">\({\bf b} = (b_0, b_1, b_2)'\)</span> is <span class="math display">\[\scriptsize \begin{align} \mathrm{Corr}({\bf b}) &amp;= \begin{bmatrix} 1 &amp; r_{01} &amp; r_{02} \\ r_{10} &amp; 1 &amp; r_{12} \\ r_{20} &amp; r_{21} &amp; 1 \end{bmatrix} \end{align}\]</span></p>
-</div>
-</div>
-</div>
-</div>
-</section><section id="correlated-coefficients-1" class="slide level2"><h2>Correlated Coefficients</h2>
-<p>All <span class="math inline">\(b_j\)</span> are correlated!</p>
+      }</style></aside></section><section id="correlated-coefficients-1" class="slide level2"><h2>Correlated Coefficients</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## variance-covariance matrix</span></span>
-<span><span class="op">(</span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            (Intercept)    cases distance
-(Intercept)     1.20282 -0.04726 -8.9e-04
-cases          -0.04726  0.02915 -5.1e-04
-distance       -0.00089 -0.00051  1.3e-05</code></pre>
-</div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## standard error</span></span>
+<span><span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## standard error</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)       cases    distance 
@@ -1141,7 +1136,7 @@ distance       -0.00089 -0.00051  1.3e-05</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## correlation matrix</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## correlation matrix</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov2cor</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            (Intercept) cases distance
@@ -1165,10 +1160,9 @@ distance          -0.22 -0.82     1.00</code></pre>
 <ul>
 <li>The <span class="math inline">\((1-\alpha)100\%\)</span> CI for a <strong>set</strong> of <span class="math inline">\(b_j\)</span>s will be an <strong>elliptically-shaped region</strong>!</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## confidence region</span></span>
+<!-- :::: {.columns} --><!-- ::: {.column width="50%"} --><div class="cell" data-layout-align="center">
+<details><summary>Code</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mgp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.8</span>, <span class="fl">0.9</span>, <span class="fl">0</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## confidence region</span></span>
 <span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html">confidenceEllipse</a></span><span class="op">(</span></span>
 <span>    <span class="va">delivery_lm</span>, </span>
 <span>    levels <span class="op">=</span> <span class="fl">0.95</span>, </span>
@@ -1181,20 +1175,26 @@ distance          -0.22 -0.82     1.00</code></pre>
 <span><span class="co">## marginal CI for cases</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">ci</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  </span>
 <span><span class="co">## marginal CI for distance</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">ci</span><span class="op">[</span><span class="fl">3</span>, <span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">ci</span><span class="op">[</span><span class="fl">3</span>, <span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1.4</span>, y <span class="op">=</span> <span class="fl">0.01</span>, col <span class="op">=</span> <span class="st">"red"</span>, cex <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2</span>, y <span class="op">=</span> <span class="fl">0.008</span>, col <span class="op">=</span> <span class="st">"black"</span>, cex <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/05-mlr/unnamed-chunk-31-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ul>
+<!-- ::: -->
+<!-- ::: {.column width="50%"} -->
+<!-- # ```{r} -->
+<!-- # #| out-width: 100% -->
+<!-- # par(mgp = c(2.8, 0.9, 0), mar = c(4, 4, 2, 0)) -->
+<!-- # car::confidenceEllipse(delivery_lm, levels = 0.95, which.coef = c("cases", "distance"),  -->
+<!-- #                        main = expression(paste("95% Confidence Region for ", beta[1], " and ",  beta[2]))) -->
+<!-- # abline(v = ci[2, ], lty = 2, lwd = 2)  ## marginal CI for cases -->
+<!-- # abline(h = ci[3, ], lty = 2, lwd = 2)  ## marginal CI for distance -->
+<!-- # points(x = 1.4, y = 0.01, col = "red", cex = 2, pch = 16) -->
+<!-- # points(x = 2, y = 0.008, col = "black", cex = 2, pch = 16) -->
+<!-- # ``` -->
+<!-- ::: -->
+<!-- :::: -->
+<img data-src="./images/05-mlr/unnamed-chunk-30-1.png" style="width:85.0%" class="r-stretch quarto-figure-center"><ul>
 <li>Some points (red) within the marginal intervals are implausible according to the joint region.</li>
 <li>The joint region includes values of the coefficient for cases (black), for example, that are excluded from the marginal interval.</li>
 </ul>
@@ -1223,7 +1223,7 @@ distance          -0.22 -0.82     1.00</code></pre>
 </li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
 <span>        newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="fl">8</span>, distance <span class="op">=</span> <span class="fl">275</span><span class="op">)</span>,</span>
 <span>        interval <span class="op">=</span> <span class="st">"confidence"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1263,7 +1263,7 @@ distance          -0.22 -0.82     1.00</code></pre>
 </li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">delivery_lm</span>,</span>
 <span>        newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="fl">8</span>, distance <span class="op">=</span> <span class="fl">275</span><span class="op">)</span>,</span>
 <span>        interval <span class="op">=</span> <span class="st">"predict"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1295,17 +1295,46 @@ distance          -0.22 -0.82     1.00</code></pre>
           display:block!important;
       }</style></aside></section><section id="predictor-effect-plots" class="slide level2"><h2>Predictor Effect Plots</h2>
 <ul>
-<li><p>A complete picture of the regression surface generated by the fitted model would require drawing a <span class="math inline">\(p\)</span>-dimensional graph.</p></li>
-<li><p><strong>Predictor effect plots</strong> look at one or two-dimensional plots for each predictor.</p></li>
-<li><p>To plot the predictor effect plot for <span class="math inline">\(x_1\)</span>, fix the values of all other predictors ( <span class="math inline">\(x_2\)</span> in the example), substituting these fixed values into the fitted regression equation.</p></li>
-<li><p>Fix <span class="math inline">\(x_2\)</span> at its average, <span class="math inline">\(\hat{y} = 2.34 + 1.62 ~x_1 + 0.014 (409.28)\)</span></p></li>
+<li><p>A complete picture of the regression surface requires drawing a <span class="math inline">\(p\)</span>-dimensional graph.</p></li>
+<li><p><strong>Predictor effect plots</strong> look at 1 or 2D plots for each predictor.</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>The predictor effect plot for <span class="math inline">\(x_1\)</span>:
+<ul>
+<li>fix the values of all other predictors ( <span class="math inline">\(x_2\)</span> in the example)</li>
+<li>substitute these fixed values into the fitted regression equation.</li>
+</ul>
+</li>
+<li>Fix <span class="math inline">\(x_2\)</span> at its average, <span class="math inline">\(\hat{y} = 2.34 + 1.62 ~x_1 + 0.014 (409.28)\)</span>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p><strong>Same</strong> slope for <em>any</em> choice of fixed values of other predictors.</p></li>
+<li><p>The intercepts depend on the values of other predictors.</p></li>
+</ul>
+<aside class="notes"><ul>
+<li><p>A complete picture of the regression surface generated by the fitted model requires drawing a <span class="math inline">\(p\)</span>-dimensional graph.</p></li>
 <li><p>Fix <span class="math inline">\(x_1\)</span> at its average, <span class="math inline">\(\hat{y} = 2.34 + 1.62 (8.76) + 0.014 ~x_2\)</span></p></li>
 <li><p>The slope would be the <strong>same</strong> for <em>any</em> choice of fixed values of other predictors.</p></li>
-<li><p>The intercepts depend on the values of other predictors.</p></li>
-</ul></section><section id="r-lab-predictor-effect-plots" class="slide level2"><h2>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="r-lab-predictor-effect-plots" class="slide level2"><h2>
 <span class="pink">R Lab</span> Predictor Effect Plots</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">effects</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">effects</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu">effects</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/effects/man/predictorEffects.html">predictorEffects</a></span><span class="op">(</span>mod <span class="op">=</span> <span class="va">delivery_lm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
@@ -1313,7 +1342,7 @@ distance          -0.22 -0.82     1.00</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/05-mlr/unnamed-chunk-37-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/05-mlr/unnamed-chunk-36-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1322,7 +1351,7 @@ distance          -0.22 -0.82     1.00</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/05-mlr/unnamed-chunk-38-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/05-mlr/unnamed-chunk-37-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1336,40 +1365,6 @@ distance          -0.22 -0.82     1.00</code></pre>
 <li>Without correction for simultaneous statistical inference</li>
 <li>plot(effects::predictorEffects(mod = delivery_lm, confint = list(type = “Scheffe”))) ‘arg’ should be one of “pointwise”, “Scheffe”, “scheffe”</li>
 </ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="extrapolation" class="slide level2"><h2>Extrapolation</h2>
-<ul>
-<li>In MLR, it’s easy to inadvertently extrapolate since the regressors jointly define the region containing the data.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/05-mlr/unnamed-chunk-39-1.png" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>define the smallest convex set containing all of the original <span class="math inline">\(n\)</span> regressor points, as the regressor vairiable hull (RVH).</li>
-<li>a point within the ranges of x1 and x2 may not be necessarily a interpolation point.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/05-mlr/unnamed-chunk-40-1.png" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1414,9 +1409,53 @@ Tests on Subsets of Coefficients (Later)
 <span style="color:blue"> <span class="math inline">\(H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one } j\)</span> </span> <!-- - The $F$ test of ANOVA performs the test. -->
 </li>
 </ul>
-
-<!-- - $SS_T = {\bf y'y} - \frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_R = {\bf b'X'y}-\frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_{res} = {\bf y'y} - {\bf b'X'y}$ -->
-<img data-src="./images/05-mlr/anova_mlr.png" style="width:85.0%" class="r-stretch quarto-figure-center"><ul>
+<!-- # ```{r} --><!-- # knitr::include_graphics("./images/05-mlr/anova_mlr.png") --><!-- # ``` --><!-- - $SS_T = {\bf y'y} - \frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_R = {\bf b'X'y}-\frac{\left(\sum_{i=1}^n y_i \right)^2}{n}$, $SS_{res} = {\bf y'y} - {\bf b'X'y}$ --><div class="fragment">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Source of Variation</th>
+<th style="text-align: center;">SS</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">MS</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">
+<span class="math inline">\(p\)</span>-value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Regression</td>
+<td style="text-align: center;"><span class="math inline">\(SS_R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{MS_R}{MS_{res}} = F_{test}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(F_{k, n-k-1} &gt; F_{test})\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residual</td>
+<td style="text-align: center;"><span class="math inline">\(SS_{res}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-k-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_{res}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(SS_{T}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-1\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(F_{test} &gt; F_{\alpha, k, n - k - 1}\)</span>.</li>
 </ul>
 <aside class="notes"><ul>
@@ -1435,19 +1474,15 @@ Tests on Subsets of Coefficients (Later)
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="r-lab-test-for-significance" class="slide level2"><h2>
+      }</style></aside>
+</div>
+</section><section id="r-lab-test-for-significance" class="slide level2"><h2>
 <span class="pink">R Lab</span> Test for Significance</h2>
 <p><span style="color:blue"> <span class="math inline">\(H_0: \beta_{1} = \beta_{2} = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one } j\)</span> </span></p>
-<div class="cell" data-layout-align="center" data-output.lines="[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-output.lines="[9,10,11,12,13,14,15,16,17,18,19]">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="my_class800"><code>...
-lm(formula = time ~ cases + distance, data = delivery_data)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--5.788 -0.663  0.436  1.157  7.420 
-
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)  2.34123    1.09673    2.13  0.04417 *  
@@ -1476,9 +1511,53 @@ F-statistic:  261 on 2 and 22 DF,  p-value: 4.69e-16
           display:block!important;
       }</style></aside></section><section id="r-lab-wrong-anova-table" class="slide level2"><h2>
 <span class="pink">R Lab</span> Wrong ANOVA Table</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Source of Variation</th>
+<th style="text-align: center;">SS</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">MS</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">
+<span class="math inline">\(p\)</span>-value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Regression</td>
+<td style="text-align: center;"><span class="math inline">\(SS_R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_R\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{MS_R}{MS_{res}} = F_{test}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(F_{k, n-k-1} &gt; F_{test})\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residual</td>
+<td style="text-align: center;"><span class="math inline">\(SS_{res}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-k-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_{res}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(SS_{T}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-1\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## This is for sequential F-test</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">delivery_lm</span><span class="op">)</span> <span class="co">## This is for sequential F-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -1494,8 +1573,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <ul>
 <li>This is so called <strong>Type-I</strong> ANOVA table for a <em>sequential F-test</em>, which is <strong>NOT</strong> what we want.</li>
 </ul>
-
-<img data-src="./images/05-mlr/anova_mlr.png" style="width:85.0%" class="r-stretch quarto-figure-center"></section><section id="r-lab-anova-table-null-vs.-full" class="slide level2"><h2>
+<!-- # ```{r} --><!-- #  --><!-- # knitr::include_graphics("./images/05-mlr/anova_mlr.png") --><!-- # ``` --></section><section id="r-lab-anova-table-null-vs.-full" class="slide level2"><h2>
 <span class="pink">R Lab</span> ANOVA Table: Null vs.&nbsp;Full</h2>
 <div class="alert">
 <p>Testing coefficients is like model comparison: <strong>Compare the full model with the model under <span class="math inline">\(H_0\)</span></strong>!</p>
@@ -1518,8 +1596,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
+<div class="fragment">
 <div class="cell" data-layout-align="center" data-output.lines="[1,2,3,4,5,6,7]">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## regression with intercept only</span></span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## regression with intercept only</span></span>
 <span><span class="va">null_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="fl">1</span>,</span>
 <span>                 data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">null_model</span>, <span class="va">delivery_lm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1533,6 +1612,7 @@ Model 2: time ~ cases + distance
 1     24 5785                             
 2     22  234  2      5551 261 4.7e-16 ***
 ...</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1558,9 +1638,9 @@ Model 2: time ~ cases + distance
 <li>
 <span class="math inline">\(R^2 = \frac{SS_R}{SS_T} = 1 - \frac{SS_{res}}{SS_T}\)</span>
 <ul>
-<li>calculated exactly as in SLR.</li>
+<li>calculated as in SLR.</li>
 <li>accesses how well the regression model fits the data.</li>
-<li>measures the proportion of variability in <span class="math inline">\(Y\)</span> that is explained by the regression model or the <span class="math inline">\(k\)</span> predictors.</li>
+<li>measures the proportion of variability in <span class="math inline">\(Y\)</span> that is explained by the regression or the <span class="math inline">\(k\)</span> predictors.</li>
 <li>The model with one additional predictor <strong>always gets a higher <span class="math inline">\(R^2\)</span></strong>.</li>
 </ul>
 </li>
@@ -1622,9 +1702,9 @@ Model 2: time ~ cases + distance
 </div>
 </section><section id="adjusted-r2-example" class="slide level2"><h2>Adjusted <span class="math inline">\(R^2\)</span> Example</h2>
 <ul>
-<li>Suppose that for a model with 3 predictors, <span class="math inline">\(SS_{res} = 90\)</span>, <span class="math inline">\(SS_T = 245\)</span>, and <span class="math inline">\(n = 15\)</span>. <span class="math display">\[R^2_{adj} = 1 - \frac{90/(15-4)}{245/(15-1)} = 0.53\]</span>
+<li>For a model with 3 predictors, <span class="math inline">\(SS_{res} = 90\)</span>, <span class="math inline">\(SS_T = 245\)</span>, and <span class="math inline">\(n = 15\)</span>. <span class="math display">\[R^2_{adj} = 1 - \frac{90/(15-4)}{245/(15-1)} = 0.53\]</span>
 </li>
-<li>Now suppose that the 4-th regressor is added into the model, and <span class="math inline">\(SS_{res} = 88\)</span> (always decreases). Then <span class="math display">\[R^2_{adj} = 1 - \frac{88/(15-5)}{245/(15-1)} = 0.49\]</span>
+<li>The 4-th regressor is added into the model, and <span class="math inline">\(SS_{res} = 88\)</span> (always decreases). Then <span class="math display">\[R^2_{adj} = 1 - \frac{88/(15-5)}{245/(15-1)} = 0.49\]</span>
 </li>
 </ul>
 <div class="fragment">
@@ -1634,7 +1714,7 @@ Model 2: time ~ cases + distance
 <span class="pink">R Lab</span> <span class="math inline">\(R^2\)</span> and Adjusted <span class="math inline">\(R^2\)</span>
 </h2>
 <div class="cell" data-layout-align="center" data-output.lines="[16,17,18]">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 
@@ -1644,11 +1724,11 @@ Multiple R-squared:  0.96,  Adjusted R-squared:  0.956
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.96</code></pre>
 </div>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">adj.r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">adj.r.squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.96</code></pre>
 </div>
@@ -1689,7 +1769,7 @@ Multiple R-squared:  0.96,  Adjusted R-squared:  0.956
 <li><span style="color:blue"> <span class="math inline">\(H_0: \beta_{2} = 0 \quad H_1: \beta_2 \ne 0\)</span> </span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)    2.341     1.0967     2.1  4.4e-02
@@ -1751,7 +1831,7 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1764,6 +1844,7 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"07733bde34f6c9f6","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1937,7 +2018,7 @@ distance       0.014     0.0036     4.0  6.3e-04</code></pre>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
