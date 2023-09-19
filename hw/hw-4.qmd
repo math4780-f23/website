@@ -82,4 +82,3 @@ Consider a simple linear regression model $y_i =\beta_0 +  \beta_1x_i + \epsilon
 
 <!-- 5. **(MSSC)** Find the variance of $s^2$. Use the fact that $\frac{(n-2)s^2}{\sigma^2} \sim \chi^2_{n-2}$ and $\mathrm{Var}(\chi^2_k) = 2k$ to get the true variance of $s^2$. Compare the two. -->
 
-5. **(MSSC)** Suppose now $\beta_1 = 0.0001$. Generate the simulated data $\{x_i, y_i\}_{i=1}^n$ with $n = 10, 100, 1000, 10000$. Show that as $n$ increases, for the test $H_0: \beta_1 = 0$, its $t_{test}$ gets larger and its $p$-value gets smaller, and therefore $H_0$ is rejected for a sufficiently large $n$, even though $\beta_1$ is practically zero.
