@@ -1,6 +1,6 @@
 ---
 title: "Homework 3 - Multiple Linear Regression"
-subtitle: "Due Friday, October 6, 11:59 PM on D2L"
+subtitle: "Due Friday, October 13, 11:59 PM on D2L"
 editor: source
 ---
 
@@ -17,7 +17,7 @@ editor: source
 
 -   Your entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, [(R)Markdown](https://rmarkdown.rstudio.com/), [Quarto](https://quarto.org/), [LaTex](https://www.latex-project.org/), etc) and your preferred programming language. Your document should be a PDF file.
 
-- Questions starting with **(MSSC)** are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.
+- Questions starting with **(MSSC)** are for MSSC 5780 students.
 
 - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.
 

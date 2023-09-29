@@ -5,6 +5,7 @@ editor: visual
 ---
 
 ::: callout-important
+-   Due date: HW 3 - Fri, 10/13 11:59 PM
 :::
 
 ## Participate
@@ -13,12 +14,11 @@ editor: visual
 
 🖥️ Slides - Regression Diagnostics: Symmetry and Normality
 
-`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+`r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
-`r fontawesome::fa("table")`  `carData::Duncan` (<https://www.john-fox.ca/Companion/downloads.html>)
+`r fontawesome::fa("table")` `carData::Duncan` (<https://www.john-fox.ca/Companion/downloads.html>)
 
-`r fontawesome::fa("table")`  [Data - CIA World Factbook Data](/slides/data/CIA.txt)
-
+`r fontawesome::fa("table")` [Data - CIA World Factbook Data](/slides/data/CIA.txt)
 
 ## Reading
 
@@ -31,6 +31,8 @@ editor: visual
 📖 Regression Diagnostics (RD) - Ch 3 - 5
 
 ## Perform
+
+✍️ [HW 3 Multiple Linear Regression due 10/13 11:59 PM](hw/hw-3.html)
 
 <br><br>
 

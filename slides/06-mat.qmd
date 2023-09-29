@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: false
+    multiplex: true
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -157,19 +157,34 @@ But what is the geometrical meaning of matrices?
 - Like **all** elements of a matrix must be of the **same type.**
 :::
 
+##
 
+{{< video rotation.mp4 >}}
+
+
+
+::: notes
+- A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.
+
+- If we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.
+- Linear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed.
+Grids lines are parallel and evenly spaced after linear transformation.
+
+- (-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)
+:::
 
 ##
 
 ::: small
 
 ```{r}
-#| fig-cap: "Source: https://gfycat.com/cooperativequerulousfirefly (3Blue1Brown)"
 #| echo: false
-knitr::include_graphics("https://thumbs.gfycat.com/CooperativeQuerulousFirefly-size_restricted.gif")
+#| fig-cap: "Source: 3blue1brown.com/topics/linearalgebra"
+knitr::include_graphics("./images/06-mat/lin_trans.png")
 ```
 
 :::
+
 
 
 ::: notes
@@ -261,6 +276,11 @@ $\begin{bmatrix} 1 & -3 \\ 1 & 2 \end{bmatrix}\begin{bmatrix} c_1 \\ c_2 \end{bm
 
 
 
+##
+
+{{< video linearly_dependent_columns.mp4 >}}
+
+
 ## Linear Independence
 
 ```{r}
@@ -288,7 +308,8 @@ det(V)
 
 
 
-##  Rank
+
+##  Rank {visibility="hidden"}
 - The **rank** of a matrix ${\bf A} = \begin{bmatrix} {\bf a}_1 & {\bf a}_2 & \cdots & {\bf a}_m \end{bmatrix}$ is the *number of linearly independent columns* (dimension of the column space).
 
 - If $k$ of the $m$ column vectors ${\bf a}_1, {\bf a}_2, \dots, {\bf a}_m$ are linearly independent, the rank of ${\bf A}$ is $k$. 
@@ -307,7 +328,7 @@ $$c_{1}{\bf v}_1 + c_{2}{\bf v}_2 + \cdots + c_{k}{\bf v}_k = \bf 0$$ can only b
 
 
 
-## Rank
+## Rank {visibility="hidden"}
 ```{r}
 (M <- matrix(1:9, nrow = 3, ncol = 3))
 # install.packages("Matrix")
@@ -474,7 +495,7 @@ $${\bf I} = \begin{bmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots  
 ::: {.column width="50%"}
 ```{r}
 ## Identity matrix
-I <- diag(5)
+I <- diag(4)
 I
 ## A diagonal matrix
 diag(c(4, 2, 5))
@@ -517,11 +538,35 @@ D %*% D_inv
 
 
 
-## Idempotent, Orthogonal, Positive Definite
+## Idempotent and Orthogonal
 - A square matrix ${\bf A}$ is **idempotent** if ${\bf A}{\bf A} = {\bf A}$.
 - A square matrix ${\bf A}$ is **orthogonal** if ${\bf A}^{-1} = {\bf A}'$ and hence ${\bf A}'{\bf A} = {\bf I}$.
 
 . . .
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+## Idempotent and symmetric matrix
+(A <- matrix(1, 2, 2)/2)
+A %*% A
+```
+:::
+::: {.column width="50%"}
+```{r}
+## Orthogonal matrix
+(E <- matrix(c(1, 0, 0, -1), 
+             nrow = 2, ncol = 2))
+solve(E)
+t(E) %*% E
+```
+:::
+::::
+
+
+
+
+## {visibility="hidden"}
 
 - Let ${\bf A}$ be a $n \times n$ matrix and ${\bf y}$ be a $n \times 1$ vector. $${\bf y}'{\bf A} {\bf y} = \sum_{i=1}^n\sum_{j=1}^na_{ij}y_iy_j$$ is called a **quadratic form** of ${\bf y}$.
 
@@ -538,16 +583,13 @@ D %*% D_inv
 :::
 
 
-## Special Matrices: Idempotent, Orthogonal
+## Special Matrices: Idempotent, Orthogonal {visibility="hidden"}
 :::: {.columns}
 ::: {.column width="50%"}
 ```{r}
 ## Idempotent and symmetric matrix
 (A <- matrix(1, 2, 2)/2)
 A %*% A
-## positive semi-definite
-y <- c(-2, 5)
-t(y) %*% A %*% y
 ```
 :::
 ::: {.column width="50%"}
@@ -561,7 +603,11 @@ t(E) %*% E
 :::
 ::::
 
-
+::: notes
+<!-- ## positive semi-definite -->
+<!-- y <- c(-2, 5) -->
+<!-- t(y) %*% A %*% y -->
+:::
 
 ## Trace
 - The **trace** of ${\bf A}_{n \times n}$, denoted by $\text{tr}({\bf A})$, is defined as $$\text{tr}({\bf A}) = a_{11} + a_{22} + \dots + a_{nn}$$
@@ -576,66 +622,75 @@ sum(diag(G))
 
 
 
-## Eigenvalues and Eigenvectors
+<!-- ## Eigenvalues and Eigenvectors {visibility="hidden"} -->
 
-- For a square matrix ${\bf A}$, if we can find a scalar $\lambda$ and a non-zero vector ${\bf x}$ such that $${\bf Ax} = \lambda {\bf x},$$
-  + $\lambda$ is an **eigenvalue** of ${\bf A}$
-  + ${\bf x}$ is a corresponding **eigenvector** of ${\bf A}$.
+<!-- - For a square matrix ${\bf A}$, if we can find a scalar $\lambda$ and a non-zero vector ${\bf x}$ such that $${\bf Ax} = \lambda {\bf x},$$ -->
+<!--   + $\lambda$ is an **eigenvalue** of ${\bf A}$ -->
+<!--   + ${\bf x}$ is a corresponding **eigenvector** of ${\bf A}$. -->
 
-- A $n \times n$ matrix ${\bf A}$ will have $n$ eigenvalues and $n$ corresponding eigenvectors.
-
-
-
-
-##
-
-::: small
-
-```{r}
-#| fig-cap: "https://gfycat.com/ifr/WickedSaltyAnemonecrab (3Blue1Brown)"
-#| echo: false
-knitr::include_graphics("https://thumbs.gfycat.com/WickedSaltyAnemonecrab-size_restricted.gif")
-```
-
-:::
-
-## Eigen-decomposition
-- **Eigen-decomposition**: Any symmetric matrix ${\bf A}_{n \times n}$ can be decomposed as $${\bf A} = {\bf V\bsLambda V'}$$
-
-- $\bsLambda$ is a $n \times n$ diagnonal matrix whose elements are eigenvalues $\lambda_j$ of ${\bf A}$
-  $$\bsLambda = \begin{bmatrix} \lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots  & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & \lambda_n \end{bmatrix}$$
-  
-- ${\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_n]$ is a $n \times n$ orthogonal matrix whose columns are the eigenvectors of ${\bf A}.$
+<!-- - A $n \times n$ matrix ${\bf A}$ will have $n$ eigenvalues and $n$ corresponding eigenvectors. -->
 
 
 
-## Eigenvalues and Eigenvectors
 
-- $\text{tr}({\bf A}) = \sum_{i=1}^n\lambda_i$
-- $|{\bf A}| = \prod_{i=1}^n \lambda_i$
-- $\text{rank}({\bf A}) =$ the number of non-zero $\lambda_i$
-- If ${\bf A}$ is symmetric, all $\lambda_i \in \mathbf{R}$
+<!-- ## {visibility="hidden"} -->
+
+<!-- ::: small -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- knitr::include_graphics("./images/06-mat/eigen0.gif") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ## {visibility="hidden"} -->
+
+<!-- ::: small -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- knitr::include_graphics("./images/06-mat/eigen1.gif") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ## Eigen-decomposition {visibility="hidden"} -->
+<!-- - **Eigen-decomposition**: Any symmetric matrix ${\bf A}_{n \times n}$ can be decomposed as $${\bf A} = {\bf V\bsLambda V'}$$ -->
+
+<!-- - $\bsLambda$ is a $n \times n$ diagnonal matrix whose elements are eigenvalues $\lambda_j$ of ${\bf A}$ -->
+<!--   $$\bsLambda = \begin{bmatrix} \lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots  & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & \lambda_n \end{bmatrix}$$ -->
+
+<!-- - ${\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_n]$ is a $n \times n$ orthogonal matrix whose columns are the eigenvectors of ${\bf A}.$ -->
 
 
 
-## Eigenvalues and Eigenvectors
-:::: {.columns}
-::: {.column width="50%"}
-```{r}
-(A <- matrix(c(3, 1, 1, 2), 2, 2))
-eigen_decomp <- eigen(A)
-(lam <- eigen_decomp$values)
-(V <- eigen_decomp$vectors)
-```
-:::
-::: {.column width="50%"}
-```{r}
-V %*% diag(lam) %*% t(V)
-sum(diag(A))
-sum(lam)
-det(A)
-prod(lam)
-```
-:::
-::::
+<!-- ## Eigenvalues and Eigenvectors {visibility="hidden"} -->
+
+<!-- - $\text{tr}({\bf A}) = \sum_{i=1}^n\lambda_i$ -->
+<!-- - $|{\bf A}| = \prod_{i=1}^n \lambda_i$ -->
+<!-- <!-- - $\text{rank}({\bf A}) =$ the number of non-zero $\lambda_i$ --> -->
+<!-- <!-- - If ${\bf A}$ is symmetric, all $\lambda_i \in \mathbf{R}$ -->
+
+<!-- . . . -->
+
+<!-- :::: {.columns} -->
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r} -->
+<!-- (A <- matrix(c(3, 1, 1, 2), 2, 2)) -->
+<!-- eigen_decomp <- eigen(A) -->
+<!-- (lam <- eigen_decomp$values) -->
+<!-- (V <- eigen_decomp$vectors) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r} -->
+<!-- V %*% diag(lam) %*% t(V) -->
+<!-- sum(diag(A)) -->
+<!-- sum(lam) -->
+<!-- det(A) -->
+<!-- prod(lam) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- :::: -->
 

@@ -12,8 +12,7 @@ editor: visual
 
 🖥️ Slides - Diagnostics: Constant Variance
 
-`r fontawesome::fa("table")`  [Data - CIA World Factbook Data](/slides/data/CIA.txt)
-
+`r fontawesome::fa("table")` [Data - CIA World Factbook Data](/slides/data/CIA.txt)
 
 ## Reading
 
