@@ -98,16 +98,16 @@ You may use any other language to complete your homework, exams and project. How
 
 -   For students in **MATH 4780**, the final grade is earned out of **1000 total points** distributed as follows:
 
-    -   **Homework 1 to 6: 480 pts (80 pts each)**
-    -   **In-class Exam: 160 pts**
-    -   **Final project: 300 pts**
+    -   **Homework 1 to 6: 600 pts (100 pts each)**
+    -   **In-class Exam: 120 pts**
+    -   **Final project: 220 pts**
     -   **Class Participation: 60 pts**
 
 -   For students in **MSSC 5780**, the final grade is earned out of **1200 total points** distributed as follows:
 
-    -   **Homework 1 to 6: 480 pts (80 pts each)**
-    -   **In-class Exam: 160 pts**
-    -   **Final project: 300 pts**
+    -   **Homework 1 to 6: 600 pts (100 pts each)**
+    -   **In-class Exam: 120 pts**
+    -   **Final project: 220 pts**
     -   **Class Participation: 60 pts**
     -   **MSSC 5780 work: 200 pts**
 
