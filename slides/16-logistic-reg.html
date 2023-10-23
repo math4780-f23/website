@@ -482,7 +482,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-6-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-6-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -533,7 +533,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <li><strong>Some estimates are outside <span class="math inline">\([0, 1]\)</span>.</strong></li>
 </ul>
 
-<img data-src="./images/16-logistic-reglm-defualt-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/16-logistic-reg/lm-defualt-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li><strong>The dummy variable approach <span class="math inline">\((Y = 0, 1)\)</span> cannot be easily extended to <span class="math inline">\(Y\)</span> with more than two categories.</strong></li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
@@ -551,7 +551,7 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <li>Predict probability of <code>default</code> using a <span style="color:blue"><strong>S-shaped</strong> curve</span>.</li>
 </ul>
 
-<img data-src="./images/16-logistic-regglm-default-1.png" style="width:65.0%" class="r-stretch quarto-figure-center"><aside class="notes"><p>Often, we first predict the probability of each of the categories of <span class="math inline">\(Y\)</span>, as a basis for making the classification. - The predicted probability should be like a S-shaped curve that first is in [0, 1] interval. - Second, the predicted probability of being defualted is increasing in the credit card balance.</p>
+<img data-src="./images/16-logistic-reg/glm-default-1.png" style="width:65.0%" class="r-stretch quarto-figure-center"><aside class="notes"><p>Often, we first predict the probability of each of the categories of <span class="math inline">\(Y\)</span>, as a basis for making the classification. - The predicted probability should be like a S-shaped curve that first is in [0, 1] interval. - Second, the predicted probability of being defualted is increasing in the credit card balance.</p>
 <div class="cell" data-layout-align="center">
 
 </div>
@@ -645,7 +645,7 @@ Multinomial Response (MSSC 6250)
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-11-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-11-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -773,7 +773,7 @@ Multinomial Response (MSSC 6250)
 </section><section id="logit-function-eta-logitpi-lnleftfracpi1-piright" class="slide level2"><h2>Logit function <span class="math inline">\(\eta = logit(\pi) = \ln\left(\frac{\pi}{1-\pi}\right)\)</span>
 </h2>
 
-<img data-src="./images/16-logistic-regunnamed-chunk-12-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/16-logistic-reg/unnamed-chunk-12-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li>Here visualizes the logit function.</li>
 <li>It’s an one-to-one increasing function of <span class="math inline">\(\pi\)</span> and so the inference on <span class="math inline">\(\eta\)</span> can be transformed back to the inference of <span class="math inline">\(\pi\)</span> with no problems.</li>
 </ul><style type="text/css">
@@ -819,7 +819,7 @@ Multinomial Response (MSSC 6250)
 </section><section id="logistic-function-pi-logisticeta-fracexpeta1expeta" class="slide level2"><h2>Logistic Function <span class="math inline">\(\pi = logistic(\eta) = \frac{\exp(\eta)}{1+\exp(\eta)}\)</span>
 </h2>
 
-<img data-src="./images/16-logistic-regunnamed-chunk-13-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/16-logistic-reg/unnamed-chunk-13-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li>We are almost there. The value of logistic function is what we need for predicting the probability that <span class="math inline">\(Y = 1\)</span>.</li>
 <li>Given any value of <span class="math inline">\(\eta\)</span>, there is a corresponding estimated probability.</li>
 <li>So if we can use our predictors to get eta first, then we can use the eta to predict the probability of <span class="math inline">\(Y\)</span> being equal to when the predictors are at the level for getting <span class="math inline">\(\eta\)</span>.</li>
@@ -881,9 +881,8 @@ Multinomial Response (MSSC 6250)
 <div class="midi">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ISLR)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">data</span>(<span class="st">"Default"</span>)  <span class="do">## load the dataset</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">head</span>(Default, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.statlearning.com">ISLR2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Default</span>, <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   default student balance income
 1       No      No     730  44362
@@ -897,7 +896,7 @@ Multinomial Response (MSSC 6250)
 9       No      No    1161  37469
 10      No      No       0  29275</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(Default)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Default</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   10000 obs. of  4 variables:
  $ default: Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 1 1 1 ...
@@ -908,24 +907,24 @@ Multinomial Response (MSSC 6250)
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">table</span>(Default<span class="sc">$</span>default)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">Default</span><span class="op">$</span><span class="va">default</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   No  Yes 
 9667  333 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">table</span>(Default<span class="sc">$</span>student)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">Default</span><span class="op">$</span><span class="va">student</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   No  Yes 
 7056 2944 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">summary</span>(Default<span class="sc">$</span>balance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Default</span><span class="op">$</span><span class="va">balance</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
       0     482     824     835    1166    2654 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">summary</span>(Default<span class="sc">$</span>income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Default</span><span class="op">$</span><span class="va">income</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     772   21340   34553   33517   43808   73554 </code></pre>
@@ -937,10 +936,10 @@ Multinomial Response (MSSC 6250)
 </section><section id="r-lab-simple-logistic-regression" class="slide level2"><h2>
 <span class="pink">R Lab</span> Simple Logistic Regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>Default <span class="sc">|&gt;</span>  </span>
-<span id="cb13-3"><a href="#cb13-3"></a>    <span class="fu">group_by</span>(default) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="fu">summarise</span>(<span class="at">avg_balance =</span> <span class="fu">mean</span>(balance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">Default</span> <span class="op">|&gt;</span>  </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">default</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>avg_balance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">balance</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   default avg_balance
@@ -951,9 +950,9 @@ Multinomial Response (MSSC 6250)
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>logit_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(default <span class="sc">~</span> balance, <span class="at">data =</span> Default, <span class="at">family =</span> binomial)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>summ_logit_fit <span class="ot">&lt;-</span> <span class="fu">summary</span>(logit_fit)</span>
-<span id="cb15-3"><a href="#cb15-3"></a>summ_logit_fit<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logit_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">default</span> <span class="op">~</span> <span class="va">balance</span>, data <span class="op">=</span> <span class="va">Default</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="va">summ_logit_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">logit_fit</span><span class="op">)</span></span>
+<span><span class="va">summ_logit_fit</span><span class="op">$</span><span class="va">coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error z value  Pr(&gt;|z|)
 (Intercept) -10.6513    0.36116   -29.5 3.62e-191
@@ -971,7 +970,7 @@ balance       0.0055    0.00022    25.0 1.98e-137</code></pre>
 <li><span class="math inline">\(\hat{\eta} = \text{logit}(\hat{\pi}) = \ln \left( \frac{\hat{\pi}}{1 - \hat{\pi}}\right) = -10.651 + 0.0055 \times \text{balance}\)</span></li>
 </ul>
 
-<img data-src="./images/16-logistic-regunnamed-chunk-18-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section><section id="interpretation-of-coefficients" class="slide level2"><h2>Interpretation of Coefficients</h2>
+<img data-src="./images/16-logistic-reg/unnamed-chunk-18-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section><section id="interpretation-of-coefficients" class="slide level2"><h2>Interpretation of Coefficients</h2>
 <p>The ratio <span class="math inline">\(\frac{\pi}{1-\pi} \in (0, \infty)\)</span> is called the <strong>odds</strong> of some event.</p>
 <ul>
 <li>Example: If 1 in 5 people will default, the odds is 1/4 since <span class="math inline">\(\pi = 0.2\)</span> implies an odds of <span class="math inline">\(0.2/(1−0.2) = 1/4\)</span>.</li>
@@ -1024,17 +1023,17 @@ balance       0.0055    0.00022    25.0 1.98e-137</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-20-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-20-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<aside class="notes"><div class="cell" data-layout-align="center" data-hash="16-logistic-reg_cache/html/unnamed-chunk-21_b03496a095c4bd5162cb0e4f33956a0f">
+<aside class="notes"><div class="cell" data-layout-align="center" data-hash="16-logistic-reg_cache/revealjs/unnamed-chunk-21_17fb10f49aed028b055021ef40e3ea59">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-21-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-21-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1054,9 +1053,9 @@ balance       0.0055    0.00022    25.0 1.98e-137</code></pre>
 <p><span class="math display">\[ \hat{\pi} = \frac{1}{1+\exp(-(-10.651+0.0055 \times 2000)} = 0.586\]</span></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>pi_hat <span class="ot">&lt;-</span> <span class="fu">predict</span>(logit_fit, <span class="at">type =</span> <span class="st">"response"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a>eta_hat <span class="ot">&lt;-</span> <span class="fu">predict</span>(logit_fit, <span class="at">type =</span> <span class="st">"link"</span>)  <span class="do">## default gives us b0 + b1*x</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">predict</span>(logit_fit, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">balance =</span> <span class="dv">2000</span>), <span class="at">type =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pi_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">logit_fit</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">eta_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">logit_fit</span>, type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span>  <span class="co">## default gives us b0 + b1*x</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">logit_fit</span>, newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>balance <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    1 
 0.586 </code></pre>
@@ -1072,7 +1071,7 @@ balance       0.0055    0.00022    25.0 1.98e-137</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regdefault-predict-viz-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/default-predict-viz-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1133,10 +1132,10 @@ balance       0.0055    0.00022    25.0 1.98e-137</code></pre>
 </section><section id="r-lab-multiple-logistic-regression" class="slide level2"><h2>
 <span class="pink">R Lab</span> Multiple Logistic Regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>multi_logit_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(default <span class="sc">~</span> balance <span class="sc">+</span> <span class="fu">I</span>(income<span class="sc">/</span><span class="dv">1000</span>), <span class="at">data =</span> Default, </span>
-<span id="cb20-2"><a href="#cb20-2"></a>                       <span class="at">family =</span> binomial)</span>
-<span id="cb20-3"><a href="#cb20-3"></a>summ_multi_logit_fit <span class="ot">&lt;-</span> <span class="fu">summary</span>(multi_logit_fit)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>summ_multi_logit_fit<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">multi_logit_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">default</span> <span class="op">~</span> <span class="va">balance</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">income</span><span class="op">/</span><span class="fl">1000</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">Default</span>, </span>
+<span>                       family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="va">summ_multi_logit_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">multi_logit_fit</span><span class="op">)</span></span>
+<span><span class="va">summ_multi_logit_fit</span><span class="op">$</span><span class="va">coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                Estimate Std. Error z value  Pr(&gt;|z|)
 (Intercept)    -11.54047   0.434756  -26.54 2.96e-155
@@ -1249,16 +1248,16 @@ I(income/1000)   0.02081   0.004985    4.17  2.99e-05</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside></section><section id="r-lab-strength-of-fastener-lra-13.3" class="slide level2"><h2>
-<span class="pink">R Lab</span> Strength of Fastener (LRA 13.3)</h2>
+<span class="pink">R Lab</span> <a href="./data/data-prob-13-3.csv">Strength of Fastener</a> (LRA 13.3)</h2>
 <ul>
 <li><p>The compressive strength of an alloy fastener used in aircraft construction is being studied.</p></li>
 <li><p>Ten loads were selected over the range 2500 – 4300 psi and a number of fasteners were tested at those loads.</p></li>
 <li><p>The numbers of fasteners failing at each load were recorded.</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>fastener <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/data-prob-13-3.csv"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">colnames</span>(fastener) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"load"</span>, <span class="st">"m"</span>, <span class="st">"y"</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a>fastener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fastener</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/data-prob-13-3.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">fastener</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"load"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="va">fastener</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   load   m  y
 1  2500  50 10
@@ -1276,10 +1275,10 @@ I(income/1000)   0.02081   0.004985    4.17  2.99e-05</code></pre>
 </section><section id="r-lab-binomial-response-logistic-regression" class="slide level2"><h2>
 <span class="pink">R Lab</span> Binomial Response Logistic Regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>binom_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, m <span class="sc">-</span> y) <span class="sc">~</span> load,  <span class="co">#&lt;&lt;</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>                 <span class="at">data =</span> fastener, <span class="at">family =</span> binomial)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>binom_summ <span class="ot">&lt;-</span> <span class="fu">summary</span>(binom_fit)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>binom_summ<span class="sc">$</span>coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">binom_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">m</span> <span class="op">-</span> <span class="va">y</span><span class="op">)</span> <span class="op">~</span> <span class="va">load</span>,  <span class="co">#&lt;&lt;</span></span>
+<span>                 data <span class="op">=</span> <span class="va">fastener</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="va">binom_summ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">binom_fit</span><span class="op">)</span></span>
+<span><span class="va">binom_summ</span><span class="op">$</span><span class="va">coef</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error z value Pr(&gt;|z|)
 (Intercept) -5.33971   0.545693   -9.79 1.30e-22
@@ -1370,18 +1369,18 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
 </li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>()</span>
-<span id="cb28-2"><a href="#cb28-2"></a>yardstick<span class="sc">::</span><span class="fu">conf_mat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">yardstick</span><span class="fu">::</span><span class="fu"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes"><ul>
 <li>
 <a href="https://topepo.github.io/caret/">caret</a> package (<strong>C</strong>lassification <strong>A</strong>nd <strong>RE</strong>gression <strong>T</strong>raining) provides tools for predictive modeling.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="do">## Classification And REgression Training</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">library</span>(caret) </span>
-<span id="cb29-3"><a href="#cb29-3"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="at">data =</span> a factor of predicted classes, </span>
-<span id="cb29-4"><a href="#cb29-4"></a>                       <span class="at">reference =</span> a factor of classes to be used as the true results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Classification And REgression Training</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="at">data =</span> a factor of predicted classes, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">reference =</span> a factor of classes to be used as the true results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>
@@ -1416,25 +1415,25 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">library</span>(ROCR)</span>
-<span id="cb31-2"><a href="#cb31-2"></a></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="co"># create an object of class prediction </span></span>
-<span id="cb31-4"><a href="#cb31-4"></a>pred <span class="ot">&lt;-</span> ROCR<span class="sc">::</span><span class="fu">prediction</span>(</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    <span class="at">predictions =</span> pred_prob, </span>
-<span id="cb31-6"><a href="#cb31-6"></a>    <span class="at">labels =</span> Default<span class="sc">$</span>default)</span>
-<span id="cb31-7"><a href="#cb31-7"></a></span>
-<span id="cb31-8"><a href="#cb31-8"></a><span class="co"># calculates the ROC curve</span></span>
-<span id="cb31-9"><a href="#cb31-9"></a>roc <span class="ot">&lt;-</span> ROCR<span class="sc">::</span><span class="fu">performance</span>(</span>
-<span id="cb31-10"><a href="#cb31-10"></a>    <span class="at">prediction.obj =</span> pred, </span>
-<span id="cb31-11"><a href="#cb31-11"></a>    <span class="at">measure =</span> <span class="st">"tpr"</span>,</span>
-<span id="cb31-12"><a href="#cb31-12"></a>    <span class="at">x.measure =</span> <span class="st">"fpr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ipa-tys.github.io/ROCR/">ROCR</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create an object of class prediction </span></span>
+<span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu">ROCR</span><span class="fu">::</span><span class="fu"><a href="http://ipa-tys.github.io/ROCR/reference/prediction.html">prediction</a></span><span class="op">(</span></span>
+<span>    predictions <span class="op">=</span> <span class="va">pred_prob</span>, </span>
+<span>    labels <span class="op">=</span> <span class="va">Default</span><span class="op">$</span><span class="va">default</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># calculates the ROC curve</span></span>
+<span><span class="va">roc</span> <span class="op">&lt;-</span> <span class="fu">ROCR</span><span class="fu">::</span><span class="fu"><a href="http://ipa-tys.github.io/ROCR/reference/performance.html">performance</a></span><span class="op">(</span></span>
+<span>    prediction.obj <span class="op">=</span> <span class="va">pred</span>, </span>
+<span>    measure <span class="op">=</span> <span class="st">"tpr"</span>,</span>
+<span>    x.measure <span class="op">=</span> <span class="st">"fpr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">plot</span>(roc, <span class="at">colorize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">roc</span>, colorize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-33-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-33-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1458,11 +1457,12 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="do">## object of class 'performance'</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>auc <span class="ot">&lt;-</span> ROCR<span class="sc">::</span><span class="fu">performance</span>(</span>
-<span id="cb33-3"><a href="#cb33-3"></a>    <span class="at">prediction.obj =</span> pred, </span>
-<span id="cb33-4"><a href="#cb33-4"></a>    <span class="at">measure =</span> <span class="st">"auc"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5"></a>auc<span class="sc">@</span>y.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33" data-code-line-numbers="false"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## object of class 'performance'</span></span>
+<span></span>
+<span><span class="va">auc</span> <span class="op">&lt;-</span> <span class="fu">ROCR</span><span class="fu">::</span><span class="fu"><a href="http://ipa-tys.github.io/ROCR/reference/performance.html">performance</a></span><span class="op">(</span></span>
+<span>    prediction.obj <span class="op">=</span> <span class="va">pred</span>, </span>
+<span>    measure <span class="op">=</span> <span class="st">"auc"</span><span class="op">)</span></span>
+<span><span class="va">auc</span><span class="op">@</span><span class="va">y.values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 0.948</code></pre>
@@ -1472,7 +1472,7 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-35-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-35-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1490,7 +1490,7 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/16-logistic-regunnamed-chunk-36-1.png" style="width:62.0%"></p>
+<figure><p><img data-src="./images/16-logistic-reg/unnamed-chunk-36-1.png" style="width:62.0%"></p>
 </figure>
 </div>
 </div>
@@ -1708,6 +1708,41 @@ load         0.00155   0.000158    9.83 8.45e-23</code></pre>
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

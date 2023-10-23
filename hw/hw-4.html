@@ -295,7 +295,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#diagnostics-on-gasoline-mileage-data" id="toc-diagnostics-on-gasoline-mileage-data" class="nav-link" data-scroll-target="#diagnostics-on-gasoline-mileage-data">Diagnostics on Gasoline Mileage Data</a></li>
   <li><a href="#influence-diagnostics-on-squid-data" id="toc-influence-diagnostics-on-squid-data" class="nav-link" data-scroll-target="#influence-diagnostics-on-squid-data">Influence Diagnostics on Squid Data</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/math4780-f23/website/edit/main/hw/hw-4.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/math4780-f23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -324,11 +323,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="homework-instruction-and-requirement" class="level1">
 <h1>Homework Instruction and Requirement</h1>
 <ul>
-<li><p>Homework 4 covers course materials of Week 1 to 9.</p></li>
+<li><p>Homework 4 covers course materials of Week 1 to 10.</p></li>
 <li><p>Please submit your work in <strong>one</strong> <strong>PDF</strong> file including all parts to <strong>D2L &gt; Assessments &gt; Dropbox</strong>. <em>Multiple files or a file that is not in pdf format are not allowed.</em></p></li>
 <li><p>In your homework, please number and answer questions <strong>in order</strong>.</p></li>
 <li><p>Your entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, <a href="https://rmarkdown.rstudio.com/">(R)Markdown</a>, <a href="https://quarto.org/">Quarto</a>, <a href="https://www.latex-project.org/">LaTex</a>, etc) and your preferred programming language. Your document should be a PDF file.</p></li>
-<li><p>Questions starting with <strong>(MSSC)</strong> are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.</p></li>
+<li><p>Questions starting with <strong>(MSSC)</strong> are for MSSC 5780 students.</p></li>
 <li><p>It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on <em>what you show, not what you want to show</em>. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.</p></li>
 </ul>
 </section>
@@ -373,16 +372,12 @@ ul.task-list li input[type="checkbox"] {
 <li>The standard error of <span class="math inline">\(b_1\)</span> is <span class="math inline">\(s / \sqrt{\sum_{i=1}^ne_i^2(x_1 \mid x_{(1)})}\)</span>, where <span class="math inline">\(s = \sqrt{MS_{res}}\)</span> from the full multiple regression.</li>
 </ol></li>
 </ol>
-</section>
-<section id="simulation" class="level2">
-<h2 class="anchored" data-anchor-id="simulation">Simulation</h2>
-<p>Consider a simple linear regression model <span class="math inline">\(y_i =\beta_0 + \beta_1x_i + \epsilon_i, i = 1, 2, \dots, n\)</span> with <span class="math inline">\(\epsilon_i \stackrel{\rm iid}{\sim} N(0, \sigma^2)\)</span>. Set <span class="math inline">\(x_i = i\)</span>, <span class="math inline">\(\beta_0 = 2\)</span>, <span class="math inline">\(\beta_1 = -1.5\)</span>, <span class="math inline">\(\sigma = 1.2\)</span>, <span class="math inline">\(n= 15\)</span>.</p>
-<ol type="1">
-<li><p><strong>(MSSC)</strong> Generate a sample <span class="math inline">\(\{y_i\}_{i=1}^n\)</span> from this model, and compute the regression coefficients <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span> and variance estimate <span class="math inline">\(s^2\)</span>. Repeat 10,000 times.</p></li>
-<li><p><strong>(MSSC)</strong> Compute the sample mean of <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(s^2\)</span>. Compare them with their true expected value. What is your conclusion?</p></li>
-<li><p><strong>(MSSC)</strong> Plot the histograms of <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, and <span class="math inline">\(s^2\)</span>. Compare the histograms with their sampling distribution.</p></li>
-<li><p><strong>(MSSC)</strong> Compute the covariance matrix of <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> and the true covariance matrix. Compare the two.</p></li>
-</ol>
+<!-- ## Simulation -->
+<!-- Consider a simple linear regression model $y_i =\beta_0 +  \beta_1x_i + \epsilon_i,   i = 1, 2, \dots, n$ with $\epsilon_i \stackrel{\rm iid}{\sim} N(0, \sigma^2)$. Set $x_i = i$, $\beta_0 = 2$, $\beta_1 = -1.5$, $\sigma = 1.2$, $n= 15$. -->
+<!-- 1. **(MSSC)** Generate a sample $\{y_i\}_{i=1}^n$ from this model, and compute the regression coefficients $b_0$, $b_1$ and variance estimate $s^2$. Repeat 10,000 times. -->
+<!-- 2. **(MSSC)** Compute the sample mean of $b_0$, $b_1$, and $s^2$. Compare them with their true expected value. What is your conclusion? -->
+<!-- 3. **(MSSC)** Plot the histograms of $b_0$, $b_1$, and $s^2$. Compare the histograms with their sampling distribution. -->
+<!-- 4. **(MSSC)** Compute the covariance matrix of $b_0$ and $b_1$ and the true covariance matrix.  Compare the two. -->
 <!-- 5. **(MSSC)** Find the variance of $s^2$. Use the fact that $\frac{(n-2)s^2}{\sigma^2} \sim \chi^2_{n-2}$ and $\mathrm{Var}(\chi^2_k) = 2k$ to get the true variance of $s^2$. Compare the two. -->
 
 

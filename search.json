@@ -214,7 +214,7 @@
     "href": "weeks/week-10.html",
     "title": "Week 10",
     "section": "",
-    "text": "Important"
+    "text": "Important\n\n\n\n\nDue date: HW 4 - Fri, 11/3 11:59 PM"
   },
   {
     "objectID": "weeks/week-10.html#participate",
@@ -235,7 +235,14 @@
     "href": "weeks/week-10.html#exercise",
     "title": "Week 10",
     "section": "Exercise",
-    "text": "Exercise\n📋 Exercise 5\n\n\nBack to course schedule ⏎"
+    "text": "Exercise\n📋 Exercise 5"
+  },
+  {
+    "objectID": "weeks/week-10.html#perform",
+    "href": "weeks/week-10.html#perform",
+    "title": "Week 10",
+    "section": "Perform",
+    "text": "Perform\n✍️ HW 4 Diagnostics due 11/3 11:59 PM\n\n\nBack to course schedule ⏎"
   },
   {
     "objectID": "weeks/week-11.html",
@@ -340,7 +347,7 @@
     "href": "weeks/week-9.html",
     "title": "Week 9",
     "section": "",
-    "text": "Important\n\n\n\n\nDue date: HW 4 - Fri, 10/27 11:59 PM"
+    "text": "Important\n\n\n\n\nDue date: HW 4 - Fri, 11/3 11:59 PM"
   },
   {
     "objectID": "weeks/week-9.html#participate",
@@ -361,14 +368,7 @@
     "href": "weeks/week-9.html#exercise",
     "title": "Week 9",
     "section": "Exercise",
-    "text": "Exercise\n📋 Exercise 4"
-  },
-  {
-    "objectID": "weeks/week-9.html#perform",
-    "href": "weeks/week-9.html#perform",
-    "title": "Week 9",
-    "section": "Perform",
-    "text": "Perform\n✍️ HW 4 Diagnostics due 10/27 11:59 PM\n\n\nBack to course schedule ⏎"
+    "text": "Exercise\n📋 Exercise 4\n\n\nBack to course schedule ⏎"
   },
   {
     "objectID": "weeks/week-8.html",
@@ -550,7 +550,7 @@
     "href": "hw/hw-4.html",
     "title": "Homework 4 - Diagnostics",
     "section": "",
-    "text": "Homework 4 covers course materials of Week 1 to 9.\nPlease submit your work in one PDF file including all parts to D2L > Assessments > Dropbox. Multiple files or a file that is not in pdf format are not allowed.\nIn your homework, please number and answer questions in order.\nYour entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, (R)Markdown, Quarto, LaTex, etc) and your preferred programming language. Your document should be a PDF file.\nQuestions starting with (MSSC) are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.\nIt is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on what you show, not what you want to show. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong."
+    "text": "Homework 4 covers course materials of Week 1 to 10.\nPlease submit your work in one PDF file including all parts to D2L > Assessments > Dropbox. Multiple files or a file that is not in pdf format are not allowed.\nIn your homework, please number and answer questions in order.\nYour entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, (R)Markdown, Quarto, LaTex, etc) and your preferred programming language. Your document should be a PDF file.\nQuestions starting with (MSSC) are for MSSC 5780 students.\nIt is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on what you show, not what you want to show. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong."
   },
   {
     "objectID": "hw/hw-4.html#diagnostics-on-gasoline-mileage-data",
@@ -565,13 +565,6 @@
     "title": "Homework 4 - Diagnostics",
     "section": "Influence Diagnostics on Squid Data",
     "text": "Influence Diagnostics on Squid Data\nAn experiment was conducted to study the size of squid eaten by sharks and tuna. The regressors are characteristics of the beak or month of the squid. The squid.csv data contain the variables\n\n\\(x_1\\): Rostral length in inches\n\\(x_2\\): Wing length in inches\n\\(x_3\\): Rostral to notch length\n\\(x_4\\): Notch to wing length\n\\(x_5\\): Width in inches\n\\(y\\): Weights in pounds\n\nPerform a thorough leverage and influence diagnostics of the squid data.\n\nCompute R-studentized residuals, hat values, Cook’s distance, DFFITS, DFBETAS, and COVRATIO measures. Describe how you detect leverage and influential points. Discuss the effect of data points on coefficients, fitted values, and precision of coefficients. (The influence.measures() function provides all influence measures.)\nLet’s use some visualization tools.\n\nCreate the bubble plot.\nCreate the influence index plot (car::influenceIndexPlot())\n\nProduce the added-valued plot (car::avPlots()) for each regressor \\(x_i, i = 1, \\dots, 5\\). Are there any joint influence of data points on the regression coefficients?\n(MSSC) Numerically verify the following properties of the added-valued plot.\n\nThe slope of the least squares simple regression line of \\(e(y \\mid x_{(1)})\\) on \\(e(x_1 \\mid x_{(1)})\\) is the same as the least-squares slope \\(b_1\\) for \\(x_1\\) in the full multiple regression.\nThe residuals from the simple regression \\(e(y \\mid x_{(1)})\\) vs. \\(e(x_1 \\mid x_{(1)})\\) are the same as the residuals \\(e_i\\) from the full multiple regression.\nThe standard error of \\(b_1\\) is \\(s / \\sqrt{\\sum_{i=1}^ne_i^2(x_1 \\mid x_{(1)})}\\), where \\(s = \\sqrt{MS_{res}}\\) from the full multiple regression."
-  },
-  {
-    "objectID": "hw/hw-4.html#simulation",
-    "href": "hw/hw-4.html#simulation",
-    "title": "Homework 4 - Diagnostics",
-    "section": "Simulation",
-    "text": "Simulation\nConsider a simple linear regression model \\(y_i =\\beta_0 + \\beta_1x_i + \\epsilon_i, i = 1, 2, \\dots, n\\) with \\(\\epsilon_i \\stackrel{\\rm iid}{\\sim} N(0, \\sigma^2)\\). Set \\(x_i = i\\), \\(\\beta_0 = 2\\), \\(\\beta_1 = -1.5\\), \\(\\sigma = 1.2\\), \\(n= 15\\).\n\n(MSSC) Generate a sample \\(\\{y_i\\}_{i=1}^n\\) from this model, and compute the regression coefficients \\(b_0\\), \\(b_1\\) and variance estimate \\(s^2\\). Repeat 10,000 times.\n(MSSC) Compute the sample mean of \\(b_0\\), \\(b_1\\), and \\(s^2\\). Compare them with their true expected value. What is your conclusion?\n(MSSC) Plot the histograms of \\(b_0\\), \\(b_1\\), and \\(s^2\\). Compare the histograms with their sampling distribution.\n(MSSC) Compute the covariance matrix of \\(b_0\\) and \\(b_1\\) and the true covariance matrix. Compare the two."
   },
   {
     "objectID": "hw/hw-6.html",
@@ -662,7 +655,7 @@
     "href": "index.html",
     "title": "MATH 4780 - Regression Analysis",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n✍️\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n✍️\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n📂\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n✍️\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n✍️\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n📂\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n✍️\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
   },
   {
     "objectID": "course-team.html",
@@ -2846,7 +2839,7 @@
     "href": "slides/16-logistic-reg.html#r-lab-credit-card-default",
     "title": "Logistic Regression 💻",
     "section": "\nR Lab Credit Card Default",
-    "text": "R Lab Credit Card Default\n\n\n\n\nlibrary(ISLR)\ndata(\"Default\")  ## load the dataset\nhead(Default, 10)\n\n   default student balance income\n1       No      No     730  44362\n2       No     Yes     817  12106\n3       No      No    1074  31767\n4       No      No     529  35704\n5       No      No     786  38463\n6       No     Yes     920   7492\n7       No      No     826  24905\n8       No     Yes     809  17600\n9       No      No    1161  37469\n10      No      No       0  29275\n\nstr(Default)\n\n'data.frame':   10000 obs. of  4 variables:\n $ default: Factor w/ 2 levels \"No\",\"Yes\": 1 1 1 1 1 1 1 1 1 1 ...\n $ student: Factor w/ 2 levels \"No\",\"Yes\": 1 2 1 1 1 2 1 2 1 1 ...\n $ balance: num  730 817 1074 529 786 ...\n $ income : num  44362 12106 31767 35704 38463 ...\n\n\n\n\ntable(Default$default)\n\n\n  No  Yes \n9667  333 \n\ntable(Default$student)\n\n\n  No  Yes \n7056 2944 \n\nsummary(Default$balance)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n      0     482     824     835    1166    2654 \n\nsummary(Default$income)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    772   21340   34553   33517   43808   73554"
+    "text": "R Lab Credit Card Default\n\n\n\n\nlibrary(ISLR2)\nhead(Default, 10)\n\n   default student balance income\n1       No      No     730  44362\n2       No     Yes     817  12106\n3       No      No    1074  31767\n4       No      No     529  35704\n5       No      No     786  38463\n6       No     Yes     920   7492\n7       No      No     826  24905\n8       No     Yes     809  17600\n9       No      No    1161  37469\n10      No      No       0  29275\n\nstr(Default)\n\n'data.frame':   10000 obs. of  4 variables:\n $ default: Factor w/ 2 levels \"No\",\"Yes\": 1 1 1 1 1 1 1 1 1 1 ...\n $ student: Factor w/ 2 levels \"No\",\"Yes\": 1 2 1 1 1 2 1 2 1 1 ...\n $ balance: num  730 817 1074 529 786 ...\n $ income : num  44362 12106 31767 35704 38463 ...\n\n\n\n\ntable(Default$default)\n\n\n  No  Yes \n9667  333 \n\ntable(Default$student)\n\n\n  No  Yes \n7056 2944 \n\nsummary(Default$balance)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n      0     482     824     835    1166    2654 \n\nsummary(Default$income)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    772   21340   34553   33517   43808   73554"
   },
   {
     "objectID": "slides/16-logistic-reg.html#r-lab-simple-logistic-regression",
@@ -2972,7 +2965,7 @@
     "href": "slides/16-logistic-reg.html#r-lab-area-under-curve-auc",
     "title": "Logistic Regression 💻",
     "section": "\nR Lab Area Under Curve (AUC)",
-    "text": "R Lab Area Under Curve (AUC)\nFind the area under the curve:\n\n\n\n## object of class 'performance'\nauc <- ROCR::performance(\n    prediction.obj = pred, \n    measure = \"auc\")\nauc@y.values\n\n[[1]]\n[1] 0.948"
+    "text": "R Lab Area Under Curve (AUC)\nFind the area under the curve:\n\n\n\n## object of class 'performance'\n\nauc <- ROCR::performance(\n    prediction.obj = pred, \n    measure = \"auc\")\nauc@y.values\n\n[[1]]\n[1] 0.948"
   },
   {
     "objectID": "slides/16-logistic-reg.html#r-lab-roc-curve-comparison",
