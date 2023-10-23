@@ -10,7 +10,7 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - Diagnostics: Constant Variance
+🖥️ [Slides - Diagnostics: Constant Variance](slides/09-diag-const-var.html)
 
 `r fontawesome::fa("table")` [Data - CIA World Factbook Data](/slides/data/CIA.txt)
 

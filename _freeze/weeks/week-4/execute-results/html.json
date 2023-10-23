@@ -1,8 +1,10 @@
 {
-  "hash": "3e0f057f500f064164591d4871527b8b",
+  "hash": "81650cf539a808f00e9c1861d03cac07",
   "result": {
-    "markdown": "---\ntitle: \"Week 4\"\nsubtitle: \"Multiple Linear Regression - I\"\neditor: visual\n---\n\n\n::: callout-important\n-   Due date: HW 2 - Fri, 9/22 11:59 PM\n:::\n\n## Participate\n\n🖥️ Slides - Multiple Linear Regression\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html} [Data - Delivery](/slides/data/data-ex-3-1.csv)\n\n## Reading\n\n📖 ISL - Ch 3.2\n\n## Perform\n\n✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](../hw/hw-2.html)\n\n<br><br>\n\n::: {style=\"font-size: 0.875em;\"}\nBack to [course schedule](/ \"Course schedule\") ⏎\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Week 4\"\nsubtitle: \"Multiple Linear Regression - I\"\neditor: visual\n---\n\n\n::: callout-important\n-   Due date: HW 2 - Fri, 9/22 11:59 PM\n:::\n\n## Participate\n\n🖥️ Slides - [Multiple Linear Regression](slides/05-mlr.html)\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 512 512\" style=\"height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z\"/></svg>`{=html} [Data - Delivery](/slides/data/data-ex-3-1.csv)\n\n## Reading\n\n📖 ISL - Ch 3.2\n\n## Perform\n\n✍️ [HW 2 Simple Linear Regression due 9/22 11:59 PM](../hw/hw-2.html)\n\n<br><br>\n\n::: {style=\"font-size: 0.875em;\"}\nBack to [course schedule](/ \"Course schedule\") ⏎\n:::\n",
+    "supporting": [
+      "week-4_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

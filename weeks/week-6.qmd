@@ -10,7 +10,7 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - MLR in Matrix Form
+🖥️ [Slides - MLR in Matrix Form](slides/06-mlr-mat.html)
 
 `r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 

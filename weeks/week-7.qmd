@@ -10,9 +10,9 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - Regression Diagnostics: Residuals and Unusual Data
+🖥️ [Slides - Regression Diagnostics: Residuals and Unusual Data](slides/07-diag-unusual.html)
 
-🖥️ Slides - Regression Diagnostics: Symmetry and Normality
+🖥️ [Slides - Regression Diagnostics: Symmetry and Normality](slides/08-diag-normality.html)
 
 `r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 

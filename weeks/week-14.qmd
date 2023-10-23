@@ -9,9 +9,9 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - Variable Selection
+🖥️ [Slides - Variable Selection](slides/15-var-select.html)
 
-`r fontawesome::fa("table")`  [Data - Manpower](/slides/data/manpower.csv)
+`r fontawesome::fa("table")` [Data - Manpower](/slides/data/manpower.csv)
 
 ## Reading
 
@@ -21,7 +21,7 @@ editor: visual
 
 ## Exercise
 
-📋 [Exercise 10](/exercise/ex-3-mlr.html)
+📋 [Exercise 10](/exercise/ex-10-var.html)
 
 ## Perform
 

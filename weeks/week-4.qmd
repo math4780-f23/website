@@ -10,7 +10,7 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - Multiple Linear Regression
+🖥️ Slides - [Multiple Linear Regression](slides/05-mlr.html)
 
 `r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 

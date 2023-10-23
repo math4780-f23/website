@@ -9,13 +9,13 @@ editor: visual
 
 ## Participate
 
-🖥️ Slides - Polynomial Regression
+🖥️ [Slides - Polynomial Regression](slides/11-poly-reg.html)
 
-🖥️ Slides - Nonparametric Regression
+🖥️ [Slides - Nonparametric Regression](slides/12-nonpara-reg.html)
 
-`r fontawesome::fa("table")`  [Data - Hardwood](/slides/data/data-ex-7-1.csv)
+`r fontawesome::fa("table")` [Data - Hardwood](/slides/data/data-ex-7-1.csv)
 
-`r fontawesome::fa("table")`  [Data - U.S. Birth Rate](/slides/data/birthrates.rda)
+`r fontawesome::fa("table")` [Data - U.S. Birth Rate](/slides/data/birthrates.rda)
 
 ## Reading
 
@@ -23,9 +23,9 @@ editor: visual
 
 ## Exercise
 
-📋 [Exercise 6](/exercise/ex-3-mlr.html)
+📋 [Exercise 6](/exercise/ex-6-poly.html)
 
-📋 [Exercise 7](/exercise/ex-3-mlr.html)
+📋 [Exercise 7](/exercise/ex-7-nonpar.html)
 
 ## Perform
 

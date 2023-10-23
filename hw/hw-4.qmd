@@ -7,7 +7,7 @@ editor: source
 
 # Homework Instruction and Requirement
 
-- Homework 4 covers course materials of Week 1 to 9.
+- Homework 4 covers course materials of Week 1 to 10.
 
 - Please submit your work in **one** **PDF** file including all parts to **D2L > Assessments > Dropbox**. *Multiple files or a file that is not in pdf format are not allowed.*
 
@@ -15,7 +15,7 @@ editor: source
 
 -   Your entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, [(R)Markdown](https://rmarkdown.rstudio.com/), [Quarto](https://quarto.org/), [LaTex](https://www.latex-project.org/), etc) and your preferred programming language. Your document should be a PDF file.
 
-- Questions starting with **(MSSC)** are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.
+- Questions starting with **(MSSC)** are for MSSC 5780 students.
 
 - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.
 
@@ -69,16 +69,16 @@ Perform a thorough leverage and influence diagnostics of the squid data.
     (c) The standard error of $b_1$ is $s / \sqrt{\sum_{i=1}^ne_i^2(x_1 \mid x_{(1)})}$, where $s = \sqrt{MS_{res}}$ from the full multiple regression.
 
 
-## Simulation
-Consider a simple linear regression model $y_i =\beta_0 +  \beta_1x_i + \epsilon_i,   i = 1, 2, \dots, n$ with $\epsilon_i \stackrel{\rm iid}{\sim} N(0, \sigma^2)$. Set $x_i = i$, $\beta_0 = 2$, $\beta_1 = -1.5$, $\sigma = 1.2$, $n= 15$.
+<!-- ## Simulation -->
+<!-- Consider a simple linear regression model $y_i =\beta_0 +  \beta_1x_i + \epsilon_i,   i = 1, 2, \dots, n$ with $\epsilon_i \stackrel{\rm iid}{\sim} N(0, \sigma^2)$. Set $x_i = i$, $\beta_0 = 2$, $\beta_1 = -1.5$, $\sigma = 1.2$, $n= 15$. -->
 
-1. **(MSSC)** Generate a sample $\{y_i\}_{i=1}^n$ from this model, and compute the regression coefficients $b_0$, $b_1$ and variance estimate $s^2$. Repeat 10,000 times.
+<!-- 1. **(MSSC)** Generate a sample $\{y_i\}_{i=1}^n$ from this model, and compute the regression coefficients $b_0$, $b_1$ and variance estimate $s^2$. Repeat 10,000 times. -->
 
-2. **(MSSC)** Compute the sample mean of $b_0$, $b_1$, and $s^2$. Compare them with their true expected value. What is your conclusion?
+<!-- 2. **(MSSC)** Compute the sample mean of $b_0$, $b_1$, and $s^2$. Compare them with their true expected value. What is your conclusion? -->
 
-3. **(MSSC)** Plot the histograms of $b_0$, $b_1$, and $s^2$. Compare the histograms with their sampling distribution.
+<!-- 3. **(MSSC)** Plot the histograms of $b_0$, $b_1$, and $s^2$. Compare the histograms with their sampling distribution. -->
 
-4. **(MSSC)** Compute the covariance matrix of $b_0$ and $b_1$ and the true covariance matrix.  Compare the two.
+<!-- 4. **(MSSC)** Compute the covariance matrix of $b_0$ and $b_1$ and the true covariance matrix.  Compare the two. -->
 
 <!-- 5. **(MSSC)** Find the variance of $s^2$. Use the fact that $\frac{(n-2)s^2}{\sigma^2} \sim \chi^2_{n-2}$ and $\mathrm{Var}(\chi^2_k) = 2k$ to get the true variance of $s^2$. Compare the two. -->
 

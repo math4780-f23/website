@@ -5,15 +5,16 @@ editor: visual
 ---
 
 ::: callout-important
+-   Due date: HW 4 - Fri, 11/3 11:59 PM
 :::
 
 ## Participate
 
-🖥️ Slides - Bootstrapping
+🖥️ [Slides - Bootstrapping](slides/11-bootstrap)
 
-`r fontawesome::fa("table")`  [Data - Manhattan](/slides/data/manhattan.csv)
+`r fontawesome::fa("table")` [Data - Manhattan](/slides/data/manhattan.csv)
 
-`r fontawesome::fa("table")`  [Data - Delivery](/slides/data/data-ex-3-1.csv)
+`r fontawesome::fa("table")` [Data - Delivery](/slides/data/data-ex-3-1.csv)
 
 ## Reading
 
@@ -23,7 +24,11 @@ editor: visual
 
 ## Exercise
 
-📋 [Exercise 5](/exercise/ex-3-mlr.html)
+📋 [Exercise 5](/exercise/ex-5-bootstrapping.html)
+
+## Perform
+
+✍️ [HW 4 Diagnostics due 11/3 11:59 PM](hw/hw4.html)
 
 <br><br>
 
