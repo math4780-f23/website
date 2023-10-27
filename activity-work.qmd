@@ -20,15 +20,15 @@ title: "Class activity work"
 
 -   MATH 4780 Questioners: Nathan Fisher, Alberto Gamez Gonzalez, Andrew Hiller
 
-## Class activity 4 - 10/24
+## [Class activity 4 - 10/24](activity/act-4.pdf)
 
--   MSSC 5780 Presenters: Sylvester Mensah, Navid Mohseni
+-   MSSC 5780 Presenters: [Sylvester Mensah](activity/act-4_sylvester.pdf), [Navid Mohseni](https://rpubs.com/NavidMhs/Pitfalls)
 
 -   MATH 4780 Questioners: Jake Konrad, Vanessa Lattas, Danny O'Shea
 
 ## Class activity 5 - 11/14
 
--   MSSC 5780 Presenters: Emmanuel Nyamekye, Adam Reeson
+-   MSSC 5780 Presenters: Adam Reeson
 
 -   MATH 4780 Questioners: Kayley Reith, Donny Robbins, Ray Sun
 
