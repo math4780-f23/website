@@ -552,7 +552,7 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <li>Could focus on the median rent or mean rent depending on our research goal.</li>
 </ul>
 
-<img data-src="./images/11-bootstrapunnamed-chunk-5-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/11-bootstrap/unnamed-chunk-5-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li>We could focus on the median rent or mean rent depending on our research goal. Sometimes we are interested in other quantiles, not just median.</li>
 </ul>
 <!-- - .question[ --><!-- 👤 Is the mean or the median a better measure of typical rent in Manhattan? --><!-- ] --><style type="text/css">
@@ -851,7 +851,7 @@ $ rent &lt;dbl&gt; 3850, 3800, 2350, 3200, 2150, 3267, 2495, 2349, 3950, 1795, 2
 <pre><code>Rows: 15,000
 Columns: 2
 $ replicate &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 2350, …</code></pre>
+$ stat      &lt;dbl&gt; 2350, 2350, 2350, 2350, 2350, 2350, 2350, 2550, 2350, 2350, …</code></pre>
 </div>
 </div>
 <ul>
@@ -879,7 +879,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <span><span class="va">bt_dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="./images/11-bootstrapunnamed-chunk-18-1.png" style="width:65.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
+<img data-src="./images/11-bootstrap/unnamed-chunk-18-1.png" style="width:65.0%" class="r-stretch quarto-figure-center"><aside class="notes"><ul>
 <li>And this is the bootstrap distribution of medians that is generated purely by our sample data, and it is generated without using normal assumptions or CLT.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
@@ -913,7 +913,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <span>    <span class="fu">labs</span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"and 95% CI"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapboot-ci-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/boot-ci-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -949,7 +949,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-22-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-22-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -958,7 +958,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-23-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-23-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -971,7 +971,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-24-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-24-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -980,7 +980,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-25-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-25-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -993,7 +993,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-26-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-26-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1002,7 +1002,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-27-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-27-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1015,7 +1015,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-28-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-28-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1024,7 +1024,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-29-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-29-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1037,7 +1037,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-30-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-30-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1046,7 +1046,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-31-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-31-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1062,7 +1062,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-32-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-32-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1071,7 +1071,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-33-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-33-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1087,7 +1087,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-35-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-35-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1096,7 +1096,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-36-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-36-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1107,13 +1107,9 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-37-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-37-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1122,7 +1118,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-38-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-38-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1135,7 +1131,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-39-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-39-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1144,7 +1140,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/11-bootstrapunnamed-chunk-40-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="./images/11-bootstrap/unnamed-chunk-40-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1159,7 +1155,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
 <span><span class="va">boot_fits</span> <span class="op">&lt;-</span> <span class="va">delivery_data</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">specify</span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">generate</span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">100</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1191,7 +1187,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <strong>Percentile method</strong>: Compute the 95% CI as the middle 95% of the bootstrap distribution:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">observed_fit</span> <span class="op">&lt;-</span> <span class="va">delivery_data</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">observed_fit</span> <span class="op">&lt;-</span> <span class="va">delivery_data</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">specify</span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">fit</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">boot_fits</span> <span class="op">|&gt;</span> <span class="fu">get_ci</span><span class="op">(</span>point_estimate <span class="op">=</span> <span class="va">observed_fit</span>, type <span class="op">=</span> <span class="st">"percentile"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1209,7 +1205,7 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <strong>Standard error method</strong>: Compute the 95% CI as the point estimate <span class="math inline">\(\pm\)</span> ~2 standard deviations of the bootstrap distribution:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">boot_fits</span> <span class="op">|&gt;</span> <span class="fu">get_ci</span><span class="op">(</span>point_estimate <span class="op">=</span> <span class="va">observed_fit</span>, type <span class="op">=</span> <span class="st">"se"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">boot_fits</span> <span class="op">|&gt;</span> <span class="fu">get_ci</span><span class="op">(</span>point_estimate <span class="op">=</span> <span class="va">observed_fit</span>, type <span class="op">=</span> <span class="st">"se"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   term      lower_ci upper_ci
@@ -1239,9 +1235,9 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <code><a href="https://rdrr.io/pkg/car/man/Boot.html">car::Boot()</a></code> is a simple interface to the <code><a href="https://rdrr.io/pkg/boot/man/boot.html">boot::boot()</a></code>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span>, data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span>, data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
 <span><span class="va">car_boot</span> <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boot.html">Boot</a></span><span class="op">(</span><span class="va">lm_fit</span>, R <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
-<span><span class="fu">brief</span><span class="op">(</span><span class="va">car_boot</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/brief.html">brief</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>100 x 2 matrix (95 rows omitted)
        (Intercept) cases
@@ -1259,14 +1255,14 @@ $ stat      &lt;dbl&gt; 2350, 2350, 2349, 2495, 2325, 2495, 2000, 2350, 2422, 23
 <li>BC<span class="math inline">\(_a\)</span> is the <strong>accelerated bias-corrected percentile interval</strong>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="./images/11-bootstrapunnamed-chunk-46-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section><section id="r-lab-carconfint" class="slide level2"><h2>
+<img data-src="./images/11-bootstrap/unnamed-chunk-46-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section><section id="r-lab-carconfint" class="slide level2"><h2>
 <span class="pink">R Lab</span> <code>car::Confint()</code>
 </h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/S.html">Confint</a></span><span class="op">(</span><span class="va">lm_fit</span>, vcov. <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/S.html">Confint</a></span><span class="op">(</span><span class="va">lm_fit</span>, vcov. <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">car_boot</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Standard errors computed by vcov(car_boot) </code></pre>
 </div>
@@ -1287,7 +1283,14 @@ cases           2.18  1.613   2.74</code></pre>
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside>
+      }</style></aside></section><section id="r-lab-bootboot" class="slide level2"><h2>
+<span class="pink">R Lab</span> <code>boot::boot()</code>
+</h2>
+<ul>
+<li><p><a href="https://stats.oarc.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/" class="uri">https://stats.oarc.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/</a></p></li>
+<li><p>ISL Lab 5.3.4</p></li>
+</ul>
+
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://math4780-f23.github.io/website/">math4780-f23.github.io/website</a></p>
@@ -1296,7 +1299,7 @@ cases           2.18  1.613   2.74</code></pre>
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1309,6 +1312,7 @@ cases           2.18  1.613   2.74</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"f19116193c118b50","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1482,11 +1486,46 @@ cases           2.18  1.613   2.74</code></pre>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

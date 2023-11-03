@@ -755,11 +755,8 @@ Non-linearity and Lack of Fit
 </li>
 <li>Choose <span class="math inline">\(\lambda\)</span> so that the transformed errors <span class="math inline">\(\epsilon_i^*\)</span> look as nearly normally distributed as possible.</li>
 </ul></section><section id="r-lab-cia-world-factbook-data" class="slide level2"><h2>
-<span class="pink">R Lab</span> CIA World Factbook Data</h2>
-<ul>
-<li>CIA World Facebook for 134 nations downloaded at <a href="https://github.com/thewiremonkey/factbook.csv" class="uri">https://github.com/thewiremonkey/factbook.csv</a>
-</li>
-</ul>
+<span class="pink">R Lab</span> <a href="https://www.john-fox.ca/RegressionDiagnostics/index.html">CIA World Factbook Data</a>
+</h2>
 <div class="cell" data-layout-align="center">
 
 </div>
@@ -833,18 +830,18 @@ Non-linearity and Lack of Fit
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">summary</span>(car<span class="sc">::</span><span class="fu">powerTransform</span>(ciafit, <span class="at">family =</span> <span class="st">"bcPower"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>bcPower Transformation to Normality 
-   Est Power Rounded Pwr Wald Lwr Bnd Wald Upr Bnd
-Y1     -0.22       -0.33        -0.37       -0.072
-
-Likelihood ratio test that transformation parameter is equal to 0
- (log transformation)
-                      LRT df  pval
-LR test, lambda = (0)   8  1 0.005
-
-Likelihood ratio test that no transformation is needed
-                      LRT df   pval
-LR test, lambda = (1) 181  1 &lt;2e-16</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource my_class600 number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>bcPower Transformation to Normality </span>
+<span id="cb7-2"><a href="#cb7-2"></a>   Est Power Rounded Pwr Wald Lwr Bnd Wald Upr Bnd</span>
+<span id="cb7-3"><a href="#cb7-3"></a>Y1     -0.22       -0.33        -0.37       -0.072</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>Likelihood ratio test that transformation parameter is equal to 0</span>
+<span id="cb7-6"><a href="#cb7-6"></a> (log transformation)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                      LRT df  pval</span>
+<span id="cb7-8"><a href="#cb7-8"></a>LR test, lambda = (0)   8  1 0.005</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>Likelihood ratio test that no transformation is needed</span>
+<span id="cb7-11"><a href="#cb7-11"></a>                      LRT df   pval</span>
+<span id="cb7-12"><a href="#cb7-12"></a>LR test, lambda = (1) 181  1 &lt;2e-16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
