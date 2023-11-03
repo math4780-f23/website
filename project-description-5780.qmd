@@ -1,0 +1,215 @@
+---
+title: "MSSC 5780 Project Description"
+---
+
+
+The final project written report and participation of MATH 4780 project presentation account for 220 points of the total 1200 points.
+
+
+# Written Report
+
+## Timeline and Things to Do
+
+- **Team up!** You work as a team of **two** or **three**. No individual project. One of you, please email me your group *member list* by <span style="color:red;">**Friday, 11/17 11:59 PM**</span>.
+  + You lose 20 points if you miss the deadline.
+  + You will be randomly assigned to a group if you do not belong to any group before the deadline.
+
+- **Proposal**. Please send me a **one-page PDF** describing what you are going to do for your project (no word limit) with your *project title* by <span style="color:red;">**Friday, 12/1 11:59 PM**</span>.
+  + You lose 20 points if you miss the deadline.
+
+- **Material**. Please submit your **report and code** to D2L by <span style="color:red;">**Tuesday, 12/12 11:59 PM**</span>.
+  + You receive 0 point if you miss the deadline.
+
+
+## Project Writing
+
+Your project can be in either of the following categories:
+
+1. **Data Analysis (DA)** using one or more regression methods learned in class.
+
+2. **Introduce a new regression model/method/algorithm (RM)** and compare it with the model/method/algorithms learned in class.
+
+### Regression Content
+
+If you choose to do **DA**, your project should:
+
+- Include regression diagnostics: *model adequacy checking, residual diagnostics, leverage and influence diagnostics, and collinearity diagnostics*.
+
+- Explain how you deal with violation of assumptions and collinearity issue if it exists.
+
+- Demonstrate that your final selected model has no violation of assumptions and answers your questions well through any inference (estimation and testing) or prediction methods. If some issues remain, explain why they cannot be fixed, and what is the limitation of your model due to these issues. Provide suggestions for improving your analysis.
+
+- The chosen data set cannot be any data set used in class, the textbook or homework assignments.
+
+- Below are a list of data repositories you may start with, but you are encouraged to explore more and find your favorite one.
+  + [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+  + [Kaggle](https://www.kaggle.com/datasets)
+  + [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
+  + [Harvard Dataverse](https://dataverse.harvard.edu/)
+  + [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+  + [FiveThirtyEight](https://data.fivethirtyeight.com/)
+
+
+If you choose to do **RM**, your project should:
+
+- Explain the model/method. Define and explain the notations, parameters, and model/method assumptions. Compare it with the model/method learned in class.
+
+- Show the model/method with graphics and possible geometrical meaning. Compare it with the model/method learned in class.
+
+- Show how to perform parameter estimation and response prediction. Discuss the methods used for training/fitting the model, and compare the prediction performance with MLR.
+
+- Interpret the fitted and prediction results.
+
+- Discuss the advantages and disadvantages of the model/method. Under what situations the model/method performs the best/worst?
+
+- Demonstrate how to fit the model and implement its relevant method/algorithm via a simulation study or data analysis. The data set could be a data set used in class.
+
+- Possible topics being considered include but not limited to:
+  + Bayesian linear regression
+  + Gaussian process regression
+  + LASSO
+  + Poisson regression
+  + Regression trees
+  + Multivariate adaptive regression splines
+  + Generalized additive model
+  + Robust regression
+  + Quantile regression
+  + Partial Least Squares Regression
+
+
+### Paper Structure
+
+If you choose to do **DA**, your report should include the following sections:
+
+- **Introduction**: State why you think the questions you would like to answer are important or interesting, and why you think the method(s) you consider is an appropriate one to answer your questions.
+
+- **Data**: Describe the selected data set. Perform a thorough exploratory data analysis.
+
+- **Analysis**: Include the Regression Content by
+  + Explaining the chosen model/method.
+  + Showing why the chosen model(s) is appropriate and better than others.
+  + Answering your research questions by the analysis result.
+
+- **Conclusion**: Restate your research question, and summarize how you learn from data to answer your questions. What is the contribution of this project? Discuss any limitation of your model/method, and how it could be improved for better inference or prediction results.
+  
+- **References/Bibliography**: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.
+  
+
+If you choose to do **RM**, your report should include the following sections:
+
+- **Introduction**: State why you choose to learn this new method. Provide an overview and little history of the method. Describe the intuition and idea of the method. What are the pros and cons of the method?
+
+- **Model/Method**: Provide the mathematical expression of the model. Address the points mentioned in Regression Content.
+
+- **Simulation**: Do a simulation study, and compare the chosen method with other methods learned in class. Determine which method performs better under what conditions. Address the points mentioned in Regression Content.
+
+- **Discussion**: Based on the simulation results, discuss the advantages and disadvantages of the chosen method. Discuss any variants of the chosen method.
+
+- **References/Bibliography**: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.
+
+
+
+### Format
+
+- Except the project title and section title, the font size is **12 pt**.
+
+- Your paper should have your **project title** and **your name** on the first page. Date, Abstract, Keywords are optional.
+
+- Please use **1.5** or **double** line spacing.
+
+- Your report, *including everything*, should have **at least 10 pages**, but **no more than 13 pages**.
+
+- Your code should NOT be included in the paper.
+
+
+
+### Code
+
+- Your code should be able to **reproduce all the numerical results, outputs, tables, and figures shown in the report**, including the source of the raw data (where you find and load the data) if the project is about data analysis.
+
+
+
+## Project Evaluation
+
+Your project will be evaluated based on
+
+- **Content**: 
+  + The quality of research question and relevancy of data to those questions? For example, the relationship between human height and weight is a BAD question. An elementary-school height and weight data set is a BAD data set.
+  + The quality of the chosen model. For example, one-way ANOVA is a BAD model.
+
+- **Correctness, Completeness and Complexity**: 
+  + Are the regression methods carried out and explained correctly? 
+  + Does project include rigorous analysis and models? Simple linear regression model lacks complexity.
+
+- **Writing**: The quality of the regression model/method presentation, visualization, writing, and explanations.
+
+- **Format**: Does the report follow the required format?
+
+- **Creativity and Critical Thought**: Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+
+- **Reproducibility**: Can your code reproduce what you show in the paper?
+
+- **Reference**: Do you cite others work properly?
+
+
+
+# Participation of MATH 4780 Project Presentation
+
+**\textcolor{red}{You need to participate (in-person) in the final presentation in order to pass the course.}**
+
+- The presentation date/time is **Friday, Dec 12, 5:45 - 7:45 PM** in CU 120.
+
+- You evaluate MATH 4780 group projects.
+
+- Please be attentive to the presentations, and take this evaluation seriously because your judgement affects MATH 4780 student's final grade.
+
+- If your evaluation is an "outlier" that is significantly different from others, your evaluation will be dropped in the calculation of MATH 4780 final grade, and **you lose 30 points of project grade**.
+
+
+## Assessment Policy
+
+- You evaluate group performance based on the four criteria:
+  + **Project Content and Organization (8 pts)**
+  + **Slides Quality (4 pts)**
+  + **Oral Presentation Skill and Delivery (4 pts)**
+  + **Interactions and Q&A (4 pts)**
+
+- The total points of a project presentation is **20** points.
+
+- Evaluation sheets will be provided on the presentation day.
+
+
+- **Content and Organization**
+  + Clear visualization that helps find out relationship of variables and specification of models
+  + All questions are answered accurately by the models
+  + Discuss how and why the models are chosen
+  + Apply sophisticated models and detailed analysis including diagnostics
+  + All ideas are presented in logical order
+
+
+- **Slides Quality**
+  + Slides show code and output beautifully
+  + Slides clearly aid the speaker in telling a coherent story
+  + All tables and graphics are informative and related to the topic and make it easier to understand
+  + Attractive design, layout, and neatness.
+
+
+- **Oral Presentation Skill**
+  + Good volume and energy
+  + Proper pace and diction
+  + Avoidance of distracting gestures
+
+
+- **Interactions and Q&A**
+  + Good eye contact with audience
+  + Excellent listening skills
+  + Answers audience questions with authority and accuracy
+
+
+- After you evaluate group project presentations, you rank them from 1st to the last based on their earned points.
+
+- __No two groups receive the same ranking__. If you give two or more groups some points, you still need to give them a different ranking, deciding which teams deserve a higher ranking according to your personal preference.
+
+
+<span style="color:blue;">Dr. Yu reserves the right to make changes to the project policy.</span>
+

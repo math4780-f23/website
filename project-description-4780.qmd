@@ -1,0 +1,179 @@
+---
+title: "MATH 4780 Project Description"
+---
+
+The project presentation account for 220 points of the total 1000 points.
+
+
+# Timeline and Things to Do
+
+- **Team up!** You work as a team of **three**. One of you, please email me your group *member list* by <span style="color:red;">**Friday, 11/17 11:59 PM**</span>.
+
+- **Proposal**. Please send me a **one-page PDF** describing what you are going to do for your project (no word limit) with your *project title* by <span style="color:red;">**Friday, 12/1 11:59 PM**</span>.
+
+- **Presentation**. You present your project on <span style="color:red;">**Tuesday, 12/12 5:45 - 7:45 PM**</span>.
+
+- **Materials**. Please share your entire work (slides, code, data, etc) by <span style="color:red;">**Tuesday, 12/12 11:59 PM**</span>.
+
+
+
+# Policy
+
+<!-- - Date and Time: **Monday, 5/8/2023 10:30 AM - 12:30 PM** -->
+
+## **Team up!**
+
+- *Each one of you loses 20 points of your project grade if you don't meet the requirement or miss the deadline.*
+
+- You will be randomly assigned to a group if you do not belong to any group before the deadline.
+
+## **Proposal**
+
+- *Each one of you loses 20 points of your project grade if you don't meet the requirement or miss the deadline.*
+
+- Although it is risky, you can change your project topic after you submit your proposal if you decide to do something else.
+
+
+
+
+## **Presentation**
+
+- <span style="color:red;">**You need to participate (in-person) in the final presentation in order to pass the course.**</span>
+
+- Each group presentation should be between **14 and 16 minute** long, followed by **1 to 3 minute** Q&A. If your presentation is too short or too long, _every one of you loses 10 points_ of your project grade.
+
+- Every group member has to present some part of the group work. **The one who does not present receives 0 point**.
+
+- The order of presentation is determined by random sampling using the \texttt{R} function \texttt{sample()}.
+
+- Questions are encouraged during Q&A. Everyone is welcome to ask any questions about the projects.
+
+- **Each group is required to ask as least one question**. After the 1st group presentation, the 2nd group should ask at least one question in Q&A. After the 2nd group presentation, the 3rd group should at least ask one question in Q&A, and so on and so forth. The 1st group will ask the last group questions about their project. If you, as a group, don't ask a question when you should, _every one of you loses 10 points_ of your project grade.
+
+
+## **Materials**
+
+- *Each one of you loses 20 points of your project grade if you don't meet the requirement or miss the deadline.*
+
+- You need to share your entire work, including slides, code, and data if applicable.
+
+- Your code should be able to **reproduce all the numerical results, outputs, tables, and figures shown in the slides**, including the source of the raw data (where you find and load the data) if the project is about data analysis.
+
+
+# Project Content
+
+You need to show that you are good at asking meaningful questions and answering them with results of regression analysis. Your presentation should
+
+- Include *data visualization*. Your graphics should be informative that help you explore relationships between variables in your data, and help you decide which regression model(s) is(are) used, so that your research questions can be properly answered.
+
+- Discuss how and why your model and method are chosen for analyzing your data set. 
+
+- Include regression diagnostics: *model adequacy checking, residual diagnostics, leverage and influence diagnostics, and collinearity diagnostics*.
+
+- Explain how you deal with violation of assumptions and collinearity issue if it exists.
+
+- Demonstrate that your final selected model has no violation of assumptions and answers your questions well through any inference (estimation and testing) or prediction methods. If some issues remain, explain why they cannot be fixed, and what is the limitation of your model due to these issues. Provide suggestions for improving your analysis.
+
+- The chosen data set cannot be any data set used in class, the textbook or homework assignments.
+
+- Below are a list of data repositories you may start with, but you are encouraged to explore more and find your favorite one.
+  + [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+  + [Kaggle](https://www.kaggle.com/datasets)
+  + [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
+  + [Harvard Dataverse](https://dataverse.harvard.edu/)
+  + [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+  + [FiveThirtyEight](https://data.fivethirtyeight.com/)
+
+
+
+# Project Evaluation and Grading {#sec-grading}
+
+
+- Your project performance grade is *determined by MSSC 5780 students and Dr. Yu*.
+
+- Table 1 shows your possible performance grade. For example, if your group finish in fourth place and you are elected as the best contributor, you earn 200 points. If your group finish in second place, and you are not the best contributor, you earn 205 points.
+
+- Your project grade will be 
+\quote{\texttt{project grade = performance grade - points lost due to violation of policy}}
+
+```{r, echo=FALSE}
+# library(tidyverse)
+first_ind <- c(220, 215, 210, 200, 190, 180)
+other_ind <- c(210, 205, 200, 190, 180, 170)
+# grade <- tibble(first_ind, other_ind)
+# grade <- as.data.frame(grade)
+grade <- data.frame(first_ind, other_ind)
+rownames(grade) <- paste("group rank", 1:6)
+colnames(grade) <- c("best contributor", "other members")
+knitr::kable(grade, align = "c", caption = "Performance Grade Sheet.", label = "tbl:grade")
+```
+
+
+
+## Group Performance Evaluation
+
+<!-- - You will need to **evaluate all group projects except the one you work on**. -->
+
+- MSSC 5780 students and Dr. Yu evaluate your performance based on the four evaluation:
+  + **Content and Organization (8 pts)**
+  + **Slides Quality (4 pts)**
+  + **Oral Presentation Skill and Delivery (4 pts)**
+  + **Interactions and Q&A (4 pts)**
+
+<!-- - The total points of a project presentation is **20** points. -->
+
+<!-- - Evaluation sheets will be provided on the presentation day. -->
+
+<!-- - How do you get the full points for each category? Check the requirements below. Note that for Content and Organization, data analysis and package projects have different requirements. -->
+
+<!-- <br> -->
+
+
+- **Content and Organization (Data Analysis)**
+  + Beautiful visualization helps find out relationship of variables and specification of models
+  + All questions are answered accurately by the models
+  + Discuss how and why the models are chosen
+  + Apply sophisticated models and detailed analysis
+  + All ideas are presented in logical order
+
+
+- **Slides Quality**
+  + Slides show code and output beautifully
+  + Slides clearly aid the speaker in telling a coherent story
+  + All tables and graphics are informative and related to the topic and make it easier to understand
+  + Attractive design, layout, and neatness.
+
+
+- **Oral Presentation Skill**
+  + Good volume and energy
+  + Proper pace and diction
+  + Avoidance of distracting gestures
+
+
+- **Interactions and Q&A**
+  + Good eye contact with audience
+  + Excellent listening skills
+  + Answers audience questions with authority and accuracy
+
+
+<!-- - After you evaluate 5 group project presentations, you rank them from 1st to 5th based on their earned points. -->
+<!-- - __No two groups receive the same ranking__. If you give two or more groups some points, you still need to give them a different ranking, deciding which teams deserve a higher ranking according to your personal preference. -->
+
+  
+
+## Best Contributor Nomination
+
+<!-- You will evaluate your 3 group mates' performance. The rule is as follows. -->
+
+- You nominate *one single* person who you think contributes the most to your group project.
+
+- You *cannot* nominate yourself, and you can only vote for *one of your teammates*.
+
+- If you don't vote, you can't be the best contributor even if you obtain the most votes. The person with the second highest votes wins the best contribution reward.
+
+- If there is no one single person who gets the most votes, every team member remains the same grade. For example, if your group finish in third place, and there is no best contributor, all members receive 200 points.
+
+
+<span style="color:blue;">Dr. Yu reserves the right to make changes to the project policy.</span>
+
+

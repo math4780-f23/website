@@ -1,5 +1,5 @@
 ---
-title: "Project description"
+title: "MSSC 5780 Project Description"
 ---
 
 To be announced.
