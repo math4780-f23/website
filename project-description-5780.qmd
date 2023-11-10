@@ -163,7 +163,7 @@ Your project will be evaluated based on
 
 - Please be attentive to the presentations, and take this evaluation seriously because your judgement affects MATH 4780 student's final grade.
 
-- If your evaluation is an "outlier" that is significantly different from others, your evaluation will be dropped in the calculation of MATH 4780 final grade, and **you lose 30 points of project grade**.
+- If your evaluation is an "outlier" that is significantly different from others, your evaluation will be dropped in the calculation of MATH 4780 final grade, and **you lose 30 points of your project grade**.
 
 
 ## Assessment Policy

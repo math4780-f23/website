@@ -65,10 +65,10 @@ website:
       #       text: Troubleshooting
       - section: "Project"
         contents:
-          - href: project-description.qmd
-            text: Description
-          - href: project-tips-resources.qmd
-            text: Tips + resources
+          - href: project-description-4780.qmd
+            text: Guideline for MATH 4780
+          - href: project-description-5780.qmd
+            text: Guideline for MATH 5780
       - section: "Class Activities"
         contents:
           - href: activity-description.qmd

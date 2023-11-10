@@ -61,9 +61,9 @@ Perform a thorough leverage and influence diagnostics of the squid data.
     * Create the bubble plot.
     * Create the influence index plot (`car::influenceIndexPlot()`)
 
-3. Produce the added-valued plot (`car::avPlots()`) for each regressor $x_i, i = 1, \dots, 5$. Are there any joint influence of data points on the regression coefficients?
+3. Produce the added-variable plot (`car::avPlots()`) for each regressor $x_i, i = 1, \dots, 5$. Are there any joint influence of data points on the regression coefficients?
 
-4. **(MSSC)** Numerically verify the following properties of the added-valued plot.
+4. **(MSSC)** Numerically verify the following properties of the added-variable plot.
     (a) The slope of the least squares *simple* regression line of $e(y \mid x_{(1)})$ on $e(x_1 \mid x_{(1)})$ is the same as the least-squares slope $b_1$ for $x_1$ in the full *multiple* regression.
     (b) The residuals from the simple regression $e(y \mid x_{(1)})$ vs. $e(x_1 \mid x_{(1)})$ are the same as the residuals $e_i$ from the full multiple regression.
     (c) The standard error of $b_1$ is $s / \sqrt{\sum_{i=1}^ne_i^2(x_1 \mid x_{(1)})}$, where $s = \sqrt{MS_{res}}$ from the full multiple regression.

@@ -2,7 +2,7 @@
 title: "MATH 4780 Project Description"
 ---
 
-The project presentation account for 220 points of the total 1000 points.
+The project accounts for 220 points of the total 1000 points.
 
 
 # Timeline and Things to Do
@@ -94,7 +94,8 @@ You need to show that you are good at asking meaningful questions and answering 
 - Table 1 shows your possible performance grade. For example, if your group finish in fourth place and you are elected as the best contributor, you earn 200 points. If your group finish in second place, and you are not the best contributor, you earn 205 points.
 
 - Your project grade will be 
-\quote{\texttt{project grade = performance grade - points lost due to violation of policy}}
+
+> project grade = performance grade - points lost due to violation of policy
 
 ```{r, echo=FALSE}
 # library(tidyverse)
@@ -114,7 +115,7 @@ knitr::kable(grade, align = "c", caption = "Performance Grade Sheet.", label = "
 
 <!-- - You will need to **evaluate all group projects except the one you work on**. -->
 
-- MSSC 5780 students and Dr. Yu evaluate your performance based on the four evaluation:
+- MSSC 5780 students and Dr. Yu evaluate your performance based on the four criteria:
   + **Content and Organization (8 pts)**
   + **Slides Quality (4 pts)**
   + **Oral Presentation Skill and Delivery (4 pts)**
