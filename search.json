@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "project-work.html",
+    "href": "project-work.html",
+    "title": "Class activity work",
+    "section": "",
+    "text": "MSSC 5780 Presenters: David Aguilera, Rachel Cutlan\nMATH 4780 Questioners: Ethan Baierl, Patrick Campbell, Dylan Cardoza"
+  },
+  {
+    "objectID": "project-work.html#class-activity-2---0926",
+    "href": "project-work.html#class-activity-2---0926",
+    "title": "Class activity work",
+    "section": "Class activity 2 - 09/26",
+    "text": "Class activity 2 - 09/26\n\nMSSC 5780 Presenters: Timothy Goodwin, Matt Jaeggin\nMATH 4780 Questioners: Huangkun Chen, Davion Cook, Nicky Diaz"
+  },
+  {
+    "objectID": "project-work.html#class-activity-3---1010",
+    "href": "project-work.html#class-activity-3---1010",
+    "title": "Class activity work",
+    "section": "Class activity 3 - 10/10",
+    "text": "Class activity 3 - 10/10\n\nMSSC 5780 Presenters: Samantha Juedemann, Edward Liu\nMATH 4780 Questioners: Nathan Fisher, Alberto Gamez Gonzalez, Andrew Hiller"
+  },
+  {
+    "objectID": "project-work.html#class-activity-4---1024",
+    "href": "project-work.html#class-activity-4---1024",
+    "title": "Class activity work",
+    "section": "Class activity 4 - 10/24",
+    "text": "Class activity 4 - 10/24\n\nMSSC 5780 Presenters: Sylvester Mensah, Navid Mohseni\nMATH 4780 Questioners: Jake Konrad, Vanessa Lattas, Danny O’Shea"
+  },
+  {
+    "objectID": "project-work.html#class-activity-5---1114",
+    "href": "project-work.html#class-activity-5---1114",
+    "title": "Class activity work",
+    "section": "Class activity 5 - 11/14",
+    "text": "Class activity 5 - 11/14\n\nMSSC 5780 Presenters: Adam Reeson\nMATH 4780 Questioners: Kayley Reith, Donny Robbins, Ray Sun"
+  },
+  {
+    "objectID": "project-work.html#class-activity-6---1205",
+    "href": "project-work.html#class-activity-6---1205",
+    "title": "Class activity work",
+    "section": "Class activity 6 - 12/05",
+    "text": "Class activity 6 - 12/05\n\nMSSC 5780 Presenters: Anesti Sotirovski, Tanjina Zaman\nMATH 4780 Questioners: Violet Wang, T.J. James Whapham II, Serena Yang"
+  },
+  {
     "objectID": "course-links.html",
     "href": "course-links.html",
     "title": "Useful links",
@@ -548,35 +590,28 @@
   {
     "objectID": "hw/hw-5.html",
     "href": "hw/hw-5.html",
-    "title": "Homework 5 - Bootstrapping, Polynomial Regression and Nonparametric Regression",
+    "title": "Homework 5 - Polynomial Regression and Nonparametric Regression",
     "section": "",
     "text": "Homework 5 covers course materials of Week 1 to 11.\nPlease submit your work in one PDF file including all parts to D2L > Assessments > Dropbox. Multiple files or a file that is not in pdf format are not allowed.\nIn your homework, please number and answer questions in order.\nYour entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, (R)Markdown, Quarto, LaTex, etc) and your preferred programming language. Your document should be a PDF file.\nQuestions starting with (MSSC) are for MSSC 5780 students. MATH 4780 students could possibly earn extra points from them.\nIt is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on what you show, not what you want to show. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong."
   },
   {
-    "objectID": "hw/hw-5.html#bootstrapping",
-    "href": "hw/hw-5.html#bootstrapping",
-    "title": "Homework 5 - Bootstrapping, Polynomial Regression and Nonparametric Regression",
-    "section": "Bootstrapping",
-    "text": "Bootstrapping\n\nFor data set mpg.csv, use the response gasoline mileage \\(y\\) (miles per gallon), and the predictor engine displacement \\(x_1\\) (cubic inches) to generate and plot 200 bootstrapped regression lines with the sample regression line.\nMake the histogram of bootstrapped samples of \\(\\beta_1\\), and provide the \\(95\\%\\) bootstrapped CI for \\(\\beta_1\\) using the percentile method and the standard error method."
-  },
-  {
     "objectID": "hw/hw-5.html#polynomial-regression",
     "href": "hw/hw-5.html#polynomial-regression",
-    "title": "Homework 5 - Bootstrapping, Polynomial Regression and Nonparametric Regression",
+    "title": "Homework 5 - Polynomial Regression and Nonparametric Regression",
     "section": "Polynomial Regression",
-    "text": "Polynomial Regression\nA solid-fuel rocket propellant loses weight after it is produced. The following data are available:\n\n\n\nMonths since Production, \\(x\\)\nWeight Loss \\(y\\) (kg)\n\n\n\n\n0.25\n1.42\n\n\n0.50\n1.39\n\n\n0.75\n1.55\n\n\n1.00\n1.89\n\n\n1.25\n2.43\n\n\n1.50\n3.15\n\n\n1.75\n4.05\n\n\n2.00\n5.15\n\n\n2.25\n6.43\n\n\n2.50\n7.89\n\n\n\n\nFit a second-order polynomial \\(y = \\beta_0 + \\beta_1x + \\beta_{2}x^2 + \\epsilon\\) to the data.\nTest for significance of regression.\nTest the hypothesis \\(H_0:\\beta_2 = 0\\). Comment on the need for the quadratic term in this model.\nAre there any potential hazards in extrapolating with this model?\nCompute the R-student residuals for the second-order model. Analyze the residuals and comment on the adequacy of the model.\nFit a second-order model \\(y = \\beta_0 + \\beta_1z + \\beta_{2}z^2 + \\epsilon\\) to the data, where \\(z = x - \\bar{x}\\), i.e., \\(z\\) is the centered \\(x\\).\nConstruct the design matrix \\({\\bf W} = \\begin{bmatrix} {\\bf w}_1 & {\\bf w}_2 \\end{bmatrix}\\) of the model in (1), where \\({\\bf w}_1\\) is the predictor \\({\\bf x}\\) vector after unit normal scaling and \\({\\bf w}_2\\) is the predictor \\({\\bf x}^2\\) vector after unit normal scaling. That is, for each \\(i = 1, 2, \\dots, n\\), \\(w_{1i} = \\frac{x_i - \\bar{x}}{s_x}\\), where \\(s_x\\) is the the standard deviation of \\(x_i\\)s; \\(w_{2i} = \\frac{d_i - \\bar{d}}{s_d}\\) where \\(d_i = x_i^2\\), and \\(s_d\\) is the standard deviation of \\(d_i\\)s. Similarly, construct the design matrix for the model in (6). Remember to use the predictor \\(z\\), the centered version of \\(x\\).\nCompute \\(\\mathbf{\\Sigma} = \\mathbf{W}'\\mathbf{W}/(n-1)\\) of the model in (1) and (6). In fact, \\(\\mathbf{\\Sigma}\\) is the correlation matrix of predictors. Which model has higher correlation between predictors?\nCompute the inverse of \\(\\mathbf{\\Sigma}\\) of the model in (1) and (6). In fact, the diagonal elements of the inverse matrix measures the degree of ill-conditioning. Does the centering of \\(x\\) help alleviate the ill-conditioning problem?"
+    "text": "Polynomial Regression\nA solid-fuel rocket propellant loses weight after it is produced. The following data are available:\n\n\n\nMonths since Production, \\(x\\)\nWeight Loss \\(y\\) (kg)\n\n\n\n\n0.25\n1.42\n\n\n0.50\n1.39\n\n\n0.75\n1.55\n\n\n1.00\n1.89\n\n\n1.25\n2.43\n\n\n1.50\n3.15\n\n\n1.75\n4.05\n\n\n2.00\n5.15\n\n\n2.25\n6.43\n\n\n2.50\n7.89\n\n\n\n\nFit a second-order polynomial \\(y = \\beta_0 + \\beta_1x + \\beta_{2}x^2 + \\epsilon\\) to the data.\n\n\n\nTest the hypothesis \\(H_0:\\beta_2 = 0\\). Comment on the need for the quadratic term in this model.\nAre there any potential hazards in extrapolating with this model?\nCompute the R-student residuals for the second-order model. Analyze the residuals and comment on the adequacy of the model.\nFit a second-order model \\(y = \\beta_0 + \\beta_1z + \\beta_{2}z^2 + \\epsilon\\) to the data, where \\(z = x - \\bar{x}\\), i.e., \\(z\\) is the centered \\(x\\).\nFind the correlation of \\(x\\) and \\(x^2\\), and the correlation of \\(z\\) and \\(z^2\\). Which one is larger?\n(MSSC) Construct the design matrix \\({\\bf W} = \\begin{bmatrix} {\\bf w}_1 & {\\bf w}_2 \\end{bmatrix}\\) of the model in (1), where \\({\\bf w}_1\\) is the predictor \\({\\bf x}\\) vector after unit normal scaling and \\({\\bf w}_2\\) is the predictor \\({\\bf x}^2\\) vector after unit normal scaling. That is, for each \\(i = 1, 2, \\dots, n\\), \\(w_{1i} = \\frac{x_i - \\bar{x}}{s_x}\\), where \\(s_x\\) is the the standard deviation of \\(x_i\\)s; \\(w_{2i} = \\frac{d_i - \\bar{d}}{s_d}\\) where \\(d_i = x_i^2\\), and \\(s_d\\) is the standard deviation of \\(d_i\\)s. Similarly, construct the design matrix for the model in (5). Remember to use the predictor \\(z\\), the centered version of \\(x\\).\n(MSSC) Compute \\(\\mathbf{\\Sigma} = \\mathbf{W}'\\mathbf{W}/(n-1)\\) of the model in (1) and (6). In fact, \\(\\mathbf{\\Sigma}\\) is the correlation matrix of predictors. Which model has higher correlation between predictors? The answer should be the same as the one of (6).\n(MSSC) Compute the inverse of \\(\\mathbf{\\Sigma}\\) of the model in (1) and (5). In fact, the diagonal elements of the inverse matrix measures the degree of ill-conditioning. Does the centering of \\(x\\) help alleviate the ill-conditioning problem?"
   },
   {
     "objectID": "hw/hw-5.html#nonlinearity-diagnostics",
     "href": "hw/hw-5.html#nonlinearity-diagnostics",
-    "title": "Homework 5 - Bootstrapping, Polynomial Regression and Nonparametric Regression",
+    "title": "Homework 5 - Polynomial Regression and Nonparametric Regression",
     "section": "Nonlinearity Diagnostics",
     "text": "Nonlinearity Diagnostics\nConsider the Canadian occupational-prestige data set Prestige in the carData package. Treat the variable prestige as the response, and education, income and women are the three predictors.\n\nGenerate the scatterplot matrix. Does the plot suggest any nonlinear relationship between the response and predictors or among predictors? Is the plot useful for detecting nonlinearity assumption of regression?\nFit the linear regression model, and plot the residual plots. Comment the plot.\nGenerate partial residual plots (component-plus-residual plot). Based on the plot, transform any predictors if necessary, and refit the regression. Check the partial residual plot of the refitted model and confirm that the nonlinearity issue is fixed."
   },
   {
     "objectID": "hw/hw-5.html#kernel-methods",
     "href": "hw/hw-5.html#kernel-methods",
-    "title": "Homework 5 - Bootstrapping, Polynomial Regression and Nonparametric Regression",
+    "title": "Homework 5 - Polynomial Regression and Nonparametric Regression",
     "section": "Kernel Methods",
     "text": "Kernel Methods\n\nGenerate the 40 data points \\(\\{x_i, y_i\\}_{i=1}^{40}\\) from the model \\(y = f(x) + \\epsilon\\), where \\(f(x) = 2\\sin(x)\\) and \\(\\epsilon\\sim N(0, 1)\\). Use seq() to generate the \\(x_i\\)s.\nUse KernSmooth::locpoly() to generate Gaussian kernel smoothers with bandwidth 0.2, 1, and 100. Plot them as the figure shown below.\n\n\n\n\n\n\n\n\n\n\n\nUse locpoly() to fit the Gaussian local linear regressions (degree = 1) with bandwidth 0.2, 1, and 100. Generate the plot as the one in (2).\nUse locpoly() to fit the Gaussian local quadratic regressions (degree = 2) with bandwidth 0.2, 1, and 100. Generate the plot as the one in (2).\nUse loess() to fit the tricube local quadratic regressions with the span parameter \\(\\alpha = 0.2, 0.5, 0.9\\). Generate the plot as the one in (2).\nComment on your plots in (2)-(5), and discuss your findings. Which method you prefer?"
   },
@@ -599,7 +634,7 @@
     "href": "hw/hw-4.html#influence-diagnostics-on-squid-data",
     "title": "Homework 4 - Diagnostics",
     "section": "Influence Diagnostics on Squid Data",
-    "text": "Influence Diagnostics on Squid Data\nAn experiment was conducted to study the size of squid eaten by sharks and tuna. The regressors are characteristics of the beak or month of the squid. The squid.csv data contain the variables\n\n\\(x_1\\): Rostral length in inches\n\\(x_2\\): Wing length in inches\n\\(x_3\\): Rostral to notch length\n\\(x_4\\): Notch to wing length\n\\(x_5\\): Width in inches\n\\(y\\): Weights in pounds\n\nPerform a thorough leverage and influence diagnostics of the squid data.\n\nCompute R-studentized residuals, hat values, Cook’s distance, DFFITS, DFBETAS, and COVRATIO measures. Describe how you detect leverage and influential points. Discuss the effect of data points on coefficients, fitted values, and precision of coefficients. (The influence.measures() function provides all influence measures.)\nLet’s use some visualization tools.\n\nCreate the bubble plot.\nCreate the influence index plot (car::influenceIndexPlot())\n\nProduce the added-valued plot (car::avPlots()) for each regressor \\(x_i, i = 1, \\dots, 5\\). Are there any joint influence of data points on the regression coefficients?\n(MSSC) Numerically verify the following properties of the added-valued plot.\n\nThe slope of the least squares simple regression line of \\(e(y \\mid x_{(1)})\\) on \\(e(x_1 \\mid x_{(1)})\\) is the same as the least-squares slope \\(b_1\\) for \\(x_1\\) in the full multiple regression.\nThe residuals from the simple regression \\(e(y \\mid x_{(1)})\\) vs. \\(e(x_1 \\mid x_{(1)})\\) are the same as the residuals \\(e_i\\) from the full multiple regression.\nThe standard error of \\(b_1\\) is \\(s / \\sqrt{\\sum_{i=1}^ne_i^2(x_1 \\mid x_{(1)})}\\), where \\(s = \\sqrt{MS_{res}}\\) from the full multiple regression."
+    "text": "Influence Diagnostics on Squid Data\nAn experiment was conducted to study the size of squid eaten by sharks and tuna. The regressors are characteristics of the beak or month of the squid. The squid.csv data contain the variables\n\n\\(x_1\\): Rostral length in inches\n\\(x_2\\): Wing length in inches\n\\(x_3\\): Rostral to notch length\n\\(x_4\\): Notch to wing length\n\\(x_5\\): Width in inches\n\\(y\\): Weights in pounds\n\nPerform a thorough leverage and influence diagnostics of the squid data.\n\nCompute R-studentized residuals, hat values, Cook’s distance, DFFITS, DFBETAS, and COVRATIO measures. Describe how you detect leverage and influential points. Discuss the effect of data points on coefficients, fitted values, and precision of coefficients. (The influence.measures() function provides all influence measures.)\nLet’s use some visualization tools.\n\nCreate the bubble plot.\nCreate the influence index plot (car::influenceIndexPlot())\n\nProduce the added-variable plot (car::avPlots()) for each regressor \\(x_i, i = 1, \\dots, 5\\). Are there any joint influence of data points on the regression coefficients?\n(MSSC) Numerically verify the following properties of the added-variable plot.\n\nThe slope of the least squares simple regression line of \\(e(y \\mid x_{(1)})\\) on \\(e(x_1 \\mid x_{(1)})\\) is the same as the least-squares slope \\(b_1\\) for \\(x_1\\) in the full multiple regression.\nThe residuals from the simple regression \\(e(y \\mid x_{(1)})\\) vs. \\(e(x_1 \\mid x_{(1)})\\) are the same as the residuals \\(e_i\\) from the full multiple regression.\nThe standard error of \\(b_1\\) is \\(s / \\sqrt{\\sum_{i=1}^ne_i^2(x_1 \\mid x_{(1)})}\\), where \\(s = \\sqrt{MS_{res}}\\) from the full multiple regression."
   },
   {
     "objectID": "hw/hw-6.html",
@@ -690,7 +725,7 @@
     "href": "index.html",
     "title": "MATH 4780 - Regression Analysis",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n✍️\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n📂\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n✍️\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n📂\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n✍️\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
   },
   {
     "objectID": "course-team.html",
