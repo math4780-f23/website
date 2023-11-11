@@ -23,7 +23,7 @@ format:
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
     footer: "[math4780-f23.github.io/website](https://math4780-f23.github.io/website/)"
     theme: ["simple", "slides.scss"]
-    multiplex: false
+    multiplex: true
     code-link: true
     fig-cap-location: bottom
     fig-align: center
@@ -83,7 +83,7 @@ knitr::opts_chunk$set(
     fig.align = "center",
     out.width = "100%",
     fig.retina = 10,
-    fig.path = "./images/14-colliearity/",
+    fig.path = "./images/14-collinearity/",
     message = FALSE,
     global.par = TRUE
 )
@@ -283,9 +283,9 @@ $$
 
 . . .
 
--   We can set $\hat{\beta}_1$ and $\hat{\beta}_2$ to any two numbers such that $\hat{\beta}_1 + \frac{\hat{\beta}_2}{10} = 4$.
+-   Can set $\hat{\beta}_1$ and $\hat{\beta}_2$ to any two numbers such that $\hat{\beta}_1 + \frac{\hat{\beta}_2}{10} = 4$.
 
--   We are unable to choose the "best" combination of $\hat{\beta}_1$ and $\hat{\beta}_2$.
+-   Unable to choose the "best" combination of $\hat{\beta}_1$ and $\hat{\beta}_2$.
 
 
 ::: notes
@@ -759,7 +759,7 @@ X_s%*%V[, 5]
 
 
 
-## Eigensystem Analysis: Variance Proportion
+## Eigensystem Analysis: Variance Proportion {visibility="hidden"}
 <!-- - ${\bf X'X = V\bsLambda V'}$, therefore ${\bf (X'X)^{-1} = V\bsLambda^{-1} V'}$ -->
 <!-- - $\var\left( {\bf b} \right) = \sigma^2 {\bf (X'X)} ^{-1} = \sigma^2 {\bf V\bsLambda^{-1} V'}$ -->
 <!-- - $\var\left( b_j \right) = \sigma^2 \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i} =\sigma^2\text{VIF}_j$ -->
@@ -788,7 +788,7 @@ A small $\lambda_i$, accompanied by a subset of regressors with high variance pr
 :::
 
 
-## [R Lab]{.pink} Hospital Manpower - Variance Proportion
+## [R Lab]{.pink} Hospital Manpower - Variance Proportion {visibility="hidden"}
 ```{r}
 #| echo: true
 #| code-line-numbers: false
@@ -827,6 +827,8 @@ round(pi_mat, 5)
 ```
 :::
 
+
+
 ## Other Diagnostics
 
 Collinearity may exist if
@@ -862,7 +864,7 @@ summary(lm_no_x3)$coef
 
 
 
-## Diagonastics Summary
+## Diagonastics Summary {visibility="hidden"}
 ::: alert
 
 *Summary*:
@@ -897,7 +899,7 @@ summary(lm_no_x3)$coef
   + <span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span>
 
 
-## Unbiased vs. Biased Estimators
+## Unbiased vs. Biased Estimators {visibility="hidden"}
 - The LSE ${\bf b}$ is *unbiased*, i.e., $E({\bf b}) = \bbeta$.
 - LSE is a BLUE: has *minimum variance* among all *unbiased* linear estimators
 - *No guarantee that this variance will be small.*
@@ -922,7 +924,7 @@ implying that confidence intervals on β would be wide and the point estimate ˆ
 :::
 
 
-## Biased Estimators
+## Biased Estimators {visibility="hidden"}
 
 :::: {.columns}
 
@@ -991,7 +993,7 @@ Adding $\delta$ to the main diagonal effectively replaces $\lambda$ by $\lambda+
 :::
 
 
-## Ridge Regression Estimator
+## Ridge Regression Estimator {visibility="hidden"}
 
 - With a small $\delta >0$, the ridge estimator ${\bf b}_R$ is $${\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}$$
 
@@ -1030,7 +1032,7 @@ $$\var\left({\bf b}_R \right) = \sigma^2 ({\bf X'X + \delta I})^{-1}{\bf X'X }({
 :::
 
 
-## [R Lab]{.pink} Hospital Manpower - Ridge Regression
+## [R Lab]{.pink} Hospital Manpower - Ridge Regression {visibility="hidden"}
 :::: {.columns}
 
 ::: {.column width="40%"}
@@ -1091,7 +1093,7 @@ ridge_fit$lambda[which.min(ridge_fit$GCV)]
 :::
 
 
-## [R Lab]{.pink} Hospital Manpower - Ridge Regression
+## [R Lab]{.pink} Hospital Manpower - Ridge Regression {visibility="hidden"}
 ```{r}
 #| out-width: 78%
 manpower_scale <- as.data.frame(manpower_scale)
