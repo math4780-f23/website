@@ -1190,6 +1190,149 @@ x5          -440.297    183.696    -2.4  3.4e-02</code></pre>
 <ul>
 <li><span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span></li>
 </ul>
+<!-- ## Unbiased vs. Biased Estimators {visibility="hidden"} --><!-- - The LSE ${\bf b}$ is *unbiased*, i.e., $E({\bf b}) = \bbeta$. --><!-- - LSE is a BLUE: has *minimum variance* among all *unbiased* linear estimators --><!-- - *No guarantee that this variance will be small.* --><!-- - When collinearity exists, $\var({\bf b})$ is largely inflated. --><!-- ```{r} --><!-- #| fig-asp: 0.35 --><!-- par(mar = c(2, 0, 2, 0), mgp = c(0.5, 0.5, 0), las = 1) --><!-- x <- seq(-3, 3, by = 0.1) --><!-- plot(x, dnorm(x), type = "l", lwd = 3, axes = F, xlab = "", ylab = "") --><!-- title(main = "Sampling distribution of LSE b") --><!-- axis(1, at = c(-3, 0.1, 3), labels = c("", expression(bold(beta) == E(b)), ""),  --><!--      tick = T, tck = -0.01) --><!-- segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0), lty = 2) --><!-- text(2, dnorm(1), expression(paste("E(b) = ", bold(beta), " (unbiased)")), cex = 1.5) --><!-- text(2.5, dnorm(1.5), paste("Var(b) large"), cex = 1.5) --><!-- ``` --><!-- ::: notes --><!-- implying that confidence intervals on β would be wide and the point estimate ˆb is very unstable. --><!-- ::: --><!-- ## Biased Estimators {visibility="hidden"} --><!-- :::: {.columns} --><!-- ::: {.column width="45%"} --><!-- A good estimator is the one that *balances bias and variance well*, or the one that *minimizes the mean square error* $$\small \text{MSE}(\hat{\beta}) = E[(\hat{\beta} - \beta)^2] = \var(\hat{\beta}) + \text{bias}(\hat{\beta})^2$$ --><!-- - Biasedness and variance have a *trade-off* relationship! --><!-- - Find a **biased** estimator ${\bf \hat{b}}$ that has *smaller variance and MSE* than ${\bf b}$. --><!-- ::: --><!-- ::: {.column width="55%"} --><!-- ```{r} --><!-- #| out-width: 100% --><!-- par(mar = c(2, 0, 2, 0), mgp = c(0.5, 0.5, 0), las = 1) --><!-- x <- seq(-6, 6, by = 0.1) --><!-- plot(x, dnorm(x), type = "l", lwd = 3, axes = F, xlab = "", ylab = "", --><!--      xlim = c(-8, 8)) --><!-- title(main = list(expression(paste("Sampling distribution a biased estimator ", hat(b))), cex = 2)) --><!-- axis(1, at = c(-8, -1, 0, 8),  --><!--      labels = c("", expression(bold(beta)), expression(E(b)), ""),  --><!--      tick = T, tck = -0.01, cex.lab = 2) --><!-- segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0), lty = 2) --><!-- segments(x0 = -1, y0 = 0, x1 = -1, y1 = dnorm(-1), lty = 2) --><!-- text(3.5, dnorm(1), expression(paste(E(hat(b)) != bold(beta), " (biased)")), cex = 2) --><!-- text(4, dnorm(1.5), expression(paste(Var(hat(b)), " small")), cex = 2) --><!-- ``` --><!-- ::: --><!-- :::: --><!-- ::: notes --><!-- <!-- .question[ --><p>–&gt; <!-- <!-- Can we obtain an estimator that has a smaller variance? --> –&gt; <!-- <!-- ] --> –&gt; <!-- ::: --></p>
+<!-- ## Ridge Regression: Motivation  {visibility="hidden"} -->
+<!-- - ${\bf \Sigma} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$ $\quad {\bf  \Sigma}^{-1} = \begin{bmatrix} 62.8 & -62.2 \\ -62.2 & 62.8 \end{bmatrix}$ -->
+<!-- - $\lambda_1 = 1.992$ and $\lambda_2 = 0.008$ -->
+<!-- . . . -->
+<!-- - ${\bf \Sigma} = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix}$ $\quad {\bf \Sigma}^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ -->
+<!-- - $\lambda_1 = 1$ and $\lambda_2 = 1$ -->
+<!-- . . . -->
+<!-- - IDEA: To make ${\bf \Sigma}$ behave more like the orthogonal case. But how? -->
+<!-- . . . -->
+<!-- - Use $({\bf X'X + \delta I})$ with a small $\delta >0$. -->
+<!-- - The eigenvalues of $({\bf X'X + \delta I})$ are $\lambda_1+\delta$ and $\lambda_2 + \delta$. -->
+<!-- - If $\delta = 0.1$, -->
+<!-- $({\bf X'X + \delta I}) = \begin{bmatrix} 1.1 & 0.992 \\ 0.992 & 1.1 \end{bmatrix}$ and $({\bf X'X + \delta I})^{-1} = \begin{bmatrix} 4.87 & -4.39 \\ -4.39 & 4.87 \end{bmatrix}$ -->
+<!-- ::: notes -->
+<!-- - The diagonals *do not dominate* as in the orthogonal case whose matrix diagonals dominate and $\lambda_1 = \lambda_2 = 1$. -->
+<!-- Adding $\delta$ to the main diagonal effectively replaces $\lambda$ by $\lambda+\delta$.  -->
+<!-- ::: -->
+<!-- ## Ridge Regression Estimator {visibility="hidden"} -->
+<!-- - With a small $\delta >0$, the ridge estimator ${\bf b}_R$ is $${\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}$$ -->
+<!-- - ${\bf b}_R$ is a *biased* estimator for $\bbeta$. -->
+<!-- ::: notes -->
+<!-- - $\sum_{i=1}^k \var\left( b_{Ri} \right) \le \sum_{i=1}^k \var\left( b_i \right)$ with equality when $\delta = 0$. -->
+<!-- ::: -->
+<!-- . . . -->
+<!-- - As $\delta$ increases, -->
+<!--   + $\sum_{i=1}^k \var\left( b_{Ri} \right)$ decreases -->
+<!--   + Bias $E\left[ {\bf b}_R \right] - \bbeta$ increases -->
+
+<!--   + $R^2$ decreases (it's OK as we care more about stable estimates and better prediction) -->
+<!-- . . . -->
+<!-- - Choose $\delta$ by the **ridge trace** that is a plot of $\{ b_{Ri} \}_{i=1}^k$ vs. $\delta$. -->
+
+<!--   + Select a small value of $\delta$ at which the ridge estimates ${\bf b}_R$ are stable. -->
+<!-- ::: notes -->
+<!-- - Cross Validation -->
+<!-- - The ridge estimator ${\bf b}_R$ is $${\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}$$ -->
+<!-- - ${\bf b}_R$ is a *biased* estimator of $\bsbeta$: -->
+<!-- $$E\left[ {\bf b}_R \right] = E\left[({\bf X'X + \delta I})^{-1}{\bf X'y} \right]  = E\left[({\bf X'X + \delta I})^{-1}({\bf X'X}){\bf b}\right] = {\bf Z_{\delta}}\bsbeta$$ -->
+<!-- - The covariance matrix of ${\bf b}_R$ is -->
+<!-- $$\var\left({\bf b}_R \right) = \sigma^2 ({\bf X'X + \delta I})^{-1}{\bf X'X }({\bf X'X + \delta I})^{-1}$$ -->
+<!-- - For LSE, $\sum_{i=1}^k \var\left( b_i \right) = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}$ -->
+<!-- - For ridge estimator,  $\sum_{i=1}^k \var\left( b_{Ri} \right) = \sigma^2\sum_{i=1}^k\frac{\lambda_i}{(\lambda_i+\delta)^2}$ -->
+<!-- - $\sum_{i=1}^k \var\left( b_{Ri} \right) \le \sum_{i=1}^k \var\left( b_i \right)$ with equality when $\delta = 0$. -->
+<!-- - As $\delta$ increases, $\sum_{i=1}^k \var\left( b_{Ri} \right)$ decreases. -->
+<!-- ::: -->
+<!-- ## [R Lab]{.pink} Hospital Manpower - Ridge Regression {visibility="hidden"} -->
+<!-- :::: {.columns} -->
+<!-- ::: {.column width="40%"} -->
+<!-- ::: midi -->
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
+<!-- #| code-line-numbers: false -->
+<!-- #| class-source: my_class800 -->
+<!-- manpower_scale <- apply(manpower, 2, scale) -->
+<!-- df <- as.data.frame(manpower_scale) -->
+<!-- delta <- seq(0, 0.5, by = 0.01) -->
+<!-- ridge_fit <- MASS::lm.ridge( -->
+<!--   y ~ . -1, data = df, lambda = delta) -->
+<!-- matplot(coef(ridge_fit), type = "l", -->
+<!--         xlab = "delta", ylab = "Coef",  -->
+<!--         main = "Ridge Trace") -->
+<!-- abline(v = which(delta == 0.07),  -->
+<!--        col = "orange", lty = 2) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.column width="60%"} -->
+<!-- ```{r} -->
+<!-- #| out-width: 100% -->
+<!-- library(MASS) -->
+<!-- # manpower_scale <- apply(manpower, 2,  -->
+<!-- #                         unit_length_scale) -->
+<!-- manpower_scale <- apply(manpower, 2, scale) -->
+<!-- delta <- seq(0, 0.5, by = 0.01) -->
+<!-- ridge_fit <- lm.ridge(y ~ . -1,  -->
+<!--                       data = as.data.frame(manpower_scale),  -->
+<!--                       lambda = delta) -->
+<!-- par(mar = c(3, 3.5, 2, 0), mgp = c(2, 0.5, 0), las = 1) -->
+<!-- matplot(coef(ridge_fit), type = "l", xlab = "delta", axes = F, cex.lab = 1.5, -->
+<!--         ylab = "Coefficients", main = "Ridge Trace", lwd = 2.5, cex.main = 2) -->
+<!-- axis(2, at = seq(-0.5, 1.5, by = 0.5)) -->
+<!-- axis(1, at = c(0, 10, 20, 30, 40, 50), labels = delta[c(0, 10, 20, 30, 40, 50)+1]) -->
+<!-- text(jitter(rep(15, 5), factor = 3), jitter(coef(ridge_fit)[15, ]), colnames(manpower_scale)[-1], cex = 1.5) -->
+<!-- abline(v = which(delta == 0.07), col = "orange", lty = 2) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- :::: -->
+<!-- ::: notes -->
+<!-- ```{r, eval=FALSE} -->
+<!-- # use GCV to select the best delta -->
+<!-- plot(ridge_fit$lambda, ridge_fit$GCV, type = "l", col = "darkorange",  -->
+<!--      ylab = "GCV", xlab = "delta", lwd = 3) -->
+<!-- title("Hospital Manpower Data: GCV") -->
+<!-- ridge_fit$lambda[which.min(ridge_fit$GCV)] -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ## [R Lab]{.pink} Hospital Manpower - Ridge Regression {visibility="hidden"} -->
+<!-- ```{r} -->
+<!-- #| out-width: 78% -->
+<!-- manpower_scale <- as.data.frame(manpower_scale) -->
+<!-- lm_full_scale <- lm(y ~ ., data = manpower_scale) -->
+<!-- par(mar = c(3, 4, 0, 0), mgp = c(2, 0.5, 0)) -->
+<!-- confidenceEllipse(lm_full_scale, which.coef = c(5, 6), col="black", -->
+<!--                   fill=TRUE, -->
+<!--                   center.cex=1, -->
+<!--                   levels=c(0.8, 0.95), fill.alpha=0.1, -->
+<!--                   xlab=expression(beta[4]),  -->
+<!--                   ylab=expression(beta[5]),  -->
+<!--                   las=1, segments=1000, cex.lab = 2) -->
+<!-- abline(h = 0, v = 0) -->
+<!-- points(0, 0, pch = 15, cex = 1, col = 2) -->
+<!-- X_stX_s <- t(X_s) %*% X_s -->
+<!-- A <- X_stX_s + diag(0.07, 5) -->
+<!-- Ainv <- solve(A) -->
+<!-- var_ridge <- summary(lm_full_scale)$sigma^2 * Ainv %*% X_stX_s %*% Ainv / (nrow(manpower) - 1) -->
+<!-- # center <- c(0.10711510, 0.11790894) -->
+<!-- # center <- c(-0.007907946, -0.020534287) -->
+<!-- center <- c(-0.01925995, -0.02575226) -->
+<!-- ellipse(center, shape = var_ridge[c(4, 5), c(4, 5)], center.cex=1, -->
+<!--         radius = sqrt(qchisq(c(0.95), df = 2)), fill=TRUE, fill.alpha=0.1) -->
+<!-- ellipse(center, shape = var_ridge[c(4, 5), c(4, 5)], center.cex=1, -->
+<!--         radius = sqrt(qchisq(c(0.8), df = 2)), fill=TRUE, fill.alpha=0.1) -->
+<!-- # ellipse(center, shape = var_ridge[c(1, 3), c(1, 3)], center.cex=1, -->
+<!-- #         radius = sqrt(qchisq(c(0.95), df = 2)), fill=TRUE, fill.alpha=0.1) -->
+<!-- # ellipse(center, shape = var_ridge[c(1, 3), c(1, 3)], center.cex=1, -->
+<!-- #         radius = sqrt(qchisq(c(0.8), df = 2)), fill=TRUE, fill.alpha=0.1) -->
+<!-- # confidenceEllipse(ridge_fit, which.coef = c(2, 4), col="black", -->
+<!-- #                   fill=TRUE,  -->
+<!-- #                   center.cex=1, -->
+<!-- #                   levels=c(0.8, 0.95), fill.alpha=0.1, -->
+<!-- #                   xlab=expression(beta[1]),  -->
+<!-- #                   ylab=expression(beta[3]),  -->
+<!-- #                   las=1, segments=1000) -->
+<!-- # abline(h = 0, v = 0) -->
+<!-- # points(0, 0, pch = 15, cex = 1, col = 2) -->
+<!-- ``` -->
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://math4780-f23.github.io/website/">math4780-f23.github.io/website</a></p>
+</div>
 </div>
 </section></section>
 </div>
