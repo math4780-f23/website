@@ -98,6 +98,6 @@ For the following questions (3) to (7), consider all the regressors except $x_4$
 
 6. Use the all-possible-regressions approach to find an appropriate regression model.
 
-7. Use stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?
+7. Use stepwise regression to specify a subset regression model. Does this lead to the same model found in (6)?
 
 
