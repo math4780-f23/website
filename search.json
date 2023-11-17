@@ -2,44 +2,23 @@
   {
     "objectID": "project-work.html",
     "href": "project-work.html",
-    "title": "Class activity work",
+    "title": "Project work",
     "section": "",
-    "text": "MSSC 5780 Presenters: David Aguilera, Rachel Cutlan\nMATH 4780 Questioners: Ethan Baierl, Patrick Campbell, Dylan Cardoza"
+    "text": "Here shows group project’s proposal."
   },
   {
-    "objectID": "project-work.html#class-activity-2---0926",
-    "href": "project-work.html#class-activity-2---0926",
-    "title": "Class activity work",
-    "section": "Class activity 2 - 09/26",
-    "text": "Class activity 2 - 09/26\n\nMSSC 5780 Presenters: Timothy Goodwin, Matt Jaeggin\nMATH 4780 Questioners: Huangkun Chen, Davion Cook, Nicky Diaz"
+    "objectID": "project-work.html#math-4780",
+    "href": "project-work.html#math-4780",
+    "title": "Project work",
+    "section": "MATH 4780",
+    "text": "MATH 4780\n\nGroup 1: Vanessa Lattas, Dylan Catrdoza, Violet Wang\nGroup 2: Alberto Gamez Gonzalez, Serena Yang, Donny Robbins\nGroup 3: Davion Cook, Danny O’Shea, Nathan Fisher\nGroup 4: Nicky Diaz, Andrew Hiller, Ethan Baierl\nGroup 5: Jake Konrad, Patrick Campbell, Keyley Reith\nGroup 6: Ray Sun, Huangkun Chen, T.J. Whapham"
   },
   {
-    "objectID": "project-work.html#class-activity-3---1010",
-    "href": "project-work.html#class-activity-3---1010",
-    "title": "Class activity work",
-    "section": "Class activity 3 - 10/10",
-    "text": "Class activity 3 - 10/10\n\nMSSC 5780 Presenters: Samantha Juedemann, Edward Liu\nMATH 4780 Questioners: Nathan Fisher, Alberto Gamez Gonzalez, Andrew Hiller"
-  },
-  {
-    "objectID": "project-work.html#class-activity-4---1024",
-    "href": "project-work.html#class-activity-4---1024",
-    "title": "Class activity work",
-    "section": "Class activity 4 - 10/24",
-    "text": "Class activity 4 - 10/24\n\nMSSC 5780 Presenters: Sylvester Mensah, Navid Mohseni\nMATH 4780 Questioners: Jake Konrad, Vanessa Lattas, Danny O’Shea"
-  },
-  {
-    "objectID": "project-work.html#class-activity-5---1114",
-    "href": "project-work.html#class-activity-5---1114",
-    "title": "Class activity work",
-    "section": "Class activity 5 - 11/14",
-    "text": "Class activity 5 - 11/14\n\nMSSC 5780 Presenters: Adam Reeson\nMATH 4780 Questioners: Kayley Reith, Donny Robbins, Ray Sun"
-  },
-  {
-    "objectID": "project-work.html#class-activity-6---1205",
-    "href": "project-work.html#class-activity-6---1205",
-    "title": "Class activity work",
-    "section": "Class activity 6 - 12/05",
-    "text": "Class activity 6 - 12/05\n\nMSSC 5780 Presenters: Anesti Sotirovski, Tanjina Zaman\nMATH 4780 Questioners: Violet Wang, T.J. James Whapham II, Serena Yang"
+    "objectID": "project-work.html#mssc-5780",
+    "href": "project-work.html#mssc-5780",
+    "title": "Project work",
+    "section": "MSSC 5780",
+    "text": "MSSC 5780\n\nGroup 1: Sylvester Mensah, Navid Mohseni, Adam Reeson\nGroup 2: Timothy Goodwin, Raquel Cutlan\nGroup 3: Samantha Juedemann, David Aguilera, Tanjina Zaman\nGroup 4: Edward Liu, Anesti Sotirovski"
   },
   {
     "objectID": "course-links.html",
@@ -641,7 +620,7 @@
     "href": "hw/hw-6.html",
     "title": "Homework 6 - Collinearity and Variable Selection",
     "section": "",
-    "text": "Homework Instruction and Requirement\n\nHomework 6 covers course materials of Week 1 to 14.\nPlease submit your work in one PDF file including all parts to D2L > Assessments > Dropbox. Multiple files or a file that is not in pdf format are not allowed.\nIn your homework, please number and answer questions in order.\nYour entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, (R)Markdown, Quarto, LaTex, etc) and your preferred programming language. Your document should be a PDF file.\n\n\n\nIt is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on what you show, not what you want to show. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.\n\n\n\nReading and Writing\nIn this course, we have been using the classical or frequentist approach to do a variety of statistical inferences, marginal \\(t\\) test for \\(\\beta_j\\) and \\(F\\) tests for model comparison for example. But Dr. Yu once said he never uses p-value in his own research, and what is taught in Intro Stats MATH 4720 is mostly problematic. In fact, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic, misused, and resulting in reproducibility and replication crisis in scientific research. Please write a summary paper at least two pages including\n\nInterpretation of p-value\nList and discussion about the problems of the NHST and p-value method\nPossible solutions to those problems\n\nSome references are\n\nWikipedia: Misuse of p-values\nA. Reinhart (2015), “Statistics Done Wrong”, No Starch Press, San Francisco.\nR. L. Wasserstein and Nicole A. Lazar (2016), “The ASA Statement on p-Values: Context, Process, and Purpose”, The American Statistician, 70:2, 129-133.\nV. Amrhein, S. Greenland and B. McShane (2019), “Retire statistical significance”, Nature, 567, 305-307.\nB. McShane, D. Gal, A. Gelman, C. Robert and Jennifer L. Tackett (2019), “Abandon Statistical Significance”, The American Statistician, 73:sup1, 235-245.\nA. Gelamn and E. Loken (2014), “The Statistical Crisis in Science”, American Scientist, 102, 460-465.\nR. L. Wasserstein, A. L. Schirm and N. A. Lazar (2019), “Moving to a World Beyond p < 0.05”, The American Statistician, 73:sup1, 1-19.\n\nThere are lots of discussions and papers out there. You are welcome to google more resources to support your argument. The work should be entirely your effort. You are not allowed to copy anyone’s words, and you have to cite any resources you use, papers, blogs, videos, lecture notes, etc, or you violate Marquette academic misconduct policy.\n\n\n\n\n\n\n\nStatistical Computing and Data Analysis\nPlease perform a data analysis using \\(\\texttt{R}\\) or your preferred language. Any results should be generated by computer outputs, and your work should be done entirely by your computer. Handwriting is not allowed. Relevant code should be attached.\nWe use the same data set mpg.csv for data analysis. For the following analysis, if any regressor contains a missing value NA, remove the corresponding row of the data matrix.\n\nBuild a linear regression model relating gasoline mileage \\(y\\) to vehicle weight \\(x_{10}\\) and the type of transmission \\(x_{11}\\) (1 automatic; 0 manual). Does the type of transmission significantly affect the mileage performance?\nModify the model developed in (1) to include an interaction between vehicle weight and the type of transmission. What conclusions can you draw about the effect of the type of transmission on gasoline mileage? Interpret the parameters in this model.\n\nFor the following questions (3) to (9), consider all the regressors except \\(x_4\\), \\(x_5\\) and \\(x_{11}\\).\n\n\\(y\\): MPG\n\\(x_1\\): Displacement (cubic in.)\n\\(x_2\\): Horsepower (ft-lb)\n\\(x_3\\): Torque (ft-lb)\n\\(x_6\\): Carburetor (barrels)\n\\(x_7\\): No. of transmission speeds\n\\(x_8\\): Overall length (in.)\n\\(x_9\\): Width (in.)\n\\(x_{10}\\): Weight (lb)\n\nStandardize the response and predictors before later analysis.\n\n\nObtain the correlation matrix of regressors. Does it give any indication of collinearity?\nCalculate the variance inflation factors (VIFs). Is there any evidence of collinearity?\nFind the eigenvectors associated with the smallest eigenvalues of \\({\\mathbf X}'{\\mathbf X}/(n - 1)\\) or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?\nCompute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data?\nFit the ordinary multiple regression and the ridge regression. Use the ridge trace to select an appropriate value of \\(\\delta\\). Explain how the ridge regression coefficients change as the parameter \\(\\delta\\) increases. This gives you the idea of why the ridge regression is a shrinkage method.\n\n\n\n\n\n\nUse the all-possible-regressions approach to find an appropriate regression model.\nUse stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?"
+    "text": "Homework Instruction and Requirement\n\nHomework 6 covers course materials of Week 1 to 14.\nPlease submit your work in one PDF file including all parts to D2L > Assessments > Dropbox. Multiple files or a file that is not in pdf format are not allowed.\nIn your homework, please number and answer questions in order.\nYour entire work on Statistical Computing and Data Analysis should be completed by any word processing software (Microsoft Word, Google Docs, (R)Markdown, Quarto, LaTex, etc) and your preferred programming language. Your document should be a PDF file.\n\n\n\nIt is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on what you show, not what you want to show. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.\n\n\n\nReading and Writing (30 points for MATH 4780, and 50 points for MSSC 5780)\nIn this class, we have been using the classical or frequentist approach to do a variety of statistical inferences, marginal \\(t\\) test for \\(\\beta_j\\) and \\(F\\) tests for model comparison for example. But Dr. Yu once said he never uses p-value in his own research, and there are many issues with what is taught in Intro Stats (MATH 1700/4720/4740). In fact, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic, misused, and resulting in reproducibility and replication crisis in scientific research. Please write a summary paper (at least one page for MATH 4780 and two pages for MSSC 5780) including\n\nInterpretation of p-value\nList and discussion about the problems of the NHST and p-value method\nPossible solutions to those problems\n\nSome references are\n\nWikipedia: Misuse of p-values\nA. Reinhart (2015), “Statistics Done Wrong”, No Starch Press, San Francisco.\nR. L. Wasserstein and Nicole A. Lazar (2016), “The ASA Statement on p-Values: Context, Process, and Purpose”, The American Statistician, 70:2, 129-133.\nV. Amrhein, S. Greenland and B. McShane (2019), “Retire statistical significance”, Nature, 567, 305-307.\nB. McShane, D. Gal, A. Gelman, C. Robert and Jennifer L. Tackett (2019), “Abandon Statistical Significance”, The American Statistician, 73:sup1, 235-245.\nA. Gelamn and E. Loken (2014), “The Statistical Crisis in Science”, American Scientist, 102, 460-465.\nR. L. Wasserstein, A. L. Schirm and N. A. Lazar (2019), “Moving to a World Beyond p < 0.05”, The American Statistician, 73:sup1, 1-19.\n\nThere are lots of discussions and papers out there. You are welcome to google more resources to support your argument. The work should be entirely your effort. You are not allowed to copy anyone’s words, and you have to cite any resources you use, papers, blogs, videos, lecture notes, etc, or you violate Marquette academic misconduct policy.\n\n\nStatistical Computing and Data Analysis\nPlease perform a data analysis using \\(\\texttt{R}\\) or your preferred language. Any results should be generated by computer outputs, and your work should be done entirely by your computer. Handwriting is not allowed. Relevant code should be attached.\nWe use the same data set mpg.csv for data analysis. For the following analysis, if any regressor contains a missing value NA, remove the corresponding row of the data matrix.\n\nBuild a linear regression model relating gasoline mileage \\(y\\) to vehicle weight \\(x_{10}\\) and the type of transmission \\(x_{11}\\) (1 automatic; 0 manual). Does the type of transmission significantly affect the mileage performance?\nModify the model developed in (1) to include an interaction between vehicle weight and the type of transmission. What conclusions can you draw about the effect of the type of transmission on gasoline mileage? Interpret the parameters in this model.\n\nFor the following questions (3) to (7), consider all the regressors except \\(x_4\\), \\(x_5\\) and \\(x_{11}\\).\n\n\\(y\\): MPG\n\\(x_1\\): Displacement (cubic in.)\n\\(x_2\\): Horsepower (ft-lb)\n\\(x_3\\): Torque (ft-lb)\n\\(x_6\\): Carburetor (barrels)\n\\(x_7\\): No. of transmission speeds\n\\(x_8\\): Overall length (in.)\n\\(x_9\\): Width (in.)\n\\(x_{10}\\): Weight (lb)\n\nStandardize the response and predictors before later analysis.\n\n\nObtain the correlation matrix of regressors. Does it give any indication of collinearity?\nCalculate the variance inflation factors (VIFs). Is there any evidence of collinearity?\n\n\n\nFind the eigenvectors associated with the smallest eigenvalues of the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?\n\n\n\n\n\n\n\n\nUse the all-possible-regressions approach to find an appropriate regression model.\nUse stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?"
   },
   {
     "objectID": "hw/hw-3.html",
@@ -725,7 +704,7 @@
     "href": "index.html",
     "title": "MATH 4780 - Regression Analysis",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n📂\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n✍️\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTo Do\nSlides\nExercise\nHW\nProject\n\n\n\n\n1\nTue, Aug 29\nGreetings + Overview of Regression\n📖\n🖥️ 🖥️\n\n\n\n\n\n\nThu, Aug 31\nProbability and Statistics Review\n\n🖥️\n📋\n✍️\n\n\n\n2\nTue, Sep 5\nSimple Linear Regression (SLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 7\nSimple Linear Regression\n\n\n\n\n\n\n\n3\nTue, Sep 12\nSimple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 14\nSimple Linear Regression\n\n\n\n✍️\n\n\n\n4\nTue, Sep 19\nMultiple Linear Regression (MLR)\n📖\n🖥️\n\n\n\n\n\n\nThu, Sep 21\nMultiple Linear Regression\n\n\n\n\n\n\n\n5\nTue, Sep 26\nMultiple Linear Regression\n📖\n\n📋\n\n\n\n\n\nThu, Sep 28\nMultiple Linear Regression\n\n\n\n✍️\n\n\n\n6\nTue, Oct 3\nMatrix Algebra Review\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 5\nMLR in Matrix Form (MSSC only)\n\n🖥️\n\n\n\n\n\n7\nTue, Oct 10\nDiagnostics: Residuals and Unusual Data\n📖\n🖥️\n\n\n\n\n\n\nThu, Oct 12\nDiagnostics: Symmetry and Normality\n\n🖥️\n\n\n\n\n\n8\nTue, Oct 17\nIn-Class Exam ✅\n📖\n\n\n\n\n\n\n\nThu, Oct 19\nDiagnostics: Constant Variance\n\n🖥️\n\n\n\n\n\n9\nTue, Oct 24\nDiagnostics: Linearity\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Oct 26\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n10\nTue, Oct 31\nBootstrapping and Simulation-based Inference\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Nov 2\nPolynomial Regression\n\n🖥️\n📋\n\n\n\n\n11\nTue, Nov 7\nNonparametric Regression\n📖\n🖥️\n📋\n✍️\n\n\n\n\nThu, Nov 9\nCategorical Variables\n\n🖥️\n\n\n\n\n\n12\nTue, Nov 14\nCategorical Variables\n📖\n\n📋\n\n\n\n\n\nThu, Nov 16\nCollinearity\n\n🖥️\n📋\n\n\n\n\n13\nTue, Nov 21\nCollinearity\n📖\n\n\n✍️\n\n\n\n\nThu, Nov 23\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n14\nTue, Nov 28\nVariable Selection\n📖\n🖥️\n📋\n\n📂\n\n\n\nThu, Nov 30\nVariable Selection\n\n\n\n\n\n\n\n15\nTue, Dec 5\nLogistic Regression\n📖\n🖥️\n📋\n\n\n\n\n\nThu, Dec 7\nLogistic Regression\n\n\n\n\n\n\n\n16\nTue, Dec 12\nProject Presentation\n\n\n\n\n📂\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI reserve the right to make changes to the schedule."
   },
   {
     "objectID": "course-team.html",
@@ -740,237 +719,6 @@
     "title": "Teaching team",
     "section": "Teaching assistants",
     "text": "Teaching assistants\n\n\n\n\nName\nOffice hours\nLocation\n\n\n\n\n\nMartha Aboagye\nThursday 7 - 9 pm\nZoom\n\n\n\nRichard Fremgen\nLead TA for Section 3 (5:15 pm)\nTues 7 - 9 pm\nZoom\n\n\n\nEmily Gentles\nLead TA for Section 1 (1:45pm)\nWednesday 1 - 3 pm\nOld Chem 203B (On Zoom until January 18)\n\n\n\nSara Mehta\nMon 2 - 4 pm\nZoom\n\n\n\nRick Presman\nHead TA\nLead TA for Section 2 (3:30pm)\nThursday 3:30 - 4:30 pm\nFri 9 - 10 am\nZoom\n\n\n\nShari Tian\nTue 8 - 10 am\nZoom\n\n\n\nAaditya Warrier\nMon 12pm - 1pm\nFri 1:30 - 2:30 pm\nZoom"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#what-is-collinearity",
-    "href": "slides/14-colliearity.html#what-is-collinearity",
-    "title": "Collinearity",
-    "section": "What is Collinearity",
-    "text": "What is Collinearity\n\n\nCollinearity refers to the situation in which two or more predictors are closely related to one another.\n\nlimit and age appear to have no obvious relationship, which is good!\n\nlimit and rating are highly correlated, and they are said to be collinear.\n\n\n\nCollinearity is a fundamental problem with the data rather than model specification.\nThere is usually no satisfactory solution for a true collinearity problem.\nCollinearity means some regressors in your model are highly correlated.\nWe want to have regressors that are NOT moving with each other.\nIdeally we desire to have orthogonal regressors.\nThe intuition is, we hope predictors can explain the variation of \\(y\\), right? That’s why we put these predictors in the model.\nAnd ideally we hope each predictor can explain a part of variation of \\(y\\) that can only be explained by that predictor and cannot be explained by any other predictors.\nThis kind of partition can be done if all the predictors are orthogonal.\nIf x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of \\(y\\).\nThink about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.\nSo we actually use two predictors to explain the same variation of \\(y\\), which is redundant.\nThe model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.\nLater, we’ll see why we don’t want the predictors to be correlated.\nThere are lots of bad effects on our regression model."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#sources-of-collinearity",
-    "href": "slides/14-colliearity.html#sources-of-collinearity",
-    "title": "Collinearity",
-    "section": "Sources of Collinearity",
-    "text": "Sources of Collinearity\nFour primary sources\n\nThe data collection method employed\nConstraints on the model or in the population\nModel specification\nA model with \\(p>n\\)\n\n\n\nLet’s see what causes Collinearity. Here are 4 sources of Collinearity.\nThe data collection method employed: the way we collect our data may cause the predictors to be moving together. We need to be more careful, and see if we can collect our data in another way, so that the correlation between predictors can be alleviated or weakened.\nConstraints on the model or in the population: If two predictors are correlated in nature, then it is unavoidable to have Collinearity, and if we want to keep the two predictors in our model, we should consider other methods other than OLS.\nModel specification: Polynomial regression.\nA \\(p>n\\) model"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#data-collection",
-    "href": "slides/14-colliearity.html#data-collection",
-    "title": "Collinearity",
-    "section": "Data Collection",
-    "text": "Data Collection\n\nCollinearity occurs when only a subspace of the entire sample space has been explored.\nMay be able to reduce this collinearity through the sampling technique used.\n\nThere is no physical reason why you can’t sample in that area."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#constraints",
-    "href": "slides/14-colliearity.html#constraints",
-    "title": "Collinearity",
-    "section": "Constraints",
-    "text": "Constraints\n\nPhysical constraints are present, and the collinearity will exist regardless of collection method."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#model-specification",
-    "href": "slides/14-colliearity.html#model-specification",
-    "title": "Collinearity",
-    "section": "Model Specification",
-    "text": "Model Specification\n\nPolynomial terms can cause ill-conditioning in \\({\\bf X'X}\\).\nAs the order of the model increases, \\({\\bf X'X}\\) matrix inversion will become inaccurate, and error can be introduced into the parameter estimates.\nIf range on a regressor variable is small, adding an \\(x^2\\) term can result in significant collinearity.\n\n\\(x\\) and \\(x^2\\) are highly (linearly correlated) - Polynomial terms can cause ill-conditioning (a sign of Collinearity) in the \\(({\\bf X'X})\\) matrix. - As the order of the model increases, \\(({\\bf X'X})\\) matrix inversion will become more inaccurate, and error can be introduced into the parameter estimates - If range on a regressor variable is small, adding \\(x^2\\) term can result in significant Collinearity."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#pn-model",
-    "href": "slides/14-colliearity.html#pn-model",
-    "title": "Collinearity",
-    "section": "\n\\(p>n\\) Model",
-    "text": "\\(p>n\\) Model\n\nMore regressor variables than observations.\nThe best way to counter this is to remove/reconstruct regressor variables.\n\nPrincipal Component Regression\nVariable Selection (Next Topic)"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#effect-of-collinearity",
-    "href": "slides/14-colliearity.html#effect-of-collinearity",
-    "title": "Collinearity",
-    "section": "Effect of Collinearity",
-    "text": "Effect of Collinearity\n\n👉 Large variances and covariances for the LSE \\(b_j\\)s.\n\n\n👉 Tends to produce LSE \\(b_j\\) that are too large in absolute value. Therefore, the vector \\({\\bf b}\\), on average, is much longer than the vector \\(\\boldsymbol \\beta\\).\n\n\n\nLarge variances and large magnitude of coefficients lead to instable and wrong signed coefficients.\nPoor coefficients do not necessarily imply bad fit or poor prediction.\nThe predictions should be confined to the \\(x\\) space where the collinearity holds approximately.\nCollinearity causes very poor extrapolated prediction.\n\n\n\nThe squared distance from \\({\\bf b}\\) to \\(\\bsbeta\\) is \\(D^2 = \\sum_{j=1}^k(b_j - \\beta_j)^2\\).\nThe expected squared distance is \\[E(D^2) = E\\left(\\sum_{j=1}^k(b_j - \\beta_j)^2 \\right) = \\sum_{j=1}^kE\\left[(b_j - \\beta_j)^2\\right] = \\sum_{j=1}^k\\mathrm{Var}(b_j) = \\sigma^2 \\mathrm{tr}\\left[({\\bf X'X})^{-1}\\right]\\]\n\nStrong Collinearity between \\(x\\)’s results in\nthe trace of a matrix (Tr) is the sum of the diagonal elements."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#perfectly-correlated-regressors",
-    "href": "slides/14-colliearity.html#perfectly-correlated-regressors",
-    "title": "Collinearity",
-    "section": "Perfectly Correlated Regressors",
-    "text": "Perfectly Correlated Regressors\n\nSuppose the true population regression equation is \\(y = 3 + 4x\\).\nSuppose we try estimating that equation using perfected correlated variables \\(x\\) and \\(z = x/10\\).\n\n\\[\n\\begin{aligned}\\hat{y}&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2z\\\\\n&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2\\frac{x}{10}\\\\\n&= \\hat{\\beta}_0 + \\bigg(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10}\\bigg)x\n\\end{aligned}\n\\] \n\n\nWe can set \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_2\\) to any two numbers such that \\(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10} = 4\\).\nWe are unable to choose the “best” combination of \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_2\\).\n\n\nCollinearity is a fundamental problem with the data rather than model specification.\nThere is usually no satisfactory solution for a true collinearity problem.\nCollinearity means some regressors in your model are highly correlated.\nWe want to have regressors that are NOT moving with each other.\nIdeally we desire to have orthogonal regressors.\nThe intuition is, we hope predictors can explain the variation of \\(y\\), right? That’s why we put these predictors in the model.\nAnd ideally we hope each predictor can explain a part of variation of \\(y\\) that can only be explained by that predictor and cannot be explained by any other predictors.\nThis kind of partition can be done if all the predictors are orthogonal.\nIf x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of \\(y\\).\nThink about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.\nSo we actually use two predictors to explain the same variation of \\(y\\), which is redundant.\nThe model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.\nLater, we’ll see why we don’t want the predictors to be correlated.\nThere are lots of bad effects on our regression model."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#collinearity-diagnostics",
-    "href": "slides/14-colliearity.html#collinearity-diagnostics",
-    "title": "Collinearity",
-    "section": "Collinearity Diagnostics",
-    "text": "Collinearity Diagnostics\nIdeal characteristics of a collinearity diagnostic:\n\nCorrectly indicate if collinearity is present\nHow severe the problem is\nProvide insight as to which regressors are causing the problem"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#examination-of-the-correlation-matrix-of-xs",
-    "href": "slides/14-colliearity.html#examination-of-the-correlation-matrix-of-xs",
-    "title": "Collinearity",
-    "section": "Examination of the Correlation Matrix of \\(x\\)s",
-    "text": "Examination of the Correlation Matrix of \\(x\\)s\n\nAfter unit length scaling, \\({\\bf X'X} = \\left[r_{ij}\\right]_{k\\times k}\\) is the correlation matrix of \\(x\\)s denoted as \\({\\bf \\Sigma}\\). 1 For example, \\[{\\bf X'X} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}\\]\n\\(r_{ij}\\) is the pairwise correlation between \\(x_i\\) and \\(x_j\\).\nLarge \\(|r_{ij}|\\) is an indication of collinearity.\nWhen more than two regressors are involved in collinearity, there may be instances when collinearity is present, but the pairwise correlations are not large.\nInspecting \\(r_{ij}\\) is not sufficient for detecting more complex collinearity.\n\nAfter unit length scaling, \\({\\bf X'X}\\) is the correlation matrix of regressors. - If we scale and center the regressors, we have the correlation matrix. \\[{\\bf X'X} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}\\] - The off diagonal elements of the centered and scaled \\({\\bf X'X}\\) matrix are the pairwise correlations between \\(x_i\\) and \\(x_j\\), denoted as \\(r_{ij}\\). For example, \\(r_{12} = 0.992\\). - If \\(|r_{ij}| \\approx 1\\), there is an indication of Collinearity. But, the opposite does not always hold. - When there are more than two regressors, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4) - Inspection of the \\(r_{ij}\\) is not sufficient for detecting anything more complex than pairwise Collinearity.\nThe term correlation is a bit of misnomer. The regressors are not random variables. The correlation coefficient \\(r_{ij}\\) does measure linear dependency between \\(x_i\\) and \\(x_j\\) in the data."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#variance-inflation-factors",
-    "href": "slides/14-colliearity.html#variance-inflation-factors",
-    "title": "Collinearity",
-    "section": "Variance Inflation Factors",
-    "text": "Variance Inflation Factors\n\n\nThe diagonals of \\({\\bf \\Sigma}^{-1} = {\\bf C}\\) in correlation form are called variance inflation factors \\[\\text{VIF}_j = {\\bf C}_{jj}\\]\nExample: \\[{\\bf \\Sigma} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}; \\quad {\\bf \\Sigma}^{-1} = \\begin{bmatrix} 62.8 & -62.2 \\\\ -62.2 & 62.8 \\end{bmatrix}\\] and \\(\\text{VIF}_1 = 62.8\\).\n\n\n\nThe collinearity produces an inflation in the variances of the estimated coefficients, an increase in 60-fold over the ideal case when the two regressors are orthogonal.\nVIFs \\(> 10\\) are considered significant."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#variance-inflation-factors-1",
-    "href": "slides/14-colliearity.html#variance-inflation-factors-1",
-    "title": "Collinearity",
-    "section": "Variance Inflation Factors",
-    "text": "Variance Inflation Factors\n\\[\\text{VIF}_j = \\frac{1}{1 - R^2_{X_j | X_{-j}}}\\] where \\(R^2_{X_j | X_{-j}}\\) is the coefficient of determination obtained when \\(x_j\\) is regressed on the other regressors \\(x_i, i \\ne j\\).\n\\[\\mathrm{Var}(b_j) = \\frac{s^2}{\\sum_{i=1}^n(x_{ij} - \\bar{x}_j)^2} \\times \\text{VIF}_j\\]\n\n\\(\\text{VIF}_j\\) measures the combined effect of the dependencies among the regressors on the variance of \\(b_j\\).\nIf \\(x_j\\) is near linearly dependent on some subset of the remaining regressors, \\({\\bf C}_{jj}\\) is large.\n\n\nRemember what does linear (in)dependence mean?\n\n\\[\\text{VIF}_j = {\\bf C}_{jj} = \\frac{1}{1 - R^2_j}\\] + \\(R_j^2\\): the coefficient of determination obtained when \\(x_j\\) is regressed on the remaining regressors \\(x_i, i \\ne j\\). - If \\(x_j\\) can be explained a lot from other regressors, \\(x_j\\) is probably unnecessary in the regression model when all others are in the model. When it is in the model, the model cannot understand what the real effect the predictor can provide, and therefore its coefficient has a large variance. - The regressors that have high VIFs probably have poorly estimated coefficients. - The Collinearity produces an inflation in the variances of the estimated coefficients, an increase in 60-fold over the ideal case when the two regressors are orthogonal. - Since the variance of the j th regression coefficients is C jj σ 2 , we can view C jj as the factor by which the variance of ˆβj is increased due to near - linear dependences among the regressors."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---data",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---data",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Data",
-    "text": "R Lab Hospital Manpower - Data\n\n\n\nmanpower\n\n       y  x1    x2    x3    x4   x5\n1    567  16  2463   473  18.0  4.5\n2    697  44  2048  1340   9.5  6.9\n3   1033  20  3940   620  12.8  4.3\n4   1604  19  6505   568  36.7  3.9\n5   1611  49  5723  1498  35.7  5.5\n6   1613  45 11520  1366  24.0  4.6\n7   1854  55  5779  1687  43.3  5.6\n8   2161  59  5969  1640  46.7  5.2\n9   2306  94  8461  2872  78.7  6.2\n10  3504 128 20106  3655 180.5  6.2\n11  3572  96 13313  2912  60.9  5.9\n12  3741 131 10771  3921 103.7  4.9\n13  4027 127 15543  3866 126.8  5.5\n14 10344 253 36194  7684 157.7  7.0\n15 11732 409 34703 12446 169.4 10.8\n16 15415 464 39204 14098 331.4  7.0\n17 18854 510 86533 15524 371.6  6.3\n\n\n\n\\(y\\): Monthly man-hours\n\n\\(x_1\\): Average daily patient load\n\n\\(x_2\\): Monthly X-ray exposures\n\n\\(x_3\\): Monthly occupied bed days\n\n\\(x_4\\): Eligible population in the area / 1000\n\n\\(x_5\\): Average length of patients’ stay in days\n\n\n\nDo you expect to see positive or negative relationship between \\(y\\) and \\(x_i\\)?"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---pairwise-dependence",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---pairwise-dependence",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Pairwise Dependence",
-    "text": "R Lab Hospital Manpower - Pairwise Dependence"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---model-fit",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---model-fit",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Model Fit",
-    "text": "R Lab Hospital Manpower - Model Fit\n\nlm_full <- lm(y ~ ., data = manpower)\n(summ_full <- summary(lm_full))\n\n...\n             Estimate Std. Error t value Pr(>|t|)  \n(Intercept) 1962.9482  1071.3617    1.83    0.094 .\nx1           -15.8517    97.6530   -0.16    0.874  \nx2             0.0559     0.0213    2.63    0.023 *\nx3             1.5896     3.0921    0.51    0.617  \nx4            -4.2187     7.1766   -0.59    0.569  \nx5          -394.3141   209.6395   -1.88    0.087 .\nResidual standard error: 642 on 11 degrees of freedom\nMultiple R-squared:  0.991, Adjusted R-squared:  0.987 \n...\n\n\n\nExcellent fit. But any issues of the this fitted result?\n\n\n\nThe coefficients \\(b_1\\), \\(b_4\\) and \\(b_5\\) are negative.\n\nIn the case of \\(x_1\\), an increase in patient load, when other \\(x\\)’s are held constant, corresponds to a decrease in hospital manpower. (wrong sign due to large variance)\n\n\nEven though the regression model fits the data quite well, the rather curious signs on the regression coefficients may be the result of the effect of Collinearity."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---vif",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---vif",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - VIF",
-    "text": "R Lab Hospital Manpower - VIF\n\n\n\nX <- manpower[, -1]\n(Sig <- cor(X))\n\n     x1   x2   x3   x4   x5\nx1 1.00 0.91 1.00 0.94 0.67\nx2 0.91 1.00 0.91 0.91 0.45\nx3 1.00 0.91 1.00 0.93 0.67\nx4 0.94 0.91 0.93 1.00 0.46\nx5 0.67 0.45 0.67 0.46 1.00\n\n\n\n\n(C <- solve(Sig))\n\n      x1    x2    x3     x4    x5\nx1  9598  11.9 -9247 -318.8 -93.9\nx2    12   7.9   -18   -1.9   1.8\nx3 -9247 -18.5  8933  294.4  83.4\nx4  -319  -1.9   294   23.3   6.4\nx5   -94   1.8    83    6.4   4.3\n\n## VIF \ndiag(C)\n\n    x1     x2     x3     x4     x5 \n9597.6    7.9 8933.1   23.3    4.3 \n\n\n\n\n\n\n## put the fitted model in vif()\n(vif_all <- car::vif(lm_full))\n\n    x1     x2     x3     x4     x5 \n9597.6    7.9 8933.1   23.3    4.3 \n\n\n\\(x_1\\) Average daily patient load and \\(x_3\\) Monthly occupied bed days are highly correlated."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---confidence-interval",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---confidence-interval",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Confidence Interval",
-    "text": "R Lab Hospital Manpower - Confidence Interval\n\n\n\n\n\n\n\n\n\n\n\nMarginally, \\(b_1\\) and \\(b_3\\) vary a lot. The CI for \\(\\beta_1\\) and CI for \\(\\beta_3\\) both contain zero.\n\n\n\n    2.5 % 97.5 %\nx1 -230.8  199.1\nx3   -5.2    8.4\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut very confident that \\(\\beta_1\\) and \\(\\beta_3\\) cannot be both zero.\n\n\n\n\n\nThe model is quite not sure how much \\(x_1\\) and \\(x_3\\) affect \\(y\\)."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---confidence-interval-1",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---confidence-interval-1",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Confidence Interval",
-    "text": "R Lab Hospital Manpower - Confidence Interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(x_4\\) and \\(x_5\\) are not highly correlated pairwisely. \\(r_{45} = 0.46\\).\nHowever, their CI is still inflated due to the collinearity effect of other variables.\n\n\n\n   2.5 % 97.5 %\nx4   -20     12\nx5  -856     67\n\n\nDon’t just look at the pairwise correlation"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#eigensystem-analysis-condition-indices",
-    "href": "slides/14-colliearity.html#eigensystem-analysis-condition-indices",
-    "title": "Collinearity",
-    "section": "Eigensystem Analysis: Condition Indices",
-    "text": "Eigensystem Analysis: Condition Indices\n\nThe eigenvalues of \\({\\bf \\Sigma}\\) (the correlation matrix of \\(\\bf X\\)), \\(\\lambda_1, \\lambda_2, \\dots, \\lambda_k\\), can measure collinearity.\n\nIf there are one or more near-linear dependencies, one or more of the \\(\\lambda_i\\)s will be (relatively) small.   \n\n\nCondition indices of \\({\\bf \\Sigma}\\) are \\(\\kappa_j = \\frac{\\lambda_{max}}{\\lambda_{j}}\\).\nThe number of \\(\\kappa_j > 1000\\) is a measure of the number of near-linear dependencies in \\({\\bf \\Sigma}.\\)\n\n\n\nThe eigenvalues of \\({\\bf X'X}\\), \\(\\lambda_1, \\lambda_2, \\dots, \\lambda_k\\), can measure Collinearity.\n\nIf there are one or more near-linear dependencies in the data, one or more of the \\(\\lambda_i\\)s will be small.\n\nCondition number of \\({\\bf X'X}\\) is \\(\\kappa = \\frac{\\lambda_{max}}{\\lambda_{min}}\\).\n\n\\(\\kappa > 100\\) implies Collinearity.\n\n\\(\\kappa\\) does not tell us how many regressors are involved.\n\nCondition indices of \\({\\bf X'X}\\) is \\(\\kappa_j = \\frac{\\lambda_{max}}{\\lambda_{j}}\\).\nThe number of \\(\\kappa_j > 1000\\) is a measure of the number of near-linear dependencies in \\({\\bf X'X}.\\)"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---eigensystem-analysis",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---eigensystem-analysis",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Eigensystem Analysis",
-    "text": "R Lab Hospital Manpower - Eigensystem Analysis\n\neigen_Sig <- eigen(Sig)\n## eigenvalues\n(lambda <- eigen_Sig$values)\n\n[1] 4.2e+00 6.7e-01 9.5e-02 4.1e-02 5.4e-05\n\n## Conditional indices\nmax(lambda) / lambda\n\n[1]     1.0     6.3    44.4   103.1 77769.7\n\n\n\n\n\\(\\lambda_5 \\approx 0\\) and \\(\\kappa_5 \\approx 77770\\), indicating collinearity.\n\n\nEigenvalues are listed in a decreasing order, \\(\\lambda_1 > \\lambda_2 > \\cdots > \\lambda_k\\), and \\(\\lambda_5\\) is not the eigenvalue of \\(x_5\\).\n\n\n\n      [,1]     [,2]  [,3]  [,4]    [,5]\n[1,] -0.49 -0.00203 -0.17  0.47  0.7195\n[2,] -0.45 -0.33561  0.80 -0.19  0.0012\n[3,] -0.48 -0.00085 -0.15  0.51 -0.6941\n[4,] -0.46 -0.31080 -0.54 -0.63 -0.0234\n[5,] -0.33  0.88925  0.12 -0.29 -0.0068\n\n\n[1] 1 1 1 1 1\n\n\nThere is one near linear dependency."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#eigensystem-analysis-eigendecomposition",
-    "href": "slides/14-colliearity.html#eigensystem-analysis-eigendecomposition",
-    "title": "Collinearity",
-    "section": "Eigensystem Analysis: Eigendecomposition",
-    "text": "Eigensystem Analysis: Eigendecomposition\n\nEigendecomposition \\[{\\bf \\Sigma = V\\boldsymbol \\Lambda V'}\\]\n\n\n\\(\\boldsymbol \\Lambda\\) is a \\(k \\times k\\) diagonal matrix whose elements are \\(\\lambda_j\\).\n\n\\({\\bf V} = [{\\bf v}_1 \\quad {\\bf v}_2 \\quad \\dots \\quad {\\bf v}_k]\\) is a \\(k \\times k\\) orthogonal matrix whose columns are the eigenvectors of \\({\\bf \\Sigma}\\).\n\n\nIf \\(\\lambda_j \\approx 0\\), the associated \\({\\bf v}_j = (v_{1j}, v_{2j}, \\dots, v_{kj})'\\) describes how (and what) regressors are linearly dependent: \\[\\sum_{i=1}^kv_{ij}{\\bf x}_i \\cong \\mathbf{0}\\]\n\n\n\nIf \\(\\lambda_j \\approx 0\\), the associated \\({\\bf v}_j = (v_{1j}, v_{2j}, \\dots, v_{kj})'\\) describes the nature of this linear dependence.\n\n\\(\\sum_{i=1}^kc_i{\\bf x}_i \\cong \\mathbf{0}\\): The “weights” \\(c_i\\) are the individual elements in the \\({\\bf v}_j\\)."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---eigensystem-analysis-1",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---eigensystem-analysis-1",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Eigensystem Analysis",
-    "text": "R Lab Hospital Manpower - Eigensystem Analysis\n\n\n\n\n\n\n## eigenvector matrix\n(V <- eigen_Sig$vectors)\n\n      [,1]     [,2]  [,3]  [,4]    [,5]\n[1,] -0.49 -0.00203 -0.17  0.47  0.7195\n[2,] -0.45 -0.33561  0.80 -0.19  0.0012\n[3,] -0.48 -0.00085 -0.15  0.51 -0.6941\n[4,] -0.46 -0.31080 -0.54 -0.63 -0.0234\n[5,] -0.33  0.88925  0.12 -0.29 -0.0068\n\n\n\n\n\\({\\bf X}{\\bf v}_5 = \\sum_{i=1}^5v_{i5}{\\bf x}_i \\approx {\\bf 0}\\).\n\\(0.720 {\\bf x}_1 + 0.001 {\\bf x}_2 - 0.694 {\\bf x}_3 - 0.023 {\\bf x}_4 - 0.007 {\\bf x}_5 \\approx {\\bf 0}\\)\nHighly correlated \\(x_1\\) and \\(x_3\\) causes collinearity.\n\n\n\n\n\n\nX_s <- apply(X, 2, unit_len_scale)\nX_s %*% V[, 5]\n\n          [,1]\n [1,] -0.00037\n [2,] -0.00144\n [3,]  0.00032\n [4,] -0.00058\n [5,] -0.00108\n [6,]  0.00047\n [7,] -0.00131\n [8,]  0.00492\n [9,] -0.00225\n[10,]  0.00230\n[11,] -0.00050\n[12,]  0.00209\n[13,] -0.00251\n[14,] -0.00016\n[15,]  0.00131\n[16,] -0.00098\n[17,] -0.00023\n\n\n\n\n\n\n     [,1] [,2]  [,3]  [,4]    [,5]\n[1,]  4.2 0.00 0.000 0.000 0.0e+00\n[2,]  0.0 0.67 0.000 0.000 0.0e+00\n[3,]  0.0 0.00 0.095 0.000 0.0e+00\n[4,]  0.0 0.00 0.000 0.041 0.0e+00\n[5,]  0.0 0.00 0.000 0.000 5.4e-05\n\n\n\n## Orthogonal matrix\nround(t(V)%*%V, 1)\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    0    0    0    0\n[2,]    0    1    0    0    0\n[3,]    0    0    1    0    0\n[4,]    0    0    0    1    0\n[5,]    0    0    0    0    1\n\n##  V(Lambda)V' = X'X\nV %*% diag(lambda) %*% t(V)\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,] 1.00 0.91 1.00 0.94 0.67\n[2,] 0.91 1.00 0.91 0.91 0.45\n[3,] 1.00 0.91 1.00 0.93 0.67\n[4,] 0.94 0.91 0.93 1.00 0.46\n[5,] 0.67 0.45 0.67 0.46 1.00\n\n\n\n## near-zero vector\nX_s%*%V[, 5]\n\n          [,1]\n [1,] -0.00037\n [2,] -0.00144\n [3,]  0.00032\n [4,] -0.00058\n [5,] -0.00108\n [6,]  0.00047\n [7,] -0.00131\n [8,]  0.00492\n [9,] -0.00225\n[10,]  0.00230\n[11,] -0.00050\n[12,]  0.00209\n[13,] -0.00251\n[14,] -0.00016\n[15,]  0.00131\n[16,] -0.00098\n[17,] -0.00023"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#eigensystem-analysis-variance-proportion",
-    "href": "slides/14-colliearity.html#eigensystem-analysis-variance-proportion",
-    "title": "Collinearity",
-    "section": "Eigensystem Analysis: Variance Proportion",
-    "text": "Eigensystem Analysis: Variance Proportion\n\n\n\n\n\n\\(\\text{VIF}_j = \\sum_{i=1}^k\\frac{v_{ji}^2}{\\lambda_i}\\) \n\n\n\\(\\pi_{ij} = \\frac{v_{ji}^2/\\lambda_i}{\\text{VIF}_j}\\) is the variance decomposition proportion that measures the proportion of the variance of \\(b_j\\) contributed by \\(\\lambda_i\\).\n\n\\(\\pi_{ij} > 0.5\\) indicates collinearity.\n\n\n\nA small \\(\\lambda_i\\), accompanied by a subset of regressors with high variance proportions \\(\\pi_{ij}\\) represents a dependency involving the regressors in that subset.\nIf \\(\\pi_{32}\\) and \\(\\pi_{34}\\) are large, \\(\\lambda_3\\) is associated with a collinearity that inflats the variance of \\(b_2\\) and \\(b_4\\).\n\n\n\n\n\\({\\bf X'X = V\\bsLambda V'}\\), therefore \\({\\bf (X'X)^{-1} = V\\bsLambda^{-1} V'}\\)\n\n\\(\\mathrm{Var}\\left( {\\bf b} \\right) = \\sigma^2 {\\bf (X'X)} ^{-1} = \\sigma^2 {\\bf V\\bsLambda^{-1} V'}\\)\n\\(\\mathrm{Var}\\left( b_j \\right) = \\sigma^2 \\sum_{i=1}^k\\frac{v_{ji}^2}{\\lambda_i} =\\sigma^2\\text{VIF}_j\\)\n\n\\(\\sum_{j=1}^k \\mathrm{Var}\\left( b_j \\right) =\\sigma^2 \\sum_{i=1}^k\\sum_{j=1}^k\\frac{v_{ji}^2}{\\lambda_i} = \\sigma^2\\sum_{i=1}^k\\frac{1}{\\lambda_i}\\) (length of \\({\\bf v}_j\\) is 1)\n\n\\(\\pi_{ij} = \\frac{v_{ji}^2/\\lambda_i}{\\text{VIF}_j}\\) is the variance decomposition proportion, which is attributed to (or blamed on) the colliearity characterized by the eigenvalue \\(\\lambda_i\\).\n\n\\(\\pi_{ij} > 0.5\\) indicates Collinearity.\n\nA small \\(\\lambda_i\\), accompanied by a subset of regressors with high variance proportions \\(\\pi_{ij}\\): + represents a dependency involving the regressors in that subset, and the dependency is damaging to the precision of estimation of the coefficients in the subset."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---variance-proportion",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---variance-proportion",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Variance Proportion",
-    "text": "R Lab Hospital Manpower - Variance Proportion\n\n# Variance Proportion\nvar_prop <- function(V, lambda, vif_all) {\n    ## diag(1 / lambda) means divide by lambda row-wise\n    round(t(V ^ 2 %*% diag(1 / lambda)) %*% diag(1/vif_all), 5)\n}\nvar_prop(V = V, lambda = lambda, vif_all = vif_all)\n\n        [,1]   [,2]    [,3]   [,4]   [,5]\n[1,] 0.00001 0.0062 0.00001 0.0022 0.0062\n[2,] 0.00000 0.0213 0.00000 0.0062 0.2768\n[3,] 0.00003 0.8607 0.00003 0.1309 0.0328\n[4,] 0.00056 0.1087 0.00071 0.4237 0.4851\n[5,] 0.99940 0.0031 0.99925 0.4370 0.1991\n\n\n\n\n\\(\\pi_{51}\\) and \\(\\pi_{53}\\) are large, indicating that \\(\\lambda_5\\) is inflating the variance of \\(b_1\\) and \\(b_3\\).\n\n\n## diag(V (Lambda)^-1 V') = VIF\ndiag(V %*% diag(1/lambda) %*% t(V))\n\n[1] 9597.6    7.9 8933.1   23.3    4.3\n\nvif_all\n\n    x1     x2     x3     x4     x5 \n9597.6    7.9 8933.1   23.3    4.3 \n\n## sum(vif) = sum(1/lambda)\nsum(vif(lm_full))\n\n[1] 18566\n\nsum(1/lambda)\n\n[1] 18566"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#other-diagnostics",
-    "href": "slides/14-colliearity.html#other-diagnostics",
-    "title": "Collinearity",
-    "section": "Other Diagnostics",
-    "text": "Other Diagnostics\nCollinearity may exist if\n\noverall \\(F\\)-test for regression is significant, but individual \\(t\\)-tests are all non-significant.\n\nthe coefficient estimates are instable\n\nadding or removing a regressor produces large changes in the estimates\ndeleting one or more observations results in large changes in the estimates\nif the signs or magnitudes of the estimates are contrary to prior expectation"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---significance",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---significance",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Significance",
-    "text": "R Lab Hospital Manpower - Significance\n\nsumm_full$coefficients  ## t-test not significant\n\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept) 1962.948    1.1e+03    1.83    0.094\nx1           -15.852    9.8e+01   -0.16    0.874\nx2             0.056    2.1e-02    2.63    0.023\nx3             1.590    3.1e+00    0.51    0.617\nx4            -4.219    7.2e+00   -0.59    0.569\nx5          -394.314    2.1e+02   -1.88    0.087\n\n\n\nsumm_full$fstatistic  ## F-test significant\n\nvalue numdf dendf \n  238     5    11 \n\n\n\nlm_no_x3 <- lm(y~x1+x2+x4+x5, data = manpower)\nsummary(lm_no_x3)$coef\n\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept) 2161.962    967.871     2.2  4.5e-02\nx1            34.284      4.897     7.0  1.4e-05\nx2             0.057      0.021     2.8  1.7e-02\nx4            -6.600      5.311    -1.2  2.4e-01\nx5          -440.297    183.696    -2.4  3.4e-02"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#diagonastics-summary",
-    "href": "slides/14-colliearity.html#diagonastics-summary",
-    "title": "Collinearity",
-    "section": "Diagonastics Summary",
-    "text": "Diagonastics Summary\n\nSummary:\n\nEigenvalue (or ratios): assess the seriousness of a particular dependency\nVariance proportion: signify what regressors are involved and to what extent\nVIF: determine the damage to the individual coefficient"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#methods-for-dealing-with-collinearity",
-    "href": "slides/14-colliearity.html#methods-for-dealing-with-collinearity",
-    "title": "Collinearity",
-    "section": "Methods for Dealing with Collinearity",
-    "text": "Methods for Dealing with Collinearity\nData collection:  Collect more data to break up the collinearity  in the existing data\n\n\nModel specification/An overdefined model: Respecify the model\n\n\n redefining the regressors : Use \\(x = x_1+x_2\\) or \\(x = x_1x_2\\).\n\nAvoid combining regressors in different units.\n\n\n\n eliminating regressors : remove \\(x_1\\) or \\(x_2\\).\n\nMay damage the predictive power if the removed regressors have significant explanatory power. (Variable selection)\nIf we remove \\(x_2\\), we estimate the marginal relationship between \\(y\\) and \\(x_1\\), ignoring \\(x_2\\), rather than the partial relationship conditioning on \\(x_2\\).\n\n\n\n\n\nConstraint on the model or in the population: Say goodbye to least-squares estimation.\n\n Ridge Regression, Principal Component Regression, Bayesian Regression, etc"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#unbiased-vs.-biased-estimators",
-    "href": "slides/14-colliearity.html#unbiased-vs.-biased-estimators",
-    "title": "Collinearity",
-    "section": "Unbiased vs. Biased Estimators",
-    "text": "Unbiased vs. Biased Estimators\n\nThe LSE \\({\\bf b}\\) is unbiased, i.e., \\(E({\\bf b}) = \\boldsymbol \\beta\\).\nLSE is a BLUE: has minimum variance among all unbiased linear estimators\nNo guarantee that this variance will be small.\nWhen collinearity exists, \\(\\mathrm{Var}({\\bf b})\\) is largely inflated.\n\n\nimplying that confidence intervals on β would be wide and the point estimate ˆb is very unstable."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#biased-estimators",
-    "href": "slides/14-colliearity.html#biased-estimators",
-    "title": "Collinearity",
-    "section": "Biased Estimators",
-    "text": "Biased Estimators\n\n\nA good estimator is the one that balances bias and variance well, or the one that minimizes the mean square error \\[\\small \\text{MSE}(\\hat{\\beta}) = E[(\\hat{\\beta} - \\beta)^2] = \\mathrm{Var}(\\hat{\\beta}) + \\text{bias}(\\hat{\\beta})^2\\]\n\nBiasedness and variance have a trade-off relationship!\nFind a biased estimator \\({\\bf \\hat{b}}\\) that has smaller variance and MSE than \\({\\bf b}\\)."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#ridge-regression-estimator",
-    "href": "slides/14-colliearity.html#ridge-regression-estimator",
-    "title": "Collinearity",
-    "section": "Ridge Regression Estimator",
-    "text": "Ridge Regression Estimator\n\nWith a small \\(\\delta >0\\), the ridge estimator \\({\\bf b}_R\\) is \\[{\\bf b}_R = ({\\bf X'X + \\delta I})^{-1}{\\bf X'y}\\]\n\\({\\bf b}_R\\) is a biased estimator for \\(\\boldsymbol \\beta\\).\n\n\n\n\\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_{Ri} \\right) \\le \\sum_{i=1}^k \\mathrm{Var}\\left( b_i \\right)\\) with equality when \\(\\delta = 0\\).\n\n\nAs \\(\\delta\\) increases,\n\n\n\\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_{Ri} \\right)\\) decreases\nBias \\(E\\left[ {\\bf b}_R \\right] - \\boldsymbol \\beta\\) increases\n\n\\(R^2\\) decreases (it’s OK as we care more about stable estimates and better prediction)\n\n\n\n\n\n\nChoose \\(\\delta\\) by the ridge trace that is a plot of \\(\\{ b_{Ri} \\}_{i=1}^k\\) vs. \\(\\delta\\).\n\nSelect a small value of \\(\\delta\\) at which the ridge estimates \\({\\bf b}_R\\) are stable.\n\n\n\n\nCross Validation\nThe ridge estimator \\({\\bf b}_R\\) is \\[{\\bf b}_R = ({\\bf X'X + \\delta I})^{-1}{\\bf X'y}\\]\n\n\n\\({\\bf b}_R\\) is a biased estimator of \\(\\bsbeta\\): \\[E\\left[ {\\bf b}_R \\right] = E\\left[({\\bf X'X + \\delta I})^{-1}{\\bf X'y} \\right]  = E\\left[({\\bf X'X + \\delta I})^{-1}({\\bf X'X}){\\bf b}\\right] = {\\bf Z_{\\delta}}\\bsbeta\\]\n\nThe covariance matrix of \\({\\bf b}_R\\) is \\[\\mathrm{Var}\\left({\\bf b}_R \\right) = \\sigma^2 ({\\bf X'X + \\delta I})^{-1}{\\bf X'X }({\\bf X'X + \\delta I})^{-1}\\]\n\nFor LSE, \\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_i \\right) = \\sigma^2\\sum_{i=1}^k\\frac{1}{\\lambda_i}\\)\n\nFor ridge estimator, \\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_{Ri} \\right) = \\sigma^2\\sum_{i=1}^k\\frac{\\lambda_i}{(\\lambda_i+\\delta)^2}\\)\n\n\n\\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_{Ri} \\right) \\le \\sum_{i=1}^k \\mathrm{Var}\\left( b_i \\right)\\) with equality when \\(\\delta = 0\\).\nAs \\(\\delta\\) increases, \\(\\sum_{i=1}^k \\mathrm{Var}\\left( b_{Ri} \\right)\\) decreases."
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---ridge-regression",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---ridge-regression",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Ridge Regression",
-    "text": "R Lab Hospital Manpower - Ridge Regression\n\n\n\n\nmanpower_scale <- apply(manpower, 2, \n                        unit_length_scale)\ndf <- as.data.frame(manpower_scale)\ndelta <- seq(0, 0.5, by = 0.01)\nridge_fit <- MASS::lm.ridge(\n  y ~ . -1, data = df, lambda = delta)\nmatplot(coef(ridge_fit), type = \"l\",\n        xlab = \"delta\", ylab = \"Coef\", \n        main = \"Ridge Trace\")\nabline(v = which(delta == 0.07), \n       col = \"orange\", lty = 2)"
-  },
-  {
-    "objectID": "slides/14-colliearity.html#r-lab-hospital-manpower---ridge-regression-1",
-    "href": "slides/14-colliearity.html#r-lab-hospital-manpower---ridge-regression-1",
-    "title": "Collinearity",
-    "section": "\nR Lab Hospital Manpower - Ridge Regression",
-    "text": "R Lab Hospital Manpower - Ridge Regression\n\n\n\n\n\n\n\n\n\n\n\nmath4780-f23.github.io/website"
   },
   {
     "objectID": "slides/15-var-select.html#model-building",
@@ -3757,6 +3505,181 @@
     "title": "Overview of Regression 📖",
     "section": "Linear vs. Nonlinear Models",
     "text": "Linear vs. Nonlinear Models\n\n\n\n\n\n\n\n\n\nOK. So Regression can be divided into Linear and Nonlinear Regression.\n\n\n\nmath4780-f23.github.io/website"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#what-is-collinearity",
+    "href": "slides/14-collinearity.html#what-is-collinearity",
+    "title": "Collinearity",
+    "section": "What is Collinearity",
+    "text": "What is Collinearity\n\n\nCollinearity refers to the situation in which two or more predictors are closely related to one another.\n\nlimit and age appear to have no obvious relationship, which is good!\n\nlimit and rating are highly correlated, and they are said to be collinear.\n\n\n\nCollinearity is a fundamental problem with the data rather than model specification.\nThere is usually no satisfactory solution for a true collinearity problem.\nCollinearity means some regressors in your model are highly correlated.\nWe want to have regressors that are NOT moving with each other.\nIdeally we desire to have orthogonal regressors.\nThe intuition is, we hope predictors can explain the variation of \\(y\\), right? That’s why we put these predictors in the model.\nAnd ideally we hope each predictor can explain a part of variation of \\(y\\) that can only be explained by that predictor and cannot be explained by any other predictors.\nThis kind of partition can be done if all the predictors are orthogonal.\nIf x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of \\(y\\).\nThink about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.\nSo we actually use two predictors to explain the same variation of \\(y\\), which is redundant.\nThe model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.\nLater, we’ll see why we don’t want the predictors to be correlated.\nThere are lots of bad effects on our regression model."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#sources-of-collinearity",
+    "href": "slides/14-collinearity.html#sources-of-collinearity",
+    "title": "Collinearity",
+    "section": "Sources of Collinearity",
+    "text": "Sources of Collinearity\nFour primary sources\n\nThe data collection method employed\nConstraints on the model or in the population\nModel specification\nA model with \\(p>n\\)\n\n\n\nLet’s see what causes Collinearity. Here are 4 sources of Collinearity.\nThe data collection method employed: the way we collect our data may cause the predictors to be moving together. We need to be more careful, and see if we can collect our data in another way, so that the correlation between predictors can be alleviated or weakened.\nConstraints on the model or in the population: If two predictors are correlated in nature, then it is unavoidable to have Collinearity, and if we want to keep the two predictors in our model, we should consider other methods other than OLS.\nModel specification: Polynomial regression.\nA \\(p>n\\) model"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#data-collection",
+    "href": "slides/14-collinearity.html#data-collection",
+    "title": "Collinearity",
+    "section": "Data Collection",
+    "text": "Data Collection\n\nCollinearity occurs when only a subspace of the entire sample space has been explored.\nMay be able to reduce this collinearity through the sampling technique used.\n\nThere is no physical reason why you can’t sample in that area."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#constraints",
+    "href": "slides/14-collinearity.html#constraints",
+    "title": "Collinearity",
+    "section": "Constraints",
+    "text": "Constraints\n\nPhysical constraints are present, and the collinearity will exist regardless of collection method."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#model-specification",
+    "href": "slides/14-collinearity.html#model-specification",
+    "title": "Collinearity",
+    "section": "Model Specification",
+    "text": "Model Specification\n\nPolynomial terms can cause ill-conditioning in \\({\\bf X'X}\\).\nAs the order of the model increases, \\({\\bf X'X}\\) matrix inversion will become inaccurate, and error can be introduced into the parameter estimates.\nIf range on a regressor variable is small, adding an \\(x^2\\) term can result in significant collinearity.\n\n\\(x\\) and \\(x^2\\) are highly (linearly correlated) - Polynomial terms can cause ill-conditioning (a sign of Collinearity) in the \\(({\\bf X'X})\\) matrix. - As the order of the model increases, \\(({\\bf X'X})\\) matrix inversion will become more inaccurate, and error can be introduced into the parameter estimates - If range on a regressor variable is small, adding \\(x^2\\) term can result in significant Collinearity."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#pn-model",
+    "href": "slides/14-collinearity.html#pn-model",
+    "title": "Collinearity",
+    "section": "\n\\(p>n\\) Model",
+    "text": "\\(p>n\\) Model\n\nMore regressor variables than observations.\nThe best way to counter this is to remove/reconstruct regressor variables.\n\nPrincipal Component Regression\nVariable Selection (Next Topic)"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#effect-of-collinearity",
+    "href": "slides/14-collinearity.html#effect-of-collinearity",
+    "title": "Collinearity",
+    "section": "Effect of Collinearity",
+    "text": "Effect of Collinearity\n\n👉 Large variances and covariances for the LSE \\(b_j\\)s.\n\n\n👉 Tends to produce LSE \\(b_j\\) that are too large in absolute value. Therefore, the vector \\({\\bf b}\\), on average, is much longer than the vector \\(\\boldsymbol \\beta\\).\n\n\n\nLarge variances and large magnitude of coefficients lead to instable and wrong signed coefficients.\nPoor coefficients do not necessarily imply bad fit or poor prediction.\nThe predictions should be confined to the \\(x\\) space where the collinearity holds approximately.\nCollinearity causes very poor extrapolated prediction.\n\n\n\nThe squared distance from \\({\\bf b}\\) to \\(\\bsbeta\\) is \\(D^2 = \\sum_{j=1}^k(b_j - \\beta_j)^2\\).\nThe expected squared distance is \\[E(D^2) = E\\left(\\sum_{j=1}^k(b_j - \\beta_j)^2 \\right) = \\sum_{j=1}^kE\\left[(b_j - \\beta_j)^2\\right] = \\sum_{j=1}^k\\mathrm{Var}(b_j) = \\sigma^2 \\mathrm{tr}\\left[({\\bf X'X})^{-1}\\right]\\]\n\nStrong Collinearity between \\(x\\)’s results in\nthe trace of a matrix (Tr) is the sum of the diagonal elements."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#perfectly-correlated-regressors",
+    "href": "slides/14-collinearity.html#perfectly-correlated-regressors",
+    "title": "Collinearity",
+    "section": "Perfectly Correlated Regressors",
+    "text": "Perfectly Correlated Regressors\n\nSuppose the true population regression equation is \\(y = 3 + 4x\\).\nSuppose we try estimating that equation using perfected correlated variables \\(x\\) and \\(z = x/10\\).\n\n\\[\n\\begin{aligned}\\hat{y}&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2z\\\\\n&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2\\frac{x}{10}\\\\\n&= \\hat{\\beta}_0 + \\bigg(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10}\\bigg)x\n\\end{aligned}\n\\] \n\n\nCan set \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_2\\) to any two numbers such that \\(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10} = 4\\).\nUnable to choose the “best” combination of \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_2\\).\n\n\nCollinearity is a fundamental problem with the data rather than model specification.\nThere is usually no satisfactory solution for a true collinearity problem.\nCollinearity means some regressors in your model are highly correlated.\nWe want to have regressors that are NOT moving with each other.\nIdeally we desire to have orthogonal regressors.\nThe intuition is, we hope predictors can explain the variation of \\(y\\), right? That’s why we put these predictors in the model.\nAnd ideally we hope each predictor can explain a part of variation of \\(y\\) that can only be explained by that predictor and cannot be explained by any other predictors.\nThis kind of partition can be done if all the predictors are orthogonal.\nIf x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of \\(y\\).\nThink about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.\nSo we actually use two predictors to explain the same variation of \\(y\\), which is redundant.\nThe model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.\nLater, we’ll see why we don’t want the predictors to be correlated.\nThere are lots of bad effects on our regression model."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#collinearity-diagnostics",
+    "href": "slides/14-collinearity.html#collinearity-diagnostics",
+    "title": "Collinearity",
+    "section": "Collinearity Diagnostics",
+    "text": "Collinearity Diagnostics\nIdeal characteristics of a collinearity diagnostic:\n\nCorrectly indicate if collinearity is present\nHow severe the problem is\nProvide insight as to which regressors are causing the problem"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#examination-of-the-correlation-matrix-of-xs",
+    "href": "slides/14-collinearity.html#examination-of-the-correlation-matrix-of-xs",
+    "title": "Collinearity",
+    "section": "Examination of the Correlation Matrix of \\(x\\)s",
+    "text": "Examination of the Correlation Matrix of \\(x\\)s\n\nAfter unit length scaling1, \\({\\bf X'X} = \\left[r_{ij}\\right]_{k\\times k}\\) is the correlation matrix of \\(x\\)s denoted as \\({\\bf \\Sigma}\\). 2 For example, \\[{\\bf X'X} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}\\]\n\\(r_{ij}\\) is the pairwise correlation between \\(x_i\\) and \\(x_j\\).\nLarge \\(|r_{ij}|\\) is an indication of collinearity.\nWhen more than two regressors are involved in collinearity, there may be instances when collinearity is present, but the pairwise correlations are not large.\nInspecting \\(r_{ij}\\) is not sufficient for detecting more complex collinearity.\n\nAfter unit length scaling, \\({\\bf X'X}\\) is the correlation matrix of regressors. - If we scale and center the regressors, we have the correlation matrix. \\[{\\bf X'X} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}\\] - The off diagonal elements of the centered and scaled \\({\\bf X'X}\\) matrix are the pairwise correlations between \\(x_i\\) and \\(x_j\\), denoted as \\(r_{ij}\\). For example, \\(r_{12} = 0.992\\). - If \\(|r_{ij}| \\approx 1\\), there is an indication of Collinearity. But, the opposite does not always hold. - When there are more than two regressors, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4) - Inspection of the \\(r_{ij}\\) is not sufficient for detecting anything more complex than pairwise Collinearity.\n\\(\\tilde{x}_{ij} = \\frac{x_{ij} - \\overline{x}_j}{\\sqrt{\\sum_{i=1}^n (x_{ij} - \\overline{x}_j)^2}}\\) for \\(~~i = 1, 2, \\dots, n\\), \\(~~ j = 1, 2, \\dots, k\\).The term correlation is a bit of misnomer. The regressors are not random variables. The correlation coefficient \\(r_{ij}\\) does measure linear dependency between \\(x_i\\) and \\(x_j\\) in the data."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#variance-inflation-factors",
+    "href": "slides/14-collinearity.html#variance-inflation-factors",
+    "title": "Collinearity",
+    "section": "Variance Inflation Factors",
+    "text": "Variance Inflation Factors\n\n\nThe diagonals of \\({\\bf \\Sigma}^{-1} = {\\bf C}\\) in correlation form are called variance inflation factors \\[\\text{VIF}_j = {\\bf C}_{jj}\\]\nExample: \\[{\\bf \\Sigma} = \\begin{bmatrix} 1 & 0.992 \\\\ 0.992 & 1 \\end{bmatrix}; \\quad {\\bf \\Sigma}^{-1} = \\begin{bmatrix} 62.8 & -62.2 \\\\ -62.2 & 62.8 \\end{bmatrix}\\] and \\(\\text{VIF}_1 = 62.8\\).\n\n\n\nThe collinearity produces an inflation in the variances of the estimated coefficients, an increase in 60-fold over the ideal case when the two regressors are orthogonal.\nVIFs \\(> 10\\) are considered significant."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#variance-inflation-factors-1",
+    "href": "slides/14-collinearity.html#variance-inflation-factors-1",
+    "title": "Collinearity",
+    "section": "Variance Inflation Factors",
+    "text": "Variance Inflation Factors\n\\[\\text{VIF}_j = \\frac{1}{1 - R^2_{X_j | X_{-j}}}\\] where \\(R^2_{X_j | X_{-j}}\\) is the coefficient of determination obtained when \\(x_j\\) is regressed on the other regressors \\(x_i, i \\ne j\\).\n\\[\\mathrm{Var}(b_j) = \\frac{s^2}{\\sum_{i=1}^n(x_{ij} - \\bar{x}_j)^2} \\times \\text{VIF}_j\\]\n\n\\(\\text{VIF}_j\\) measures the combined effect of the dependencies among the regressors on the variance of \\(b_j\\).\nIf \\(x_j\\) is near linearly dependent on some subset of the remaining regressors, \\({\\bf C}_{jj}\\) is large.\n\n\nRemember what does linear (in)dependence mean?\n\n\\[\\text{VIF}_j = {\\bf C}_{jj} = \\frac{1}{1 - R^2_j}\\] + \\(R_j^2\\): the coefficient of determination obtained when \\(x_j\\) is regressed on the remaining regressors \\(x_i, i \\ne j\\). - If \\(x_j\\) can be explained a lot from other regressors, \\(x_j\\) is probably unnecessary in the regression model when all others are in the model. When it is in the model, the model cannot understand what the real effect the predictor can provide, and therefore its coefficient has a large variance. - The regressors that have high VIFs probably have poorly estimated coefficients. - The Collinearity produces an inflation in the variances of the estimated coefficients, an increase in 60-fold over the ideal case when the two regressors are orthogonal. - Since the variance of the j th regression coefficients is C jj σ 2 , we can view C jj as the factor by which the variance of ˆβj is increased due to near - linear dependences among the regressors."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower-data",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower-data",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower Data",
+    "text": "R Lab Hospital Manpower Data\n\n\n\nmanpower\n\n       y  x1    x2    x3    x4   x5\n1    567  16  2463   473  18.0  4.5\n2    697  44  2048  1340   9.5  6.9\n3   1033  20  3940   620  12.8  4.3\n4   1604  19  6505   568  36.7  3.9\n5   1611  49  5723  1498  35.7  5.5\n6   1613  45 11520  1366  24.0  4.6\n7   1854  55  5779  1687  43.3  5.6\n8   2161  59  5969  1640  46.7  5.2\n9   2306  94  8461  2872  78.7  6.2\n10  3504 128 20106  3655 180.5  6.2\n11  3572  96 13313  2912  60.9  5.9\n12  3741 131 10771  3921 103.7  4.9\n13  4027 127 15543  3866 126.8  5.5\n14 10344 253 36194  7684 157.7  7.0\n15 11732 409 34703 12446 169.4 10.8\n16 15415 464 39204 14098 331.4  7.0\n17 18854 510 86533 15524 371.6  6.3\n\n\n\n\\(y\\): Monthly man-hours\n\n\\(x_1\\): Average daily patient load\n\n\\(x_2\\): Monthly X-ray exposures\n\n\\(x_3\\): Monthly occupied bed days\n\n\\(x_4\\): Eligible population in the area / 1000\n\n\\(x_5\\): Average length of patients’ stay in days\n\n\n\nDo you expect to see positive or negative relationship between \\(y\\) and \\(x_i\\)?"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---pairwise-dependence",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---pairwise-dependence",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Pairwise Dependence",
+    "text": "R Lab Hospital Manpower - Pairwise Dependence"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---model-fit",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---model-fit",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Model Fit",
+    "text": "R Lab Hospital Manpower - Model Fit\n\nlm_full <- lm(y ~ ., data = manpower)\n(summ_full <- summary(lm_full))\n\n...\n             Estimate Std. Error t value Pr(>|t|)  \n(Intercept) 1962.9482  1071.3617    1.83    0.094 .\nx1           -15.8517    97.6530   -0.16    0.874  \nx2             0.0559     0.0213    2.63    0.023 *\nx3             1.5896     3.0921    0.51    0.617  \nx4            -4.2187     7.1766   -0.59    0.569  \nx5          -394.3141   209.6395   -1.88    0.087 .\nResidual standard error: 642 on 11 degrees of freedom\nMultiple R-squared:  0.991, Adjusted R-squared:  0.987 \n...\n\n\n\nExcellent fit. But any issues of the this fitted result?\n\n\n\nThe coefficients \\(b_1\\), \\(b_4\\) and \\(b_5\\) are negative.\n\nIn the case of \\(x_1\\), an increase in patient load, when other \\(x\\)’s are held constant, corresponds to a decrease in hospital manpower. (wrong sign due to large variance)\n\n\nEven though the regression model fits the data quite well, the rather curious signs on the regression coefficients may be the result of the effect of Collinearity."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---vif",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---vif",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - VIF",
+    "text": "R Lab Hospital Manpower - VIF\n\n\n\nX <- manpower[, -1]\n(Sig <- cor(X))\n\n     x1   x2   x3   x4   x5\nx1 1.00 0.91 1.00 0.94 0.67\nx2 0.91 1.00 0.91 0.91 0.45\nx3 1.00 0.91 1.00 0.93 0.67\nx4 0.94 0.91 0.93 1.00 0.46\nx5 0.67 0.45 0.67 0.46 1.00\n\n\n\n\n(C <- solve(Sig))\n\n      x1    x2    x3     x4    x5\nx1  9598  11.9 -9247 -318.8 -93.9\nx2    12   7.9   -18   -1.9   1.8\nx3 -9247 -18.5  8933  294.4  83.4\nx4  -319  -1.9   294   23.3   6.4\nx5   -94   1.8    83    6.4   4.3\n\n## VIF \ndiag(C)\n\n    x1     x2     x3     x4     x5 \n9597.6    7.9 8933.1   23.3    4.3 \n\n\n\n\n\n\n## put the fitted model in vif()\n(vif_all <- car::vif(lm_full))\n\n    x1     x2     x3     x4     x5 \n9597.6    7.9 8933.1   23.3    4.3 \n\n\n\\(x_1\\) Average daily patient load and \\(x_3\\) Monthly occupied bed days are highly correlated."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---confidence-interval",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---confidence-interval",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Confidence Interval",
+    "text": "R Lab Hospital Manpower - Confidence Interval\n\n\n\n\n\n\n\n\n\n\n\nMarginally, \\(b_1\\) and \\(b_3\\) vary a lot. The CI for \\(\\beta_1\\) and CI for \\(\\beta_3\\) both contain zero.\n\n\n\n    2.5 % 97.5 %\nx1 -230.8  199.1\nx3   -5.2    8.4\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut very confident that \\(\\beta_1\\) and \\(\\beta_3\\) cannot be both zero.\n\n\n\n\n\nThe model is quite not sure how much \\(x_1\\) and \\(x_3\\) affect \\(y\\)."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---confidence-interval-1",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---confidence-interval-1",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Confidence Interval",
+    "text": "R Lab Hospital Manpower - Confidence Interval\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(x_4\\) and \\(x_5\\) are not highly correlated pairwisely. \\(r_{45} = 0.46\\).\nHowever, their CI is still inflated due to the collinearity effect of other variables.\n\n\n\n   2.5 % 97.5 %\nx4   -20     12\nx5  -856     67\n\n\nDon’t just look at the pairwise correlation"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#eigensystem-analysis-condition-indices",
+    "href": "slides/14-collinearity.html#eigensystem-analysis-condition-indices",
+    "title": "Collinearity",
+    "section": "Eigensystem Analysis: Condition Indices",
+    "text": "Eigensystem Analysis: Condition Indices\n\nThe eigenvalues of \\({\\bf \\Sigma}\\) (the correlation matrix of \\(\\bf X\\)), \\(\\lambda_1, \\lambda_2, \\dots, \\lambda_k\\), can measure collinearity.\n\nIf there are one or more near-linear dependencies, one or more of the \\(\\lambda_i\\)s will be (relatively) small.   \n\n\nCondition indices of \\({\\bf \\Sigma}\\) are \\(\\kappa_j = \\frac{\\lambda_{max}}{\\lambda_{j}}\\).\nThe number of \\(\\kappa_j > 1000\\) is a measure of the number of near-linear dependencies in \\({\\bf \\Sigma}.\\)\n\n\n\nThe eigenvalues of \\({\\bf X'X}\\), \\(\\lambda_1, \\lambda_2, \\dots, \\lambda_k\\), can measure Collinearity.\n\nIf there are one or more near-linear dependencies in the data, one or more of the \\(\\lambda_i\\)s will be small.\n\nCondition number of \\({\\bf X'X}\\) is \\(\\kappa = \\frac{\\lambda_{max}}{\\lambda_{min}}\\).\n\n\\(\\kappa > 100\\) implies Collinearity.\n\n\\(\\kappa\\) does not tell us how many regressors are involved.\n\nCondition indices of \\({\\bf X'X}\\) is \\(\\kappa_j = \\frac{\\lambda_{max}}{\\lambda_{j}}\\).\nThe number of \\(\\kappa_j > 1000\\) is a measure of the number of near-linear dependencies in \\({\\bf X'X}.\\)"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---eigensystem-analysis",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---eigensystem-analysis",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Eigensystem Analysis",
+    "text": "R Lab Hospital Manpower - Eigensystem Analysis\n\neigen_Sig <- eigen(Sig)\n## eigenvalues\n(lambda <- eigen_Sig$values)\n\n[1] 4.2e+00 6.7e-01 9.5e-02 4.1e-02 5.4e-05\n\n## Conditional indices\nmax(lambda) / lambda\n\n[1]     1.0     6.3    44.4   103.1 77769.7\n\n\n\n\n\\(\\lambda_5 \\approx 0\\) and \\(\\kappa_5 \\approx 77770\\), indicating collinearity.\n\n\nEigenvalues are listed in a decreasing order, \\(\\lambda_1 > \\lambda_2 > \\cdots > \\lambda_k\\), and \\(\\lambda_5\\) is not the eigenvalue of \\(x_5\\).\n\n\n\n      [,1]     [,2]  [,3]  [,4]    [,5]\n[1,] -0.49 -0.00203 -0.17 -0.47  0.7195\n[2,] -0.45 -0.33561  0.80  0.19  0.0012\n[3,] -0.48 -0.00085 -0.15 -0.51 -0.6941\n[4,] -0.46 -0.31080 -0.54  0.63 -0.0234\n[5,] -0.33  0.88925  0.12  0.29 -0.0068\n\n\n[1] 1 1 1 1 1\n\n\nThere is one near linear dependency."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#eigensystem-analysis-eigendecomposition",
+    "href": "slides/14-collinearity.html#eigensystem-analysis-eigendecomposition",
+    "title": "Collinearity",
+    "section": "Eigensystem Analysis: Eigendecomposition",
+    "text": "Eigensystem Analysis: Eigendecomposition\n\nEigendecomposition \\[{\\bf \\Sigma = V\\boldsymbol \\Lambda V'}\\]\n\n\n\\(\\boldsymbol \\Lambda\\) is a \\(k \\times k\\) diagonal matrix whose elements are \\(\\lambda_j\\).\n\n\\({\\bf V} = [{\\bf v}_1 \\quad {\\bf v}_2 \\quad \\dots \\quad {\\bf v}_k]\\) is a \\(k \\times k\\) orthogonal matrix whose columns are the eigenvectors of \\({\\bf \\Sigma}\\).\n\n\nIf \\(\\lambda_j \\approx 0\\), the associated \\({\\bf v}_j = (v_{1j}, v_{2j}, \\dots, v_{kj})'\\) describes how (and what) regressors are linearly dependent: \\[\\sum_{i=1}^kv_{ij}{\\bf x}_i \\cong \\mathbf{0}\\]\n\n\n\nIf \\(\\lambda_j \\approx 0\\), the associated \\({\\bf v}_j = (v_{1j}, v_{2j}, \\dots, v_{kj})'\\) describes the nature of this linear dependence.\n\n\\(\\sum_{i=1}^kc_i{\\bf x}_i \\cong \\mathbf{0}\\): The “weights” \\(c_i\\) are the individual elements in the \\({\\bf v}_j\\)."
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---eigensystem-analysis-1",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---eigensystem-analysis-1",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Eigensystem Analysis",
+    "text": "R Lab Hospital Manpower - Eigensystem Analysis\n\n\n\n\n\n\n## eigenvector matrix\n(V <- eigen_Sig$vectors)\n\n      [,1]     [,2]  [,3]  [,4]    [,5]\n[1,] -0.49 -0.00203 -0.17 -0.47  0.7195\n[2,] -0.45 -0.33561  0.80  0.19  0.0012\n[3,] -0.48 -0.00085 -0.15 -0.51 -0.6941\n[4,] -0.46 -0.31080 -0.54  0.63 -0.0234\n[5,] -0.33  0.88925  0.12  0.29 -0.0068\n\n\n\n\n\\({\\bf X}{\\bf v}_5 = \\sum_{i=1}^5v_{i5}{\\bf x}_i \\approx {\\bf 0}\\).\n\\(0.720 {\\bf x}_1 + 0.001 {\\bf x}_2 - 0.694 {\\bf x}_3 - 0.023 {\\bf x}_4 - 0.007 {\\bf x}_5 \\approx {\\bf 0}\\)\nHighly correlated \\(x_1\\) and \\(x_3\\) causes collinearity.\n\n\n\n\n\n\nAll \\({\\bf x}\\)s here are unit length scaled.\n\n\nX_s <- apply(X, 2, unit_len_scale)\n\n\n\n\nX_s %*% V[, 5]\n\n          [,1]\n [1,] -0.00037\n [2,] -0.00144\n [3,]  0.00032\n [4,] -0.00058\n [5,] -0.00108\n [6,]  0.00047\n [7,] -0.00131\n [8,]  0.00492\n [9,] -0.00225\n[10,]  0.00230\n[11,] -0.00050\n[12,]  0.00209\n[13,] -0.00251\n[14,] -0.00016\n[15,]  0.00131\n[16,] -0.00098\n[17,] -0.00023\n\n\n\n\n\n\n     [,1] [,2]  [,3]  [,4]    [,5]\n[1,]  4.2 0.00 0.000 0.000 0.0e+00\n[2,]  0.0 0.67 0.000 0.000 0.0e+00\n[3,]  0.0 0.00 0.095 0.000 0.0e+00\n[4,]  0.0 0.00 0.000 0.041 0.0e+00\n[5,]  0.0 0.00 0.000 0.000 5.4e-05\n\n\n\n## Orthogonal matrix\nround(t(V)%*%V, 1)\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    0    0    0    0\n[2,]    0    1    0    0    0\n[3,]    0    0    1    0    0\n[4,]    0    0    0    1    0\n[5,]    0    0    0    0    1\n\n##  V(Lambda)V' = X'X\nV %*% diag(lambda) %*% t(V)\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,] 1.00 0.91 1.00 0.94 0.67\n[2,] 0.91 1.00 0.91 0.91 0.45\n[3,] 1.00 0.91 1.00 0.93 0.67\n[4,] 0.94 0.91 0.93 1.00 0.46\n[5,] 0.67 0.45 0.67 0.46 1.00\n\n\n\n## near-zero vector\nX_s%*%V[, 5]\n\n          [,1]\n [1,] -0.00037\n [2,] -0.00144\n [3,]  0.00032\n [4,] -0.00058\n [5,] -0.00108\n [6,]  0.00047\n [7,] -0.00131\n [8,]  0.00492\n [9,] -0.00225\n[10,]  0.00230\n[11,] -0.00050\n[12,]  0.00209\n[13,] -0.00251\n[14,] -0.00016\n[15,]  0.00131\n[16,] -0.00098\n[17,] -0.00023"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#other-diagnostics",
+    "href": "slides/14-collinearity.html#other-diagnostics",
+    "title": "Collinearity",
+    "section": "Other Diagnostics",
+    "text": "Other Diagnostics\nCollinearity may exist if\n\noverall \\(F\\)-test for regression is significant, but individual \\(t\\)-tests are all non-significant.\n\nthe coefficient estimates are instable\n\nadding or removing a regressor produces large changes in the estimates\ndeleting one or more observations results in large changes in the estimates\nif the signs or magnitudes of the estimates are contrary to prior expectation"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#r-lab-hospital-manpower---significance",
+    "href": "slides/14-collinearity.html#r-lab-hospital-manpower---significance",
+    "title": "Collinearity",
+    "section": "\nR Lab Hospital Manpower - Significance",
+    "text": "R Lab Hospital Manpower - Significance\n\nsumm_full$coefficients  ## t-test not significant\n\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept) 1962.948    1.1e+03    1.83    0.094\nx1           -15.852    9.8e+01   -0.16    0.874\nx2             0.056    2.1e-02    2.63    0.023\nx3             1.590    3.1e+00    0.51    0.617\nx4            -4.219    7.2e+00   -0.59    0.569\nx5          -394.314    2.1e+02   -1.88    0.087\n\n\n\nsumm_full$fstatistic  ## F-test significant\n\nvalue numdf dendf \n  238     5    11 \n\n\n\n\nlm_no_x3 <- lm(y ~ . -x3, data = manpower)\nsummary(lm_no_x3)$coef\n\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept) 2161.962    967.871     2.2  4.5e-02\nx1            34.284      4.897     7.0  1.4e-05\nx2             0.057      0.021     2.8  1.7e-02\nx4            -6.600      5.311    -1.2  2.4e-01\nx5          -440.297    183.696    -2.4  3.4e-02"
+  },
+  {
+    "objectID": "slides/14-collinearity.html#methods-for-dealing-with-collinearity",
+    "href": "slides/14-collinearity.html#methods-for-dealing-with-collinearity",
+    "title": "Collinearity",
+    "section": "Methods for Dealing with Collinearity",
+    "text": "Methods for Dealing with Collinearity\nData collection:  Collect more data to break up the collinearity  in the existing data\n\n\nModel specification/An overdefined model: Respecify the model\n\n\n redefining the regressors : Use \\(x = x_1+x_2\\) or \\(x = x_1x_2\\).\n\nAvoid combining regressors in different units.\n\n\n\n eliminating regressors : remove \\(x_1\\) or \\(x_2\\).\n\nMay damage the predictive power if the removed regressors have significant explanatory power. (Variable selection)\nIf we remove \\(x_2\\), we estimate the marginal relationship between \\(y\\) and \\(x_1\\), ignoring \\(x_2\\), rather than the partial relationship conditioning on \\(x_2\\).\n\n\n\n\n\nConstraint on the model or in the population: Say goodbye to least-squares estimation.\n\n Ridge Regression, Principal Component Regression, Bayesian Regression, etc"
   },
   {
     "objectID": "slides/07-diag-unusual.html#outliers-unusual-y",
