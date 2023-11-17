@@ -20,9 +20,9 @@ editor: source
 - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong.
 
 
-# Reading and Writing
+# Reading and Writing (30 points for MATH 4780, and 50 points for MSSC 5780)
 
-In this course, we have been using the classical or frequentist approach to do a variety of statistical inferences, marginal $t$ test for $\beta_j$ and $F$ tests for model comparison for example. But Dr. Yu once said he never uses p-value in his own research, and what is taught in Intro Stats MATH 4720 is mostly problematic. In fact, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic, misused, and resulting in reproducibility and replication crisis in scientific research. Please write a summary paper *at least two pages* including
+In this class, we have been using the [classical or frequentist approach](https://en.wikipedia.org/wiki/Frequentist_inference) to do a variety of statistical inferences, marginal $t$ test for $\beta_j$ and $F$ tests for model comparison for example. But Dr. Yu once said he never uses p-value in his own research, and there are many issues with what is taught in Intro Stats (MATH 1700/4720/4740). In fact, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic, misused, and resulting in reproducibility and replication crisis in scientific research. Please write a summary paper (**at least one page for MATH 4780 and two pages for MSSC 5780**) including
 
   - Interpretation of p-value
   - List and discussion about the problems of the NHST and p-value method
@@ -47,14 +47,6 @@ Some references are
   
 There are lots of discussions and papers out there. You are welcome to google more resources to support your argument. The work should be entirely your effort. *You are not allowed to copy anyone's words, and you have to cite any resources you use, papers, blogs, videos, lecture notes, etc, or you violate Marquette academic misconduct policy.*
 
-<!--   -  -->
-<!--    -->
-
-<!--         or  -->
-
-<!--   - Bayesian Benefits for the Pragmatic Researcher -->
-<!--   -  -->
-
 
 
 # Statistical Computing and Data Analysis
@@ -68,7 +60,7 @@ We use the same data set `mpg.csv` for data analysis. For the following analysis
 
 2. Modify the model developed in (1) to include an interaction between vehicle weight and the type of transmission. What conclusions can you draw about the effect of the type of transmission on gasoline mileage? Interpret the parameters in this model.
 
-For the following questions (3) to (9), consider all the regressors except $x_4$, $x_5$ and $x_{11}$.
+For the following questions (3) to (7), consider all the regressors except $x_4$, $x_5$ and $x_{11}$.
 
 + $y$: MPG
 + $x_1$: Displacement (cubic in.)
@@ -88,11 +80,13 @@ For the following questions (3) to (9), consider all the regressors except $x_4$
 
 4. Calculate the variance inflation factors (VIFs). Is there any evidence of collinearity?
 
-5. Find the eigenvectors associated with the smallest eigenvalues of ${\mathbf X}'{\mathbf X}/(n - 1)$ or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?
+<!-- 5. Find the eigenvectors associated with the smallest eigenvalues of ${\mathbf X}'{\mathbf X}/(n - 1)$ or the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data? -->
 
-6. Compute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data?
+5. Find the eigenvectors associated with the smallest eigenvalues of the correlation matrix of regressors. Interpret the elements of these vectors. What can you say about the source of collinearity in these data?
 
-7. Fit the ordinary multiple regression and the ridge regression. Use the ridge trace to select an appropriate value of $\delta$. Explain how the ridge regression coefficients change as the parameter $\delta$ increases. This gives you the idea of why the ridge regression is a *shrinkage* method.
+<!-- 6. Compute the condition indices and variance-decomposition proportions. What statements can you make about collinearity in these data? -->
+
+<!-- 7. Fit the ordinary multiple regression and the ridge regression. Use the ridge trace to select an appropriate value of $\delta$. Explain how the ridge regression coefficients change as the parameter $\delta$ increases. This gives you the idea of why the ridge regression is a *shrinkage* method. -->
 
 <!-- 8. How much increase in the residual sum of squares has resulted from the -->
 <!-- use of ridge regression? -->
@@ -102,8 +96,8 @@ For the following questions (3) to (9), consider all the regressors except $x_4$
 <!-- 8. Perform a principal component regression (PCR). In fact, $\lambda_i/\sum_{j=1}^k\lambda_j$ tells us the proportion of total variation of the regreesors that are explained by the $i$-th principal component (PC). Use the fact to choose the number of PCs used in the PCR, so that the proportion of total variation explained by the chosen PCs is at least $95\%$. Compare the coefficients from ordinary least squares, ridge regression and PCR. -->
 
 
-8. Use the all-possible-regressions approach to find an appropriate regression model.
+6. Use the all-possible-regressions approach to find an appropriate regression model.
 
-9. Use stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?
+7. Use stepwise regression to specify a subset regression model. Does this lead to the same model found in (8)?
 
 

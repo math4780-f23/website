@@ -69,6 +69,8 @@ website:
             text: Guideline for MATH 4780
           - href: project-description-5780.qmd
             text: Guideline for MATH 5780
+          - href: project-work.qmd
+            text: Project Group and Proposal
       - section: "Class Activities"
         contents:
           - href: activity-description.qmd

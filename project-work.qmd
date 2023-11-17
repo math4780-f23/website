@@ -10,13 +10,13 @@ Here shows group project's proposal.
 
 -   Group 2: Alberto Gamez Gonzalez, Serena Yang, Donny Robbins
 
--   Group 3:
+-   Group 3: Davion Cook, Danny O'Shea, Nathan Fisher
 
--   Group 4:
+-   Group 4: Nicky Diaz, Andrew Hiller, Ethan Baierl
 
--   Group 5:
+-   Group 5: Jake Konrad, Patrick Campbell, Keyley Reith
 
--   Group 6:
+-   Group 6: Ray Sun, Huangkun Chen, T.J. Whapham
 
 ## MSSC 5780
 
@@ -26,4 +26,4 @@ Here shows group project's proposal.
 
 -   Group 3: Samantha Juedemann, David Aguilera, Tanjina Zaman
 
--   Group 4: Edward Liu, Matt Jaeggin, Anesti Sotirovski
+-   Group 4: Edward Liu, Anesti Sotirovski
